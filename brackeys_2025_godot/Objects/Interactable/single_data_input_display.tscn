@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmh64qs3g6fcy"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/DataSingle.cs" id="1_cefgu"]
+[ext_resource type="PackedScene" uid="uid://bi67jaxcu0j0b" path="res://Objects/Interactable/arrow_button.tscn" id="2_j5gva"]
+
+[node name="SingleDataInputDisplay" type="Node3D" node_paths=PackedStringArray("_label")]
+script = ExtResource("1_cefgu")
+_defaultValue = 50
+_label = NodePath("InputText")
+
+[node name="PlusButton" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("2_j5gva")]
+transform = Transform3D(-0.5, -1.95403e-08, -7.29254e-08, 0, 0.482963, -0.12941, 7.54979e-08, -0.12941, -0.482963, -0.3, 0.606, 1.065)
+_data = NodePath("..")
+
+[node name="MinusButton" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("2_j5gva")]
+transform = Transform3D(0.5, 0, 0, 0, 0.482963, 0.12941, 0, -0.12941, 0.482963, -0.3, 0.585, 0.993)
+_type = 1
+_data = NodePath("..")
+
+[node name="InputText" type="Label3D" parent="."]
+transform = Transform3D(-1, 8.44439e-08, -2.26267e-08, 0, 0.258819, 0.965926, 8.74228e-08, 0.965926, -0.258819, -0.150948, 0.592673, 1.02916)
+text = "50"

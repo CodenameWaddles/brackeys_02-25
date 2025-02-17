@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi67jaxcu0j0b"]
+
+[ext_resource type="PackedScene" uid="uid://x2vtckdk6k8o" path="res://Assets/arrowButton.glb" id="1_qqccc"]
+[ext_resource type="Script" path="res://Objects/Scripts/InputButton.cs" id="2_6tukt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qto54"]
+size = Vector3(0.169666, 0.0947647, 0.171642)
+
+[node name="arrowButton" node_paths=PackedStringArray("_shape") instance=ExtResource("1_qqccc")]
+script = ExtResource("2_6tukt")
+_shape = NodePath("RigidBody3DButton/CollisionShape3D")
+
+[node name="RigidBody3DButton" type="RigidBody3D" parent="." index="1"]
+collision_layer = 2
+collision_mask = 2
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3DButton" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00091362, -0.00044632, -0.0282269)
+shape = SubResource("BoxShape3D_qto54")

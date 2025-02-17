@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c47ujhsyq1f6t"]
+
+[ext_resource type="PackedScene" uid="uid://8r87l7ftenvm" path="res://Objects/Tunnel/TunnelModel.tscn" id="1_20swi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qe5vv"]
+size = Vector3(8, 1.18451, 31)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_scfoq"]
+size = Vector3(1, 5, 31)
+
+[node name="Tunnel" type="StaticBody3D"]
+
+[node name="Ground" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.0922546, 0)
+shape = SubResource("BoxShape3D_qe5vv")
+
+[node name="Wall1" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+shape = SubResource("BoxShape3D_scfoq")
+
+[node name="Wall" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 0)
+shape = SubResource("BoxShape3D_scfoq")
+
+[node name="tunnel" parent="." instance=ExtResource("1_20swi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsv0rixeuanqn"]
+
+[ext_resource type="PackedScene" uid="uid://crb8snnmv6tu7" path="res://Assets/cart.glb" id="1_cwfay"]
+[ext_resource type="Material" uid="uid://egf6mi8wbo7m" path="res://Objects/Materials/metal.tres" id="2_jnd36"]
+[ext_resource type="PackedScene" uid="uid://bmh64qs3g6fcy" path="res://Objects/Interactable/single_data_input_display.tscn" id="3_kn2ky"]
+
+[node name="cart" instance=ExtResource("1_cwfay")]
+
+[node name="Cube_001" parent="." index="0"]
+material_override = ExtResource("2_jnd36")
+
+[node name="Cube_002" parent="." index="1"]
+material_override = ExtResource("2_jnd36")
+
+[node name="Cube_003" parent="." index="2"]
+material_override = ExtResource("2_jnd36")
+
+[node name="SingleDataInputDisplay" parent="." index="3" instance=ExtResource("3_kn2ky")]

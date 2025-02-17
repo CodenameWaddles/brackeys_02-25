@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4jj5gmlr6a0l"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/DataDouble.cs" id="1_jakav"]
+[ext_resource type="PackedScene" uid="uid://bi67jaxcu0j0b" path="res://Objects/Interactable/arrow_button.tscn" id="1_m0rd3"]
+[ext_resource type="PackedScene" uid="uid://blugenxdmdoqq" path="res://Objects/Interactable/screen.tscn" id="3_5apd7"]
+
+[node name="DoubleDataInputDisplay" type="Node3D" node_paths=PackedStringArray("_screen")]
+script = ExtResource("1_jakav")
+_screen = NodePath("screen")
+_maximumValue = 5
+
+[node name="APlus" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("1_m0rd3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.000189126, -0.000654697, 0.406597)
+_data = NodePath("..")
+
+[node name="AMinus" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("1_m0rd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000189126, -0.000654697, 0.213379)
+_type = 1
+_data = NodePath("..")
+
+[node name="BPlus" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("1_m0rd3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0963959, 0, -0.0549232)
+_data = NodePath("..")
+_dataIndex = 1
+
+[node name="BMinus" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("1_m0rd3")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0.0952874, 0, -0.0549232)
+_type = 1
+_data = NodePath("..")
+_dataIndex = 1
+
+[node name="screen" parent="." instance=ExtResource("3_5apd7")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.712344, 0, 0.188781)

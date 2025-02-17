@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://8r87l7ftenvm"]
+
+[ext_resource type="PackedScene" uid="uid://b20sip6pq6gan" path="res://Assets/tunnel.glb" id="1_j826g"]
+[ext_resource type="Material" uid="uid://bhkxvfalbk5bv" path="res://Objects/Materials/tunnel.tres" id="2_eu0sp"]
+
+[node name="tunnel" instance=ExtResource("1_j826g")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(4.65636, 0, 0, 0, 0, -4.65636, 0, 19.1686, 0, 0, 0, 0)
+material_override = ExtResource("2_eu0sp")

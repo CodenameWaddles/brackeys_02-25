@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://4nv88uxswbec"]
+
+[ext_resource type="PackedScene" uid="uid://c75klerienkw8" path="res://Assets/pipeLeak.glb" id="1_rpvaa"]
+[ext_resource type="Material" uid="uid://egf6mi8wbo7m" path="res://Objects/Materials/metal.tres" id="2_5w4jt"]
+
+[node name="pipeLeak" instance=ExtResource("1_rpvaa")]
+
+[node name="Cylinder" parent="." index="0"]
+material_override = ExtResource("2_5w4jt")

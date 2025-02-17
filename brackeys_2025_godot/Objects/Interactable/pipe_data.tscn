@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://djklaqfqg1npl"]
+
+[ext_resource type="PackedScene" uid="uid://c3nitca4bbqm6" path="res://Assets/pipeData.glb" id="1_0s1s7"]
+[ext_resource type="Material" uid="uid://egf6mi8wbo7m" path="res://Objects/Materials/metal.tres" id="2_7mkuc"]
+
+[node name="pipeData" instance=ExtResource("1_0s1s7")]
+
+[node name="Cylinder" parent="." index="0"]
+material_override = ExtResource("2_7mkuc")
+
+[node name="Cube" parent="." index="1"]
+material_override = ExtResource("2_7mkuc")
