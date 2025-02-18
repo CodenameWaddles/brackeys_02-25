@@ -1,16 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=10 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
 [ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="2_kfp56"]
 [ext_resource type="PackedScene" uid="uid://cb7s04dpv0wii" path="res://Zones/Scenes/zone_2.tscn" id="3_ih7vx"]
-[ext_resource type="PackedScene" uid="uid://djklaqfqg1npl" path="res://Objects/Interactable/pipe_data.tscn" id="3_tc17v"]
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="4_idk36"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
-[ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/leakable_pipe.tscn" id="5_hmt3g"]
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/blowtorch.tscn" id="6_rr8l2"]
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/oil.tscn" id="7_l66rf"]
-[ext_resource type="PackedScene" uid="uid://b4jj5gmlr6a0l" path="res://Objects/Interactable/double_data_input_display.tscn" id="8_fbn8t"]
 
 [sub_resource type="Curve3D" id="Curve3D_llj7q"]
 _data = {
@@ -40,9 +37,6 @@ transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.6357
 [node name="Oil" parent="tracks/PathFollow3D/cart" instance=ExtResource("7_l66rf")]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.400033, 0.668567, -1.21151)
 
-[node name="pipeData" parent="." instance=ExtResource("3_tc17v")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.65203, 1.5906, -11.3984)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.688911, 0.479282, -0.543773, 0, 0.750192, 0.66122, 0.724846, -0.455522, 0.516816, 0, 14.5835, 0)
 
@@ -53,10 +47,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.68949, 0, 0, 87.5443)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.68949, 0, 0, -87.4145)
 
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129688, 0.69799, -10.9952)
-
-[node name="LeakablePipe" parent="." instance=ExtResource("5_hmt3g")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1.46961, -13)
-
-[node name="DoubleDataInputDisplay" parent="." instance=ExtResource("8_fbn8t")]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 1, 1.69279, -13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129688, 0.69799, -0.215734)

@@ -26,10 +26,10 @@ public partial class Cart : Node {
             _pathFollow3D.ProgressRatio += (float) (_speed * 0.1 * delta);
         }
         
-        if(move & (_pathFollow3D.ProgressRatio >= 0.9)) {
+        if(_pathFollow3D.ProgressRatio >= 0.9) {
             Godot.GD.Print("arrived");
             EmitSignal(SignalName.ArrivedSignal);
-            move = false;
+            _pathFollow3D.ProgressRatio = 0;
         }
     }
 

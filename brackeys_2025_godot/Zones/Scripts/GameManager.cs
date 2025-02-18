@@ -34,13 +34,15 @@ public partial class GameManager : Node
         _currentScene = (Node3D) _scenes[sceneIndex].Instantiate();
         AddChild(_currentScene);
         _currentScene.Position = _scenePosition;
-        GD.Print("loading scene : " + _currentScene.Name);
+        GD.Print("loading scene : " + sceneIndex);
         
         _cart.move = true;
     }
     
     private void _cartArrived()
     {
+        GD.Print("current scene index : " + _currentSceneIndex);
+        GD.Print("scenes count : " + _scenes.Count);
         if(_currentSceneIndex == _scenes.Count - 1)
             _loadScene(0);
         else
