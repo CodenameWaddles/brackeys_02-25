@@ -1,6 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=13 format=3 uid="uid://b2cpr1lgw7bm8"]
 
+[ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
+[ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
 [ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="2_kfp56"]
+[ext_resource type="PackedScene" uid="uid://cb7s04dpv0wii" path="res://Zones/Scenes/zone_2.tscn" id="3_ih7vx"]
 [ext_resource type="PackedScene" uid="uid://djklaqfqg1npl" path="res://Objects/Interactable/pipe_data.tscn" id="3_tc17v"]
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="4_idk36"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
@@ -11,18 +14,22 @@
 
 [sub_resource type="Curve3D" id="Curve3D_llj7q"]
 _data = {
-"points": PackedVector3Array(-1.66494, -0.0237774, -2.83155, 0, 0, 0, 2.13447, 0, -9.8729, -2.951, 0, -2.675, 2.951, 0, 2.675, 2.823, 0, 22.314, -6.425, 0, 0.496, 6.425, 0, -0.496, 18.5547, 0, 29.0039, -3.273, 0, 5.447, 3.273, 0, -5.447, 32.5686, 0, 20.2842, -0.447021, 0.000270844, 3.36149, 0.447021, -0.000270844, -3.36149, 37.7166, 0, 1.08177, 2.591, 0, 5.654, -2.591, 0, -5.654, 36.7691, 0, -18.7469, 5.607, 0, 1.404, -5.607, 0, -1.404, 17.3177, 0, -30.4344, 5.055, 0, -4.65, -5.055, 0, 4.65, 2, 0, -29, 0.431697, 0.00139761, -12.7206, -0.431697, -0.00139761, 12.7206, 2.13447, 0, -9.8729),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(-1.66494, -0.0237774, -2.83155, 0, 0, 0, 0.68436, 1.90735e-06, 134.18, 0, 0, 0, 0, 0, 0, -1.81514, 0.0617828, -119.371),
+"tilts": PackedFloat32Array(0, 0)
 }
-point_count = 9
+point_count = 2
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("_cart")]
+script = ExtResource("1_yxd7y")
+_scenes = [ExtResource("2_3h40t"), ExtResource("3_ih7vx")]
+_cart = NodePath("tracks/PathFollow3D/cart")
 
 [node name="tracks" type="Path3D" parent="."]
 curve = SubResource("Curve3D_llj7q")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="tracks"]
-transform = Transform3D(-0.99972, 0, -0.0213857, 0, 0.999995, 0, 0.0213857, 0, -0.999721, 2.13447, 0, -9.8729)
+transform = Transform3D(0.999888, 2.40177e-06, 0.00985688, 1.1368e-13, 0.999992, -0.000243635, -0.00985688, 0.000243637, 0.999888, 0.68436, 1.90735e-06, 134.18)
+loop = false
 
 [node name="cart" parent="tracks/PathFollow3D" instance=ExtResource("2_kfp56")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -40,6 +47,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.652
 transform = Transform3D(0.688911, 0.479282, -0.543773, 0, 0.750192, 0.66122, 0.724846, -0.455522, 0.516816, 0, 14.5835, 0)
 
 [node name="Tunnel" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.68949, 0, 0, 87.5443)
+
+[node name="Tunnel2" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.68949, 0, 0, -87.4145)
 
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129688, 0.69799, -10.9952)

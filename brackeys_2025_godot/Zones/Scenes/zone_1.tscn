@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://blll5nq61dt7v"]
+
+[ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="1_ew7ii"]
+[ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_opr7o"]
+[ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/leakable_pipe.tscn" id="2_8no3p"]
+[ext_resource type="PackedScene" uid="uid://b4jj5gmlr6a0l" path="res://Objects/Interactable/double_data_input_display.tscn" id="3_dd0bw"]
+
+[node name="Zone1" type="Node3D" node_paths=PackedStringArray("_interactables")]
+script = ExtResource("1_opr7o")
+_interactables = []
+
+[node name="Tunnel" parent="." instance=ExtResource("1_ew7ii")]
+
+[node name="LeakablePipe" parent="." instance=ExtResource("2_8no3p")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 1.80237, 8.20476)
+
+[node name="LeakablePipe2" parent="." instance=ExtResource("2_8no3p")]
+transform = Transform3D(0.948324, 0, 0.317305, 0, 1, 0, -0.317305, 0, 0.948324, -3.11578, 1.31401, 4.07864)
+
+[node name="DoubleDataInputDisplay" parent="." instance=ExtResource("3_dd0bw")]
+transform = Transform3D(-0.0332011, 0.822045, -0.568454, -0.0163063, 0.568246, 0.822697, 0.999316, 0.0365838, -0.00546196, -3.66878, 1.45953, 5.5558)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.37232, 3.10484, 4.83349)
+text = "data : 32"

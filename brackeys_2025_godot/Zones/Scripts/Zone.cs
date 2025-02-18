@@ -2,7 +2,7 @@ using Godot;
 using System;
 using Godot.Collections;
 
-public partial class Zone : Node {
+public partial class Zone : Node3D {
     
     [Export] private Array<Interactable> _interactables;
     [Export] public DataSingle DataSingle { get; private set; }
