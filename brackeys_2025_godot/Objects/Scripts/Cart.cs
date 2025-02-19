@@ -17,7 +17,7 @@ public partial class Cart : Node {
     [Export] public DataDouble DataDouble { get; private set; }
     [Export] public PressButton PressButton { get; private set; }
     [Export] public int InitialSpeed { get; private set; } = 1;
-    [Export] public float StartStopTime { get; private set; } = 0.5f;
+    [Export] public float StartStopTime { get; private set; } = 1;
     
     [Signal]
     public delegate void ArrivedSignalEventHandler();
@@ -37,7 +37,6 @@ public partial class Cart : Node {
 
     public override void _PhysicsProcess(double delta)
     {
-        
         // Check if the cart is allowed to move
         if (!allowedToMove)
         {
@@ -47,6 +46,7 @@ public partial class Cart : Node {
         {
             PressButton.MakeInteractable();
         }
+
         
         // Smoothly start the cart
         if (_state == State.Starting)
@@ -96,6 +96,7 @@ public partial class Cart : Node {
         if (area.IsInGroup("Parking"))
         {
             Stop();
+            allowedToMove = false;
         }
     }
     
