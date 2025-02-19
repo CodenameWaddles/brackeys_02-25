@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd23o2xljhtck"]
+
+[ext_resource type="PackedScene" uid="uid://ljkeu0hgk0eg" path="res://Assets/Tunnels/Tunnel vierge(1).fbx" id="1_f436a"]
+
+[node name="Tunnel vierge(1)" instance=ExtResource("1_f436a")]

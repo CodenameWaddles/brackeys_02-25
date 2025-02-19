@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=10 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
 [ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="2_kfp56"]
 [ext_resource type="PackedScene" uid="uid://cb7s04dpv0wii" path="res://Zones/Scenes/zone_2.tscn" id="3_ih7vx"]
-[ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="4_idk36"]
+[ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="4_idk36"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/blowtorch.tscn" id="6_rr8l2"]
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/oil.tscn" id="7_l66rf"]
@@ -15,15 +15,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="Environment" id="Environment_vvo7p"]
-fog_light_color = Color(0.674815, 0.674815, 0.674815, 1)
-fog_depth_end = 4000.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.15
-volumetric_fog_albedo = Color(0.0846899, 0.0846899, 0.0846899, 1)
-volumetric_fog_emission = Color(0.0807833, 0.0807833, 0.0807833, 1)
-volumetric_fog_emission_energy = 2.0
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Cart")]
 script = ExtResource("1_yxd7y")
@@ -46,18 +37,34 @@ transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.6357
 [node name="Oil" parent="tracks/PathFollow3D/cart" instance=ExtResource("7_l66rf")]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.400033, 0.668567, -1.21151)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.688911, 0.479282, -0.543773, 0, 0.750192, 0.66122, 0.724846, -0.455522, 0.516816, 0, 14.5835, 0)
-visible = false
-
-[node name="Tunnel" parent="." instance=ExtResource("4_idk36")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.68949, 0, 0, 87.5443)
-
-[node name="Tunnel2" parent="." instance=ExtResource("4_idk36")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.68949, 0, 0, -87.4145)
-
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129688, 0.69799, -0.215734)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vvo7p")
+[node name="Tunnel" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 32.5)
+
+[node name="Tunnel8" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 64)
+
+[node name="Tunnel9" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 96)
+
+[node name="Tunnel10" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 128)
+
+[node name="Tunnel2" parent="." instance=ExtResource("4_idk36")]
+
+[node name="Tunnel3" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -32.5)
+
+[node name="Tunnel4" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -64)
+
+[node name="Tunnel5" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -96)
+
+[node name="Tunnel6" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -128)
+
+[node name="Tunnel7" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -160)

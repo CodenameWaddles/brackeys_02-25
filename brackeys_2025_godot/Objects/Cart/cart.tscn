@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bmh64qs3g6fcy" path="res://Objects/Interactable/single_data_input_display.tscn" id="3_kn2ky"]
 [ext_resource type="Texture2D" uid="uid://dvdi3k3evqceh" path="res://Assets/Textures/metal6x6.png" id="4_thhou"]
 [ext_resource type="PackedScene" uid="uid://b4jj5gmlr6a0l" path="res://Objects/Interactable/double_data_input_display.tscn" id="5_6sfsy"]
-[ext_resource type="PackedScene" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
-[ext_resource type="PackedScene" uid="uid://15ex5gx68cdt" path="res://Assets/Cart/Wagonnet Door.glb" id="7_x8v4m"]
+[ext_resource type="PackedScene" uid="uid://bdmgduwxcxy3u" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
+[ext_resource type="PackedScene" uid="uid://15ex5gx68cdt" path="res://Assets/cart/Wagonnet Door.glb" id="7_x8v4m"]
 [ext_resource type="Texture2D" uid="uid://c6dptjdxh67rj" path="res://Assets/Textures/metal10x10.png" id="8_3c6dv"]
-[ext_resource type="PackedScene" uid="uid://dj7j8jfg6b4hn" path="res://Objects/Cart/wagonnet_lantern.tscn" id="9_8qt2n"]
-[ext_resource type="PackedScene" uid="uid://cqtbep70s18s4" path="res://Assets/Cart/Wagonnet.glb" id="9_f5atm"]
-[ext_resource type="PackedScene" uid="uid://cdq6jcqjv3l14" path="res://Objects/Cart/ampoule_lanterne.tscn" id="10_v02ti"]
+[ext_resource type="PackedScene" path="res://Objects/Cart/wagonnet_lantern.tscn" id="9_8qt2n"]
+[ext_resource type="PackedScene" uid="uid://cqtbep70s18s4" path="res://Assets/cart/Wagonnet.glb" id="9_f5atm"]
+[ext_resource type="PackedScene" path="res://Objects/Cart/ampoule_lanterne.tscn" id="10_v02ti"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vh7u"]
 albedo_texture = ExtResource("4_thhou")

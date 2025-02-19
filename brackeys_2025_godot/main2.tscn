@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://2ejl5t4qe07v"]
+
+[ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="1_el5he"]
+[ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/blowtorch.tscn" id="2_k22h3"]
+[ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/oil.tscn" id="3_2q5m6"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_bcwf1"]
+[ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="5_fnqgs"]
+
+[sub_resource type="Curve3D" id="Curve3D_52rcb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.31232, -0.000396729, -137.087, 0, 0, 0, 0, 0, 0, 0.452375, 0.00177002, 137.708),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Node3D" type="Node3D"]
+
+[node name="tracks" type="Path3D" parent="."]
+curve = SubResource("Curve3D_52rcb")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="tracks"]
+transform = Transform3D(-0.999932, 2.46748e-08, 0.00312919, -3.55249e-15, 0.999992, -7.88443e-06, -0.00312919, -7.88483e-06, -0.999932, 1.31232, -0.000396729, -137.087)
+loop = false
+
+[node name="cart" parent="tracks/PathFollow3D" instance=ExtResource("1_el5he")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.35734, 0)
+
+[node name="Blowtorch" parent="tracks/PathFollow3D/cart" instance=ExtResource("2_k22h3")]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.635724, -1.14065)
+
+[node name="Oil" parent="tracks/PathFollow3D/cart" instance=ExtResource("3_2q5m6")]
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.400033, 0.668567, -1.21151)
+
+[node name="Character" parent="." instance=ExtResource("4_bcwf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129688, 0.69799, -0.215734)
+
+[node name="Tunnel" parent="." instance=ExtResource("5_fnqgs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 32.5)
+
+[node name="Tunnel8" parent="." instance=ExtResource("5_fnqgs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 64)
+
+[node name="Tunnel9" parent="." instance=ExtResource("5_fnqgs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 96)
+
+[node name="Tunnel10" parent="." instance=ExtResource("5_fnqgs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 128)
+
+[node name="Tunnel2" parent="." instance=ExtResource("5_fnqgs")]
+
+[node name="Tunnel3" parent="." instance=ExtResource("5_fnqgs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -32.5)
+
+[node name="Tunnel4" parent="." instance=ExtResource("5_fnqgs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -64)
+
+[node name="Tunnel5" parent="." instance=ExtResource("5_fnqgs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -96)
+
+[node name="Tunnel6" parent="." instance=ExtResource("5_fnqgs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -128)
+
+[node name="Tunnel7" parent="." instance=ExtResource("5_fnqgs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -160)
