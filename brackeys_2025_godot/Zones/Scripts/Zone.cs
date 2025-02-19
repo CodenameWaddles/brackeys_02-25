@@ -17,6 +17,8 @@ public partial class Zone : Node3D
         if (!IsComplete)
         {
             IsComplete = MatchData();
+        }
+        else {
             GD.Print("room completed");
         }
     }
@@ -30,10 +32,12 @@ public partial class Zone : Node3D
             if (DataSingle.isEqual(Cart.DataSingle) && DataDouble.isEqual(Cart.DataDouble)) return true;
             
         }
-        else if(DataSingle != null){
+        else if(DataSingle != null)
+        {
             //y'a que dadasingle
             GD.Print("only dada single");
-            if (DataSingle.isEqual(Cart.DataSingle)) return true;
+            if (DataSingle.isEqual(Cart.DataSingle)) 
+                return true;
         }
         else if(DataDouble != null)
         {

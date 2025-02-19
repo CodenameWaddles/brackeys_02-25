@@ -30,6 +30,7 @@ loop = false
 
 [node name="cart" parent="tracks/PathFollow3D" instance=ExtResource("2_kfp56")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+StartStopTime = 0.5
 
 [node name="Blowtorch" parent="tracks/PathFollow3D/cart" instance=ExtResource("6_rr8l2")]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.635724, -1.14065)

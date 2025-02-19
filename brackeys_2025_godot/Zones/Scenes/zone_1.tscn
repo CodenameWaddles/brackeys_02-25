@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_opr7o"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/leakable_pipe.tscn" id="2_8no3p"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="4_fige3"]
-[ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="5_o18v4"]
+[ext_resource type="PackedScene" path="res://Objects/Cart/parking.tscn" id="5_o18v4"]
 
 [node name="Zone1" type="Node3D" node_paths=PackedStringArray("_interactables", "DataSingle")]
 script = ExtResource("1_opr7o")

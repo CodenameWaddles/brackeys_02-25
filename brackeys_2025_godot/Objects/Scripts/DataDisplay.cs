@@ -47,9 +47,9 @@ public abstract partial class DataDisplay : Node {
     
     public bool isEqual(DataDisplay dataDisplay)
     {
-        for(int i = 0; i < this.Data.Count - 1; i++)
+        for(int i = 0; i < Data.Count; i++)
         {
-            if (this.Data[i] != dataDisplay.Data[i])
+            if (Data[i] != dataDisplay.Data[i])
             {
                 return false;
             }
