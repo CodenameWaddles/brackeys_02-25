@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dsc7suw1w565l"
-path="res://.godot/imported/Wagonnet Lantern.glb-2a6305be6b6a5954ae678c0961851d5f.scn"
+path="res://.godot/imported/Wagonnet Lantern.glb-c77982b85be8d4b7d485d808d0a03f86.scn"
 
 [deps]
 
-source_file="res://Assets/Cart/Wagonnet Lantern.glb"
-dest_files=["res://.godot/imported/Wagonnet Lantern.glb-2a6305be6b6a5954ae678c0961851d5f.scn"]
+source_file="res://Assets/cart/Wagonnet Lantern.glb"
+dest_files=["res://.godot/imported/Wagonnet Lantern.glb-c77982b85be8d4b7d485d808d0a03f86.scn"]
 
 [params]
 
