@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://2ejl5t4qe07v"]
 
 [ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="1_el5he"]
-[ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/blowtorch.tscn" id="2_k22h3"]
-[ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/oil.tscn" id="3_2q5m6"]
+[ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="2_k22h3"]
+[ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/oil.tscn" id="3_2q5m6"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_bcwf1"]
 [ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="5_fnqgs"]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ljkeu0hgk0eg"
-path="res://.godot/imported/Tunnel vierge(1).fbx-b1f6f8769dee70d26f50796d9a6a37b1.scn"
+uid="uid://oih7lvpvjnh"
+path="res://.godot/imported/Tunnel(1).fbx-d9a69b79208bc60b102b7b2f266d9e18.scn"
 
 [deps]
 
-source_file="res://Assets/Tunnels/Tunnel vierge(1).fbx"
-dest_files=["res://.godot/imported/Tunnel vierge(1).fbx-b1f6f8769dee70d26f50796d9a6a37b1.scn"]
+source_file="res://Assets/Tunnels/Tunnel(1).fbx"
+dest_files=["res://.godot/imported/Tunnel(1).fbx-d9a69b79208bc60b102b7b2f266d9e18.scn"]
 
 [params]
 
