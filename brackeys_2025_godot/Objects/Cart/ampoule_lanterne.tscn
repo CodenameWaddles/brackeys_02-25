@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdq6jcqjv3l14"]
+[gd_scene load_steps=4 format=3 uid="uid://cdq6jcqjv3l14"]
 
 [ext_resource type="PackedScene" uid="uid://chkpvse78rjpv" path="res://Assets/Cart/Ampoule lanterne.glb" id="1_qat4e"]
 [ext_resource type="Material" uid="uid://dysggcv57t6cu" path="res://Objects/Shaders/light_no_fog.tres" id="2_u1s4m"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p12bx"]
+top_radius = 0.08
+bottom_radius = 0.081
+height = 0.01
 
 [node name="Ampoule lanterne" instance=ExtResource("1_qat4e")]
 
 [node name="Industrial lantern A_1" parent="." index="0"]
 material_override = ExtResource("2_u1s4m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119246, 0)
+mesh = SubResource("CylinderMesh_p12bx")
