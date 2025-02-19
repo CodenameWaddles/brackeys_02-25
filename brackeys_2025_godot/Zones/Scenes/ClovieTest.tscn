@@ -48,7 +48,7 @@ mesh = SubResource("QuadMesh_hisxb")
 
 [node name="cart" parent="." instance=ExtResource("3_l7r43")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99417, 1.5887, -50.362)
-StartStopTime = 0.5
+StartStopTime = 1.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441337, 2.43809, -46.7194)

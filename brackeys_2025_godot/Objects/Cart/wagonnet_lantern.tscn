@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj7j8jfg6b4hn"]
+
+[ext_resource type="PackedScene" uid="uid://dsc7suw1w565l" path="res://Assets/Cart/Wagonnet Lantern.glb" id="1_5usvk"]
+[ext_resource type="Material" uid="uid://jfklrlrbur6h" path="res://Objects/Materials/light_grid.tres" id="2_nefb5"]
+
+[node name="Wagonnet Lantern" instance=ExtResource("1_5usvk")]
+
+[node name="Industrial lantern A_1" parent="." index="0"]
+material_override = ExtResource("2_nefb5")

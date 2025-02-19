@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cqtbep70s18s4"
-path="res://.godot/imported/Wagonnet.glb-5410deb43d54ea8acd67f92a78497830.scn"
+uid="uid://chkpvse78rjpv"
+path="res://.godot/imported/Ampoule lanterne.glb-d03dd0f273a52121cdd3d38b57736b23.scn"
 
 [deps]
 
-source_file="res://Assets/Cart/Wagonnet.glb"
-dest_files=["res://.godot/imported/Wagonnet.glb-5410deb43d54ea8acd67f92a78497830.scn"]
+source_file="res://Assets/Cart/Ampoule lanterne.glb"
+dest_files=["res://.godot/imported/Ampoule lanterne.glb-d03dd0f273a52121cdd3d38b57736b23.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="CartFinal"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

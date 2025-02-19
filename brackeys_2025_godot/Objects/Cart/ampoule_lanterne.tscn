@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdq6jcqjv3l14"]
+
+[ext_resource type="PackedScene" uid="uid://chkpvse78rjpv" path="res://Assets/Cart/Ampoule lanterne.glb" id="1_qat4e"]
+[ext_resource type="Material" uid="uid://8toqhn30xo3j" path="res://Objects/Materials/light.tres" id="2_1vw4k"]
+
+[node name="Ampoule lanterne" instance=ExtResource("1_qat4e")]
+
+[node name="Industrial lantern A_1" parent="." index="0"]
+material_override = ExtResource("2_1vw4k")
