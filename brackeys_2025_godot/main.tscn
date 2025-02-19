@@ -25,7 +25,7 @@ Cart = NodePath("tracks/PathFollow3D/cart")
 curve = SubResource("Curve3D_llj7q")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="tracks"]
-transform = Transform3D(-0.999932, 2.46748e-08, 0.00312919, -1.77624e-15, 0.999992, -7.88442e-06, -0.00312919, -7.88481e-06, -0.999932, 1.31232, -0.000396729, -137.087)
+transform = Transform3D(-0.999932, 2.46748e-08, 0.00312919, -3.55249e-15, 0.999992, -7.88443e-06, -0.00312919, -7.88483e-06, -0.999932, 1.31232, -0.000396729, -137.087)
 loop = false
 
 [node name="cart" parent="tracks/PathFollow3D" instance=ExtResource("2_kfp56")]
@@ -37,14 +37,34 @@ transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.6357
 [node name="Oil" parent="tracks/PathFollow3D/cart" instance=ExtResource("7_l66rf")]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.400033, 0.668567, -1.21151)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.688911, 0.479282, -0.543773, 0, 0.750192, 0.66122, 0.724846, -0.455522, 0.516816, 0, 14.5835, 0)
-
-[node name="Tunnel" parent="." instance=ExtResource("4_idk36")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.68949, 0, 0, 87.5443)
-
-[node name="Tunnel2" parent="." instance=ExtResource("4_idk36")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.68949, 0, 0, -87.4145)
-
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129688, 0.69799, -0.215734)
+
+[node name="Tunnel" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 32.5)
+
+[node name="Tunnel8" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 64)
+
+[node name="Tunnel9" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 96)
+
+[node name="Tunnel10" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 128)
+
+[node name="Tunnel2" parent="." instance=ExtResource("4_idk36")]
+
+[node name="Tunnel3" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -32.5)
+
+[node name="Tunnel4" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -64)
+
+[node name="Tunnel5" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -96)
+
+[node name="Tunnel6" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -128)
+
+[node name="Tunnel7" parent="." instance=ExtResource("4_idk36")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -160)
