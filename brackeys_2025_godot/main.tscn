@@ -16,10 +16,10 @@ _data = {
 }
 point_count = 2
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("_cart")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("Cart")]
 script = ExtResource("1_yxd7y")
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_ih7vx")]
-_cart = NodePath("tracks/PathFollow3D/cart")
+Cart = NodePath("tracks/PathFollow3D/cart")
 
 [node name="tracks" type="Path3D" parent="."]
 curve = SubResource("Curve3D_llj7q")

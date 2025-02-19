@@ -38,7 +38,7 @@ public partial class playerInteraction : Node {
     }
     
     public override void _Process(double delta) {
-        // interact with button
+        // interact with input button
         if(_hovering is InputButton button && held == Pickupable.PickupType.None) {
             if (Input.IsActionPressed("interact")) {
                 if (!_justInteracted) {
@@ -79,11 +79,18 @@ public partial class playerInteraction : Node {
                 }
             }
         }
+        // interact with interactable need object
         else if (_hovering is InteractableNeedObject interactableNeedObject) {
             if (Input.IsActionPressed("interact")) {
                 if (interactableNeedObject.Type == held) {
                     interactableNeedObject.Activate();
                 }
+            }
+        }
+        // hovering interactable
+        else if (_hovering is Interactable interactable) {
+            if (Input.IsActionJustPressed("interact")) {
+                _hovering.Activate();
             }
         }
         // reset ticks

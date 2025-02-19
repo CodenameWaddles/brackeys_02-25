@@ -14,7 +14,7 @@ dest_files=["res://.godot/imported/ImageToStl.com_base wagonnet a.1.glb-37c6de11
 [params]
 
 nodes/root_type="Node3D"
-nodes/root_name="Cart"
+nodes/root_name="CartOk"
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

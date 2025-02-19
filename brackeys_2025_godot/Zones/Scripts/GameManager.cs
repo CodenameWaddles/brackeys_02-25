@@ -6,38 +6,57 @@ using Godot.Collections;
 public partial class GameManager : Node
 {
     
-    private Node3D _currentScene;
+    private Zone _currentScene;
     private int _currentSceneIndex = 0;
     [Export] private Array<PackedScene> _scenes = new Array<PackedScene>();
     [Export] private Vector3 _scenePosition = new Vector3(0, 0, 0); //remplacer tmtc
-    [Export] private Cart _cart;
+    [Export] private Cart Cart;
 
     public override void _Ready()
     {
-        _cart.ArrivedSignal += _cartArrived;
+        Cart.ArrivedSignal += _cartArrived;
         _loadScene(0);
     }
 
     public override void _Process(double delta)
     {
-        if(Input.IsActionPressed("test"))
+        if (_currentScene.IsComplete && !Cart.allowedToMove)
         {
-            _cart.move = !_cart.move;
+            Cart.allowedToMove = true;
+        }
+        
+        if(Input.IsActionJustPressed("test"))
+        {
+            if (Cart._state == Cart.State.Moving)
+            {
+                Cart.Stop();
+            }
+            else if (Cart._state == Cart.State.Stopped)
+            {
+                Cart.Start();
+            }
         }
     }
 
     private void _loadScene(int sceneIndex)
     {
-        if(_currentScene != null)
+        if (_currentScene != null)
+        {
             _currentScene.QueueFree();
+        }
         
-        _currentScene = (Node3D) _scenes[sceneIndex].Instantiate();
-        AddChild(_currentScene);
-        _currentScene.Position = _scenePosition;
-        GD.Print("loading scene : " + sceneIndex);
+        Node3D tempScene = (Node3D) _scenes[sceneIndex].Instantiate();
+        AddChild(tempScene);
+        tempScene.Position = _scenePosition;
         _currentSceneIndex = sceneIndex;
+
+        GD.Print("temp scene path : " + tempScene.GetPath());
         
-        _cart.move = true;
+        _currentScene = GetNode<Zone>(tempScene.GetPath());
+        _currentScene.Cart = Cart;
+        Cart._state = Cart.State.Moving;
+        
+        GD.Print("loaded scene : " + _currentScene.Name + ", index : " + _currentSceneIndex);
     }
     
     private void _cartArrived()
@@ -47,5 +66,4 @@ public partial class GameManager : Node
         else
             _loadScene(_currentSceneIndex + 1);
     }
-    
 }

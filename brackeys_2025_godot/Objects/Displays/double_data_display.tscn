@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://gx5bpsg13ion"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/DataDouble.cs" id="1_u5d6u"]
+[ext_resource type="PackedScene" uid="uid://blugenxdmdoqq" path="res://Objects/Interactable/screen.tscn" id="2_rivgo"]
+
+[node name="DoubleDataDisplay" type="Node3D" node_paths=PackedStringArray("_screen")]
+script = ExtResource("1_u5d6u")
+_screen = NodePath("screen")
+
+[node name="screen" parent="." instance=ExtResource("2_rivgo")]

@@ -1,19 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb7s04dpv0wii"]
+[gd_scene load_steps=7 format=3 uid="uid://cb7s04dpv0wii"]
 
+[ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_6dujy"]
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="1_fmwla"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/leakable_pipe.tscn" id="2_pcacj"]
-[ext_resource type="PackedScene" uid="uid://b4jj5gmlr6a0l" path="res://Objects/Interactable/double_data_input_display.tscn" id="3_kllwd"]
+[ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="3_nijms"]
+[ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="4_avsgj"]
+[ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="6_rioy0"]
 
-[node name="Zone2" type="Node3D"]
+[node name="Zone2" type="Node3D" node_paths=PackedStringArray("_interactables", "DataSingle", "DataDouble")]
+script = ExtResource("1_6dujy")
+_interactables = []
+DataSingle = NodePath("SingleDataDisplay")
+DataDouble = NodePath("DoubleDataDisplay")
 
 [node name="Tunnel" parent="." instance=ExtResource("1_fmwla")]
 
 [node name="LeakablePipe2" parent="." instance=ExtResource("2_pcacj")]
 transform = Transform3D(0.948324, 0, 0.317305, 0, 1, 0, -0.317305, 0, 0.948324, -3.11578, 1.31401, 4.07864)
 
-[node name="DoubleDataInputDisplay" parent="." instance=ExtResource("3_kllwd")]
-transform = Transform3D(-0.0332011, 0.822045, -0.568454, -0.0163063, 0.568246, 0.822697, 0.999316, 0.0365838, -0.00546196, -3.66878, 1.45953, 5.5558)
+[node name="SingleDataDisplay" parent="." instance=ExtResource("3_nijms")]
+transform = Transform3D(-0.0247462, 0, 0.999694, 0, 1, 0, -0.999694, 0, -0.0247462, -4.52318, 4.43878, 6.48588)
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.37232, 3.10484, 4.83349)
-text = "data : 12"
+[node name="DoubleDataDisplay" parent="." instance=ExtResource("4_avsgj")]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, -4.42099, 4.05997, 9.45317)
+
+[node name="Parking" parent="." instance=ExtResource("6_rioy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0463769, 0.68451, 6.70397)
