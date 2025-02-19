@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=25 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://addons/fpc/playerInteraction.cs" id="2_32abm"]
 [ext_resource type="Script" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
+[ext_resource type="Shader" path="res://Player/Shaders/PostProcessing.gdshader" id="3_wv20w"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
+[ext_resource type="Texture2D" uid="uid://ds2oe6421ex40" path="res://Assets/bayer/bayer16.png" id="4_2lssl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -148,6 +150,17 @@ _data = {
 "RESET": SubResource("Animation_j8cx7"),
 "crouch": SubResource("Animation_5ec5e")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtuuo"]
+shader = ExtResource("3_wv20w")
+shader_parameter/pixelSize = 3
+shader_parameter/levels = 8
+shader_parameter/threshold = 0.9
+shader_parameter/colors = 32
+shader_parameter/u_bit_depth = null
+shader_parameter/u_contrast = null
+shader_parameter/u_offset = null
+shader_parameter/u_dither_tex = ExtResource("4_2lssl")
 
 [sub_resource type="Animation" id="Animation_gh776"]
 resource_name = "RESET"
@@ -389,6 +402,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.357381, -0.364853, -0.76988
 script = ExtResource("2_32abm")
 _hand = NodePath("../Hand")
 _rayCast = NodePath("../RayCast3D")
+
+[node name="ColorRect" type="ColorRect" parent="Head/Camera"]
+material = SubResource("ShaderMaterial_wtuuo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {

@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dle2tvtlfdivw"]
+
+[ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="1_hdcnq"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="2_nje4e"]
+[ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="3_l7r43"]
+
+[sub_resource type="Environment" id="Environment_pwwfd"]
+fog_light_color = Color(0.674815, 0.674815, 0.674815, 1)
+fog_depth_end = 4000.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.2759
+volumetric_fog_albedo = Color(0.0846899, 0.0846899, 0.0846899, 1)
+volumetric_fog_emission = Color(0.0807833, 0.0807833, 0.0807833, 1)
+volumetric_fog_emission_energy = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_hisxb"]
+size = Vector2(10, 10)
+
+[node name="ClovieTest" type="Node3D"]
+
+[node name="Tunnel" parent="." instance=ExtResource("1_hdcnq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.68949, 0, 0, 0.359851)
+
+[node name="Character" parent="." instance=ExtResource("2_nje4e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129688, 0.69799, -43.2157)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pwwfd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.131302, 5.25227, 52.4775)
+mesh = SubResource("QuadMesh_hisxb")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.58151, -65.6836)
+mesh = SubResource("QuadMesh_hisxb")
+
+[node name="cart" parent="." instance=ExtResource("3_l7r43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99417, 1.5887, -50.362)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99417, 3.49191, -50.362)
+light_color = Color(0.840623, 0.721223, 0.403483, 1)
+light_energy = 3.0
+light_volumetric_fog_energy = 10.0
