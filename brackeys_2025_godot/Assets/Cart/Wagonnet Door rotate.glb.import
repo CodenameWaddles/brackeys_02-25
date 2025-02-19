@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://by1wi5x0i3nqt"
-path="res://.godot/imported/Wagonnet Door rotate.glb-e8bcd3320c8ec888b008b9fda5bfb867.scn"
+uid="uid://b2gfchvtnvkch"
+path="res://.godot/imported/Wagonnet Door rotate.glb-8cc290e33f78f3d15edd73fe3b284fa3.scn"
 
 [deps]
 
-source_file="res://Assets/Cart/Wagonnet Door rotate.glb"
-dest_files=["res://.godot/imported/Wagonnet Door rotate.glb-e8bcd3320c8ec888b008b9fda5bfb867.scn"]
+source_file="res://Assets/cart/Wagonnet Door rotate.glb"
+dest_files=["res://.godot/imported/Wagonnet Door rotate.glb-8cc290e33f78f3d15edd73fe3b284fa3.scn"]
 
 [params]
 

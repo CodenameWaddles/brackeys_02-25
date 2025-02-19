@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cqtbep70s18s4"
-path="res://.godot/imported/Wagonnet.glb-379e73c381a6a802acd1b2999d0a8bf1.scn"
+uid="uid://tvruf6nrusd7"
+path="res://.godot/imported/Tunnel.fbx-c4a1f0e1259e32fa9ca37f9c33ebac6f.scn"
 
 [deps]
 
-source_file="res://Assets/cart/Wagonnet.glb"
-dest_files=["res://.godot/imported/Wagonnet.glb-379e73c381a6a802acd1b2999d0a8bf1.scn"]
+source_file="res://Assets/Tunnels/Tunnel.fbx"
+dest_files=["res://.godot/imported/Tunnel.fbx-c4a1f0e1259e32fa9ca37f9c33ebac6f.scn"]
 
 [params]
 
-nodes/root_type="Node3D"
-nodes/root_name="CartFinal"
+nodes/root_type=""
+nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
@@ -27,10 +27,11 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
