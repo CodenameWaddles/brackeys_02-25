@@ -27,10 +27,11 @@ volumetric_fog_emission_energy = 2.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_j74ki"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("Cart")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player")]
 script = ExtResource("1_yxd7y")
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_ih7vx")]
 Cart = NodePath("tracks/PathFollow3D/cart")
+_player = NodePath("Character")
 
 [node name="tracks" type="Path3D" parent="."]
 curve = SubResource("Curve3D_llj7q")
@@ -50,7 +51,7 @@ transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.6357
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.400033, 0.668567, -1.21151)
 
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
-transform = Transform3D(0.0717586, 0, -0.997422, 0, 1, 0, 0.997422, 0, 0.0717586, -2.50483, 0.69799, -0.654376)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.46369, 0.820808, -137.2)
 
 [node name="Tunnel" parent="." instance=ExtResource("4_idk36")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 32.5)
