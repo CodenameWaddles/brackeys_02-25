@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cqtbep70s18s4"
-path="res://.godot/imported/Wagonnet.glb-5410deb43d54ea8acd67f92a78497830.scn"
+path="res://.godot/imported/Wagonnet.glb-379e73c381a6a802acd1b2999d0a8bf1.scn"
 
 [deps]
 
-source_file="res://Assets/Cart/Wagonnet.glb"
-dest_files=["res://.godot/imported/Wagonnet.glb-5410deb43d54ea8acd67f92a78497830.scn"]
+source_file="res://Assets/cart/Wagonnet.glb"
+dest_files=["res://.godot/imported/Wagonnet.glb-379e73c381a6a802acd1b2999d0a8bf1.scn"]
 
 [params]
 

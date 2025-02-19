@@ -13,6 +13,10 @@ public partial class Cart : Node {
         Stopping
     }
     
+    [Export] private CollisionShape3D _doorCollider;
+    [Export] private AnimationPlayer _animationPlayer;
+    [Export] private CharacterBody3D _player;
+
     [Export] public DataSingle DataSingle { get; private set; }
     [Export] public DataDouble DataDouble { get; private set; }
     [Export] public PressButton PressButton { get; private set; }
@@ -27,6 +31,7 @@ public partial class Cart : Node {
     private float LerpWeight => 0.1f / StartStopTime;
     private PathFollow3D _pathFollow3D;
     private float _speed;
+    private bool _movePlayerWithCart = true;
     
     public override void _Ready()
     {
@@ -51,7 +56,11 @@ public partial class Cart : Node {
         // Smoothly start the cart
         if (_state == State.Starting)
         {
-            _speed = Mathf.Lerp(_speed, InitialSpeed, LerpWeight);
+            //tant que l'anim de close door est en train de jouer on augmente pas la vitesse
+            if (!_animationPlayer.GetCurrentAnimation().Contains("close_door"))
+            {
+                _speed = Mathf.Lerp(_speed, InitialSpeed, LerpWeight);
+            }
             if (_speed > InitialSpeed - 0.1)
             {
                 _speed = InitialSpeed;
@@ -66,6 +75,13 @@ public partial class Cart : Node {
             {
                 _speed = 0;
                 _state = State.Stopped;
+                _doorCollider.Disabled = true;
+                if (_movePlayerWithCart)
+                {
+                    _player.Reparent(GetTree().Root.GetNode("Main"));
+                }
+                _animationPlayer.Play("open_door");
+                
             }
         }
         
@@ -90,6 +106,12 @@ public partial class Cart : Node {
     
     public void Start() {
         _state = State.Starting;
+        _doorCollider.Disabled = false;
+        if (_movePlayerWithCart)
+        {
+            _player.Reparent(this);
+        }
+        _animationPlayer.Play("close_door");
     }
     
     public void _on_area_entered(Node3D area) {

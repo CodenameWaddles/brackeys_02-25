@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
 [ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="2_kfp56"]
 [ext_resource type="PackedScene" uid="uid://cb7s04dpv0wii" path="res://Zones/Scenes/zone_2.tscn" id="3_ih7vx"]
-[ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="4_idk36"]
+[ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="4_idk36"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/blowtorch.tscn" id="6_rr8l2"]
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/oil.tscn" id="7_l66rf"]
@@ -25,7 +25,7 @@ volumetric_fog_albedo = Color(0.0846899, 0.0846899, 0.0846899, 1)
 volumetric_fog_emission = Color(0.0807833, 0.0807833, 0.0807833, 1)
 volumetric_fog_emission_energy = 2.0
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("Cart")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("Cart")]
 script = ExtResource("1_yxd7y")
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_ih7vx")]
 Cart = NodePath("tracks/PathFollow3D/cart")
@@ -37,8 +37,9 @@ curve = SubResource("Curve3D_llj7q")
 transform = Transform3D(-0.999932, 2.46748e-08, 0.00312919, -3.55249e-15, 0.999992, -7.88443e-06, -0.00312919, -7.88483e-06, -0.999932, 1.31232, -0.000396729, -137.087)
 loop = false
 
-[node name="cart" parent="tracks/PathFollow3D" instance=ExtResource("2_kfp56")]
+[node name="cart" parent="tracks/PathFollow3D" node_paths=PackedStringArray("_player") instance=ExtResource("2_kfp56")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.35734, 0)
+_player = NodePath("../../../Character")
 
 [node name="Blowtorch" parent="tracks/PathFollow3D/cart" instance=ExtResource("6_rr8l2")]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.635724, -1.14065)

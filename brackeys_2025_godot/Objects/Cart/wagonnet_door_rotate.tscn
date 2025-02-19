@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cii64qynm8p35"]
+
+[ext_resource type="PackedScene" uid="uid://eq1r7j2783qp" path="res://Assets/cart/Wagonnet Door rotate.glb" id="1_5y6el"]
+[ext_resource type="Texture2D" uid="uid://dvdi3k3evqceh" path="res://Assets/Textures/metal6x6.png" id="2_c1c1m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77ln0"]
+albedo_texture = ExtResource("2_c1c1m")
+
+[node name="Wagonnet Door rotate" instance=ExtResource("1_5y6el")]
+
+[node name="open tha door A_1" parent="." index="0"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_77ln0")
