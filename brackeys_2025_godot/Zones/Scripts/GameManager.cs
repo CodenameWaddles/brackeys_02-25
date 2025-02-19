@@ -20,10 +20,7 @@ public partial class GameManager : Node
 
     public override void _Process(double delta)
     {
-        if (_currentScene.IsComplete && !Cart.allowedToMove)
-        {
-            Cart.allowedToMove = true;
-        }
+        Cart.allowedToMove = _currentScene.IsComplete;
         
         if(Input.IsActionJustPressed("test"))
         {
@@ -49,8 +46,6 @@ public partial class GameManager : Node
         AddChild(tempScene);
         tempScene.Position = _scenePosition;
         _currentSceneIndex = sceneIndex;
-
-        GD.Print("temp scene path : " + tempScene.GetPath());
         
         _currentScene = GetNode<Zone>(tempScene.GetPath());
         _currentScene.Cart = Cart;

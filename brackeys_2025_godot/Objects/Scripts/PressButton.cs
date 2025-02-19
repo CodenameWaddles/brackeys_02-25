@@ -23,12 +23,12 @@ public partial class PressButton : Interactable
     
     protected override void MakeInteractableSpecific() {
         // Make button interactable
-        _shape.Disabled = false;
+        //_shape.Disabled = false;
     }
     
     protected override void MakeUninteractableSpecific() {
         // Make button uninteractable
-        _shape.Disabled = true;
+        //_shape.Disabled = true;
     }
     
 }

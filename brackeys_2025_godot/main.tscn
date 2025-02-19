@@ -11,7 +11,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_llj7q"]
 _data = {
-"points": PackedVector3Array(-1.66494, -0.0237774, -2.83155, 0, 0, 0, 0.68436, 1.90735e-06, 134.18, 0, 0, 0, 0, 0, 0, -1.81514, 0.0617828, -119.371),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.31232, -0.000396729, -137.087, 0, 0, 0, 0, 0, 0, 0.452375, 0.00177002, 137.708),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -25,12 +25,11 @@ Cart = NodePath("tracks/PathFollow3D/cart")
 curve = SubResource("Curve3D_llj7q")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="tracks"]
-transform = Transform3D(0.999888, 2.40177e-06, 0.00985688, 1.1368e-13, 0.999992, -0.000243635, -0.00985688, 0.000243637, 0.999888, 0.68436, 1.90735e-06, 134.18)
+transform = Transform3D(-0.999932, 2.46748e-08, 0.00312919, -1.77624e-15, 0.999992, -7.88442e-06, -0.00312919, -7.88481e-06, -0.999932, 1.31232, -0.000396729, -137.087)
 loop = false
 
 [node name="cart" parent="tracks/PathFollow3D" instance=ExtResource("2_kfp56")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-StartStopTime = 0.5
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.35734, 0)
 
 [node name="Blowtorch" parent="tracks/PathFollow3D/cart" instance=ExtResource("6_rr8l2")]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.635724, -1.14065)
