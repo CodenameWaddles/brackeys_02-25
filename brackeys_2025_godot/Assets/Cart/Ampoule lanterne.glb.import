@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://chkpvse78rjpv"
-path="res://.godot/imported/Ampoule lanterne.glb-8edf973e1d38514bf26152893ac79d67.scn"
+path="res://.godot/imported/Ampoule lanterne.glb-d03dd0f273a52121cdd3d38b57736b23.scn"
 
 [deps]
 
-source_file="res://Assets/cart/Ampoule lanterne.glb"
-dest_files=["res://.godot/imported/Ampoule lanterne.glb-8edf973e1d38514bf26152893ac79d67.scn"]
+source_file="res://Assets/Cart/Ampoule lanterne.glb"
+dest_files=["res://.godot/imported/Ampoule lanterne.glb-d03dd0f273a52121cdd3d38b57736b23.scn"]
 
 [params]
 

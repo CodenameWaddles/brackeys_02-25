@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://3idb3tp67d0y"]
 
-[ext_resource type="PackedScene" uid="uid://chkpvse78rjpv" path="res://Assets/cart/Ampoule lanterne.glb" id="1_qat4e"]
-[ext_resource type="Material" path="res://Objects/Shaders/light_no_fog.tres" id="2_u1s4m"]
+[ext_resource type="PackedScene" uid="uid://chkpvse78rjpv" path="res://Assets/Cart/Ampoule lanterne.glb" id="1_qat4e"]
+[ext_resource type="Material" uid="uid://dysggcv57t6cu" path="res://Objects/Shaders/light_no_fog.tres" id="2_u1s4m"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_p12bx"]
 top_radius = 0.08
