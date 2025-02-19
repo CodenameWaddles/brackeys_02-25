@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dle2tvtlfdivw"]
+[gd_scene load_steps=10 format=3 uid="uid://dle2tvtlfdivw"]
 
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="1_hdcnq"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="2_nje4e"]
@@ -24,6 +24,15 @@ height = 0.2
 [sub_resource type="CylinderMesh" id="CylinderMesh_nxje0"]
 top_radius = 0.1
 bottom_radius = 0.1
+
+[sub_resource type="Environment" id="Environment_faf3p"]
+fog_light_color = Color(0.154876, 0.154876, 0.154876, 1)
+fog_depth_end = 4000.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.0846899, 0.0846899, 0.0846899, 1)
+volumetric_fog_emission = Color(0.0807833, 0.0807833, 0.0807833, 1)
+volumetric_fog_emission_energy = 2.0
 
 [node name="ClovieTest" type="Node3D"]
 
@@ -76,3 +85,6 @@ params/bias = 0.01
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
 mesh = SubResource("CylinderMesh_nxje0")
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_faf3p")

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dysggcv57t6cu"]
+
+[ext_resource type="Shader" path="res://Objects/Shaders/light_no_fog.gdshader" id="1_vacq5"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vacq5")
+shader_parameter/color = Vector3(1, 1, 0)

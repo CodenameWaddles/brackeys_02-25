@@ -154,7 +154,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wtuuo"]
 shader = ExtResource("3_wv20w")
-shader_parameter/pixelSize = 3
+shader_parameter/pixelSize = 2
 shader_parameter/levels = 8
 shader_parameter/threshold = 0.9
 shader_parameter/colors = 32
