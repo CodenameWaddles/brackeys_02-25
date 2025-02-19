@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dle2tvtlfdivw"]
+[gd_scene load_steps=9 format=3 uid="uid://dle2tvtlfdivw"]
 
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="1_hdcnq"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="2_nje4e"]
 [ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="3_l7r43"]
+[ext_resource type="Script" path="res://TempScriptPole.cs" id="4_pemyh"]
 
 [sub_resource type="Environment" id="Environment_pwwfd"]
 fog_light_color = Color(0.674815, 0.674815, 0.674815, 1)
@@ -16,10 +17,19 @@ volumetric_fog_emission_energy = 2.0
 [sub_resource type="QuadMesh" id="QuadMesh_hisxb"]
 size = Vector2(10, 10)
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2uban"]
+radius = 0.05
+height = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nxje0"]
+top_radius = 0.1
+bottom_radius = 0.1
+
 [node name="ClovieTest" type="Node3D"]
 
 [node name="Tunnel" parent="." instance=ExtResource("1_hdcnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.68949, 0, 0, 0.359851)
+visible = false
 
 [node name="Character" parent="." instance=ExtResource("2_nje4e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129688, 0.69799, -43.2157)
@@ -45,3 +55,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99417, 3.49191, -50.362)
 light_color = Color(0.840623, 0.721223, 0.403483, 1)
 light_energy = 3.0
 light_volumetric_fog_energy = 10.0
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441337, 2.43809, -46.7194)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("CapsuleMesh_2uban")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(0.905569, -0.424199, 0, 0.424199, 0.905569, 0, 0, 0, 1, 0.907899, 2.20026, -46.7194)
+freeze = true
+freeze_mode = 1
+script = ExtResource("4_pemyh")
+
+[node name="PinJoint3D" type="PinJoint3D" parent="RigidBody3D2"]
+transform = Transform3D(0.905569, 0.4242, 0, -0.4242, 0.905569, 0, 0, 0, 1, -0.0617558, 0.976304, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody3D")
+params/bias = 0.01
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+mesh = SubResource("CylinderMesh_nxje0")
