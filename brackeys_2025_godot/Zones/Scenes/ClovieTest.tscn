@@ -50,16 +50,16 @@ mesh = SubResource("QuadMesh_hisxb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99417, 1.5887, -50.362)
 StartStopTime = 0.5
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99417, 3.49191, -50.362)
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441337, 2.43809, -46.7194)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="RigidBody3D"]
 light_color = Color(0.840623, 0.721223, 0.403483, 1)
 light_energy = 3.0
 light_volumetric_fog_energy = 10.0
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.441337, 2.43809, -46.7194)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+visible = false
 mesh = SubResource("CapsuleMesh_2uban")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
