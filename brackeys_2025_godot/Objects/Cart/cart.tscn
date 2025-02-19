@@ -74,13 +74,13 @@ _data = {
 [sub_resource type="BoxMesh" id="BoxMesh_ixec6"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="Cart" type="Node3D" node_paths=PackedStringArray("_doorCollider", "_animationPlayer", "DataSingle", "DataDouble", "PressButton")]
+[node name="Cart" type="Node3D" node_paths=PackedStringArray("_doorCollider", "_animationPlayer", "InputDataSingleOnWagon", "InputDataDoubleOnWagon", "PressButton")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77104, 0)
 script = ExtResource("2_xofmn")
 _doorCollider = NodePath("DoorCollider/CollisionShape3D")
 _animationPlayer = NodePath("AnimationPlayer")
-DataSingle = NodePath("SingleDataInputDisplay")
-DataDouble = NodePath("DoubleDataInputDisplay")
+InputDataSingleOnWagon = NodePath("SingleDataInputDisplay")
+InputDataDoubleOnWagon = NodePath("DoubleDataInputDisplay")
 PressButton = NodePath("PressButton")
 StartStopTime = 2.5
 

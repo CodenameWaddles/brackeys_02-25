@@ -6,8 +6,8 @@ public partial class Zone : Node3D
 {
     
     [Export] private Array<Interactable> _interactables;
-    [Export] public DataSingle DataSingle { get; private set; }
-    [Export] public DataDouble DataDouble { get; private set; }
+    [Export] public DataSingle DisplayDataSingleInRoom { get; private set; }
+    [Export] public DataDouble DisplayDataDoubleInRoom { get; private set; }
     
     public bool IsComplete { get; private set; }
     public Cart Cart { get; set; }
@@ -24,22 +24,22 @@ public partial class Zone : Node3D
 
     public bool MatchData()
     {
-        if (DataSingle != null && DataDouble != null)
+        if (DisplayDataSingleInRoom != null && DisplayDataDoubleInRoom != null)
         {
             //y'a les deux
-            if (DataSingle.isEqual(Cart.DataSingle) && DataDouble.isEqual(Cart.DataDouble)) return true;
+            if (DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon) && DisplayDataDoubleInRoom.isEqual(Cart.InputDataDoubleOnWagon)) return true;
             
         }
-        else if(DataSingle != null)
+        else if(DisplayDataSingleInRoom != null)
         {
             //y'a que dadasingle
-            if (DataSingle.isEqual(Cart.DataSingle)) 
+            if (DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon)) 
                 return true;
         }
-        else if(DataDouble != null)
+        else if(DisplayDataDoubleInRoom != null)
         {
             //y'a que datadouble
-            if (DataDouble.isEqual(Cart.DataDouble)) return true;
+            if (DisplayDataDoubleInRoom.isEqual(Cart.InputDataDoubleOnWagon)) return true;
         }
         else
         {

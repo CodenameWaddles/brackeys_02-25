@@ -17,8 +17,8 @@ public partial class Cart : Node {
     [Export] private AnimationPlayer _animationPlayer;
     [Export] private CharacterBody3D _player;
 
-    [Export] public DataSingle DataSingle { get; private set; }
-    [Export] public DataDouble DataDouble { get; private set; }
+    [Export] public DataSingle InputDataSingleOnWagon { get; private set; }
+    [Export] public DataDouble InputDataDoubleOnWagon { get; private set; }
     [Export] public PressButton PressButton { get; private set; }
     [Export] public int InitialSpeed { get; private set; } = 1;
     [Export] public float StartStopTime { get; private set; } = 1;

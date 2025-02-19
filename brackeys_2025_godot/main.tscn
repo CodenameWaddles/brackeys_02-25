@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=12 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
@@ -25,6 +25,8 @@ volumetric_fog_albedo = Color(0.0846899, 0.0846899, 0.0846899, 1)
 volumetric_fog_emission = Color(0.0807833, 0.0807833, 0.0807833, 1)
 volumetric_fog_emission_energy = 2.0
 
+[sub_resource type="BoxMesh" id="BoxMesh_j74ki"]
+
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart")]
 script = ExtResource("1_yxd7y")
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_ih7vx")]
@@ -48,7 +50,7 @@ transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.6357
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.400033, 0.668567, -1.21151)
 
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129688, 0.69799, -0.215734)
+transform = Transform3D(0.0717586, 0, -0.997422, 0, 1, 0, 0.997422, 0, 0.0717586, -2.50483, 0.69799, -0.654376)
 
 [node name="Tunnel" parent="." instance=ExtResource("4_idk36")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 32.5)
@@ -61,8 +63,6 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 96)
 
 [node name="Tunnel10" parent="." instance=ExtResource("4_idk36")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 128)
-
-[node name="Tunnel2" parent="." instance=ExtResource("4_idk36")]
 
 [node name="Tunnel3" parent="." instance=ExtResource("4_idk36")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -32.5)
@@ -81,3 +81,11 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -160)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cw4nj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, -165.051)
+mesh = SubResource("BoxMesh_j74ki")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, 154.987)
+mesh = SubResource("BoxMesh_j74ki")

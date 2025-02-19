@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="4_avsgj"]
 [ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="6_rioy0"]
 
-[node name="Zone2" type="Node3D" node_paths=PackedStringArray("_interactables", "DataSingle", "DataDouble")]
+[node name="Zone2" type="Node3D" node_paths=PackedStringArray("_interactables", "DisplayDataSingleInRoom", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_6dujy")
 _interactables = []
-DataSingle = NodePath("SingleDataDisplay")
-DataDouble = NodePath("DoubleDataDisplay")
+DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
+DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
 [node name="Tunnel" parent="." instance=ExtResource("1_fmwla")]
 
