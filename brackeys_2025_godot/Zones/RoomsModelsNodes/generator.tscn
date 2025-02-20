@@ -9,6 +9,7 @@ size = Vector3(24.4343, 0.154297, 16.8039)
 size = Vector3(7.26245, 0.501953, 1.32214)
 
 [node name="generator" instance=ExtResource("1_7q25t")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="12"]
 

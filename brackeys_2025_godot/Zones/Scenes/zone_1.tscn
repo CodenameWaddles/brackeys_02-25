@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=4 uid="uid://blll5nq61dt7v"]
+[gd_scene load_steps=11 format=4 uid="uid://blll5nq61dt7v"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_opr7o"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="2_8no3p"]
 [ext_resource type="PackedScene" uid="uid://bj3ccmt01fqi8" path="res://Zones/RoomsModelsNodes/generator.tscn" id="2_wv0fe"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="4_fige3"]
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="6_hmkxp"]
+[ext_resource type="Texture2D" uid="uid://b2s3n7e66scy" path="res://Assets/Textures/metal4x4.png" id="6_irwl5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n23s3"]
 vertex_color_use_as_albedo = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yakui"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_bibkc"]
 _surfaces = [{
 "aabb": AABB(-2.52947, 0, -7.55687, 5.05894, 1e-05, 15.1137),
 "format": 34359742465,
@@ -23,7 +24,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_4y63b"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_3m3ed"]
 resource_name = "Plan"
 _surfaces = [{
 "aabb": AABB(-2.52947, 0, -7.55687, 5.05894, 1e-05, 15.1137),
@@ -39,7 +40,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray("2+KhvwAAAAA2hMnA2+IhwAAAAAA2hMnA2+IhwAAAAADb0fHA2+KhvwAAAADb0fHAAAAAAAAAAAA2hMnAAAAAAAAAAADb0fHA2+KhPwAAAAA2hMnA2+KhPwAAAADb0fHA2+IhQAAAAAA2hMnA2+IhQAAAAADb0fHA2+KhvwAAAACRNqHA2+IhwAAAAACRNqHAAAAAAAAAAACRNqHA2+KhPwAAAACRNqHA2+IhQAAAAACRNqHA2+KhvwAAAADb0XHA2+IhwAAAAADb0XHAAAAAAAAAAADb0XHA2+KhPwAAAADb0XHA2+IhQAAAAADb0XHA2+KhvwAAAACRNiHA2+IhwAAAAACRNiHAAAAAAAAAAACRNiHA2+KhPwAAAACRNiHA2+IhQAAAAACRNiHA2+KhvwAAAACPNqG/2+IhwAAAAACPNqG/AAAAAAAAAACPNqG/2+KhPwAAAACPNqG/2+IhQAAAAACPNqG/2+KhvwAAAAAAAAAA2+IhwAAAAAAAAAAAAAAAAAAAAAAAAAAA2+KhPwAAAAAAAAAA2+IhQAAAAAAAAAAA2+KhvwAAAACXNqE/2+IhwAAAAACXNqE/AAAAAAAAAACXNqE/2+KhPwAAAACXNqE/2+IhQAAAAACXNqE/2+KhvwAAAACTNiFA2+IhwAAAAACTNiFAAAAAAAAAAACTNiFA2+KhPwAAAACTNiFA2+IhQAAAAACTNiFA2+KhvwAAAADb0XFA2+IhwAAAAADb0XFAAAAAAAAAAADb0XFA2+KhPwAAAADb0XFA2+IhQAAAAADb0XFA2+KhvwAAAACTNqFA2+IhwAAAAACTNqFAAAAAAAAAAACTNqFA2+KhPwAAAACTNqFA2+IhQAAAAACTNqFA2+KhvwAAAAA3hMlA2+IhwAAAAAA3hMlAAAAAAAAAAAA3hMlA2+KhPwAAAAA3hMlA2+IhQAAAAAA3hMlA2+KhvwAAAADb0fFA2+IhwAAAAADb0fFAAAAAAAAAAADb0fFA2+KhPwAAAADb0fFA2+IhQAAAAADb0fFA/3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////P/9///////8//3///////z//f///////Pw==")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_yakui")
+shadow_mesh = SubResource("ArrayMesh_bibkc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rnafa"]
+albedo_texture = ExtResource("6_irwl5")
 
 [node name="Zone1" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_opr7o")
@@ -47,26 +51,27 @@ ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("sa
 ZoneTimer = NodePath("Timer")
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 
-[node name="Generator" parent="." instance=ExtResource("2_wv0fe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.96, 0.624, -0.71)
+[node name="generator" parent="." instance=ExtResource("2_wv0fe")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.894, 1.857, -2.23)
 
 [node name="SingleDataDisplay" parent="." instance=ExtResource("4_fige3")]
-transform = Transform3D(-0.00424115, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00424115, -16.5107, 13.5248, 1.51263)
+transform = Transform3D(-0.00424115, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00424115, -19.9292, 16.286, 1.51263)
 _defaultValue = 12
 
 [node name="LeakablePipe" parent="." instance=ExtResource("2_8no3p")]
-transform = Transform3D(0.426064, 0, -0.904693, 0, 1, 0, 0.904693, 0, 0.426064, -4.99942, -1.00442, 4.02998)
+transform = Transform3D(0.426064, 0, -0.904693, 0, 1, 0, 0.904693, 0, 0.426064, -8.03416, 0.874417, 0.416045)
 
 [node name="LeakablePipe2" parent="." instance=ExtResource("2_8no3p")]
-transform = Transform3D(-0.986698, 0, -0.162569, 0, 1, 0, 0.162569, 0, -0.986698, -4.79938, -0.810233, 5.86414)
+transform = Transform3D(-0.986698, 0, -0.162569, 0, 1, 0, 0.162569, 0, -0.986698, -7.83412, 1.0686, 2.2502)
 
 [node name="sand" parent="." instance=ExtResource("6_hmkxp")]
-transform = Transform3D(0.066657, 0, -0.997776, 0, 1, 0, 0.997776, 0, 0.066657, -5.03217, -1.38482, 1.27202)
+transform = Transform3D(0.066657, 0, -0.997776, 0, 1, 0, 0.997776, 0, 0.066657, -8.06691, 0.494017, -2.34192)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Plan" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.569822, 6.40447e-09, -2.30756e-09, -6.40447e-09, 0.569822, 5.99267e-08, 2.30756e-09, -5.99267e-08, 0.569822, 0, 0, 0)
-mesh = SubResource("ArrayMesh_4y63b")
+transform = Transform3D(1.71, 0, 0, 0, 1.71, 0, 0, 0, 1.71, 0, 0, 0)
+mesh = SubResource("ArrayMesh_3m3ed")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_rnafa")
