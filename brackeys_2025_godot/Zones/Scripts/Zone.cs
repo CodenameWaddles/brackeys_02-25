@@ -1,20 +1,27 @@
 using Godot;
 using System;
+using Brackeys_2025_Godot.Objects.Scripts;
 using Godot.Collections;
+using Array = System.Array;
 
 public partial class Zone : Node3D
 {
-    
-    [Export] private Array<Interactable> _interactables;
+    [Export] public Array<Hazard> ZoneHazards { get; private set; }
+    [Export] public Timer ZoneTimer { get; private set; }
     [Export] public DataSingle DisplayDataSingleInRoom { get; private set; }
     [Export] public DataDouble DisplayDataDoubleInRoom { get; private set; }
     
+    public bool IsTimed { get; private set; }
     public bool IsComplete { get; private set; }
     public Cart Cart { get; set; }
 
     public override void _Ready()
     {
         IsComplete = false;
+        if (IsTimed)
+        {
+            ZoneTimer.Start();
+        }
     }
 
     public override void _Process(double delta)
@@ -51,21 +58,5 @@ public partial class Zone : Node3D
     }
     
     
-    /*
-    public void ActivateRandomLeak() {
-        var random = new RandomNumberGenerator();
-        int index = random.RandiRange(0, _interactables.Count - 1);
-        
-        while(!(_interactables[index] is LeakablePipe)) {
-            index = random.RandiRange(0, _interactables.Count - 1);
-        }
-        _interactables[index].Activate();
-    }
-    
-    public void SetRandomPipeDisplayData() {
-        var random = new RandomNumberGenerator();
-        int value = random.RandiRange(DataSingle._minimumValue, DataSingle._maximumValue);
-        DataSingle.SetData(0, value);
-    }
-    */
+
 }

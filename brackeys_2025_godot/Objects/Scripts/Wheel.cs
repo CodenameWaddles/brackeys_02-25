@@ -1,7 +1,8 @@
 using Godot;
 using System;
+using Brackeys_2025_Godot.Objects.Scripts;
 
-public partial class Wheel : InteractableNeedObject {
+public partial class Wheel : Hazard {
     
     [Export] private Node3D _wheelFixed;
     [Export] private Node3D _wheelRusty;
@@ -22,13 +23,17 @@ public partial class Wheel : InteractableNeedObject {
         }
     }
 
-    protected override void MakeInteractableSpecific() {
+    protected override void MakeInteractableSpecific()
+    {
+        IsSolved = true;
         _fixProgress = 0;
         _wheelFixed.Visible = false;
         _wheelRusty.Visible = true;
     }
     
-    protected override void MakeUninteractableSpecific() {
+    protected override void MakeUninteractableSpecific()
+    {
+        IsSolved = false;
         _wheelFixed.Visible = true;
         _wheelRusty.Visible = false;
     }

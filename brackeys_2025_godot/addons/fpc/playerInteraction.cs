@@ -20,10 +20,6 @@ public partial class playerInteraction : Node3D {
     
     [Export] RayCast3D _rayCast;
 
-    public override void _Ready() {
-        
-    }
-
     public override void _PhysicsProcess(double delta) {
         if (_rayCast.IsColliding()) {
             var target = (Node)_rayCast.GetCollider();

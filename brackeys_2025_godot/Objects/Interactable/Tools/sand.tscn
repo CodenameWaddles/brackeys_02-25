@@ -6,8 +6,10 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_mkegv"]
 
-[node name="sand" type="Node3D"]
+[node name="sand" type="Node3D" node_paths=PackedStringArray("_visuals", "_collider")]
 script = ExtResource("1_of11g")
+_visuals = NodePath("Visual")
+_collider = NodePath("RigidBody3D")
 Type = 3
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
