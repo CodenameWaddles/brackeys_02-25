@@ -82,8 +82,8 @@ _animationPlayer = NodePath("AnimationPlayer")
 InputDataSingleOnWagon = NodePath("SingleDataInputDisplay")
 InputDataDoubleOnWagon = NodePath("DoubleDataInputDisplay")
 PressButton = NodePath("PressButton")
-InitialSpeed = 0.5
-StartStopTime = 2.5
+InitialSpeed = 12.0
+StartStopTime = 3.0
 
 [node name="CartFinal" parent="." instance=ExtResource("9_f5atm")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)

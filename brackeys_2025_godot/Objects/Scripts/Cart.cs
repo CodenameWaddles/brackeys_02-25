@@ -3,7 +3,7 @@ using System;
 using Brackeys_2025_Godot.Objects.Scripts;
 using Godot.Collections;
 
-public partial class Cart : Node {
+public partial class Cart : Node3D {
     
     public enum State
     {
@@ -21,7 +21,7 @@ public partial class Cart : Node {
     [Export] public DataSingle InputDataSingleOnWagon { get; private set; }
     [Export] public DataDouble InputDataDoubleOnWagon { get; private set; }
     [Export] public PressButton PressButton { get; private set; }
-    [Export] public float InitialSpeed { get; private set; } = 1;
+    [Export] public float InitialSpeed { get; private set; } = 10;
     [Export] public float StartStopTime { get; private set; } = 1;
     
     [Signal]
@@ -30,14 +30,12 @@ public partial class Cart : Node {
     public State _state = State.Stopped;
     public bool allowedToMove = true; //temp
     private float LerpWeight => 0.1f / StartStopTime;
-    private PathFollow3D _pathFollow3D;
     private float _speed;
     private bool _movePlayerWithCart = true;
     
     public override void _Ready()
     {
         _speed = InitialSpeed;
-        _pathFollow3D = (PathFollow3D) GetParent();
         PressButton.ButtonPressed += Start;
     }
 
@@ -86,17 +84,12 @@ public partial class Cart : Node {
             }
         }
         
-        // Move the cart along the path
-        if (_state != State.Stopped && _pathFollow3D.ProgressRatio < 1)
+        // Move the cart forward along the Z axis
+        if (_state != State.Stopped)
         {
-            _pathFollow3D.ProgressRatio += (float) (_speed * 0.1 * delta);
+            Position = new Vector3(Position.X, Position.Y, Position.Z + (float) (_speed * delta));
         }
         
-        if(_pathFollow3D.ProgressRatio >= 1) {
-            Godot.GD.Print("arrived");
-            EmitSignal(SignalName.ArrivedSignal);
-            _pathFollow3D.ProgressRatio = 0;
-        }
     }
     
     
@@ -120,6 +113,12 @@ public partial class Cart : Node {
         {
             Stop();
             allowedToMove = false;
+        }   
+        else if(area.IsInGroup("End"))
+        {
+            //puisque chaque end collider ne sert qu'une fois on le queue free ici
+            area.QueueFree();
+            EmitSignal(SignalName.ArrivedSignal);
         }
     }
     

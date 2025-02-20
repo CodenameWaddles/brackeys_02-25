@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=11 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
@@ -7,15 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="6_rr8l2"]
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/oil.tscn" id="7_l66rf"]
-[ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="9_oxfho"]
-[ext_resource type="PackedScene" uid="uid://dd23o2xljhtck" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="9_t5q10"]
-
-[sub_resource type="Curve3D" id="Curve3D_llj7q"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.312, 0, -158, 0, 0, 0, 0, 0, 0, 0.452, 0.002, 129),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
+[ext_resource type="PackedScene" uid="uid://b18ah6lt7x5ow" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
 
 [sub_resource type="Environment" id="Environment_cw4nj"]
 fog_light_color = Color(0.154876, 0.154876, 0.154876, 1)
@@ -28,78 +20,43 @@ volumetric_fog_emission_energy = 2.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_j74ki"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_tunelPreZone", "_tunelPostZone")]
 script = ExtResource("1_yxd7y")
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_ih7vx")]
-Cart = NodePath("tracks/PathFollow3D/cart")
+Cart = NodePath("cart")
 _player = NodePath("Character")
+_tunelPosition1 = Vector3(0, 0, -7.8)
+_tunelPosition2 = Vector3(0, 0, 159.8)
+_tunelPreZone = NodePath("TunnelSide")
+_tunelPostZone = NodePath("TunnelSide2")
+_tunelPrefab = ExtResource("8_yx5qa")
 
-[node name="tracks" type="Path3D" parent="."]
-curve = SubResource("Curve3D_llj7q")
+[node name="cart" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_kfp56")]
+transform = Transform3D(0.999924, 2.08819e-08, -0.0029963, -6.09174e-13, 0.999992, 6.96813e-06, 0.00299629, -6.96852e-06, 0.999927, 1.312, 1.35733, 123)
+_player = NodePath("../Character")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="tracks"]
-transform = Transform3D(-0.999924, 2.08819e-08, 0.00299639, 0, 0.999992, -6.96813e-06, -0.00299638, -6.96852e-06, -0.999927, 1.312, 0, -158)
-loop = false
-
-[node name="cart" parent="tracks/PathFollow3D" node_paths=PackedStringArray("_player") instance=ExtResource("2_kfp56")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.35734, 0)
-_player = NodePath("../../../Character")
-
-[node name="Blowtorch" parent="tracks/PathFollow3D/cart" instance=ExtResource("6_rr8l2")]
+[node name="Blowtorch" parent="cart" instance=ExtResource("6_rr8l2")]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.635724, -1.14065)
 
-[node name="Oil" parent="tracks/PathFollow3D/cart" instance=ExtResource("7_l66rf")]
+[node name="Oil" parent="cart" instance=ExtResource("7_l66rf")]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.400033, 0.668567, -1.21151)
 
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.46369, 0.820808, -158.2)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.46369, 0.820808, 122.8)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cw4nj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, -176.051)
+transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, -151.051)
 mesh = SubResource("BoxMesh_j74ki")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, 158.987)
+transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, 159.987)
 mesh = SubResource("BoxMesh_j74ki")
 
-[node name="Tunnel vierge4" parent="." instance=ExtResource("9_t5q10")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 24)
+[node name="TunnelSide" parent="." instance=ExtResource("8_yx5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.8)
 
-[node name="Tunnel vierge6" parent="." instance=ExtResource("9_t5q10")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 143)
-
-[node name="Tunnel vierge2" parent="." instance=ExtResource("9_t5q10")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -72)
-
-[node name="Tunnel vierge3" parent="." instance=ExtResource("9_t5q10")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -144)
-
-[node name="Tunnel" parent="." instance=ExtResource("9_oxfho")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -24)
-
-[node name="Tunnel8" parent="." instance=ExtResource("9_oxfho")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 95)
-
-[node name="Tunnel6" parent="." instance=ExtResource("9_oxfho")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 48)
-
-[node name="Tunnel9" parent="." instance=ExtResource("9_oxfho")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 119)
-
-[node name="Tunnel7" parent="." instance=ExtResource("9_oxfho")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 71)
-
-[node name="Tunnel5" parent="." instance=ExtResource("9_oxfho")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -168)
-
-[node name="Tunnel3" parent="." instance=ExtResource("9_oxfho")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -96)
-
-[node name="Tunnel4" parent="." instance=ExtResource("9_oxfho")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -120)
-
-[node name="Tunnel2" parent="." instance=ExtResource("9_oxfho")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -48)
+[node name="TunnelSide2" parent="." instance=ExtResource("8_yx5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 159.8)
