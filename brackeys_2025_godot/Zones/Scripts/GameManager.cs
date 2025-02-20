@@ -18,7 +18,7 @@ public partial class GameManager : Node
     [Export] private PackedScene _tunelPrefab;
     
     private int _currentCycle = 0;
-    private Zone _currentScene;
+    public Zone _currentScene;
     private int _currentSceneIndex = 0;
 
     public override void _Ready()

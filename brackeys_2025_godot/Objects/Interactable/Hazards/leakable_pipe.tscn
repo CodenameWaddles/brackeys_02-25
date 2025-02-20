@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcnpveyms0055"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/LeakablePipe.cs" id="1_i2axf"]
+[ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="2_y23tr"]
+[ext_resource type="PackedScene" uid="uid://4nv88uxswbec" path="res://Objects/Interactable/pipe_leak.tscn" id="3_l4qhx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxvna"]
+size = Vector3(0.159966, 0.0793762, 0.104073)
+
+[node name="LeakablePipe" type="Node3D" node_paths=PackedStringArray("_pipeFixed", "_pipeLeak")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_i2axf")
+_pipeFixed = NodePath("pipe")
+_pipeLeak = NodePath("pipeLeak")
+
+[node name="pipe" parent="." instance=ExtResource("2_y23tr")]
+
+[node name="pipeLeak" parent="." instance=ExtResource("3_l4qhx")]
+visible = false
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0278893, 0.0586395, 0.043499)
+shape = SubResource("BoxShape3D_vxvna")

@@ -8,9 +8,12 @@ public partial class Sand : Hazard
 	[Export] private Node3D _visuals;
 	[Export] private Node3D _collider;
 	
+	private GameManager _main;
+	
 	public override void _Ready()
 	{
 		Type = Pickupable.PickupType.Shovel;
+		_main = (GameManager) GetTree().Root.GetChild(0);
 		MakeInteractable();
 	}
 
@@ -40,6 +43,7 @@ public partial class Sand : Hazard
 		IsSolved = true;
 		_collider.Visible = false;
 		_visuals.Visible = false;
+		_main._currentScene.UpdateIntegrityPercentage();
 	}
 
 	protected override void MakeInteractableSpecific()
@@ -47,5 +51,6 @@ public partial class Sand : Hazard
 		IsSolved = false;
 		_collider.Visible = true;
 		_visuals.Visible = true;
+		//_main._currentScene.UpdateIntegrityPercentage(); //useless psk suprimé ? et genr dans zone on reset on update après avoir reac les hazards
 	}
 }

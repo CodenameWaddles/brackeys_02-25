@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj3ccmt01fqi8"]
+
+[ext_resource type="PackedScene" uid="uid://dgyf2jqocgcmu" path="res://Assets/Rooms/Générateur(6).fbx" id="1_7q25t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44i4g"]
+size = Vector3(24.4343, 0.154297, 16.8039)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4x68"]
+size = Vector3(7.26245, 0.501953, 1.32214)
+
+[node name="generator" instance=ExtResource("1_7q25t")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.71033, -0.74069, 0.323994)
+shape = SubResource("BoxShape3D_44i4g")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(0.747937, 0.66377, 0, -0.66377, 0.747937, 0, 0, 0, 1, -3.99094, 1.43721, -2.29926)
+shape = SubResource("BoxShape3D_x4x68")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
+transform = Transform3D(0.999977, 0.00677177, 0, -0.00677177, 0.999977, 0, 0, 0, 1, -10.2278, 3.78125, -2.33035)
+shape = SubResource("BoxShape3D_x4x68")

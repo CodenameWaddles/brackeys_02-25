@@ -17,8 +17,15 @@ public partial class playerInteraction : Node3D {
     // Step between interactions while holding interact button
     private double _interactStep = 0;
     private const double interactStepMax = 0.07;
+
+    private GameManager _main;
     
     [Export] RayCast3D _rayCast;
+
+    public override void _Ready()
+    {
+        _main = (GameManager) GetTree().Root.GetChild(0);
+    }
 
     public override void _PhysicsProcess(double delta) {
         if (_rayCast.IsColliding()) {
@@ -38,6 +45,7 @@ public partial class playerInteraction : Node3D {
         // interact with input button
         if(_hovering is InputButton button && held == Pickupable.PickupType.None) {
             if (Input.IsActionPressed("interact")) {
+                _main._currentScene.UpdateIntegrityPercentage();
                 if (!_justInteracted) {
                     button.Activate();
                     _justInteracted = true;

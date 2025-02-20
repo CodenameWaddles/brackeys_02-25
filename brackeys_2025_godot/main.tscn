@@ -26,7 +26,7 @@ volumetric_fog_emission_energy = 2.0
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_tunelPreZone", "_tunelPostZone")]
 script = ExtResource("1_yxd7y")
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_ih7vx")]
-_scenePosition = Vector3(-18.884, 0, 10.2337)
+_scenePosition = Vector3(-10.5585, 3.1687, -8.33344)
 Cart = NodePath("cart")
 _player = NodePath("Character")
 _tunelPosition1 = Vector3(1.685, 0, -41.09)

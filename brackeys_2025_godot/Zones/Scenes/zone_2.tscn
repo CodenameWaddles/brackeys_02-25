@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_6dujy"]
 [ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="1_fmwla"]
-[ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/leakable_pipe.tscn" id="2_pcacj"]
+[ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="2_pcacj"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="3_nijms"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="4_avsgj"]
 [ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="6_rioy0"]
 
-[node name="Zone2" type="Node3D" node_paths=PackedStringArray("_interactables", "DisplayDataSingleInRoom", "DisplayDataDoubleInRoom")]
+[node name="Zone2" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_6dujy")
-_interactables = []
+ZoneHazards = []
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
