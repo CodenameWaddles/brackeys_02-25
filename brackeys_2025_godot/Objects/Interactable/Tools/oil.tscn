@@ -7,9 +7,9 @@ size = Vector3(0.36853, 0.340332, 0.341553)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qm6l4"]
 
-[node name="Oil" type="Node3D" node_paths=PackedStringArray("ItemMesh")]
+[node name="Oil" type="Node3D" node_paths=PackedStringArray("Item")]
 script = ExtResource("1_fdraj")
-ItemMesh = NodePath("MeshInstance3D")
+Item = NodePath("MeshInstance3D")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 2

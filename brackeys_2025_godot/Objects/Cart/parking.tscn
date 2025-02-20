@@ -23,7 +23,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 0.1, 1.13
 mesh = SubResource("PrismMesh_42ke0")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.285956, -2.17641, 0, 0.958243, -0.649478, 0, 0, 0, 6, -1.52621, -0.752271, 0)
+transform = Transform3D(-0.285956, -2.17641, 0, 0.958243, -0.649478, 0, 0, 0, 6, -1.15343, -0.752271, 0)
 mesh = SubResource("PrismMesh_j6pht")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Parking"]]
@@ -33,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163177, 0.231445, -0.21679
 shape = SubResource("BoxShape3D_tmnq2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.630218, -0.180791, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00299, -0.180791, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(-0.285956, -2.17641, 0, 0.958243, -0.649478, 0, 0, 0, 6, -2.15644, -0.57148, 0)

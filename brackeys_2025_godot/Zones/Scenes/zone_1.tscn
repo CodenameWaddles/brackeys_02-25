@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://blll5nq61dt7v"]
+[gd_scene load_steps=7 format=3 uid="uid://blll5nq61dt7v"]
 
 [ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="1_ew7ii"]
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_opr7o"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/leakable_pipe.tscn" id="2_8no3p"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="4_fige3"]
 [ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="5_o18v4"]
+[ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Tools/sand.tscn" id="6_hmkxp"]
 
 [node name="Zone1" type="Node3D" node_paths=PackedStringArray("_interactables", "DisplayDataSingleInRoom")]
 script = ExtResource("1_opr7o")
@@ -25,3 +26,6 @@ transform = Transform3D(0.948324, 0, 0.317305, 0, 1, 0, -0.317305, 0, 0.948324, 
 
 [node name="Parking" parent="." instance=ExtResource("5_o18v4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302062, 0.68451, 6.96651)
+
+[node name="sand" parent="." instance=ExtResource("6_hmkxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6)

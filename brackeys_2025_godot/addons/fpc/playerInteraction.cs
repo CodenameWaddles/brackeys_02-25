@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class playerInteraction : Node {
+public partial class playerInteraction : Node3D {
 
-    [Export] private Node3D _hand;
+    [Export] public Node3D _hand; //LAISSER PUBLIC
 
     public Pickupable.PickupType held { get; private set; } = Pickupable.PickupType.None;
     private Interactable _hovering;
@@ -27,6 +27,7 @@ public partial class playerInteraction : Node {
     public override void _PhysicsProcess(double delta) {
         if (_rayCast.IsColliding()) {
             var target = (Node)_rayCast.GetCollider();
+            if(target == null) return;
             target = target.GetParent();
             if (target is Interactable interactable) {
                 _hovering = interactable;
@@ -102,9 +103,11 @@ public partial class playerInteraction : Node {
     
     private void PickUpItem(Pickupable item) {
         held = item.Type;
-        MeshInstance3D itemMesh = (MeshInstance3D) item.ItemMesh.Duplicate();
-        itemMesh.Visible = true;
-        _hand.AddChild(itemMesh);
+        Node3D newItem = (Node3D) item.Item.Duplicate();
+        newItem.Position = _hand.Position;
+        newItem.Visible = true;
+        _hand.AddChild(newItem);
+        Node3D player = (Node3D)GetParent();
     }
     
     private void DropItem() {

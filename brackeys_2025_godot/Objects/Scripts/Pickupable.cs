@@ -10,7 +10,7 @@ public abstract partial class Pickupable : Interactable {
         None
     }
 
-    [Export] public MeshInstance3D ItemMesh { get; protected set; }
+    [Export] public Node3D Item { get; protected set; }
 
     public PickupType Type { get; protected set; }
 
@@ -19,11 +19,11 @@ public abstract partial class Pickupable : Interactable {
     protected override void ActivateSpecific() {
         if(!IsPickedUp) {
             IsPickedUp = true;
-            ItemMesh.Visible = false;
+            Item.Visible = false;
         }
         else {
             IsPickedUp = false;
-            ItemMesh.Visible = true;
+            Item.Visible = true;
         }
     }
 
