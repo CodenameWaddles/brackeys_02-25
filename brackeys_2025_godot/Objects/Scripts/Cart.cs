@@ -16,7 +16,7 @@ public partial class Cart : Node3D {
     [Export] private CollisionShape3D _doorCollider;
     [Export] private AnimationPlayer _animationPlayer;
     [Export] private CharacterBody3D _player;
-    [Export] private RigidBody2D _lamp;
+    [Export] private AnimationTree _lampAnimation;
 
     [Export] public DataSingle InputDataSingleOnWagon { get; private set; }
     [Export] public DataDouble InputDataDoubleOnWagon { get; private set; }
@@ -59,6 +59,8 @@ public partial class Cart : Node3D {
             if (!_animationPlayer.GetCurrentAnimation().Contains("close_door"))
             {
                 _speed = Mathf.Lerp(_speed, InitialSpeed, LerpWeight);
+                _lampAnimation.Set("parameters/conditions/stopCart", false);
+                _lampAnimation.Set("parameters/conditions/startCart", true);
             }
             if (_speed > InitialSpeed - 0.1)
             {
@@ -96,6 +98,8 @@ public partial class Cart : Node3D {
     public void Stop() //refaire pr faire vrai smooth bruh
     {
         _state = State.Stopping;
+        _lampAnimation.Set("parameters/conditions/stopCart", true);
+        _lampAnimation.Set("parameters/conditions/startCart", false);
     }
     
     public void Start() {

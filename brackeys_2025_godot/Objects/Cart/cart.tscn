@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://bsv0rixeuanqn"]
+[gd_scene load_steps=28 format=3 uid="uid://bsv0rixeuanqn"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/Cart.cs" id="2_xofmn"]
 [ext_resource type="PackedScene" uid="uid://bmh64qs3g6fcy" path="res://Objects/Interactable/single_data_input_display.tscn" id="3_kn2ky"]
 [ext_resource type="PackedScene" uid="uid://b4jj5gmlr6a0l" path="res://Objects/Interactable/double_data_input_display.tscn" id="5_6sfsy"]
-[ext_resource type="PackedScene" uid="uid://bdmgduwxcxy3u" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
-[ext_resource type="PackedScene" uid="uid://bw42c6qirdns0" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
+[ext_resource type="PackedScene" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
+[ext_resource type="PackedScene" uid="uid://rlqsfhy48v8i" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
 [ext_resource type="PackedScene" uid="uid://dj7j8jfg6b4hn" path="res://Objects/Cart/wagonnet_lantern.tscn" id="9_8qt2n"]
-[ext_resource type="PackedScene" path="res://Objects/Cart/wagonnet_door_rotate_color.tscn" id="9_333ab"]
+[ext_resource type="PackedScene" uid="uid://558ljv1b0lt7" path="res://Objects/Cart/wagonnet_door_rotate_color.tscn" id="9_333ab"]
 [ext_resource type="PackedScene" uid="uid://3idb3tp67d0y" path="res://Objects/Cart/ampoule_lanterne.tscn" id="10_v02ti"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6nl04"]
@@ -67,14 +67,120 @@ _data = {
 "open_door": SubResource("Animation_f5s5s")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_ixec6"]
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="Animation" id="Animation_3gvxl"]
+resource_name = "dangle_idle"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3),
+"transitions": PackedFloat32Array(0.6, 1.5, 0.6, 1.5, 0.6, 1.5, 0.6, 1.5, 0.6, 1.5, 0.6, 1.5, 0.6),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.261799, 0, 0), Vector3(0, 0, 0), Vector3(0.174533, 0, 0), Vector3(0, 0, 0), Vector3(-0.122173, 0, 0), Vector3(0, 0, 0), Vector3(0.0872665, 0, 0), Vector3(0, 0, 0), Vector3(-0.0523599, 0, 0), Vector3(0, 0, 0), Vector3(0.0174533, 0, 0), Vector3(0, 0, 0)]
+}
 
-[node name="Cart" type="Node3D" node_paths=PackedStringArray("_doorCollider", "_animationPlayer", "InputDataSingleOnWagon", "InputDataDoubleOnWagon", "PressButton")]
+[sub_resource type="Animation" id="Animation_r8fun"]
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uc3yy"]
+resource_name = "start_dangle"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3),
+"transitions": PackedFloat32Array(0.6, 1.5, 0.6, 1.5, 0.6, 1.5, 0.6, 1.5, 0.6, 1.5, 0.6, 1.5, 0.6),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.261799, 0, 0), Vector3(0, 0, 0), Vector3(-0.174533, 0, 0), Vector3(0, 0, 0), Vector3(0.122173, 0, 0), Vector3(0, 0, 0), Vector3(-0.0872665, 0, 0), Vector3(0, 0, 0), Vector3(0.0523599, 0, 0), Vector3(0, 0, 0), Vector3(-0.0349066, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tchju"]
+resource_name = "idle_move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(0.6, 1.5, 0.6, 1.5, 0.6),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0349066, 0, 0), Vector3(0, 0, 0), Vector3(-0.0349066, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_txhbq"]
+_data = {
+"RESET": SubResource("Animation_r8fun"),
+"dangle_idle": SubResource("Animation_3gvxl"),
+"idle_move": SubResource("Animation_tchju"),
+"start_dangle": SubResource("Animation_uc3yy")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u2pce"]
+animation = &"dangle_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g2fms"]
+animation = &"idle_move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bkjjp"]
+animation = &"start_dangle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dgkq3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y02y4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8yebu"]
+advance_mode = 2
+advance_condition = &"stopCart"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nogxl"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"startCart"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_s702p"]
+states/Start/position = Vector2(171, 112)
+states/dangle_idle/node = SubResource("AnimationNodeAnimation_u2pce")
+states/dangle_idle/position = Vector2(728, 79)
+states/idle_move/node = SubResource("AnimationNodeAnimation_g2fms")
+states/idle_move/position = Vector2(570, 133)
+states/start_dangle/node = SubResource("AnimationNodeAnimation_bkjjp")
+states/start_dangle/position = Vector2(442, 63)
+transitions = ["Start", "idle_move", SubResource("AnimationNodeStateMachineTransition_dgkq3"), "start_dangle", "idle_move", SubResource("AnimationNodeStateMachineTransition_y02y4"), "idle_move", "dangle_idle", SubResource("AnimationNodeStateMachineTransition_8yebu"), "dangle_idle", "start_dangle", SubResource("AnimationNodeStateMachineTransition_nogxl")]
+
+[node name="Cart" type="Node3D" node_paths=PackedStringArray("_doorCollider", "_animationPlayer", "_lampAnimation", "InputDataSingleOnWagon", "InputDataDoubleOnWagon", "PressButton")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77104, 0)
 script = ExtResource("2_xofmn")
 _doorCollider = NodePath("DoorCollider/CollisionShape3D")
 _animationPlayer = NodePath("AnimationPlayer")
+_lampAnimation = NodePath("RigidBody3D/AnimationTree")
 InputDataSingleOnWagon = NodePath("SingleDataInputDisplay")
 InputDataDoubleOnWagon = NodePath("DoubleDataInputDisplay")
 PressButton = NodePath("PressButton")
@@ -118,25 +224,11 @@ transform = Transform3D(0.5, 0, 0, 0, 0.47252, 0.163477, 0, -0.163477, 0.47252, 
 [node name="PressButton" parent="." instance=ExtResource("7_qxems")]
 transform = Transform3D(0.2, 0, 0, 0, 0.198921, 0.020746, 0, -0.020746, 0.198921, -0.483009, 0.232858, 1.63929)
 
-[node name="LampHook" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.233372, 2.15652, 0.723413)
-freeze_mode = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LampHook"]
-visible = false
-mesh = SubResource("BoxMesh_ixec6")
-
-[node name="joint" type="ConeTwistJoint3D" parent="LampHook"]
-node_a = NodePath("..")
-node_b = NodePath("../../RigidBody3D")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.233372, 1.76618, 0.723413)
-center_of_mass_mode = 1
-center_of_mass = Vector3(0, -0.5, 0)
-freeze = true
+[node name="RigidBody3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.246039, 2.19891, 0.716245)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441697, 0)
 light_color = Color(0.972497, 0.912668, 0.710021, 1)
 shadow_enabled = true
 shadow_opacity = 0.5
@@ -144,8 +236,21 @@ shadow_blur = 3.0
 omni_range = 6.5
 
 [node name="Wagonnet Lantern2" parent="RigidBody3D" instance=ExtResource("9_8qt2n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441697, 0)
 
 [node name="Ampoule lanterne" parent="RigidBody3D" instance=ExtResource("10_v02ti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441697, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_txhbq")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="RigidBody3D"]
+tree_root = SubResource("AnimationNodeStateMachine_s702p")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/startCart = true
+parameters/conditions/stopCart = false
 
 [node name="cart_color3" parent="." instance=ExtResource("8_jxvai")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
