@@ -16,11 +16,12 @@ public partial class Cart : Node {
     [Export] private CollisionShape3D _doorCollider;
     [Export] private AnimationPlayer _animationPlayer;
     [Export] private CharacterBody3D _player;
+    [Export] private RigidBody2D _lamp;
 
     [Export] public DataSingle InputDataSingleOnWagon { get; private set; }
     [Export] public DataDouble InputDataDoubleOnWagon { get; private set; }
     [Export] public PressButton PressButton { get; private set; }
-    [Export] public int InitialSpeed { get; private set; } = 1;
+    [Export] public float InitialSpeed { get; private set; } = 1;
     [Export] public float StartStopTime { get; private set; } = 1;
     
     [Signal]
@@ -91,7 +92,7 @@ public partial class Cart : Node {
             _pathFollow3D.ProgressRatio += (float) (_speed * 0.1 * delta);
         }
         
-        if(_pathFollow3D.ProgressRatio >= 0.9) {
+        if(_pathFollow3D.ProgressRatio >= 1) {
             Godot.GD.Print("arrived");
             EmitSignal(SignalName.ArrivedSignal);
             _pathFollow3D.ProgressRatio = 0;

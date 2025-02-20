@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dvdi3k3evqceh" path="res://Assets/Textures/metal6x6.png" id="4_thhou"]
 [ext_resource type="PackedScene" uid="uid://cii64qynm8p35" path="res://Objects/Cart/wagonnet_door_rotate.tscn" id="4_y6431"]
 [ext_resource type="PackedScene" uid="uid://b4jj5gmlr6a0l" path="res://Objects/Interactable/double_data_input_display.tscn" id="5_6sfsy"]
-[ext_resource type="PackedScene" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
+[ext_resource type="PackedScene" uid="uid://bdmgduwxcxy3u" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
 [ext_resource type="PackedScene" uid="uid://dj7j8jfg6b4hn" path="res://Objects/Cart/wagonnet_lantern.tscn" id="9_8qt2n"]
 [ext_resource type="PackedScene" uid="uid://cqtbep70s18s4" path="res://Assets/Cart/Wagonnet.glb" id="9_f5atm"]
 [ext_resource type="PackedScene" uid="uid://3idb3tp67d0y" path="res://Objects/Cart/ampoule_lanterne.tscn" id="10_v02ti"]
@@ -82,6 +82,7 @@ _animationPlayer = NodePath("AnimationPlayer")
 InputDataSingleOnWagon = NodePath("SingleDataInputDisplay")
 InputDataDoubleOnWagon = NodePath("DoubleDataInputDisplay")
 PressButton = NodePath("PressButton")
+InitialSpeed = 0.5
 StartStopTime = 2.5
 
 [node name="CartFinal" parent="." instance=ExtResource("9_f5atm")]
@@ -144,6 +145,7 @@ node_b = NodePath("../../RigidBody3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.233372, 1.76618, 0.723413)
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.5, 0)
+freeze = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="RigidBody3D"]
 light_color = Color(0.972497, 0.912668, 0.710021, 1)
