@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxomfx6j7lo8m"]
+[gd_scene load_steps=3 format=3 uid="uid://dxomfx6j7lo8m"]
 
 [ext_resource type="PackedScene" uid="uid://ccih0iyaolqth" path="res://Objects/Interactable/Tools/pelleModel.tscn" id="1_8bbqd"]
+[ext_resource type="Script" path="res://Objects/Scripts/Shovel.cs" id="1_61qap"]
 
 [node name="Shovel" type="Node3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+script = ExtResource("1_61qap")
 
 [node name="Pelle" parent="." instance=ExtResource("1_8bbqd")]
 transform = Transform3D(-0.867479, -0.497474, 0, 0.497474, -0.867479, 0, 0, 0, 1, 0.0913037, 0.267731, 0)

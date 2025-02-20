@@ -6,6 +6,7 @@ public abstract partial class Pickupable : Interactable {
     public enum PickupType {
         Blowtorch,
         Oil,
+        Shovel,
         None
     }
 

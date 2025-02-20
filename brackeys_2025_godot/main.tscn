@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=12 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="6_rr8l2"]
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/oil.tscn" id="7_l66rf"]
 [ext_resource type="PackedScene" uid="uid://b18ah6lt7x5ow" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
+[ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="9_bni7l"]
 
 [sub_resource type="Environment" id="Environment_cw4nj"]
 fog_light_color = Color(0.154876, 0.154876, 0.154876, 1)
@@ -41,8 +42,12 @@ transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.6357
 [node name="Oil" parent="cart" instance=ExtResource("7_l66rf")]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.400033, 0.668567, -1.21151)
 
+[node name="Shovel" parent="cart" instance=ExtResource("9_bni7l")]
+transform = Transform3D(0.294997, 0.164579, 0.725246, -0.277792, 0.748077, -0.0567673, -0.689846, -0.230899, 0.332996, 0.81193, 0.0982928, -0.984962)
+
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.46369, 0.820808, 122.8)
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cw4nj")
