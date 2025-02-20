@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=14 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/oil.tscn" id="7_l66rf"]
 [ext_resource type="PackedScene" uid="uid://b18ah6lt7x5ow" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
 [ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="9_bni7l"]
+[ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="10_sj8y5"]
+[ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
 
 [sub_resource type="Environment" id="Environment_cw4nj"]
 fog_light_color = Color(0.154876, 0.154876, 0.154876, 1)
@@ -24,16 +26,17 @@ volumetric_fog_emission_energy = 2.0
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_tunelPreZone", "_tunelPostZone")]
 script = ExtResource("1_yxd7y")
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_ih7vx")]
+_scenePosition = Vector3(-18.884, 0, 10.2337)
 Cart = NodePath("cart")
 _player = NodePath("Character")
-_tunelPosition1 = Vector3(0, 0, -7.8)
-_tunelPosition2 = Vector3(0, 0, 159.8)
-_tunelPreZone = NodePath("TunnelSide")
-_tunelPostZone = NodePath("TunnelSide2")
+_tunelPosition1 = Vector3(1.685, 0, -41.09)
+_tunelPosition2 = Vector3(1.75, 0, 174.6)
+_tunelPreZone = NodePath("TunnelSidePre")
+_tunelPostZone = NodePath("TunnelSidePost")
 _tunelPrefab = ExtResource("8_yx5qa")
 
 [node name="cart" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_kfp56")]
-transform = Transform3D(0.999924, 2.08819e-08, -0.0029963, -6.09174e-13, 0.999992, 6.96813e-06, 0.00299629, -6.96852e-06, 0.999927, 1.312, 1.35733, 123)
+transform = Transform3D(0.999996, 2.08821e-08, -0.0029965, -6.09217e-13, 1, 6.96861e-06, 0.0029965, -6.96858e-06, 0.999996, 0.676, 1.802, 123)
 _player = NodePath("../Character")
 
 [node name="Blowtorch" parent="cart" instance=ExtResource("6_rr8l2")]
@@ -46,21 +49,26 @@ transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.400033, 0.66856
 transform = Transform3D(-0.693929, -0.316901, 0.241054, -0.220952, 0.709385, 0.296624, -0.331243, 0.190696, -0.702849, 0.752495, -0.0904541, -0.577545)
 
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.46369, 0.820808, 122.8)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.685363, 1.02907, 122.8)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cw4nj")
 
+[node name="Quai" parent="." instance=ExtResource("10_sj8y5")]
+
+[node name="Parking" parent="." instance=ExtResource("11_7wrjh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.747968, 1.28914, -3.82848)
+
+[node name="TunnelSidePre" parent="." instance=ExtResource("8_yx5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.685, 0, -41.09)
+
+[node name="TunnelSidePost" parent="." instance=ExtResource("8_yx5qa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 174.6)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, -151.051)
+transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, -184.46)
 mesh = SubResource("BoxMesh_j74ki")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, 159.987)
+transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, 174.244)
 mesh = SubResource("BoxMesh_j74ki")
-
-[node name="TunnelSide" parent="." instance=ExtResource("8_yx5qa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.8)
-
-[node name="TunnelSide2" parent="." instance=ExtResource("8_yx5qa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 159.8)

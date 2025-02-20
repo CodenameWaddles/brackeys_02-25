@@ -1,42 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdek0ivhkxs84"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_01n16"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_42ke0"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_j6pht"]
+[gd_scene load_steps=2 format=3 uid="uid://cdek0ivhkxs84"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmnq2"]
-size = Vector3(2.42181, 1.46289, 13.0137)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_egqru"]
-data = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+size = Vector3(4.21702, 1.46289, 13.0137)
 
 [node name="Parking" type="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 2, 0, 0, 0, 0.2, 1.67272, 1.17785, 0)
-mesh = SubResource("CylinderMesh_01n16")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 0.1, 1.13809, 2.54472, 0)
-mesh = SubResource("PrismMesh_42ke0")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.285956, -2.17641, 0, 0.958243, -0.649478, 0, 0, 0, 6, -1.15343, -0.752271, 0)
-mesh = SubResource("PrismMesh_j6pht")
 
 [node name="Area3D" type="Area3D" parent="." groups=["Parking"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163177, 0.231445, -0.216797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.413551, 0.231445, -0.216797)
 shape = SubResource("BoxShape3D_tmnq2")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00299, -0.180791, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-0.285956, -2.17641, 0, 0.958243, -0.649478, 0, 0, 0, 6, -2.15644, -0.57148, 0)
-shape = SubResource("ConcavePolygonShape3D_egqru")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Tools/sand.tscn" id="6_hmkxp"]
 
 [node name="Zone1" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_opr7o")
 ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("sand")]
 ZoneTimer = NodePath("Timer")

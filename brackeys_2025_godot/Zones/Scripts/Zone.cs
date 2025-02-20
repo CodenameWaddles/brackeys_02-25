@@ -10,6 +10,10 @@ public partial class Zone : Node3D
     [Export] public Timer ZoneTimer { get; private set; }
     [Export] public DataSingle DisplayDataSingleInRoom { get; private set; }
     [Export] public DataDouble DisplayDataDoubleInRoom { get; private set; }
+
+    private float Integrity;
+    public int IntegrityPercentageToComplete { get; private set; }
+    private float IntegritySteps;
     
     public bool IsTimed { get; private set; }
     public bool IsComplete { get; private set; }
@@ -18,6 +22,7 @@ public partial class Zone : Node3D
     public override void _Ready()
     {
         IsComplete = false;
+        Integrity = 100;
         if (IsTimed)
         {
             ZoneTimer.Start();
