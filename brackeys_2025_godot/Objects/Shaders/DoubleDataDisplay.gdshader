@@ -1,8 +1,8 @@
 shader_type spatial;
 
-uniform float amplitude = 0.3;
-uniform float period = 10.0;
-uniform float speed = 3.0;
+instance uniform float amplitude = 0.3;
+instance uniform float period = 10.0;
+instance uniform float speed = 3.0;
 const float spotX = 0.9;
 const float spotSize = 0.02;
 const float n = 6.0;

@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ec3tfc2mx07g"]
-
-[ext_resource type="Shader" path="res://Objects/Shaders/DoubleDataDisplay.gdshader" id="1_83owo"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1_83owo")
-shader_parameter/amplitude = 0.3
-shader_parameter/period = 10.0

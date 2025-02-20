@@ -1,10 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://blugenxdmdoqq"]
 
 [ext_resource type="PackedScene" uid="uid://df36ij4qccdsp" path="res://Assets/screen.glb" id="1_3uksk"]
-[ext_resource type="Material" uid="uid://ec3tfc2mx07g" path="res://Objects/Materials/doubleDataDisplay.tres" id="2_d4jrw"]
+[ext_resource type="Material" uid="uid://drulljea2oqcu" path="res://Objects/Materials/double_data_display.tres" id="2_xadqb"]
 
 [node name="screen" instance=ExtResource("1_3uksk")]
 
 [node name="Plane" parent="." index="0"]
-material_override = ExtResource("2_d4jrw")
-surface_material_override/0 = ExtResource("2_d4jrw")
+surface_material_override/0 = ExtResource("2_xadqb")
