@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://blll5nq61dt7v"]
+[gd_scene load_steps=14 format=4 uid="uid://blll5nq61dt7v"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_opr7o"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="2_8no3p"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="4_fige3"]
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="6_hmkxp"]
 [ext_resource type="Texture2D" uid="uid://b2s3n7e66scy" path="res://Assets/Textures/metal4x4.png" id="6_irwl5"]
+[ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="7_epq7e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n23s3"]
 vertex_color_use_as_albedo = true
@@ -45,6 +46,11 @@ shadow_mesh = SubResource("ArrayMesh_bibkc")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rnafa"]
 albedo_texture = ExtResource("6_irwl5")
 
+[sub_resource type="BoxMesh" id="BoxMesh_atmdf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpxbo"]
+albedo_texture = ExtResource("7_epq7e")
+
 [node name="Zone1" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_opr7o")
 ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("sand")]
@@ -75,3 +81,11 @@ transform = Transform3D(1.71, 0, 0, 0, 1.71, 0, 0, 0, 1.71, 0, 0, 0)
 mesh = SubResource("ArrayMesh_3m3ed")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_rnafa")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -28, 94.1817, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, -25.9501, 118.563, 0)
+mesh = SubResource("BoxMesh_atmdf")
+surface_material_override/0 = SubResource("StandardMaterial3D_cpxbo")
