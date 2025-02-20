@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://oluhvsw2x5vh"]
+
+[ext_resource type="PackedScene" uid="uid://c6jajgcxnwew7" path="res://Assets/Cart/cart_color.glb" id="1_vf5e1"]
+
+[node name="cart_color" instance=ExtResource("1_vf5e1")]

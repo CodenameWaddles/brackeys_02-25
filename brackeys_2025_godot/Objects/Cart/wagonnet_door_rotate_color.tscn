@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://558ljv1b0lt7"]
+
+[ext_resource type="PackedScene" uid="uid://yr4xhn10hjws" path="res://Assets/Cart/Wagonnet_Door_rotate_color.glb" id="1_37oio"]
+
+[node name="Wagonnet_Door_rotate_color" instance=ExtResource("1_37oio")]
+
+[node name="open tha door A_1" parent="." index="0"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
