@@ -7,7 +7,7 @@
 [node name="DoubleDataInputDisplay" type="Node3D" node_paths=PackedStringArray("_screen")]
 script = ExtResource("1_jakav")
 _screen = NodePath("screen")
-_maximumValue = 5
+_maximumValue = 3
 
 [node name="APlus" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("1_m0rd3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.000189126, -0.000654697, 0.406597)
