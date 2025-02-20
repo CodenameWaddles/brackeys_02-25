@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0ia6t1bastf7"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/ConsoleScreen.cs" id="1_k6hkn"]
+[ext_resource type="PackedScene" uid="uid://cjvvh2kb1g8iu" path="res://Objects/Cart/screen_model.tscn" id="1_pr6nq"]
+[ext_resource type="Shader" path="res://Objects/Shaders/crt_shader.gdshader" id="3_tbijf"]
+[ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="3_tlxws"]
+[ext_resource type="Script" path="res://Objects/Cart/ScreenText.cs" id="5_iept1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61jf1"]
+render_priority = 0
+shader = ExtResource("3_tbijf")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.2
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2k52p"]
+size = Vector3(1.96979, 0.186462, 2.08203)
+
+[node name="ConsoleScreen" type="Node3D" node_paths=PackedStringArray("_textViewport", "_screenQuad", "_screenText")]
+script = ExtResource("1_k6hkn")
+_textViewport = NodePath("SubViewport")
+_screenQuad = NodePath("screen/Plane")
+_screenText = NodePath("SubViewport/RichTextLabel")
+
+[node name="screen" parent="." instance=ExtResource("1_pr6nq")]
+
+[node name="Plane" parent="screen" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_61jf1")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(128, 128)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0.74902, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_tlxws")
+text = "> "
+scroll_active = false
+scroll_following = true
+shortcut_keys_enabled = false
+script = ExtResource("5_iept1")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00741577, -0.013031, 0.0273438)
+shape = SubResource("BoxShape3D_2k52p")
+
+[editable path="screen"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0dmbbc74cj44"]
+[gd_scene load_steps=3 format=3 uid="uid://d0dmbbc74cj44"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/DataSingle.cs" id="1_ku1tp"]
+[ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="2_7kqx8"]
 
 [node name="SingleDataDisplay" type="Node3D" node_paths=PackedStringArray("_label")]
 script = ExtResource("1_ku1tp")
@@ -8,3 +9,4 @@ _label = NodePath("Label3D")
 
 [node name="Label3D" type="Label3D" parent="."]
 text = "Display"
+font = ExtResource("2_7kqx8")
