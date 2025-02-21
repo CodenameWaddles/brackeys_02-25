@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=27 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://addons/fpc/playerInteraction.cs" id="2_32abm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://Player/Shaders/PostProcessing.gdshader" id="3_wv20w"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 [ext_resource type="Texture2D" uid="uid://ds2oe6421ex40" path="res://Assets/bayer/bayer16.png" id="4_2lssl"]
+[ext_resource type="Script" path="res://addons/fpc/HeadLight.cs" id="5_5uauw"]
 [ext_resource type="AudioStream" uid="uid://fjswljrkup2e" path="res://Assets/Sounds/Step noise.wav" id="7_rllty"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
@@ -384,6 +385,7 @@ crouch_enabled = false
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_jw1de")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -413,6 +415,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera"]
+light_color = Color(0.972549, 0.913725, 0.709804, 1)
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 30.0
+script = ExtResource("5_5uauw")
 
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {

@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyxq07typd21r"]
+[gd_scene load_steps=4 format=3 uid="uid://dyxq07typd21r"]
 
+[ext_resource type="Script" path="res://Objects/Scripts/Light.cs" id="1_0lmda"]
 [ext_resource type="PackedScene" uid="uid://dj7j8jfg6b4hn" path="res://Objects/Cart/wagonnet_lantern.tscn" id="1_vx10u"]
 [ext_resource type="PackedScene" uid="uid://3idb3tp67d0y" path="res://Objects/Cart/ampoule_lanterne.tscn" id="2_bkn3c"]
 
@@ -11,10 +12,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 [node name="Ampoule lanterne" parent="." instance=ExtResource("2_bkn3c")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." node_paths=PackedStringArray("_bulbNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0601825)
 light_color = Color(0.972497, 0.912668, 0.710021, 1)
 shadow_enabled = true
 shadow_opacity = 0.5
 shadow_blur = 3.0
 omni_range = 6.5
+script = ExtResource("1_0lmda")
+_bulbNode = NodePath("../Ampoule lanterne")

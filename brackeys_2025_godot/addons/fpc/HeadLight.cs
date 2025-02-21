@@ -1,13 +1,8 @@
 using Godot;
 using System;
 
-public partial class Light : OmniLight3D
+public partial class HeadLight : SpotLight3D
 {
-	[Export] private Node3D _bulbNode;
-	[Export] private Vector3 _onColor = new(1, 1, 0.2f);
-	
-	private ShaderMaterial _shaderMaterial;
-	private Vector3 _offColor = new(0.05f, 0.05f, 0.05f);
 	private const int _maxFlickers = 5;
 
 	public override void _Process(double delta) {
@@ -16,21 +11,13 @@ public partial class Light : OmniLight3D
 		}
 	}
 	
-	public override void _Ready() {
-		MeshInstance3D child = (MeshInstance3D) _bulbNode.FindChild("Industrial lantern A_1");
-		_shaderMaterial = (ShaderMaterial) child.MaterialOverride;
-	}
 	
 	private void Activate() {
 		LightEnergy = 1;
-		if(_shaderMaterial == null) return;
-		_shaderMaterial.SetShaderParameter("color", _onColor);
 	}
 	
 	private void Deactivate() {
 		LightEnergy = 0;
-		if(_shaderMaterial == null) return;
-		_shaderMaterial.SetShaderParameter("color", _offColor);
 	}
 
 	public async void Flicker(bool turnOff) {
