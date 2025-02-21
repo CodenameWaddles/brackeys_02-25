@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://clsvq7b4yylfu"
+path="res://.godot/imported/Boucle son train.wav-5ecc5984d9ff7ff6b5b6900621af82e1.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Boucle son train.wav"
+dest_files=["res://.godot/imported/Boucle son train.wav-5ecc5984d9ff7ff6b5b6900621af82e1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

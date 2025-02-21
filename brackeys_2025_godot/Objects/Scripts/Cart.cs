@@ -17,9 +17,15 @@ public partial class Cart : Node3D {
     [Export] private AnimationPlayer _animationPlayer;
     [Export] private CharacterBody3D _player;
     [Export] private AnimationTree _lampAnimation;
+    
+    //audio
+    [Export] private AudioStreamPlayer3D _wheels;
+    [Export] private AudioStreamPlayer3D _doorClosing;
+    [Export] private AudioStreamPlayer3D _doorOpening;
+    [Export] private AudioStreamPlayer3D _music;
 
-    [Export] public DataSingle InputDataSingleOnWagon { get; private set; }
-    [Export] public DataDouble InputDataDoubleOnWagon { get; private set; }
+    
+
     [Export] public CartDataPanel CartDataPanel;
     [Export] public PressButton PressButton { get; private set; }
     [Export] public float InitialSpeed { get; private set; } = 10;
@@ -27,6 +33,9 @@ public partial class Cart : Node3D {
     
     [Signal]
     public delegate void ArrivedSignalEventHandler();
+    
+    public DataSingle InputDataSingleOnWagon { get; private set; }
+    public DataDouble InputDataDoubleOnWagon { get; private set; }
     
     public State _state = State.Stopped;
     public bool allowedToMove = true; //temp
@@ -84,8 +93,19 @@ public partial class Cart : Node3D {
                 {
                     _player.Reparent(GetTree().Root.GetNode("Main"));
                 }
+                _wheels.Stop();
+                _music.Stop();
                 _animationPlayer.Play("open_door");
-                
+                _doorOpening.Play();
+            }
+        }
+        
+        //play music if moving
+        if (_state == State.Moving)
+        {
+            if (!_music.IsPlaying())
+            {
+                _music.Play();
             }
         }
         
@@ -93,12 +113,16 @@ public partial class Cart : Node3D {
         if (_state != State.Stopped)
         {
             Position = new Vector3(Position.X, Position.Y, Position.Z + (float) (_speed * delta));
+            if (!_wheels.IsPlaying())
+            {
+                _wheels.Play();
+            }
         }
         
     }
     
     
-    public void Stop() //refaire pr faire vrai smooth bruh
+    public void Stop()
     {
         _state = State.Stopping;
         _lampAnimation.Set("parameters/conditions/stopCart", true);
@@ -113,6 +137,7 @@ public partial class Cart : Node3D {
             _player.Reparent(this);
         }
         _animationPlayer.Play("close_door");
+        _doorClosing.Play();
     }
     
     public void _on_area_entered(Node3D area) {

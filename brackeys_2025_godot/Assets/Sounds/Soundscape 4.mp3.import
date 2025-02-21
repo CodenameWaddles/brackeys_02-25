@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjwats5i31e4y"
+path="res://.godot/imported/Soundscape 4.mp3-7f3b0b867b880c1a5dd5c8334c5ddc57.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Soundscape 4.mp3"
+dest_files=["res://.godot/imported/Soundscape 4.mp3-7f3b0b867b880c1a5dd5c8334c5ddc57.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

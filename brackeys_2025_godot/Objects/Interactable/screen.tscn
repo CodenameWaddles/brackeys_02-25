@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://blugenxdmdoqq"]
 
-[ext_resource type="PackedScene" uid="uid://df36ij4qccdsp" path="res://Assets/screen.glb" id="1_3uksk"]
-[ext_resource type="Material" uid="uid://drulljea2oqcu" path="res://Objects/Materials/double_data_display.tres" id="2_xadqb"]
+[ext_resource type="PackedScene" uid="uid://df36ij4qccdsp" path="res://Assets/Models/screen.glb" id="1_3uksk"]
+[ext_resource type="Material" path="res://Objects/Materials/double_data_display.tres" id="2_xadqb"]
 
 [node name="screen" instance=ExtResource("1_3uksk")]
 
