@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxnx24fvfoewo"]
+[gd_scene load_steps=5 format=3 uid="uid://bxnx24fvfoewo"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/Sand.cs" id="1_da8j2"]
+[ext_resource type="AudioStream" uid="uid://mreo40ow3yyf" path="res://Assets/Sounds/Pelle qui prend.wav" id="2_mwvng"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5pj1o"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mkegv"]
 
-[node name="sand" type="Node3D" node_paths=PackedStringArray("_visuals", "_collider")]
+[node name="sand" type="Node3D" node_paths=PackedStringArray("_visuals", "_collider", "_shovelUseSound")]
 script = ExtResource("1_da8j2")
 _visuals = NodePath("Visual")
 _collider = NodePath("RigidBody3D")
+_shovelUseSound = NodePath("AudioStreamPlayer3D")
 Type = 3
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
@@ -50,3 +52,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.501371, 0, -0.131429, 0, 0.518312, 0, 0.131429, 0, 0.501371, 0.0926018, 0.43676, 0.0580649)
 mesh = SubResource("BoxMesh_mkegv")
 skeleton = NodePath("../..")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_mwvng")

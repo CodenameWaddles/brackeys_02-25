@@ -37,6 +37,8 @@ extends CharacterBody3D
 @export var JUMP_ANIMATION : AnimationPlayer
 @export var CROUCH_ANIMATION : AnimationPlayer
 @export var COLLISION_MESH : CollisionShape3D
+@export var STEPS_AUDIO : AudioStreamPlayer3D
+@export var STEPS_TIMER : Timer
 
 @export_group("Controls")
 # We are using UI controls because they are built into Godot Engine so they can be used right away
@@ -392,3 +394,11 @@ func _unhandled_input(event : InputEvent):
 			# Where we're going, we don't need InputMap
 			if event.keycode == 4194338: # F7
 				$UserInterface/DebugPanel.visible = !$UserInterface/DebugPanel.visible
+
+
+func _on_step_timer_timeout() -> void:
+	var input_dir = Vector2.ZERO
+	input_dir = Input.get_vector(LEFT, RIGHT, FORWARD, BACKWARD)
+	if(input_dir && is_on_floor()):
+		#STEPS_AUDIO.pitch_scale = randf_range(0.8, 1.2)
+		STEPS_AUDIO.play()

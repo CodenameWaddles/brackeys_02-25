@@ -34,11 +34,17 @@ public partial class GameManager : Node
         Cart.allowedToMove = _currentScene.IsComplete;
         if (Cart._state == Cart.State.Stopped)
         {
-            _audioManager.Enable();
+            if (!_audioManager.IsEnabled)
+            {
+                _audioManager.Enable();
+            }
         }
         else
         {
-            _audioManager.Disable();
+            if (_audioManager.IsEnabled)
+            {
+                _audioManager.Disable();
+            }
         }
         
         if (Input.IsActionJustPressed("test")) //tmtc

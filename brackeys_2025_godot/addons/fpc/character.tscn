@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=26 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://addons/fpc/playerInteraction.cs" id="2_32abm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://Player/Shaders/PostProcessing.gdshader" id="3_wv20w"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 [ext_resource type="Texture2D" uid="uid://ds2oe6421ex40" path="res://Assets/bayer/bayer16.png" id="4_2lssl"]
+[ext_resource type="AudioStream" uid="uid://fjswljrkup2e" path="res://Assets/Sounds/Step noise.wav" id="7_rllty"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -366,7 +367,7 @@ MarginContainer/constants/margin_top = 10
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
 
-[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH")]
+[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH", "STEPS_AUDIO", "STEPS_TIMER")]
 script = ExtResource("1_0t4e8")
 base_speed = 2.0
 default_reticle = "res://addons/fpc/reticles/reticle_0.tscn"
@@ -376,12 +377,13 @@ HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")
 JUMP_ANIMATION = NodePath("Head/JumpAnimation")
 CROUCH_ANIMATION = NodePath("CrouchAnimation")
 COLLISION_MESH = NodePath("Collision")
+STEPS_AUDIO = NodePath("FootSteps")
+STEPS_TIMER = NodePath("StepTimer")
 sprint_enabled = false
 crouch_enabled = false
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
 mesh = SubResource("CapsuleMesh_jw1de")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -461,3 +463,12 @@ target_position = Vector3(0, 0.5, 0)
 
 [node name="EditorModule" type="Node" parent="."]
 script = ExtResource("3_v3ckk")
+
+[node name="FootSteps" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_rllty")
+
+[node name="StepTimer" type="Timer" parent="."]
+wait_time = 0.9
+autostart = true
+
+[connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]

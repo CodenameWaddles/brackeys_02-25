@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://daje73f4nptyx"
+path="res://.godot/imported/Step final.wav-9b23d011d8c3384b2e93b5ff999b1119.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Step final.wav"
+dest_files=["res://.godot/imported/Step final.wav-9b23d011d8c3384b2e93b5ff999b1119.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

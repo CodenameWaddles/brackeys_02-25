@@ -7,6 +7,7 @@ public partial class Sand : Hazard
 
 	[Export] private Node3D _visuals;
 	[Export] private Node3D _collider;
+	[Export] private AudioStreamPlayer3D _shovelUseSound;
 	
 	private GameManager _main;
 	
@@ -33,6 +34,7 @@ public partial class Sand : Hazard
 			}
 		}
 		animationPlayer.Play("use");
+		_shovelUseSound.Play();
 	
 		MakeUninteractable();
 
