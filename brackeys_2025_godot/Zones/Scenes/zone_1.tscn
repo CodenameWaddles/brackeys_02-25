@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://blll5nq61dt7v"]
+[gd_scene load_steps=9 format=3 uid="uid://blll5nq61dt7v"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_opr7o"]
-[ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="2_8no3p"]
 [ext_resource type="PackedScene" uid="uid://bj3ccmt01fqi8" path="res://Zones/RoomsModelsNodes/generator.tscn" id="2_wv0fe"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="4_fige3"]
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="6_hmkxp"]
@@ -15,7 +14,7 @@ albedo_texture = ExtResource("7_epq7e")
 
 [node name="Zone1" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_opr7o")
-ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("sand")]
+ZoneHazards = [NodePath("sand")]
 ZoneTimer = NodePath("Timer")
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 
@@ -28,14 +27,8 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.22348, 0.501797, -0.108552)
 transform = Transform3D(-0.00424115, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00424115, -19.9292, 16.286, 1.51263)
 _defaultValue = 12
 
-[node name="LeakablePipe" parent="." instance=ExtResource("2_8no3p")]
-transform = Transform3D(0.426064, 0, -0.904693, 0, 1, 0, 0.904693, 0, 0.426064, -8.03416, 0.874417, 0.416045)
-
-[node name="LeakablePipe2" parent="." instance=ExtResource("2_8no3p")]
-transform = Transform3D(-0.986698, 0, -0.162569, 0, 1, 0, 0.162569, 0, -0.986698, -7.83412, 1.0686, 2.2502)
-
 [node name="sand" parent="." instance=ExtResource("6_hmkxp")]
-transform = Transform3D(0.066657, 0, -0.997776, 0, 1, 0, 0.997776, 0, 0.066657, -8.06691, 0.494017, -2.34192)
+transform = Transform3D(0.066657, 0, -0.997776, 0, 1, 0, 0.997776, 0, 0.066657, -11.4026, 2.00119, -6.4631)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

@@ -20,6 +20,7 @@ public partial class Cart : Node3D {
     
     //audio
     [Export] private AudioStreamPlayer3D _wheels;
+    [Export] private AudioStreamPlayer3D _brakes;
     [Export] private AudioStreamPlayer3D _doorClosing;
     [Export] private AudioStreamPlayer3D _doorOpening;
     [Export] private AudioStreamPlayer3D _music;
@@ -62,11 +63,11 @@ public partial class Cart : Node3D {
         {
             PressButton.MakeInteractable();
         }
-
         
         // Smoothly start the cart
         if (_state == State.Starting)
         {
+            _wheels.VolumeDb = Mathf.Lerp(_wheels.VolumeDb, -30, LerpWeight);
             //tant que l'anim de close door est en train de jouer on augmente pas la vitesse
             if (!_animationPlayer.GetCurrentAnimation().Contains("close_door"))
             {
@@ -84,6 +85,7 @@ public partial class Cart : Node3D {
         else if (_state == State.Stopping)
         {
             _speed = Mathf.Lerp(_speed, 0, LerpWeight);
+            _wheels.VolumeDb = Mathf.Lerp(-30, -100, LerpWeight);
             if (_speed < 0.1)
             {
                 _speed = 0;
@@ -93,8 +95,9 @@ public partial class Cart : Node3D {
                 {
                     _player.Reparent(GetTree().Root.GetNode("Main"));
                 }
-                _wheels.Stop();
+                
                 _music.Stop();
+                _wheels.Stop();
                 _animationPlayer.Play("open_door");
                 _doorOpening.Play();
             }
@@ -103,6 +106,7 @@ public partial class Cart : Node3D {
         //play music if moving
         if (_state == State.Moving)
         {
+            
             if (!_music.IsPlaying())
             {
                 _music.Play();
@@ -113,6 +117,10 @@ public partial class Cart : Node3D {
         if (_state != State.Stopped)
         {
             Position = new Vector3(Position.X, Position.Y, Position.Z + (float) (_speed * delta));
+        }
+
+        if (_state != State.Stopped && _state != State.Stopping)
+        {
             if (!_wheels.IsPlaying())
             {
                 _wheels.Play();
@@ -124,6 +132,7 @@ public partial class Cart : Node3D {
     
     public void Stop()
     {
+        _brakes.Play();
         _state = State.Stopping;
         _lampAnimation.Set("parameters/conditions/stopCart", true);
         _lampAnimation.Set("parameters/conditions/startCart", false);
@@ -153,23 +162,10 @@ public partial class Cart : Node3D {
             EmitSignal(SignalName.ArrivedSignal);
         }
     }
-    
-    /*
- public void SetWeakWaveData() {
-     var random = new RandomNumberGenerator();
-     int a = random.RandiRange(DataDouble._minimumValue, DataDouble._maximumValue/2);
-     int b = random.RandiRange(DataDouble._minimumValue, DataDouble._maximumValue/2);
-     DataDouble.SetData(0, a);
-     DataDouble.SetData(1, b);
- }
 
- public void SetStrongWaveData() {
-     var random = new RandomNumberGenerator();
-     int a = random.RandiRange(DataDouble._maximumValue/2, DataDouble._maximumValue);
-     int b = random.RandiRange(DataDouble._maximumValue/2, DataDouble._maximumValue);
-     DataDouble.SetData(0, a);
-     DataDouble.SetData(1, b);
- }
- */
+    public void FadeSound(AudioStreamPlayer3D audioStream, float time)
+    {
+        
+    }
     
 }

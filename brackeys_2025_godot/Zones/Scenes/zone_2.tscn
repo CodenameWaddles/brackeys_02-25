@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://cb7s04dpv0wii"]
+[gd_scene load_steps=12 format=4 uid="uid://cb7s04dpv0wii"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_6dujy"]
-[ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="2_pcacj"]
-[ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="3_nijms"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="4_avsgj"]
 [ext_resource type="PackedScene" uid="uid://q1f60w05lbot" path="res://Zones/RoomsModelsNodes/water.tscn" id="6_07hxs"]
+[ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="6_e6hf8"]
 [ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="7_j7qy7"]
 [ext_resource type="Texture2D" uid="uid://b2s3n7e66scy" path="res://Assets/Textures/metal4x4.png" id="7_wyuq5"]
 
@@ -49,21 +48,13 @@ albedo_texture = ExtResource("7_wyuq5")
 [sub_resource type="BoxShape3D" id="BoxShape3D_oyvaa"]
 size = Vector3(54.3331, 1.76495, 34.0563)
 
-[node name="Zone2" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom", "DisplayDataDoubleInRoom")]
+[node name="Zone2" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_6dujy")
-ZoneHazards = []
-DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
+ZoneHazards = [NodePath("sand")]
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
-[node name="LeakablePipe2" parent="." instance=ExtResource("2_pcacj")]
-transform = Transform3D(0.948324, 0, 0.317305, 0, 1, 0, -0.317305, 0, 0.948324, -8.82214, 2.39747, -8.4608)
-
-[node name="SingleDataDisplay" parent="." instance=ExtResource("3_nijms")]
-transform = Transform3D(-0.0247462, 0, 0.999694, 0, 1, 0, -0.999694, 0, -0.0247462, -9.56963, 4.02481, -7.13523)
-_defaultValue = 68
-
 [node name="DoubleDataDisplay" parent="." instance=ExtResource("4_avsgj")]
-transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, -9.8372, 4.05997, 4.96296)
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, -9.8372, 4.05997, 3.03631)
 _defaultValue = 3
 
 [node name="Salle eau" parent="." instance=ExtResource("6_07hxs")]
@@ -82,3 +73,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bl8g0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6458, 1.19096, -20.9431)
 shape = SubResource("BoxShape3D_oyvaa")
+
+[node name="sand" parent="." instance=ExtResource("6_e6hf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74939, 1.37279, -4.75103)

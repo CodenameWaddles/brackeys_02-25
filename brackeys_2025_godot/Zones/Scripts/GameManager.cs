@@ -32,11 +32,15 @@ public partial class GameManager : Node
     public override void _Process(double delta)
     {
         Cart.allowedToMove = _currentScene.IsComplete;
-        if (Cart._state != Cart.State.Stopped)
+        if (Cart._state == Cart.State.Stopped)
         {
-            
+            _audioManager.Enable();
         }
-
+        else
+        {
+            _audioManager.Disable();
+        }
+        
         if (Input.IsActionJustPressed("test")) //tmtc
         {
             if (_audioManager.IsEnabled)
