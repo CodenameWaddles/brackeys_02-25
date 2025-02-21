@@ -12,12 +12,6 @@ public partial class Light : OmniLight3D
 	private const int _maxFlickers = 5;
 	private MeshInstance3D _mesh;
 	
-	public override void _Process(double delta) {
-		if(Input.IsActionJustPressed("ui_accept")) {
-			Flicker(false);
-		}
-	}
-	
 	public override void _Ready() {
 		_mesh = (MeshInstance3D) _bulbNode.FindChild("Industrial lantern A_1");
 		_audioPlayer.Stream = _flickerSound;

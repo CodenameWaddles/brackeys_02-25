@@ -4,13 +4,6 @@ using System;
 public partial class HeadLight : SpotLight3D
 {
 	private const int _maxFlickers = 5;
-
-	public override void _Process(double delta) {
-		if(Input.IsActionJustPressed("ui_accept")) {
-			Flicker(false);
-		}
-	}
-	
 	
 	private void Activate() {
 		LightEnergy = 1;

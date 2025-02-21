@@ -19,14 +19,6 @@ public partial class CartDataPanel : Node3D
 	{
 		
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		if(Input.IsActionJustPressed("ui_up")) {
-			SwitchDataMode();
-		}
-	}
 	
 	public void SwitchDataMode() {
 		if(_dataMode == DataMode.Dual) {

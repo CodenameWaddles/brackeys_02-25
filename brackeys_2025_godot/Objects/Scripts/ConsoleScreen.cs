@@ -37,12 +37,6 @@ public partial class ConsoleScreen : Interactable
 		MakeUninteractable();
 	}
 
-	public override void _Process(double delta) {
-		if (Input.IsActionJustPressed("ui_accept")) {
-			AddMessage("hello!!");
-		}
-	}
-
 	public void AddMessage(string message) {
 		MakeInteractable();
 		_messages.Add(message);
