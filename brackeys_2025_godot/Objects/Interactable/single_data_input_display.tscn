@@ -10,15 +10,16 @@ _defaultValue = 50
 _label = NodePath("InputText")
 
 [node name="PlusButton" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("2_j5gva")]
-transform = Transform3D(-0.5, -1.95403e-08, -7.29254e-08, 0, 0.482963, -0.12941, 7.54979e-08, -0.12941, -0.482963, -0.3, 0.606, 1.065)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.113, 0, 0.173332)
 _data = NodePath("..")
 
 [node name="MinusButton" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("2_j5gva")]
-transform = Transform3D(0.5, 0, 0, 0, 0.482963, 0.12941, 0, -0.12941, 0.482963, -0.3, 0.585, 0.993)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113, 0, -0.0183624)
 _type = 1
 _data = NodePath("..")
 
 [node name="InputText" type="Label3D" parent="."]
-transform = Transform3D(-1, 8.44439e-08, -2.26267e-08, 0, 0.258819, 0.965926, 8.74228e-08, 0.965926, -0.258819, -0.150948, 0.592673, 1.02916)
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0.273068, 0.01242, 0.0604445)
 text = "50"
 font = ExtResource("3_n3cwf")
+font_size = 72

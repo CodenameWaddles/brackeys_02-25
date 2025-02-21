@@ -20,6 +20,7 @@ public partial class Cart : Node3D {
 
     [Export] public DataSingle InputDataSingleOnWagon { get; private set; }
     [Export] public DataDouble InputDataDoubleOnWagon { get; private set; }
+    [Export] public CartDataPanel CartDataPanel;
     [Export] public PressButton PressButton { get; private set; }
     [Export] public float InitialSpeed { get; private set; } = 10;
     [Export] public float StartStopTime { get; private set; } = 1;
@@ -35,6 +36,8 @@ public partial class Cart : Node3D {
     
     public override void _Ready()
     {
+        InputDataDoubleOnWagon = CartDataPanel.DataDouble;
+        InputDataSingleOnWagon = CartDataPanel.DataSingle;
         _speed = InitialSpeed;
         PressButton.ButtonPressed += Start;
     }

@@ -7,20 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="6_rr8l2"]
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/oil.tscn" id="7_l66rf"]
-[ext_resource type="PackedScene" uid="uid://b18ah6lt7x5ow" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
+[ext_resource type="PackedScene" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
 [ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="9_bni7l"]
-[ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="10_sj8y5"]
-[ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
+[ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="10_sj8y5"]
+[ext_resource type="PackedScene" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
 [ext_resource type="Texture2D" uid="uid://b2s3n7e66scy" path="res://Assets/Textures/metal4x4.png" id="12_3c025"]
-
-[sub_resource type="Environment" id="Environment_cw4nj"]
-fog_light_color = Color(0.154876, 0.154876, 0.154876, 1)
-fog_depth_end = 4000.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.15
-volumetric_fog_albedo = Color(0.0846899, 0.0846899, 0.0846899, 1)
-volumetric_fog_emission = Color(0.0807833, 0.0807833, 0.0807833, 1)
-volumetric_fog_emission_energy = 2.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_j74ki"]
 
@@ -62,6 +53,15 @@ shadow_mesh = SubResource("ArrayMesh_jc1fs")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvvqw"]
 albedo_texture = ExtResource("12_3c025")
 
+[sub_resource type="Environment" id="Environment_5v3ka"]
+fog_light_color = Color(0.154876, 0.154876, 0.154876, 1)
+fog_depth_end = 4000.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.0846899, 0.0846899, 0.0846899, 1)
+volumetric_fog_emission = Color(0.0807833, 0.0807833, 0.0807833, 1)
+volumetric_fog_emission_energy = 2.0
+
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_tunelPreZone", "_tunelPostZone")]
 script = ExtResource("1_yxd7y")
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_ih7vx")]
@@ -79,19 +79,16 @@ transform = Transform3D(0.999996, 2.08821e-08, -0.0029965, -6.09217e-13, 1, 6.96
 _player = NodePath("../Character")
 
 [node name="Blowtorch" parent="cart" instance=ExtResource("6_rr8l2")]
-transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.495863, 0.635724, -1.14065)
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.758102, 0.321864, -1.58911)
 
 [node name="Oil" parent="cart" instance=ExtResource("7_l66rf")]
-transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, 0.400033, 0.668567, -1.21151)
+transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.327397, 0.289007, -1.55586)
 
 [node name="Shovel" parent="cart" instance=ExtResource("9_bni7l")]
-transform = Transform3D(-0.693929, -0.316901, 0.241054, -0.220952, 0.709385, 0.296624, -0.331243, 0.190696, -0.702849, 0.752495, -0.0904541, -0.577545)
+transform = Transform3D(-0.344592, -0.226922, -0.565476, -0.3494, 0.605812, -0.0301899, 0.499176, 0.267391, -0.411492, -0.513523, 1.0716, -1.62469)
 
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.685363, 1.02907, 122.8)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_cw4nj")
 
 [node name="Quai" parent="." instance=ExtResource("10_sj8y5")]
 
@@ -118,3 +115,6 @@ visible = false
 mesh = SubResource("ArrayMesh_eqjis")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_uvvqw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5v3ka")

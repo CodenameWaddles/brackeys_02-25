@@ -3,8 +3,11 @@ using System;
 
 public partial class ScreenText : RichTextLabel
 {
+	
 	public override void _Ready() {
-		
+		for(int i = 0; i < 11; i++) {
+			Text += "\n";
+		}
 	}
 
 	public async void TypeText(string text, float speed) {
@@ -15,10 +18,9 @@ public partial class ScreenText : RichTextLabel
 			await ToSignal(GetTree().CreateTimer(speed), "timeout");
 		}
 		Text = Text.Remove(Text.Length - 1);
-		AddBar();
 	}
 
-	private void AddBar() {
+	public void NewMessage() {
 		Text += "\n";
 		Text += "\n";
 		Text += "> ";

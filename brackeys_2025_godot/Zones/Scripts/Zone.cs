@@ -69,30 +69,39 @@ public partial class Zone : Node3D
 
     public bool MatchData()
     {
-        if (DisplayDataSingleInRoom != null && DisplayDataDoubleInRoom != null)
+        switch(Cart.CartDataPanel._dataMode)
         {
-            //y'a les deux
-            if (DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon) && DisplayDataDoubleInRoom.isEqual(Cart.InputDataDoubleOnWagon)) return true;
-            
-        }
-        else if(DisplayDataSingleInRoom != null)
-        {
-            //y'a que dadasingle
-            if (DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon)) 
+            case CartDataPanel.DataMode.Dual:
+                return DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon);
+            case CartDataPanel.DataMode.Single:
+                return DisplayDataDoubleInRoom.isEqual(Cart.InputDataDoubleOnWagon);
+            default:
                 return true;
         }
-        else if(DisplayDataDoubleInRoom != null)
-        {
-            //y'a que datadouble
-            if (DisplayDataDoubleInRoom.isEqual(Cart.InputDataDoubleOnWagon)) return true;
-        }
-        else
-        {
-            //tout est null
-            return true; //salle complete
-        }
-
-        return false;
+        // if (DisplayDataSingleInRoom != null && DisplayDataDoubleInRoom != null)
+        // {
+        //     //y'a les deux
+        //     if (DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon) && DisplayDataDoubleInRoom.isEqual(Cart.InputDataDoubleOnWagon)) return true;
+        //     
+        // }
+        // else if(DisplayDataSingleInRoom != null)
+        // {
+        //     //y'a que dadasingle
+        //     //if (DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon)) 
+        //         return true;
+        // }
+        // else if(DisplayDataDoubleInRoom != null)
+        // {
+        //     //y'a que datadouble
+        //     //if (DisplayDataDoubleInRoom.isEqual(Cart.InputDataDoubleOnWagon)) return true;
+        // }
+        // else
+        // {
+        //     //tout est null
+        //     return true; //salle complete
+        // }
+        //
+        // return false;
     }
     
     

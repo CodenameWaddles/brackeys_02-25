@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvkexn38lytls"]
+
+[ext_resource type="PackedScene" uid="uid://b4jj5gmlr6a0l" path="res://Objects/Interactable/double_data_input_display.tscn" id="1_cwtyk"]
+[ext_resource type="Script" path="res://Objects/Cart/CartDataPanel.cs" id="1_n5ad5"]
+[ext_resource type="PackedScene" uid="uid://bmh64qs3g6fcy" path="res://Objects/Interactable/single_data_input_display.tscn" id="2_in1g0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bmuqt"]
+size = Vector3(1.9, 0.085, 1.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpr0b"]
+albedo_color = Color(0.705882, 0.627451, 0.533333, 1)
+
+[sub_resource type="Animation" id="Animation_l7gna"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kfyf6"]
+resource_name = "switch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ullil"]
+resource_name = "switch_back"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(3.14159, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfc71"]
+_data = {
+"RESET": SubResource("Animation_l7gna"),
+"switch": SubResource("Animation_kfyf6"),
+"switch_back": SubResource("Animation_ullil")
+}
+
+[node name="CartDataPanel" type="Node3D" node_paths=PackedStringArray("DataDouble", "DataSingle", "_animationPlayer")]
+script = ExtResource("1_n5ad5")
+DataDouble = NodePath("RotatablePanel/DoubleDataInputDisplay")
+DataSingle = NodePath("RotatablePanel/SingleDataInputDisplay")
+_animationPlayer = NodePath("RotatablePanel/AnimationPlayer")
+
+[node name="RotatablePanel" type="Node3D" parent="."]
+
+[node name="DoubleDataInputDisplay" parent="RotatablePanel" instance=ExtResource("1_cwtyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0919921, -0.164951)
+
+[node name="SingleDataInputDisplay" parent="RotatablePanel" instance=ExtResource("2_in1g0")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.361175, -0.06879, 0.110259)
+
+[node name="Panel" type="MeshInstance3D" parent="RotatablePanel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.464838, 0.00844496, 0.0179395)
+mesh = SubResource("BoxMesh_bmuqt")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_rpr0b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RotatablePanel"]
+libraries = {
+"": SubResource("AnimationLibrary_jfc71")
+}

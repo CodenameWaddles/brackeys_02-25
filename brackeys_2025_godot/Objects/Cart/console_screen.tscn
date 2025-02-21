@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0ia6t1bastf7"]
+[gd_scene load_steps=9 format=3 uid="uid://c0ia6t1bastf7"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/ConsoleScreen.cs" id="1_k6hkn"]
 [ext_resource type="PackedScene" uid="uid://cjvvh2kb1g8iu" path="res://Objects/Cart/screen_model.tscn" id="1_pr6nq"]
 [ext_resource type="Shader" path="res://Objects/Shaders/crt_shader.gdshader" id="3_tbijf"]
 [ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="3_tlxws"]
 [ext_resource type="Script" path="res://Objects/Cart/ScreenText.cs" id="5_iept1"]
+[ext_resource type="PackedScene" uid="uid://6qgfvwkbvidp" path="res://Objects/Cart/screen_mount.tscn" id="6_elwdc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_61jf1"]
 render_priority = 0
@@ -41,6 +42,7 @@ _screenQuad = NodePath("screen/Plane")
 _screenText = NodePath("SubViewport/RichTextLabel")
 
 [node name="screen" parent="." instance=ExtResource("1_pr6nq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Plane" parent="screen" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_61jf1")
@@ -71,5 +73,8 @@ freeze = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00741577, -0.013031, 0.0273438)
 shape = SubResource("BoxShape3D_2k52p")
+
+[node name="screen_mount" parent="." instance=ExtResource("6_elwdc")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.165302, 0)
 
 [editable path="screen"]
