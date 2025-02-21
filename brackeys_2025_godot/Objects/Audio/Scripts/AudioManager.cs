@@ -32,6 +32,7 @@ public partial class AudioManager : Node
 		RandomNumberGenerator rng = new RandomNumberGenerator();
 		_timer.Start(rng.RandfRange(_timerMaxAndMin.X, _timerMaxAndMin.Y));
 		IsEnabled = true;
+		GD.Print("enabled");
 	}
 
 	public void Disable()
@@ -39,6 +40,7 @@ public partial class AudioManager : Node
 		_playingSound = null;
 		_timer.Stop();
 		IsEnabled = false;
+		GD.Print("disabled");
 	}
 
 	private void _on_timer_timeout()

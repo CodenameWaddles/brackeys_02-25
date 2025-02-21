@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://c0ia6t1bastf7" path="res://Objects/Cart/console_screen.tscn" id="6_q21cd"]
 [ext_resource type="AudioStream" uid="uid://gbwkyiq57dis" path="res://Assets/Sounds/Deuxième cycle.wav" id="6_vd27b"]
 [ext_resource type="PackedScene" uid="uid://c1giicc0dv73x" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
-[ext_resource type="PackedScene" uid="uid://rlqsfhy48v8i" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
+[ext_resource type="PackedScene" uid="uid://bw42c6qirdns0" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
 [ext_resource type="PackedScene" uid="uid://dvkexn38lytls" path="res://Objects/Cart/CartDataPanel.tscn" id="9_3h43f"]
 [ext_resource type="PackedScene" uid="uid://dj7j8jfg6b4hn" path="res://Objects/Cart/wagonnet_lantern.tscn" id="9_8qt2n"]
-[ext_resource type="PackedScene" uid="uid://558ljv1b0lt7" path="res://Objects/Cart/wagonnet_door_rotate_color.tscn" id="9_333ab"]
+[ext_resource type="PackedScene" path="res://Objects/Cart/wagonnet_door_rotate_color.tscn" id="9_333ab"]
 [ext_resource type="PackedScene" uid="uid://3idb3tp67d0y" path="res://Objects/Cart/ampoule_lanterne.tscn" id="10_v02ti"]
 [ext_resource type="Script" path="res://Objects/Scripts/Light.cs" id="11_atlc5"]
 
@@ -267,7 +267,7 @@ transform = Transform3D(0.35, 0, 0, 0, 0.327462, 0.123568, 0, -0.123568, 0.32746
 [node name="Lamp" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.246039, 2.19891, 0.716245)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lamp" node_paths=PackedStringArray("_bulbNode")]
+[node name="OmniLight3D" type="OmniLight3D" parent="Lamp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441697, 0)
 light_color = Color(0.972497, 0.912668, 0.710021, 1)
 shadow_enabled = true
@@ -275,7 +275,6 @@ shadow_opacity = 0.5
 shadow_blur = 3.0
 omni_range = 6.5
 script = ExtResource("11_atlc5")
-_bulbNode = NodePath("../Ampoule lanterne")
 
 [node name="Wagonnet Lantern2" parent="Lamp" instance=ExtResource("9_8qt2n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441697, 0)

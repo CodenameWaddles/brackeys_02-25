@@ -100,6 +100,8 @@ public partial class Cart : Node3D {
                 _wheels.Stop();
                 _animationPlayer.Play("open_door");
                 _doorOpening.Play();
+                GameManager main = (GameManager)GetTree().Root.GetChild(0);
+                main._audioManager.Enable();
             }
         }
         
@@ -147,6 +149,8 @@ public partial class Cart : Node3D {
         }
         _animationPlayer.Play("close_door");
         _doorClosing.Play();
+        GameManager main = (GameManager)GetTree().Root.GetChild(0);
+        main._audioManager.Disable();
     }
     
     public void _on_area_entered(Node3D area) {

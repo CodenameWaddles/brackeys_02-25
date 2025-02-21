@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://q1f60w05lbot" path="res://Zones/RoomsModelsNodes/water.tscn" id="6_07hxs"]
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="6_e6hf8"]
 [ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="7_j7qy7"]
+[ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_l20nk"]
 [ext_resource type="Texture2D" uid="uid://b2s3n7e66scy" path="res://Assets/Textures/metal4x4.png" id="7_wyuq5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n23s3"]
@@ -45,9 +46,6 @@ shadow_mesh = SubResource("ArrayMesh_bibkc")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl8g0"]
 albedo_texture = ExtResource("7_wyuq5")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oyvaa"]
-size = Vector3(54.3331, 1.76495, 34.0563)
-
 [node name="Zone2" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_6dujy")
 ZoneHazards = [NodePath("sand")]
@@ -68,11 +66,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bl8g0")
 
 [node name="Quai(3)" parent="." instance=ExtResource("7_j7qy7")]
 
-[node name="Floor" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6458, 1.19096, -20.9431)
-shape = SubResource("BoxShape3D_oyvaa")
-
 [node name="sand" parent="." instance=ExtResource("6_e6hf8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.15322, 1.91977, -4.75103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.15322, 1.91977, -0.895706)
+
+[node name="WallLight" parent="." instance=ExtResource("7_l20nk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.649, 6.12979, -9.95922)
+
+[node name="WallLight2" parent="." instance=ExtResource("7_l20nk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5959, 6.12979, -0.185516)
