@@ -36,10 +36,6 @@ public partial class Zone : Node3D
         IntegritySteps = (InitialIntegrityPercentage - IntegrityPercentageToComplete) / (ZoneHazards.Count + 1); // +1 pour les datas
         IntegrityPercentageToComplete += IntegritySteps / 2; //petit offset pour que ce soit plus lisible
         IntegrityPercentage = InitialIntegrityPercentage;
-        
-        //print to debug
-        GD.Print("Integrity percentage : " + IntegrityPercentage + " / " + IntegrityPercentageToComplete);
-
     }
     
     public override void _Process(double delta)
@@ -58,13 +54,10 @@ public partial class Zone : Node3D
     
         if (MatchData())
         {
-            GD.Print("data matched");
             nbOfHazardSolved += 1;
         }
         
         IntegrityPercentage = InitialIntegrityPercentage - nbOfHazardSolved * IntegritySteps;
-
-        GD.Print("nb of hazard solved : " + nbOfHazardSolved + " / " + (ZoneHazards.Count + 1) +  ", Integrity percentage : " + IntegrityPercentage + " / " + IntegrityPercentageToComplete);
     }
 
     public bool MatchData()
@@ -72,36 +65,12 @@ public partial class Zone : Node3D
         switch(Cart.CartDataPanel._dataMode)
         {
             case CartDataPanel.DataMode.Dual:
-                return DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon);
-            case CartDataPanel.DataMode.Single:
                 return DisplayDataDoubleInRoom.isEqual(Cart.InputDataDoubleOnWagon);
+            case CartDataPanel.DataMode.Single:
+                return DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon);
             default:
                 return true;
         }
-        // if (DisplayDataSingleInRoom != null && DisplayDataDoubleInRoom != null)
-        // {
-        //     //y'a les deux
-        //     if (DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon) && DisplayDataDoubleInRoom.isEqual(Cart.InputDataDoubleOnWagon)) return true;
-        //     
-        // }
-        // else if(DisplayDataSingleInRoom != null)
-        // {
-        //     //y'a que dadasingle
-        //     //if (DisplayDataSingleInRoom.isEqual(Cart.InputDataSingleOnWagon)) 
-        //         return true;
-        // }
-        // else if(DisplayDataDoubleInRoom != null)
-        // {
-        //     //y'a que datadouble
-        //     //if (DisplayDataDoubleInRoom.isEqual(Cart.InputDataDoubleOnWagon)) return true;
-        // }
-        // else
-        // {
-        //     //tout est null
-        //     return true; //salle complete
-        // }
-        //
-        // return false;
     }
     
     

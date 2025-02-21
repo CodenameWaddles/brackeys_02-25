@@ -9,6 +9,7 @@ public partial class GameManager : Node
     [Export] private Vector3 _scenePosition = new Vector3(0, 0, 0); //remplacer tmtc
     [Export] private Cart Cart;
     [Export] private CharacterBody3D _player;
+    [Export] private AudioManager _audioManager;
     
     //tunnels
     [Export] private Vector3 _tunelPosition1;
@@ -31,6 +32,22 @@ public partial class GameManager : Node
     public override void _Process(double delta)
     {
         Cart.allowedToMove = _currentScene.IsComplete;
+        if (Cart._state != Cart.State.Stopped)
+        {
+            
+        }
+
+        if (Input.IsActionJustPressed("test")) //tmtc
+        {
+            if (_audioManager.IsEnabled)
+            {
+                _audioManager.Disable();
+            }
+            else
+            {
+                _audioManager.Enable();
+            }
+        }
     }
 
     private void _loadScene(int sceneIndex)

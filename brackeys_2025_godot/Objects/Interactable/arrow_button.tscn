@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bi67jaxcu0j0b"]
 
-[ext_resource type="PackedScene" uid="uid://x2vtckdk6k8o" path="res://Assets/arrowButton.glb" id="1_qqccc"]
+[ext_resource type="PackedScene" uid="uid://x2vtckdk6k8o" path="res://Assets/Models/arrowButton.glb" id="1_qqccc"]
 [ext_resource type="Script" path="res://Objects/Scripts/InputButton.cs" id="2_6tukt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qto54"]

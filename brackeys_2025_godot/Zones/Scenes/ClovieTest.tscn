@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dle2tvtlfdivw"]
 
-[ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="1_hdcnq"]
+[ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="1_hdcnq"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="2_nje4e"]
 [ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="3_l7r43"]
 [ext_resource type="PackedScene" uid="uid://c0ia6t1bastf7" path="res://Objects/Cart/console_screen.tscn" id="4_y2ffc"]
