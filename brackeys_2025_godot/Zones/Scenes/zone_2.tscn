@@ -75,4 +75,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6458, 1.19096, -20.9431)
 shape = SubResource("BoxShape3D_oyvaa")
 
 [node name="sand" parent="." instance=ExtResource("6_e6hf8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74939, 1.37279, -4.75103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.15322, 1.91977, -4.75103)
