@@ -12,6 +12,7 @@ height = 0.01
 
 [node name="Industrial lantern A_1" parent="." index="0"]
 material_override = ExtResource("2_u1s4m")
+instance_shader_parameters/color = Vector3(1, 1, 0.2)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119246, 0)

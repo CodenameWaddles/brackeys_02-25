@@ -8,9 +8,9 @@ public partial class Light : OmniLight3D
 	[Export] private AudioStream _flickerSound;
 	[Export] private Vector3 _onColor = new(1, 1, 0.2f);
 	
-	private ShaderMaterial _shaderMaterial;
 	private Vector3 _offColor = new(0.05f, 0.05f, 0.05f);
 	private const int _maxFlickers = 5;
+	private MeshInstance3D _mesh;
 	
 	public override void _Process(double delta) {
 		if(Input.IsActionJustPressed("ui_accept")) {
@@ -19,23 +19,20 @@ public partial class Light : OmniLight3D
 	}
 	
 	public override void _Ready() {
-		MeshInstance3D child = (MeshInstance3D) _bulbNode.FindChild("Industrial lantern A_1");
-		_shaderMaterial = (ShaderMaterial) child.MaterialOverride;
+		_mesh = (MeshInstance3D) _bulbNode.FindChild("Industrial lantern A_1");
 		_audioPlayer.Stream = _flickerSound;
 	}
 	
 	private void Activate() {
 		LightEnergy = 1;
 		_audioPlayer.Play();
-		if(_shaderMaterial == null) return;
-		_shaderMaterial.SetShaderParameter("color", _onColor);
+		_mesh?.SetInstanceShaderParameter("color", _onColor);
 	}
 	
 	private void Deactivate() {
 		LightEnergy = 0;
 		_audioPlayer.Play();
-		if(_shaderMaterial == null) return;
-		_shaderMaterial.SetShaderParameter("color", _offColor);
+		_mesh?.SetInstanceShaderParameter("color", _offColor);
 	}
 
 	public async void Flicker(bool turnOff) {
