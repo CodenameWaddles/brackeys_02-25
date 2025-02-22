@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=4 uid="uid://cb7s04dpv0wii"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_6dujy"]
-[ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="4_avsgj"]
-[ext_resource type="PackedScene" uid="uid://q1f60w05lbot" path="res://Zones/RoomsModelsNodes/water.tscn" id="6_07hxs"]
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="6_e6hf8"]
+[ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="7_edngt"]
+[ext_resource type="PackedScene" uid="uid://dodxa5romgf8r" path="res://Zones/RoomsModelsNodes/water_final.tscn" id="7_iupmb"]
 [ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="7_j7qy7"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_l20nk"]
 [ext_resource type="Texture2D" uid="uid://b2s3n7e66scy" path="res://Assets/Textures/metal4x4.png" id="7_wyuq5"]
@@ -46,17 +46,14 @@ shadow_mesh = SubResource("ArrayMesh_bibkc")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl8g0"]
 albedo_texture = ExtResource("7_wyuq5")
 
-[node name="Zone2" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom")]
+[node name="Zone2" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom")]
 script = ExtResource("1_6dujy")
 ZoneHazards = [NodePath("sand")]
-DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
+DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 
-[node name="DoubleDataDisplay" parent="." instance=ExtResource("4_avsgj")]
-transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, -9.8372, 4.05997, 3.03631)
-_defaultValue = 3
-
-[node name="Salle eau" parent="." instance=ExtResource("6_07hxs")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.37756, 1.28032, -10.5823)
+[node name="SingleDataDisplay" parent="." instance=ExtResource("7_edngt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.9793, 3.95623, -4.66862)
+_defaultValue = 45
 
 [node name="Plan" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.71, 0, 0, 0, 1.71, 0, 0, 0, 1.71, 0, 0, 0)
@@ -70,7 +67,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bl8g0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.15322, 1.91977, -0.895706)
 
 [node name="WallLight" parent="." instance=ExtResource("7_l20nk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.649, 6.12979, -9.95922)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.6247, 7.98079, -4.87166)
 
 [node name="WallLight2" parent="." instance=ExtResource("7_l20nk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5959, 6.12979, -0.185516)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.7184, 4.70637, -0.711743)
+
+[node name="WallLight3" parent="." instance=ExtResource("7_l20nk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5472, 4.70637, -8.88725)
+
+[node name="water_final" parent="." instance=ExtResource("7_iupmb")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.7002, 0.13406, -10.207)

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://drulljea2oqcu"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bsgkchjycotxc"]
 
 [ext_resource type="Shader" path="res://Objects/Shaders/DoubleDataDisplay.gdshader" id="1_xhppw"]
 

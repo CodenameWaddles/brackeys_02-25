@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://co34hl8xqgms7"]
+
+[ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="1_b8lij"]
+[ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_xwwdd"]
+[ext_resource type="PackedScene" uid="uid://c6lrj7jan2kfl" path="res://Zones/RoomsModelsNodes/trash.tscn" id="3_vhm6w"]
+[ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="4_lpswr"]
+[ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="5_vec5x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h78t7"]
+albedo_texture = ExtResource("4_lpswr")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ppa64"]
+
+[node name="zone_3" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
+script = ExtResource("1_xwwdd")
+ZoneHazards = []
+ZoneTimer = NodePath("Timer")
+DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
+
+[node name="Quai(3)" parent="." instance=ExtResource("1_b8lij")]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Salle des dechets" parent="." instance=ExtResource("3_vhm6w")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.22221, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 30, -32.5692, 59.5303, -3.49422)
+material_override = SubResource("StandardMaterial3D_h78t7")
+mesh = SubResource("BoxMesh_ppa64")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1714, 53.6134, -2.27588)
+size = Vector3(55.1528, 23.5415, 53.167)
+
+[node name="DoubleDataDisplay" parent="." instance=ExtResource("5_vec5x")]
+transform = Transform3D(1.13247e-07, 1.5, 6.55671e-08, 0, -6.55671e-08, 1.5, 1.5, -1.13247e-07, -4.95018e-15, -46.0098, 2.90731, -4.5013)

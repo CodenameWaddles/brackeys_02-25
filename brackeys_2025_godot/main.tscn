@@ -1,12 +1,13 @@
-[gd_scene load_steps=19 format=4 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=20 format=4 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
 [ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="2_kfp56"]
 [ext_resource type="PackedScene" uid="uid://cb7s04dpv0wii" path="res://Zones/Scenes/zone_2.tscn" id="3_ih7vx"]
+[ext_resource type="PackedScene" path="res://Zones/Scenes/zone_3.tscn" id="4_5rib2"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="6_rr8l2"]
-[ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/oil.tscn" id="7_l66rf"]
+[ext_resource type="PackedScene" path="res://Objects/Interactable/Tools/oil.tscn" id="7_l66rf"]
 [ext_resource type="PackedScene" uid="uid://b18ah6lt7x5ow" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
 [ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="9_bni7l"]
 [ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
@@ -64,7 +65,7 @@ volumetric_fog_emission_energy = 2.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_tunelPreZone", "_tunelPostZone")]
 script = ExtResource("1_yxd7y")
-_scenes = [ExtResource("3_ih7vx"), ExtResource("2_3h40t")]
+_scenes = [ExtResource("2_3h40t"), ExtResource("3_ih7vx"), ExtResource("4_5rib2")]
 Cart = NodePath("cart")
 _player = NodePath("Character")
 _audioManager = NodePath("AudioManager")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlmx0mcf2pncd"]
+
+[ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_f74ch"]
+[ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="2_0rvu8"]
+
+[node name="zone_4" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer")]
+script = ExtResource("1_f74ch")
+ZoneHazards = []
+ZoneTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Quai(3)" parent="." instance=ExtResource("2_0rvu8")]
