@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://db36oj7ddj7qc"]
+[gd_scene load_steps=2 format=3 uid="uid://db36oj7ddj7qc"]
 
-[ext_resource type="PackedScene" uid="uid://cuqi8xidsr4ww" path="res://Assets/Models/pipe.glb" id="1_mi8yy"]
-[ext_resource type="Material" uid="uid://egf6mi8wbo7m" path="res://Objects/Materials/metal.tres" id="2_8jjtf"]
+[ext_resource type="PackedScene" uid="uid://su3bd55re5jk" path="res://Assets/Models/Tuyau origine ok.fbx" id="1_eyw4m"]
 
-[node name="pipe" instance=ExtResource("1_mi8yy")]
+[node name="Tuyau origine ok" instance=ExtResource("1_eyw4m")]
 
-[node name="Cylinder" parent="." index="0"]
-material_override = ExtResource("2_8jjtf")
+[node name="Tuyau origine " parent="." index="0"]
+transform = Transform3D(0.645242, 0, 0, 0, 0.645242, 0, 0, 0, 0.645242, -0.0318298, 0.00337052, 0.077188)

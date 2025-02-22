@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp3ata2fjdami"]
+
+[ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="1_nnx1g"]
+[ext_resource type="Texture2D" uid="uid://hcaemx8qtkhu" path="res://textures/blackscreen.png" id="2_uprwy"]
+
+[node name="FailedRoomScreen" type="CanvasLayer"]
+
+[node name="Blackscreen" type="Sprite2D" parent="."]
+position = Vector2(590, 316)
+scale = Vector2(6.85547, 6.69925)
+texture = ExtResource("2_uprwy")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 456.0
+offset_top = 266.0
+offset_right = 129.0
+offset_bottom = -259.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_nnx1g")
+theme_override_font_sizes/font_size = 150
+text = "..."

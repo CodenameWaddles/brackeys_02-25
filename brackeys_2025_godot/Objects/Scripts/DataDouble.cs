@@ -22,4 +22,10 @@ public partial class DataDouble : DataDisplay {
         _mesh.SetInstanceShaderParameter("amplitude", _amplitudeTable[Data[0]]);
         _mesh.SetInstanceShaderParameter("period", _periodTable[Data[1]]);
     }
+    
+    public void Reset()
+    {
+        Data[0] = _defaultValue;
+        Data[1] = _defaultValue;
+    }
 }

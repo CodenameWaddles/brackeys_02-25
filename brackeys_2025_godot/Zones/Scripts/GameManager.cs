@@ -10,12 +10,15 @@ public partial class GameManager : Node
     [Export] private Cart Cart;
     [Export] private CharacterBody3D _player;
     [Export] public AudioManager _audioManager;
+    [Export] private Timer _resetRoomTimer;
+    [Export] private CanvasLayer _roomFailedScreen;
     
     //tunnels
     [Export] private Vector3 _tunelPosition1;
     [Export] private Vector3 _tunelPosition2;
     [Export] private Node3D _tunelPreZone;
     [Export] private Node3D _tunelPostZone;
+    [Export] private Node3D _resetPoint;
     [Export] private PackedScene _tunelPrefab;
     
     private int _currentCycle = 0;
@@ -24,6 +27,7 @@ public partial class GameManager : Node
 
     public override void _Ready()
     {
+        _roomFailedScreen.Visible = false;
         Cart.ArrivedSignal += _cartArrived;
         _player.Reparent(Cart);
         _audioManager.Disable();
@@ -37,10 +41,6 @@ public partial class GameManager : Node
 
     private void _loadScene(int sceneIndex)
     {
-        if (_currentScene != null)
-        {
-            _currentScene.QueueFree();
-        }
         
         //swap tunels and tp cart&player
         _tunelPreZone.QueueFree(); //on suprime le pre tunnel
@@ -54,9 +54,12 @@ public partial class GameManager : Node
         tempTunnel.Position = _tunelPosition2; //on le place au bon endroit
         _tunelPostZone = tempTunnel; //on dit que le post tunel = ce nouveau tunel
 
-
-        
         //load new scene
+        if (_currentScene != null)
+        {
+            _currentScene.QueueFree();
+        }
+        
         Node3D tempScene = (Node3D) _scenes[sceneIndex].Instantiate();
         AddChild(tempScene);
         tempScene.Position = _scenePosition;
@@ -65,6 +68,12 @@ public partial class GameManager : Node
         _currentScene = GetNode<Zone>(tempScene.GetPath());
         _currentScene.Cart = Cart;
         Cart._state = Cart.State.Moving;
+        
+        if (Cart.CartDataPanel._dataMode != _currentScene.ZoneDataMode)
+        {
+            Cart.CartDataPanel.SwitchDataMode();
+            GD.Print("new data mode : " + Cart.CartDataPanel._dataMode);
+        }
         
         GD.Print("loaded scene : " + _currentScene.Name + ", index : " + _currentSceneIndex);
     }
@@ -85,7 +94,34 @@ public partial class GameManager : Node
 
     public void _failedCurrentScene()
     {
-        
+        _resetRoomTimer.Start();
+        _roomFailedScreen.Visible = true;
     }
+
+    public void _on_reset_timer_timeout()
+    {
+
+        Cart.GlobalPosition = _resetPoint.Position;
+        _player.GlobalPosition = _resetPoint.Position + new Vector3(0, 0.2f, 0);
+        _player.Rotation = new Vector3(0, 0, 0);
+        _player.Reparent(Cart);
+        _currentSceneIndex--;
+        Cart._playerIsInCart = true;
+        Cart._movePlayerWithCart = true;
+        
+        Cart.CartDataPanel.DataSingle.Reset();
+        Cart.CartDataPanel.DataDouble.Reset();
+
+        playerInteraction playerInteraction = (playerInteraction)_player.FindChild("Head").FindChild("Camera");
+        if(playerInteraction.held != null)
+        {
+            playerInteraction.held.Activate();
+            playerInteraction.DropItem();
+        }
+        
+        _roomFailedScreen.Visible = false;
+
+    }
+    
     
 }

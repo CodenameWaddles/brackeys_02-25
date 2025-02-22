@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://4nv88uxswbec"]
+[gd_scene load_steps=2 format=3 uid="uid://4nv88uxswbec"]
 
-[ext_resource type="PackedScene" uid="uid://c75klerienkw8" path="res://Assets/Models/pipeLeak.glb" id="1_rpvaa"]
-[ext_resource type="Material" uid="uid://egf6mi8wbo7m" path="res://Objects/Materials/metal.tres" id="2_5w4jt"]
+[ext_resource type="PackedScene" uid="uid://rx67dc3hxh8" path="res://Assets/Models/Tuyau cassé.fbx" id="1_qc2h8"]
 
-[node name="pipeLeak" instance=ExtResource("1_rpvaa")]
+[node name="Tuyau cassé" instance=ExtResource("1_qc2h8")]
 
-[node name="Cylinder" parent="." index="0"]
-material_override = ExtResource("2_5w4jt")
+[node name="Cylindre 2" parent="." index="0"]
+transform = Transform3D(0.645242, 0, 0, 0, 0.645242, 0, 0, 0, 0.645242, -0.00022006, 0.000340298, -6.06664e-05)

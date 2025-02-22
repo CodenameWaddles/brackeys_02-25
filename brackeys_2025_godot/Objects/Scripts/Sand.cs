@@ -6,7 +6,7 @@ public partial class Sand : Hazard
 {
 
 	[Export] private Node3D _visuals;
-	[Export] private Node3D _collider;
+	[Export] private CollisionShape3D _collider;
 	[Export] private AudioStreamPlayer3D _shovelUseSound;
 	
 	private GameManager _main;
@@ -43,7 +43,7 @@ public partial class Sand : Hazard
 	protected override void MakeUninteractableSpecific()
 	{
 		IsSolved = true;
-		_collider.Visible = false;
+		_collider.Disabled = true;
 		_visuals.Visible = false;
 		_main._currentScene.UpdateIntegrityPercentage();
 	}
@@ -51,8 +51,7 @@ public partial class Sand : Hazard
 	protected override void MakeInteractableSpecific()
 	{
 		IsSolved = false;
-		_collider.Visible = true;
+		_collider.Disabled = false;
 		_visuals.Visible = true;
-		//_main._currentScene.UpdateIntegrityPercentage(); //useless psk suprimé ? et genr dans zone on reset on update après avoir reac les hazards
 	}
 }

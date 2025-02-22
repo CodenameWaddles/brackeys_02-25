@@ -23,6 +23,7 @@ public partial class Cart : Node3D {
     [Export] private AudioStreamPlayer3D _brakes;
     [Export] private AudioStreamPlayer3D _doorClosing;
     [Export] private AudioStreamPlayer3D _doorOpening;
+    [Export] private AudioStreamPlayer3D _bell;
     [Export] private AudioStreamPlayer3D _music;
 
     
@@ -101,6 +102,7 @@ public partial class Cart : Node3D {
                 _music.Stop();
                 _wheels.Stop();
                 _animationPlayer.Play("open_door");
+                _bell.Play();
                 _doorOpening.Play();
                 GameManager main = (GameManager)GetTree().Root.GetChild(0);
                 main._audioManager.Enable();
@@ -171,21 +173,18 @@ public partial class Cart : Node3D {
         }
     }
 
-    public void _on_player_detection_area_entered(Area3D area)
+    public void _on_player_detection_body_entered(Node3D body)
     {
-        if (area.IsInGroup("Player"))
+        if (body.IsInGroup("Player"))
         {
             _playerIsInCart = true;
-            GD.Print("player is in cart : " + _playerIsInCart);
-
         }
     }
-    public void _on_player_detection_area_exited(Area3D area)
+    public void _on_player_detection_body_exited(Node body)
     {
-        if (area.IsInGroup("Player"))
+        if (body.IsInGroup("Player"))
         {
             _playerIsInCart = false;
-            GD.Print("player is in cart : " + _playerIsInCart);
         }
     }
     

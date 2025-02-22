@@ -5,7 +5,7 @@ public partial class playerInteraction : Node3D {
 
     [Export] public Node3D _hand; //LAISSER PUBLIC
 
-    public Pickupable.PickupType held { get; private set; } = Pickupable.PickupType.None;
+    public Pickupable held { get; private set; } = null;
     private Interactable _hovering;
     
     private bool _justInteracted = false;
@@ -43,7 +43,7 @@ public partial class playerInteraction : Node3D {
     
     public override void _Process(double delta) {
         // interact with input button
-        if(_hovering is InputButton button && held == Pickupable.PickupType.None) {
+        if(_hovering is InputButton button && held == null) {
             if (Input.IsActionPressed("interact")) {
                 _main._currentScene.UpdateIntegrityPercentage();
                 if (!_justInteracted) {
@@ -69,7 +69,7 @@ public partial class playerInteraction : Node3D {
         // interact with pickupable
         else if (_hovering is Pickupable pickupable) {
             if (Input.IsActionJustPressed("interact")) {
-                if(held == Pickupable.PickupType.None) {
+                if(held == null) {
                     if (!pickupable.IsPickedUp) {
                         pickupable.Activate();
                         PickUpItem(pickupable);
@@ -77,7 +77,7 @@ public partial class playerInteraction : Node3D {
                     
                 }
                 else {
-                    if(held == pickupable.Type && pickupable.IsPickedUp) {
+                    if(held.Type == pickupable.Type && pickupable.IsPickedUp) {
                         pickupable.Activate();
                         DropItem();
                     }
@@ -87,7 +87,7 @@ public partial class playerInteraction : Node3D {
         // interact with interactable need object
         else if (_hovering is InteractableNeedObject interactableNeedObject) {
             if (Input.IsActionPressed("interact")) {
-                if (interactableNeedObject.Type == held) {
+                if (interactableNeedObject.Type == held.Type) {
                     interactableNeedObject.Activate();
                 }
             }
@@ -106,7 +106,7 @@ public partial class playerInteraction : Node3D {
     }
     
     private void PickUpItem(Pickupable item) {
-        held = item.Type;
+        held = item;
         Node3D newItem = (Node3D) item.Item.Duplicate();
         newItem.Position = _hand.Position;
         newItem.Visible = true;
@@ -114,8 +114,8 @@ public partial class playerInteraction : Node3D {
         Node3D player = (Node3D)GetParent();
     }
     
-    private void DropItem() {
-        held = Pickupable.PickupType.None;
+    public void DropItem() {
+        held = null;
         _hand.GetChild(0).QueueFree();
     }
 }
