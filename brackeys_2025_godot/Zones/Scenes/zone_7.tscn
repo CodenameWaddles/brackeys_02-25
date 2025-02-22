@@ -13,6 +13,7 @@ script = ExtResource("1_u7spn")
 roomname = "Central Sewer"
 ZoneHazards = [NodePath("LeakablePipe"), NodePath("sand"), NodePath("sand2")]
 ZoneTimer = NodePath("Timer")
+IsTimed = true
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
 
@@ -43,7 +44,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.54
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.7002, 0.13406, -10.207)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 90.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

@@ -24,11 +24,11 @@ public partial class GameManager : Node
     private int _currentCycle = 0;
     public Zone _currentScene;
     private int _currentSceneIndex = 0;
-    private Array<String> _messages = new Array<string>();
+    private Array<String> _messages;
 
     public override void _Ready()
     {
-        
+        _messages = new Array<string>();
         SetupMessages();
         
         _roomFailedScreen.Visible = false;
@@ -156,11 +156,11 @@ public partial class GameManager : Node
 
     private void SetupMessages()
     {
-        _messages[0] = "Big tests coming up, be wary.";
-        _messages[1] = "Lot of trash today. There should be enough room for it under the cart's shelf.";
-        _messages[2] = "Burn everything properly.";
-        _messages[3] = "Issues detected. Use tools to maintain structural integrity.";
-        _messages[4] = "Real tests start now. Be quick.";
+        _messages.Add("Big tests coming up, be wary.");
+        _messages.Add("Lot of trash today. There should be enough room for it under the cart's shelf.");
+        _messages.Add("Burn everything properly.");
+        _messages.Add("Issues detected. Use tools to maintain structural integrity.");
+        _messages.Add("Real tests start now. Be quick.");
         //_messages[5] = "Breach Detected, emergency status activated.";
         //_messages[6] = "Are you sure you want to bypass issue solving ? There is no coming back.";
         
