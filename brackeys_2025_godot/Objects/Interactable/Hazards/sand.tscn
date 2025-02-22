@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://Objects/Scripts/Sand.cs" id="1_da8j2"]
 [ext_resource type="AudioStream" uid="uid://mreo40ow3yyf" path="res://Assets/Sounds/Pelle qui prend.wav" id="2_mwvng"]
+[ext_resource type="PackedScene" uid="uid://dqysxvugkhage" path="res://Objects/Interactable/tas.tscn" id="2_xc3rx"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5pj1o"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_mkegv"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_efwty"]
+size = Vector3(1.39502, 1.45117, 1.3645)
 
 [node name="sand" type="Node3D" node_paths=PackedStringArray("_visuals", "_collider", "_shovelUseSound")]
 script = ExtResource("1_da8j2")
-_visuals = NodePath("Visual")
+_visuals = NodePath("Tas")
 _collider = NodePath("RigidBody3D/CollisionShape3D")
 _shovelUseSound = NodePath("AudioStreamPlayer3D")
 Type = 3
@@ -20,38 +20,11 @@ collision_mask = 3
 freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("BoxShape3D_5pj1o")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026123, -0.326541, 0.0213623)
+shape = SubResource("BoxShape3D_efwty")
 
-[node name="Visual" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
-mesh = SubResource("BoxMesh_mkegv")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Visual"]
-transform = Transform3D(0.711129, 0, -0.376523, 0, 0.804658, 0, 0.376523, 0, 0.711129, 0.479685, -0.112289, 0.250149)
-mesh = SubResource("BoxMesh_mkegv")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Visual"]
-transform = Transform3D(0.797073, 0, 0.11022, 0, 0.804658, 0, -0.11022, 0, 0.797073, -0.402852, -0.0810192, -0.290777)
-mesh = SubResource("BoxMesh_mkegv")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Visual"]
-transform = Transform3D(0.335208, 0, 0.53887, 0, 0.634622, 0, -0.53887, 0, 0.335208, 0.196675, -0.18294, -0.582698)
-mesh = SubResource("BoxMesh_mkegv")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Visual"]
-transform = Transform3D(0.416675, 0, -0.308267, 0, 0.518312, 0, 0.308267, 0, 0.416675, -0.494894, -0.18294, 0.323904)
-mesh = SubResource("BoxMesh_mkegv")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Visual"]
-transform = Transform3D(0.501371, 0, -0.131429, 0, 0.518312, 0, 0.131429, 0, 0.501371, 0.0926018, 0.43676, 0.0580649)
-mesh = SubResource("BoxMesh_mkegv")
-skeleton = NodePath("../..")
+[node name="Tas" parent="." instance=ExtResource("2_xc3rx")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_mwvng")

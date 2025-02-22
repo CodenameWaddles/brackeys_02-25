@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqysxvugkhage"]
+
+[ext_resource type="PackedScene" uid="uid://cnbpeknmjpv3u" path="res://Assets/Models/Tas.fbx" id="1_p11cc"]
+
+[node name="Tas" instance=ExtResource("1_p11cc")]

@@ -7,6 +7,7 @@ public abstract partial class Pickupable : Interactable {
         Blowtorch,
         Tape,
         Shovel,
+        Trash,
         None
     }
 

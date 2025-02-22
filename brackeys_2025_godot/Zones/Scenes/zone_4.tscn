@@ -19,9 +19,9 @@ one_shot = true
 [node name="Quai(3)" parent="." instance=ExtResource("2_0rvu8")]
 
 [node name="incinerateur" parent="." instance=ExtResource("3_kj5l8")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.325393, 1.24887, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.325393, 1.22348, 0)
 
 [node name="SingleDataDisplay" parent="." instance=ExtResource("4_ykpdr")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16.841, 3.0769, 7.76646)
+transform = Transform3D(-1.5, 1.31134e-07, -2.20231e-21, -6.57731e-08, -0.752357, 1.29767, 1.13446e-07, 1.29767, 0.752357, -28.4628, 4.1816, 1.438)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

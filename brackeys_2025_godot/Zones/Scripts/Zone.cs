@@ -7,7 +7,7 @@ using Array = System.Array;
 public partial class Zone : Node3D
 {
     [Export] private String roomname;
-    [Export] public Array<Hazard> ZoneHazards { get; private set; }
+    [Export] public Array<Interactable> ZoneHazards { get; private set; }
     [Export] public Timer ZoneTimer { get; private set; }
     [Export] public bool IsTimed { get; private set; }
     [Export] public DataSingle DisplayDataSingleInRoom { get; private set; }
@@ -64,9 +64,18 @@ public partial class Zone : Node3D
     {
         //set le integrity percentage
         int nbOfHazardSolved = 0;
-        foreach (var hazard in ZoneHazards)
+        foreach (var item in ZoneHazards)
         {
-            if (hazard.IsSolved) nbOfHazardSolved++;
+            if (item is Hazard)
+            {
+                Hazard hazard = (Hazard)item;
+                if (hazard.IsSolved) nbOfHazardSolved++;
+            }
+            else if (item is Trashbag)
+            {
+                Trashbag trashbag = (Trashbag)item;
+                if (trashbag.IsSolved) nbOfHazardSolved++;
+            }
         }
     
         if (MatchData())

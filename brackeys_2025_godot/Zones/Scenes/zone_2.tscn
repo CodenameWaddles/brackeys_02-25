@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://cb7s04dpv0wii"]
+[gd_scene load_steps=12 format=4 uid="uid://cb7s04dpv0wii"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_6dujy"]
-[ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="6_e6hf8"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="7_edngt"]
 [ext_resource type="PackedScene" uid="uid://dodxa5romgf8r" path="res://Zones/RoomsModelsNodes/water_final.tscn" id="7_iupmb"]
 [ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="7_j7qy7"]
@@ -50,13 +49,10 @@ albedo_texture = ExtResource("7_wyuq5")
 [node name="Zone2" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_6dujy")
 roomname = "Central Sewer"
-ZoneHazards = [NodePath("sand")]
+ZoneHazards = []
 ZoneTimer = NodePath("Timer")
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
-
-[node name="SingleDataDisplay" parent="." instance=ExtResource("7_edngt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.9793, 3.95623, -4.66862)
 
 [node name="Plan" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.71, 0, 0, 0, 1.71, 0, 0, 0, 1.71, 0, 0, 0)
@@ -65,9 +61,6 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_bl8g0")
 
 [node name="Quai(3)" parent="." instance=ExtResource("7_j7qy7")]
-
-[node name="sand" parent="." instance=ExtResource("6_e6hf8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.15322, 1.91977, -0.895706)
 
 [node name="WallLight" parent="." instance=ExtResource("7_l20nk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.6247, 7.98079, -4.87166)
@@ -87,5 +80,8 @@ one_shot = true
 
 [node name="Tuyau origine ok" parent="." instance=ExtResource("8_l5pmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.0517, -3.3079, -13.5888)
+
+[node name="SingleDataDisplay" parent="." instance=ExtResource("7_edngt")]
+transform = Transform3D(3.38832e-08, 0.775159, 1.28418, 1.5, -6.55671e-08, -2.00912e-15, 5.61335e-08, 1.28418, -0.775159, -44.9015, -4.40209, -16.4808)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
