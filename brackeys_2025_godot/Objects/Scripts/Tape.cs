@@ -1,11 +1,11 @@
 using Godot;
 using System;
 
-public partial class Oil : Pickupable {
+public partial class Tape : Pickupable {
     
     public override void _Ready() {
         _isInteractable = true;
-        Type = PickupType.Oil;
+        Type = PickupType.Tape;
     }
     
 }

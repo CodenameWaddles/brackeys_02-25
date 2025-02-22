@@ -11,7 +11,6 @@ public partial class Wheel : Hazard {
     private int _fixProgress;
     
     public override void _Ready() {
-        Type = Pickupable.PickupType.Oil;
         MakeInteractable();
     }
     

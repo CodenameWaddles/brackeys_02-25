@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt455tf88g5e1"]
+
+[ext_resource type="PackedScene" uid="uid://b2nylon8q2csx" path="res://Assets/Models/poster_flat.glb" id="1_2to6y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ceqy8"]
+albedo_color = Color(0.712129, 0.712129, 0.712129, 1)
+
+[node name="poster_flat" instance=ExtResource("1_2to6y")]
+
+[node name="Plane_001" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ceqy8")

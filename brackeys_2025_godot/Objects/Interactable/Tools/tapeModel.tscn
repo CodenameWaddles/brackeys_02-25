@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://biwyud75mfwua"]
+
+[ext_resource type="PackedScene" uid="uid://jesr37yaoqa" path="res://Assets/Models/Scotch.fbx" id="1_mpul5"]
+
+[node name="Scotch" instance=ExtResource("1_mpul5")]
+
+[node name="Cylindre" parent="." index="0"]
+transform = Transform3D(0.341548, 5.31308e-09, -2.11293e-09, -5.31308e-09, 0.341548, 3.38795e-10, 2.11293e-09, -3.38795e-10, 0.341548, 0.512613, -0.0559968, 0.0934917)
+
+[node name="Boîte" parent="." index="1"]
+transform = Transform3D(0.228143, 0.151217, 1.22147e-07, -8.14315e-08, -4.84457e-08, 0.341548, 0.254177, -0.135728, 0, 0.838315, -0.0559968, 0.0934915)
+
+[node name="Cylindre 1" parent="." index="2"]
+transform = Transform3D(0.341548, 5.31308e-09, -2.11293e-09, -5.31308e-09, 0.341548, 3.38795e-10, 2.11293e-09, -3.38795e-10, 0.341548, 0.512613, -0.0544593, 0.0934917)

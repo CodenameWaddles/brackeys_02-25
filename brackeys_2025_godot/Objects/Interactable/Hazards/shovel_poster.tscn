@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkle3a28feg6j"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/Poster.cs" id="1_qe6u2"]
+[ext_resource type="PackedScene" uid="uid://bt455tf88g5e1" path="res://Objects/Interactable/Hazards/poster_flat.tscn" id="1_vvmx7"]
+[ext_resource type="Texture2D" uid="uid://bx7stear77c4u" path="res://Assets/Textures/shovel_poster.png" id="2_velih"]
+[ext_resource type="PackedScene" uid="uid://b04fytau2uupx" path="res://Objects/Interactable/Hazards/poster_folded.tscn" id="3_4icwn"]
+[ext_resource type="AudioStream" uid="uid://cxgmvk18r4hab" path="res://Assets/Sounds/tape.wav" id="5_bufwb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7r4l"]
+albedo_texture = ExtResource("2_velih")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2lr4d"]
+albedo_texture = ExtResource("2_velih")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b0vjb"]
+size = Vector3(0.715454, 0.0350342, 1.08594)
+
+[node name="ShovelPoster" type="Node3D" node_paths=PackedStringArray("_posterFlat", "_posterFolded", "_tapeSound")]
+script = ExtResource("1_qe6u2")
+_posterFlat = NodePath("poster_flat")
+_posterFolded = NodePath("poster_folded")
+_tapeSound = NodePath("AudioStreamPlayer3D")
+Type = 1
+
+[node name="poster_flat" parent="." instance=ExtResource("1_vvmx7")]
+
+[node name="Plane" parent="poster_flat" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_a7r4l")
+
+[node name="poster_folded" parent="." instance=ExtResource("3_4icwn")]
+visible = false
+
+[node name="Plane" parent="poster_folded" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2lr4d")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00506592, 0.00738525, 0.00195313)
+shape = SubResource("BoxShape3D_b0vjb")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_bufwb")
+
+[editable path="poster_flat"]
+[editable path="poster_folded"]
