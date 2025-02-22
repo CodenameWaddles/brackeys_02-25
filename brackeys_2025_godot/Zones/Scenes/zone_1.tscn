@@ -7,10 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="7_epq7e"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_h6p3q"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="7_pvbji"]
-<<<<<<< Updated upstream
-=======
-[ext_resource type="PackedScene" uid="uid://bcw8su71niem2" path="res://Zones/RoomsModelsNodes/stairs.tscn" id="8_64k4a"]
->>>>>>> Stashed changes
 
 [sub_resource type="BoxMesh" id="BoxMesh_atmdf"]
 
