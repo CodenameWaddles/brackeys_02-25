@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu6bnwex6e47f"]
+
+[ext_resource type="PackedScene" uid="uid://rtkmfhvf4127" path="res://Assets/Cart/meter.glb" id="1_3yxg7"]
+
+[node name="meter" instance=ExtResource("1_3yxg7")]

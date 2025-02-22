@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bt7wftvf8lgas"]
+
+[ext_resource type="PackedScene" uid="uid://cu6bnwex6e47f" path="res://Objects/Cart/meterModel.tscn" id="1_5e4ie"]
+[ext_resource type="Script" path="res://Objects/Cart/StabilityMeter.cs" id="1_rdw6k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_827yv"]
+size = Vector3(0.02, 0.005, 0.005)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px1oi"]
+albedo_color = Color(0.298039, 0.756863, 0.380392, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5gifs"]
+albedo_color = Color(0.717647, 0.286275, 0.282353, 1)
+
+[node name="StabilityMeter" type="Node3D" node_paths=PackedStringArray("_indicator", "_max", "_min")]
+script = ExtResource("1_rdw6k")
+_indicator = NodePath("meter/Cube_001")
+_max = NodePath("Max")
+_min = NodePath("Min")
+
+[node name="meter" parent="." instance=ExtResource("1_5e4ie")]
+
+[node name="Max" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.331929)
+
+[node name="Min" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.338402)
+
+[node name="Plus" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00610419, -0.37)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Plus"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0277305, 0)
+mesh = SubResource("BoxMesh_827yv")
+surface_material_override/0 = SubResource("StandardMaterial3D_px1oi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0277305, 0)
+mesh = SubResource("BoxMesh_827yv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px1oi")
+
+[node name="Minus" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.006, 0.37)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Minus"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0277305, 0)
+mesh = SubResource("BoxMesh_827yv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5gifs")
+
+[editable path="meter"]
