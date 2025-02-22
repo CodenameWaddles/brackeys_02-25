@@ -7,6 +7,9 @@
 =======
 [ext_resource type="PackedScene" uid="uid://cb7s04dpv0wii" path="res://Zones/Scenes/zone_2.tscn" id="3_ih7vx"]
 [ext_resource type="PackedScene" uid="uid://co34hl8xqgms7" path="res://Zones/Scenes/zone_3.tscn" id="4_5rib2"]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="6_rr8l2"]
