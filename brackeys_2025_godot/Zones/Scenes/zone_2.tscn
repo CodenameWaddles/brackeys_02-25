@@ -46,9 +46,10 @@ shadow_mesh = SubResource("ArrayMesh_bibkc")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl8g0"]
 albedo_texture = ExtResource("7_wyuq5")
 
-[node name="Zone2" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom")]
+[node name="Zone2" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_6dujy")
 ZoneHazards = [NodePath("sand")]
+ZoneTimer = NodePath("Timer")
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 
 [node name="SingleDataDisplay" parent="." instance=ExtResource("7_edngt")]
@@ -77,3 +78,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.54
 
 [node name="water_final" parent="." instance=ExtResource("7_iupmb")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.7002, 0.13406, -10.207)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

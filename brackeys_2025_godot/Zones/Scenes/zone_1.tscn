@@ -19,7 +19,7 @@ size = Vector3(0.797607, 0.176758, 2.01266)
 
 [node name="Zone1" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_opr7o")
-ZoneHazards = []
+ZoneHazards = [NodePath("sand")]
 ZoneTimer = NodePath("Timer")
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
@@ -443,3 +443,5 @@ transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -31.17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stairs/StaticBody3D"]
 transform = Transform3D(0.812033, 0.583612, 0, -0.583612, 0.812033, 0, 0, 0, 1, -34.0457, 10.6048, -11.8074)
 shape = SubResource("BoxShape3D_ai15k")
+
+[connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

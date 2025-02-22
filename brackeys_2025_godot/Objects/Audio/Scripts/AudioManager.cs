@@ -23,6 +23,9 @@ public partial class AudioManager : Node
 		soundPool.Remove(_playingSound);
 		Random r = new Random();
 		int index = r.Next(soundPool.Count);
+		GD.Print("sound pool size : " + soundPool.Count);
+		GD.Print("index picked : " + index);
+		
 		soundPool[index].Play();
 		_playingSound = soundPool[index];
 	}

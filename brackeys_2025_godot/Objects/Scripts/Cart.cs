@@ -42,7 +42,8 @@ public partial class Cart : Node3D {
     public bool allowedToMove = true; //temp
     private float LerpWeight => 0.1f / StartStopTime;
     private float _speed;
-    private bool _movePlayerWithCart = true;
+    public bool _movePlayerWithCart = true;
+    public bool _playerIsInCart;
     
     public override void _Ready()
     {
@@ -162,15 +163,30 @@ public partial class Cart : Node3D {
         }   
         else if(area.IsInGroup("End"))
         {
+            //si y'a pas le joueur il continue a l'infini jusqu'au restart de la zone
+            if (!_playerIsInCart) return;
             //puisque chaque end collider ne sert qu'une fois on le queue free ici
             area.QueueFree();
             EmitSignal(SignalName.ArrivedSignal);
         }
     }
 
-    public void FadeSound(AudioStreamPlayer3D audioStream, float time)
+    public void _on_player_detection_area_entered(Area3D area)
     {
-        
+        if (area.IsInGroup("Player"))
+        {
+            _playerIsInCart = true;
+            GD.Print("player is in cart : " + _playerIsInCart);
+
+        }
+    }
+    public void _on_player_detection_area_exited(Area3D area)
+    {
+        if (area.IsInGroup("Player"))
+        {
+            _playerIsInCart = false;
+            GD.Print("player is in cart : " + _playerIsInCart);
+        }
     }
     
 }

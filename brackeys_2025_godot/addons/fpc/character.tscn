@@ -368,7 +368,8 @@ MarginContainer/constants/margin_top = 10
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
 
-[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH", "STEPS_AUDIO", "STEPS_TIMER")]
+[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH", "STEPS_AUDIO", "STEPS_TIMER") groups=["Player"]]
+floor_max_angle = 1.0472
 script = ExtResource("1_0t4e8")
 base_speed = 2.0
 default_reticle = "res://addons/fpc/reticles/reticle_0.tscn"
@@ -388,7 +389,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_jw1de")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_uy03j")
 

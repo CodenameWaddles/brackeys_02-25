@@ -1,15 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://co34hl8xqgms7"]
+[gd_scene load_steps=11 format=3 uid="uid://co34hl8xqgms7"]
 
 [ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="1_b8lij"]
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_xwwdd"]
 [ext_resource type="PackedScene" uid="uid://c6lrj7jan2kfl" path="res://Zones/RoomsModelsNodes/trash.tscn" id="3_vhm6w"]
 [ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="4_lpswr"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="5_vec5x"]
+[ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="6_v8p7c"]
+[ext_resource type="PackedScene" uid="uid://dmutabg17sf5n" path="res://Zones/RoomsModelsNodes/stairs.tscn" id="7_7vuqq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h78t7"]
 albedo_texture = ExtResource("4_lpswr")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ppa64"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pqq3x"]
+size = Vector3(0.929504, 1.01062, 2.27936)
 
 [node name="zone_3" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_xwwdd")
@@ -36,3 +41,18 @@ size = Vector3(55.1528, 23.5415, 53.167)
 
 [node name="DoubleDataDisplay" parent="." instance=ExtResource("5_vec5x")]
 transform = Transform3D(1.13247e-07, 1.5, 6.55671e-08, 0, -6.55671e-08, 1.5, 1.5, -1.13247e-07, -4.95018e-15, -46.0098, 2.90731, -4.5013)
+
+[node name="Stairs2Stack" parent="." instance=ExtResource("6_v8p7c")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -40.4128, 1.25, 2.8)
+
+[node name="stairs" parent="." instance=ExtResource("7_7vuqq")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -36.8371, 3.64484, 2.8)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.8583, 4.55383, 2.56026)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.701257, -0.712906, -0.00196709, 0.712909, 0.701256, 0.00103679, 0.000640285, -0.00212942, 0.999997, 0.239807, 0.18486, 0.405373)
+shape = SubResource("BoxShape3D_pqq3x")
+
+[connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

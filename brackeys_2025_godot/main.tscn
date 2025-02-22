@@ -1,14 +1,17 @@
-[gd_scene load_steps=18 format=4 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=21 format=4 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
 [ext_resource type="PackedScene" uid="uid://bsv0rixeuanqn" path="res://Objects/Cart/cart.tscn" id="2_kfp56"]
+[ext_resource type="PackedScene" uid="uid://cb7s04dpv0wii" path="res://Zones/Scenes/zone_2.tscn" id="3_pn6f8"]
+[ext_resource type="PackedScene" uid="uid://co34hl8xqgms7" path="res://Zones/Scenes/zone_3.tscn" id="4_4rtxn"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
+[ext_resource type="PackedScene" uid="uid://dlmx0mcf2pncd" path="res://Zones/Scenes/zone_4.tscn" id="5_ueelr"]
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="6_rr8l2"]
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/tape.tscn" id="7_l66rf"]
-[ext_resource type="PackedScene" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
+[ext_resource type="PackedScene" uid="uid://b18ah6lt7x5ow" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
 [ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="9_bni7l"]
-[ext_resource type="PackedScene" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
+[ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
 [ext_resource type="Texture2D" uid="uid://b2s3n7e66scy" path="res://Assets/Textures/metal4x4.png" id="12_3c025"]
 [ext_resource type="PackedScene" uid="uid://cxuquqsfkx8sa" path="res://Objects/Audio/audio_manager.tscn" id="13_2yeii"]
 
@@ -63,7 +66,7 @@ volumetric_fog_emission_energy = 2.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_tunelPreZone", "_tunelPostZone")]
 script = ExtResource("1_yxd7y")
-_scenes = [ExtResource("2_3h40t")]
+_scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr")]
 Cart = NodePath("cart")
 _player = NodePath("Character")
 _audioManager = NodePath("AudioManager")
@@ -116,4 +119,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_uvvqw")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5v3ka")
 
-[node name="AudioManager" parent="." instance=ExtResource("13_2yeii")]
+[node name="AudioManager" parent="." node_paths=PackedStringArray("_soundscapes") instance=ExtResource("13_2yeii")]
+_soundscapes = []

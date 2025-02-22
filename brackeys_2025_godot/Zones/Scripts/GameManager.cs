@@ -69,8 +69,6 @@ public partial class GameManager : Node
         GD.Print("loaded scene : " + _currentScene.Name + ", index : " + _currentSceneIndex);
     }
     
-    
-    
     private void _cartArrived()
     {
         if (_currentSceneIndex == _scenes.Count - 1)
@@ -84,4 +82,10 @@ public partial class GameManager : Node
             CallDeferred("_loadScene", _currentSceneIndex + 1);
         }
     }
+
+    public void _failedCurrentScene()
+    {
+        
+    }
+    
 }
