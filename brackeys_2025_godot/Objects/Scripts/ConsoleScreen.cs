@@ -24,10 +24,6 @@ public partial class ConsoleScreen : Interactable
 		//MakeInteractable();
 	}
 
-	public override void _Process(double delta) {
-		if(Input.IsActionJustPressed("ui_accept")) AddMessage("hello sir I hope you are having a good day");
-	}
-
 	protected override void ActivateSpecific() {
 		var count = _messages.Count;
 		String message = "";

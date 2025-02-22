@@ -54,7 +54,11 @@ public partial class Zone : Node3D
     
         if (MatchData())
         {
+            Cart.CartDataPanel.TurnOnGreenLight();
             nbOfHazardSolved += 1;
+        }
+        else {
+            Cart.CartDataPanel.TurnOffGreenLight();
         }
         
         IntegrityPercentage = InitialIntegrityPercentage - nbOfHazardSolved * IntegritySteps;
