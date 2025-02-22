@@ -18,6 +18,7 @@ size = Vector3(0.929504, 1.01062, 2.27936)
 
 [node name="zone_3" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_xwwdd")
+roomname = "Trash Disposal Unit"
 ZoneHazards = []
 ZoneTimer = NodePath("Timer")
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")

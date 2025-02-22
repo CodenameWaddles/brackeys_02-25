@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://c1ao34dadh1y4"]
+[gd_scene load_steps=2 format=3 uid="uid://c1ao34dadh1y4"]
+
+[ext_resource type="PackedScene" uid="uid://go3ou5do3y1k" path="res://UIS/progress_bar.tscn" id="1_hqcyl"]
 
 [node name="Node3D" type="Node3D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="ProgressBar" parent="SubViewport" instance=ExtResource("1_hqcyl")]

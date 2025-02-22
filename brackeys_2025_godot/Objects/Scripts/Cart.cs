@@ -17,6 +17,7 @@ public partial class Cart : Node3D {
     [Export] private AnimationPlayer _animationPlayer;
     [Export] private CharacterBody3D _player;
     [Export] private AnimationTree _lampAnimation;
+    [Export] public ConsoleScreen ConsoleScreen;
     
     //audio
     [Export] private AudioStreamPlayer3D _wheels;

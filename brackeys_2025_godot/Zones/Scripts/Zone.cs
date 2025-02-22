@@ -6,13 +6,14 @@ using Array = System.Array;
 
 public partial class Zone : Node3D
 {
+    [Export] private String roomname;
     [Export] public Array<Hazard> ZoneHazards { get; private set; }
     [Export] public Timer ZoneTimer { get; private set; }
     [Export] public bool IsTimed { get; private set; }
     [Export] public DataSingle DisplayDataSingleInRoom { get; private set; }
     [Export] public DataDouble DisplayDataDoubleInRoom { get; private set; }
     [Export] public CartDataPanel.DataMode ZoneDataMode;
-
+    
     private float IntegrityPercentage;
     private float InitialIntegrityPercentage;
     private float IntegrityPercentageToComplete;
@@ -41,6 +42,7 @@ public partial class Zone : Node3D
         IntegritySteps = (InitialIntegrityPercentage - IntegrityPercentageToComplete) / (ZoneHazards.Count + 1); // +1 pour les datas
         IntegrityPercentageToComplete += IntegritySteps / 2; //petit offset pour que ce soit plus lisible
         IntegrityPercentage = InitialIntegrityPercentage;
+        
     }
     
     public override void _Process(double delta)
@@ -88,6 +90,7 @@ public partial class Zone : Node3D
         EndTimer.Timeout += _cart_leave_without_player;
         EndTimer.Start(10);
         Cart._alarm.Play();
+        GD.Print("playing alarm");
     }
 
     private void _cart_leave_without_player()
@@ -122,6 +125,12 @@ public partial class Zone : Node3D
         EndTimer.Stop();
         GameManager gm = (GameManager)GetTree().Root.GetChild(0);
         gm._failedCurrentScene();
+    }
+
+    public void _sendRoomMessage()
+    {
+        String data = dataMatched ? "yes" : "no";
+        Cart.ConsoleScreen.AddMessage("Location : " + roomname + "\nData transfered : " + data + "\nIssues detected : " + ZoneHazards.Count);
     }
     
     

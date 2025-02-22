@@ -24,9 +24,13 @@ public partial class GameManager : Node
     private int _currentCycle = 0;
     public Zone _currentScene;
     private int _currentSceneIndex = 0;
+    private Array<String> _messages;
 
     public override void _Ready()
     {
+        
+        SetupMessages();
+        
         _roomFailedScreen.Visible = false;
         Cart.ArrivedSignal += _cartArrived;
         _player.Reparent(Cart);
@@ -72,6 +76,32 @@ public partial class GameManager : Node
         Cart.CartDataPanel.SetDataMode(_currentScene.ZoneDataMode);
         
         GD.Print("loaded scene : " + _currentScene.Name + ", index : " + _currentSceneIndex);
+
+        if (_currentSceneIndex < 15) //cut après que porte ouverte découverte
+        {
+            _currentScene._sendRoomMessage();
+        }
+        
+        switch (_currentSceneIndex)
+        {
+            case 0: 
+                SendNextMessage(); //intro
+                break;
+            case 2: 
+                SendNextMessage(); //trash
+                break;
+            case 3:
+                SendNextMessage(); //burn
+                break;
+            case 4:
+                SendNextMessage(); //tools
+                Cart.openTools();
+                break;
+            case 6:
+                SendNextMessage(); //timer
+                break;
+        }
+        
     }
     
     private void _cartArrived()
@@ -98,8 +128,8 @@ public partial class GameManager : Node
     {
 
         Cart.GlobalPosition = _resetPoint.Position;
-        _player.GlobalPosition = _resetPoint.Position + new Vector3(0, 0.2f, 0);
-        _player.Rotation = new Vector3(0, 0, 0);
+        _player.GlobalPosition = _resetPoint.Position + new Vector3(0, 0.1f, 0);
+        _player.Rotation = new Vector3(0, -90, 0);
         _player.Reparent(Cart);
         _currentSceneIndex--;
         Cart._playerIsInCart = true;
@@ -116,7 +146,24 @@ public partial class GameManager : Node
         }
         
         _roomFailedScreen.Visible = false;
+    }
 
+    public void SendNextMessage()
+    {
+        Cart.ConsoleScreen.AddMessage(_messages[0]);
+        _messages.RemoveAt(0);
+    }
+
+    private void SetupMessages()
+    {
+        _messages[0] = "Big tests coming up, be wary.";
+        _messages[1] = "Lot of trash today. There should be enough room for it under the cart's shelf.";
+        _messages[2] = "Burn everything properly.";
+        _messages[3] = "Issues detected. Use tools to maintain structural integrity.";
+        _messages[4] = "Real tests start now. Be quick.";
+        //_messages[5] = "Breach Detected, emergency status activated.";
+        //_messages[6] = "Are you sure you want to bypass issue solving ? There is no coming back.";
+        
     }
     
     

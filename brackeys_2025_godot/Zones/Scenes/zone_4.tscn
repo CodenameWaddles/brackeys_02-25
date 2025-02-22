@@ -7,6 +7,7 @@
 
 [node name="zone_4" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_f74ch")
+roomname = "Incinerator"
 ZoneHazards = []
 ZoneTimer = NodePath("Timer")
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
