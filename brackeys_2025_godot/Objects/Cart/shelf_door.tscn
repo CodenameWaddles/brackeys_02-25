@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://4wlusl7qhhhp"]
+
+[ext_resource type="Script" path="res://Objects/Cart/ShelfDoor.cs" id="1_22j51"]
+[ext_resource type="PackedScene" uid="uid://bhhn7ptc1l411" path="res://Objects/Cart/shelf_door_model.tscn" id="2_2yolo"]
+
+[sub_resource type="Animation" id="Animation_lll7d"]
+resource_name = "open"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.433333, 0.533333, 0.633333, 0.733333),
+"transitions": PackedFloat32Array(0.517632, 1, 0.68302, 1, 0.68302, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.62316, 0, 0), Vector3(1.55334, 0, 0), Vector3(1.62316, 0, 0), Vector3(1.6057, 0, 0), Vector3(1.62316, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_guwxf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14pd5"]
+_data = {
+"RESET": SubResource("Animation_guwxf"),
+"open": SubResource("Animation_lll7d")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sca7q"]
+size = Vector3(0.799072, 0.428986, 0.0367432)
+
+[node name="ShelfDoor" type="Node3D" node_paths=PackedStringArray("_animationPlayer")]
+script = ExtResource("1_22j51")
+_animationPlayer = NodePath("AnimationPlayer")
+
+[node name="shelf_door" parent="." instance=ExtResource("2_2yolo")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_14pd5")
+}
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00134277, 0.196518, 0.00274658)
+shape = SubResource("BoxShape3D_sca7q")

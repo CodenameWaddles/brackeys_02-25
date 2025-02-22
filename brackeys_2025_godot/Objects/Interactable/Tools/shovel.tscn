@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Objects/Scripts/Shovel.cs" id="1_61qap"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rnb66"]
-size = Vector3(0.277222, 1.54382, 0.378876)
+size = Vector3(0.277222, 1.30563, 0.378876)
 
 [sub_resource type="Animation" id="Animation_ivjpa"]
 length = 0.001
@@ -72,13 +72,13 @@ script = ExtResource("1_61qap")
 Item = NodePath("Pelle")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(-0.186311, 0.0872854, -0.978606, 0.907858, -0.365497, -0.205441, -0.375609, -0.926711, -0.0111469, -0.0411607, 0.0751304, 0.314175)
+transform = Transform3D(-0.186311, 0.0872853, -0.978606, 0.907858, -0.365496, -0.205442, -0.375609, -0.926711, -0.0111466, -0.0411607, 0.0751304, 0.314175)
 collision_layer = 2
 collision_mask = 2
 freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0864542, 0.337178, 0)
+transform = Transform3D(1.00001, -3.8743e-07, -1.90921e-07, 5.96046e-08, 1.00001, -4.25614e-07, -4.22355e-07, 1.96509e-07, 1, -0.0864543, 0.303959, 9.31323e-09)
 shape = SubResource("BoxShape3D_rnb66")
 
 [node name="Pelle" parent="." instance=ExtResource("1_8bbqd")]

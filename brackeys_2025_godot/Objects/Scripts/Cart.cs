@@ -26,8 +26,9 @@ public partial class Cart : Node3D {
     [Export] private AudioStreamPlayer3D _bell;
     [Export] public AudioStreamPlayer3D _alarm;
     [Export] private AudioStreamPlayer3D _music;
-
     
+    [Export] private ShelfDoor _shelfDoor1;
+    [Export] private ShelfDoor _shelfDoor2;
 
     [Export] public CartDataPanel CartDataPanel;
     [Export] public PressButton PressButton { get; private set; }
@@ -190,5 +191,9 @@ public partial class Cart : Node3D {
             _playerIsInCart = false;
         }
     }
-    
+
+    public void openTools() {
+        _shelfDoor1.OpenDoor();
+        _shelfDoor2.OpenDoor();
+    }
 }
