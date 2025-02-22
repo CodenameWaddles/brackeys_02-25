@@ -1,26 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1giicc0dv73x"]
+[gd_scene load_steps=8 format=3 uid="uid://c1giicc0dv73x"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/PressButton.cs" id="1_lg4sk"]
+[ext_resource type="PackedScene" uid="uid://dryn2vfl042sw" path="res://Objects/Displays/diode.tscn" id="3_q4kk1"]
 [ext_resource type="PackedScene" uid="uid://bqs7bylirp4lx" path="res://Objects/Cart/big_button.tscn" id="3_qwyuw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_r856q"]
 height = 0.139922
 radius = 0.122136
-
-[sub_resource type="Animation" id="Animation_mfvdb"]
-resource_name = "press"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("big_button/Cylinder:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(0.129409, 0.707107, 1),
-"update": 0,
-"values": [Vector3(0, 0.0617862, 0), Vector3(0, 0.03, 0), Vector3(0, 0.0617862, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_iypai"]
 length = 0.001
@@ -37,16 +23,35 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.0617862, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_mfvdb"]
+resource_name = "press"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("big_button/Cylinder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.129409, 0.707107, 1),
+"update": 0,
+"values": [Vector3(0, 0.0617862, 0), Vector3(0, 0.03, 0), Vector3(0, 0.0617862, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fl0cl"]
 _data = {
 "RESET": SubResource("Animation_iypai"),
 "press": SubResource("Animation_mfvdb")
 }
 
-[node name="PressButton" type="Node3D" node_paths=PackedStringArray("_shape", "_animationPlayer")]
+[node name="PressButton" type="Node3D" node_paths=PackedStringArray("_shape", "_animationPlayer", "_greenLightMesh", "_greenLight", "_redLightMesh", "_redLight")]
 script = ExtResource("1_lg4sk")
 _shape = NodePath("RigidBody3D/CollisionShape3D")
 _animationPlayer = NodePath("AnimationPlayer")
+_greenLightMesh = NodePath("diode_green/Industrial lantern A_1")
+_greenLight = NodePath("diode_green/OmniLight3D")
+_redLightMesh = NodePath("diode_red/Industrial lantern A_1")
+_redLight = NodePath("diode_red/OmniLight3D")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 2
@@ -60,9 +65,31 @@ shape = SubResource("CylinderShape3D_r856q")
 [node name="big_button" parent="." instance=ExtResource("3_qwyuw")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 
+[node name="Cylinder" parent="big_button" index="1"]
+transform = Transform3D(0.0626434, 0, 0, 0, 0.032918, 0, 0, 0, 0.0626434, 0, 0.0617862, 0)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_fl0cl")
 }
 
+[node name="diode_green" parent="." instance=ExtResource("3_q4kk1")]
+transform = Transform3D(-0.25, 3.7749e-08, 0, -3.7749e-08, -0.25, 0, 0, 0, 0.25, 0.06, -0.045, -0.16)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="diode_green"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0937479, 0)
+light_color = Color(0.172549, 0.839216, 0.156863, 1)
+light_energy = 0.0
+omni_range = 0.3
+
+[node name="diode_red" parent="." instance=ExtResource("3_q4kk1")]
+transform = Transform3D(-0.25, 2.18557e-08, 0, -2.18557e-08, -0.25, 0, 0, 0, 0.25, -0.06, -0.034, -0.16)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="diode_red"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0937479, 0)
+light_color = Color(0.854902, 0.168627, 0.156863, 1)
+omni_range = 0.3
+
 [editable path="big_button"]
+[editable path="diode_green"]
+[editable path="diode_red"]

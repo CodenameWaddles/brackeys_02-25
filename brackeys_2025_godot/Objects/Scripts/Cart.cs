@@ -67,6 +67,7 @@ public partial class Cart : Node3D {
         // Smoothly start the cart
         if (_state == State.Starting)
         {
+            PressButton.MakeUninteractable();
             _wheels.VolumeDb = Mathf.Lerp(_wheels.VolumeDb, -30, LerpWeight);
             //tant que l'anim de close door est en train de jouer on augmente pas la vitesse
             if (!_animationPlayer.GetCurrentAnimation().Contains("close_door"))
@@ -108,7 +109,7 @@ public partial class Cart : Node3D {
         //play music if moving
         if (_state == State.Moving)
         {
-            
+            PressButton.MakeUninteractable();   
             if (!_music.IsPlaying())
             {
                 _music.Play();

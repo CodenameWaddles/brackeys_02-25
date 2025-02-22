@@ -101,7 +101,7 @@ transform = Transform3D(-0.25, 3.7749e-08, 0, -3.7749e-08, -0.25, 0, 0, 0, 0.25,
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0937479, 0)
 light_color = Color(0.172549, 0.839216, 0.156863, 1)
 light_energy = 0.0
-omni_range = 0.5
+omni_range = 0.4
 
 [node name="diode_green_single" parent="." instance=ExtResource("4_b4h67")]
 transform = Transform3D(-0.25, -2.18557e-08, 0, -2.18557e-08, 0.25, 2.18557e-08, -1.91069e-15, 2.18557e-08, -0.25, 0.124054, -0.0838813, -0.296199)
@@ -110,7 +110,7 @@ transform = Transform3D(-0.25, -2.18557e-08, 0, -2.18557e-08, 0.25, 2.18557e-08,
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0937479, 0)
 light_color = Color(0.172549, 0.839216, 0.156863, 1)
 light_energy = 0.0
-omni_range = 0.5
+omni_range = 0.4
 
 [editable path="diode_green_double"]
 [editable path="diode_green_single"]
