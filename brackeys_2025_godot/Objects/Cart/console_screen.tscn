@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0ia6t1bastf7"]
+[gd_scene load_steps=10 format=3 uid="uid://c0ia6t1bastf7"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/ConsoleScreen.cs" id="1_k6hkn"]
 [ext_resource type="PackedScene" uid="uid://cjvvh2kb1g8iu" path="res://Objects/Cart/screen_model.tscn" id="1_pr6nq"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="3_tlxws"]
 [ext_resource type="Script" path="res://Objects/Cart/ScreenText.cs" id="5_iept1"]
 [ext_resource type="PackedScene" uid="uid://6qgfvwkbvidp" path="res://Objects/Cart/screen_mount.tscn" id="6_elwdc"]
+[ext_resource type="PackedScene" uid="uid://dryn2vfl042sw" path="res://Objects/Displays/diode.tscn" id="7_w085y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_61jf1"]
 render_priority = 0
@@ -35,11 +36,13 @@ shader_parameter/vignette_opacity = 0.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_2k52p"]
 size = Vector3(1.96979, 0.186462, 2.08203)
 
-[node name="ConsoleScreen" type="Node3D" node_paths=PackedStringArray("_textViewport", "_screenQuad", "_screenText")]
+[node name="ConsoleScreen" type="Node3D" node_paths=PackedStringArray("_textViewport", "_screenQuad", "_screenText", "_greenLightMesh", "_greenLight")]
 script = ExtResource("1_k6hkn")
 _textViewport = NodePath("SubViewport")
 _screenQuad = NodePath("screen/Plane")
 _screenText = NodePath("SubViewport/RichTextLabel")
+_greenLightMesh = NodePath("diode_green/Industrial lantern A_1")
+_greenLight = NodePath("diode_green/OmniLight3D")
 
 [node name="screen" parent="." instance=ExtResource("1_pr6nq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -77,4 +80,14 @@ shape = SubResource("BoxShape3D_2k52p")
 [node name="screen_mount" parent="." instance=ExtResource("6_elwdc")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.165302, 0)
 
+[node name="diode_green" parent="." instance=ExtResource("7_w085y")]
+transform = Transform3D(-0.5, 7.54979e-08, 0, -7.54979e-08, -0.5, 0, 0, 0, 0.5, -0.924971, -0.0208825, -1.085)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="diode_green"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0937479, 0)
+light_color = Color(0.172549, 0.839216, 0.156863, 1)
+light_energy = 0.0
+omni_range = 0.5
+
 [editable path="screen"]
+[editable path="diode_green"]

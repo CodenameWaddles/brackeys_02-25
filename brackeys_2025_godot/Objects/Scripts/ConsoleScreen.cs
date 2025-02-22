@@ -7,6 +7,8 @@ public partial class ConsoleScreen : Interactable
 	[Export] private Viewport _textViewport;
 	[Export] private MeshInstance3D _screenQuad;
 	[Export] private ScreenText _screenText;
+	[Export] private MeshInstance3D _greenLightMesh;
+	[Export] private OmniLight3D _greenLight;
 	
 	private Array<String> _messages = new Array<String>();
 	
@@ -19,9 +21,13 @@ public partial class ConsoleScreen : Interactable
 		ShaderMaterial shaderMat = (ShaderMaterial)_screenQuad.GetSurfaceOverrideMaterial(0);
 		shaderMat.SetShaderParameter("screen_texture", viewportTexture);
 		
-		MakeInteractable();
+		//MakeInteractable();
 	}
-	
+
+	public override void _Process(double delta) {
+		if(Input.IsActionJustPressed("ui_accept")) AddMessage("hello sir I hope you are having a good day");
+	}
+
 	protected override void ActivateSpecific() {
 		var count = _messages.Count;
 		String message = "";
@@ -43,5 +49,15 @@ public partial class ConsoleScreen : Interactable
 		if(_messages.Count == 1) {
 			_screenText.NewMessage();
 		}
+	}
+	
+	protected override void MakeInteractableSpecific() {
+		_greenLightMesh.SetInstanceShaderParameter("color", new Vector3(0.05f, 1, 0.05f));
+		_greenLight.LightEnergy = 1;
+	}
+	
+	protected override void MakeUninteractableSpecific() {
+		_greenLightMesh.SetInstanceShaderParameter("color", new Vector3(0.05f, 0.05f, 0.05f));
+		_greenLight.LightEnergy = 0;
 	}
 }
