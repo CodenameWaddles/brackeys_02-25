@@ -1,14 +1,14 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdek0ivhkxs84"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmnq2"]
-size = Vector3(4.21702, 1.46289, 13.0137)
+size = Vector3(4.21702, 1.46289, 5.17114)
 
 [node name="Parking" type="Node3D"]
 
 [node name="Area3D" type="Area3D" parent="." groups=["Parking"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.413551, 0.231445, -0.216797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.413551, 0.231445, -0.0129637)
 shape = SubResource("BoxShape3D_tmnq2")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

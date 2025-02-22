@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=18 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/tape.tscn" id="7_l66rf"]
 [ext_resource type="PackedScene" uid="uid://b18ah6lt7x5ow" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
 [ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="9_bni7l"]
-[ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
 [ext_resource type="PackedScene" uid="uid://cxuquqsfkx8sa" path="res://Objects/Audio/audio_manager.tscn" id="13_2yeii"]
 [ext_resource type="PackedScene" uid="uid://dp3ata2fjdami" path="res://UIS/failed_room_screen.tscn" id="15_xa325"]
 
@@ -59,9 +58,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.359502, 0.155308, -1.66697
 
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.685363, 1.02907, 122.8)
-
-[node name="Parking" parent="." instance=ExtResource("11_7wrjh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.747968, 1.28914, -3.82848)
 
 [node name="TunnelSidePre" parent="." instance=ExtResource("8_yx5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.685, 0, -41.09)

@@ -17,6 +17,7 @@ Type = 1
 [node name="pipeLeak" parent="." instance=ExtResource("2_undml")]
 
 [node name="Tuyau rafistolé 3" parent="." instance=ExtResource("3_bkiyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018765, -0.35363, 0.0107683)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 2
