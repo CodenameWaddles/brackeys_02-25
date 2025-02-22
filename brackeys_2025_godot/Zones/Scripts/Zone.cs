@@ -43,11 +43,14 @@ public partial class Zone : Node3D
         IntegrityPercentageToComplete += IntegritySteps / 2; //petit offset pour que ce soit plus lisible
         IntegrityPercentage = InitialIntegrityPercentage;
         
+        
     }
     
     public override void _Process(double delta)
     {
         IsComplete = (IntegrityPercentage <= IntegrityPercentageToComplete);
+        Cart.StabilityMeter.SetStability(1 - (IntegrityPercentage / 100));
+
     }
 
     public void UpdateIntegrityPercentage()
@@ -69,6 +72,7 @@ public partial class Zone : Node3D
         }
         
         IntegrityPercentage = InitialIntegrityPercentage - nbOfHazardSolved * IntegritySteps;
+        Cart.StabilityMeter.SetStability(1 - (IntegrityPercentage / 100));
     }
 
     public bool MatchData()
