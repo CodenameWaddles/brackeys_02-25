@@ -1,43 +1,46 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1giicc0dv73x"]
+[gd_scene load_steps=7 format=3 uid="uid://c1giicc0dv73x"]
 
-[ext_resource type="Texture2D" uid="uid://b2s3n7e66scy" path="res://Assets/Textures/metal4x4.png" id="1_5ei2f"]
 [ext_resource type="Script" path="res://Objects/Scripts/PressButton.cs" id="1_lg4sk"]
+[ext_resource type="PackedScene" uid="uid://bqs7bylirp4lx" path="res://Objects/Cart/big_button.tscn" id="3_qwyuw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_r856q"]
-height = 0.350466
-radius = 0.40412
+height = 0.139922
+radius = 0.122136
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_216wv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nvew"]
-albedo_texture = ExtResource("1_5ei2f")
-
-[sub_resource type="BoxMesh" id="BoxMesh_ba4rr"]
-
-[sub_resource type="Animation" id="Animation_wpfwi"]
-length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.4, 0)
-
-[sub_resource type="Animation" id="Animation_3w7bb"]
+[sub_resource type="Animation" id="Animation_mfvdb"]
 resource_name = "press"
-tracks/0/type = "position_3d"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/path = NodePath("big_button/Cylinder:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.4, 0, 0.5, 1, 0, 0.2, 0, 1, 1, 0, 0.4, 0)
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.0617862, 0), Vector3(0, 0.03, 0), Vector3(0, 0.0617862, 0)]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q5hjv"]
+[sub_resource type="Animation" id="Animation_iypai"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("big_button/Cylinder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0617862, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fl0cl"]
 _data = {
-"RESET": SubResource("Animation_wpfwi"),
-"press": SubResource("Animation_3w7bb")
+"RESET": SubResource("Animation_iypai"),
+"press": SubResource("Animation_mfvdb")
 }
 
 [node name="PressButton" type="Node3D" node_paths=PackedStringArray("_shape", "_animationPlayer")]
@@ -51,19 +54,15 @@ collision_mask = 2
 freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.426536, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0580762, 0)
 shape = SubResource("CylinderShape3D_r856q")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.2, 0, 0, 0, 0.8, 0, 0.4, 0)
-mesh = SubResource("CylinderMesh_216wv")
-surface_material_override/0 = SubResource("StandardMaterial3D_4nvew")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.348442, 0, 0, 0, 1, 0, 0.197055, 0)
-mesh = SubResource("BoxMesh_ba4rr")
+[node name="big_button" parent="." instance=ExtResource("3_qwyuw")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_q5hjv")
+"": SubResource("AnimationLibrary_fl0cl")
 }
+
+[editable path="big_button"]

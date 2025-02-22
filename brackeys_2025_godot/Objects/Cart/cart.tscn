@@ -260,7 +260,7 @@ libraries = {
 }
 
 [node name="PressButton" parent="." instance=ExtResource("7_qxems")]
-transform = Transform3D(0.3, 0, 0, 0, 0.289778, 0.0776457, 0, -0.0776457, 0.289778, 0.309315, 0.157963, 1.34702)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.309315, 0.215644, 1.33156)
 
 [node name="ConsoleScreen" parent="." instance=ExtResource("6_q21cd")]
 transform = Transform3D(0.35, 0, 0, 0, 0.327462, 0.123568, 0, -0.123568, 0.327462, -0.466378, 0.326211, 1.49449)
