@@ -1,8 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgf8brtnm6nh7"]
 
-[ext_resource type="PackedScene" uid="uid://bn8ua4tecs7q5" path="res://Assets/Models/Tuyau rafistolé ok.fbx" id="1_uefpm"]
+[ext_resource type="PackedScene" uid="uid://dsbm76n3wvg8o" path="res://Assets/Models/Tuyau rafistolé 3.fbx" id="1_duvid"]
 
-[node name="Tuyau rafistolé ok" instance=ExtResource("1_uefpm")]
+[node name="Tuyau rafistolé 3" instance=ExtResource("1_duvid")]
+
+[node name="Tuyau base" parent="." index="0"]
+visible = false
 
 [node name="Tuyau rafistolé " parent="." index="1"]
-transform = Transform3D(0.645242, 0, 0, 0, 0.645242, 0, 0, 0, 0.645242, 0.997857, 9.66535, -5.00714)
+transform = Transform3D(0.730016, -0.222572, 0, 0.148341, 1.09532, 0, 0, 0, 0.714717, -0.000353351, 0.00141013, -0.000449631)

@@ -24,6 +24,7 @@ public partial class Cart : Node3D {
     [Export] private AudioStreamPlayer3D _doorClosing;
     [Export] private AudioStreamPlayer3D _doorOpening;
     [Export] private AudioStreamPlayer3D _bell;
+    [Export] public AudioStreamPlayer3D _alarm;
     [Export] private AudioStreamPlayer3D _music;
 
     
@@ -45,6 +46,7 @@ public partial class Cart : Node3D {
     private float _speed;
     public bool _movePlayerWithCart = true;
     public bool _playerIsInCart;
+    private float _musicTime = 0.0f;
     
     public override void _Ready()
     {
@@ -99,6 +101,7 @@ public partial class Cart : Node3D {
                     _player.Reparent(GetTree().Root.GetNode("Main"));
                 }
                 
+                _musicTime = _music.GetPlaybackPosition();
                 _music.Stop();
                 _wheels.Stop();
                 _animationPlayer.Play("open_door");
@@ -115,7 +118,7 @@ public partial class Cart : Node3D {
             PressButton.MakeUninteractable();   
             if (!_music.IsPlaying())
             {
-                _music.Play();
+                _music.Play(_musicTime);
             }
         }
         

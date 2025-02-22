@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bsv0rixeuanqn"]
+[gd_scene load_steps=39 format=3 uid="uid://bsv0rixeuanqn"]
 
 [ext_resource type="AudioStream" uid="uid://clsvq7b4yylfu" path="res://Assets/Sounds/Boucle son train.wav" id="2_0k18e"]
 [ext_resource type="AudioStream" uid="uid://cvfy6q83tt4xl" path="res://Assets/Sounds/Door Opening 1.2.wav" id="2_hp8xq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c0ia6t1bastf7" path="res://Objects/Cart/console_screen.tscn" id="6_q21cd"]
 [ext_resource type="AudioStream" uid="uid://gbwkyiq57dis" path="res://Assets/Sounds/Deuxième cycle.wav" id="6_vd27b"]
 [ext_resource type="AudioStream" uid="uid://crh42b7siu7aj" path="res://Assets/Sounds/Chariot bell.wav" id="6_vhu3g"]
+[ext_resource type="AudioStream" uid="uid://brje0olkrcrsn" path="res://Assets/Sounds/Ringing.mp3" id="7_6pcuv"]
 [ext_resource type="PackedScene" uid="uid://c1giicc0dv73x" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
 [ext_resource type="PackedScene" uid="uid://rlqsfhy48v8i" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
 [ext_resource type="PackedScene" uid="uid://dvkexn38lytls" path="res://Objects/Cart/CartDataPanel.tscn" id="9_3h43f"]
@@ -207,6 +208,7 @@ StartStopTime = 5.0
 [node name="AudioPlayers" type="Node3D" parent="."]
 
 [node name="Brakes" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.774085, -1.84116)
 stream = ExtResource("2_rpcvo")
 volume_db = -30.0
 
@@ -226,8 +228,14 @@ stream = ExtResource("3_judbj")
 volume_db = -20.0
 
 [node name="Bell" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.509088, 0, 1.3878)
 stream = ExtResource("6_vhu3g")
 volume_db = -25.0
+
+[node name="Alarm" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.743439, 0.373537, 1.50343)
+stream = ExtResource("7_6pcuv")
+volume_db = -30.0
 
 [node name="Music1" type="AudioStreamPlayer3D" parent="AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.681145, 0.150039, 1.46396)

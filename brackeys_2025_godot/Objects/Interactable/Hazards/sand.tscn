@@ -10,7 +10,7 @@
 [node name="sand" type="Node3D" node_paths=PackedStringArray("_visuals", "_collider", "_shovelUseSound")]
 script = ExtResource("1_da8j2")
 _visuals = NodePath("Visual")
-_collider = NodePath("RigidBody3D")
+_collider = NodePath("RigidBody3D/CollisionShape3D")
 _shovelUseSound = NodePath("AudioStreamPlayer3D")
 Type = 3
 

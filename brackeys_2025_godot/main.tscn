@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=19 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://co34hl8xqgms7" path="res://Zones/Scenes/zone_3.tscn" id="4_4rtxn"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
 [ext_resource type="PackedScene" uid="uid://dlmx0mcf2pncd" path="res://Zones/Scenes/zone_4.tscn" id="5_ueelr"]
+[ext_resource type="PackedScene" uid="uid://dduv5oiom5jd8" path="res://Zones/Scenes/zone_5.tscn" id="6_b3pvy"]
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="6_rr8l2"]
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/tape.tscn" id="7_l66rf"]
 [ext_resource type="PackedScene" uid="uid://b18ah6lt7x5ow" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
@@ -30,7 +31,7 @@ volumetric_fog_emission_energy = 2.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
 script = ExtResource("1_yxd7y")
-_scenes = [ExtResource("3_pn6f8"), ExtResource("2_3h40t"), ExtResource("4_4rtxn"), ExtResource("5_ueelr")]
+_scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("6_b3pvy")]
 Cart = NodePath("cart")
 _player = NodePath("Character")
 _audioManager = NodePath("AudioManager")
@@ -89,6 +90,7 @@ one_shot = true
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.676, 1.802, 68.3846)
+visible = false
 mesh = SubResource("BoxMesh_i06lb")
 
 [connection signal="timeout" from="ResetRoomTimer" to="." method="_on_reset_timer_timeout"]

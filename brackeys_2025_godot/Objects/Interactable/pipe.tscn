@@ -5,4 +5,4 @@
 [node name="Tuyau origine ok" instance=ExtResource("1_eyw4m")]
 
 [node name="Tuyau origine " parent="." index="0"]
-transform = Transform3D(0.645242, 0, 0, 0, 0.645242, 0, 0, 0, 0.645242, -0.0318298, 0.00337052, 0.077188)
+transform = Transform3D(0.645242, 0, 0, 0, 0.645242, 0, 0, 0, 0.645242, 0.000156462, 0.00337052, -4.66779e-06)

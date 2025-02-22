@@ -50,7 +50,6 @@ albedo_texture = ExtResource("7_wyuq5")
 script = ExtResource("1_6dujy")
 ZoneHazards = [NodePath("sand")]
 ZoneTimer = NodePath("Timer")
-IsTimed = true
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
 

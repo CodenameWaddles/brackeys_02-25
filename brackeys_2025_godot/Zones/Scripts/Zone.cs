@@ -87,6 +87,7 @@ public partial class Zone : Node3D
         ZoneTimer.Stop();
         EndTimer.Timeout += _cart_leave_without_player;
         EndTimer.Start(10);
+        Cart._alarm.Play();
     }
 
     private void _cart_leave_without_player()

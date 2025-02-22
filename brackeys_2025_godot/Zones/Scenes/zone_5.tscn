@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dduv5oiom5jd8"]
+[gd_scene load_steps=5 format=3 uid="uid://dduv5oiom5jd8"]
 
 [ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="1_5t5kt"]
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_xjcoq"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="3_33hnj"]
+[ext_resource type="PackedScene" uid="uid://dj2xrxns3th0c" path="res://Zones/RoomsModelsNodes/door.tscn" id="4_1blqc"]
 
 [node name="zone_5" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_xjcoq")
@@ -16,5 +17,8 @@ one_shot = true
 [node name="Quai(3)" parent="." instance=ExtResource("1_5t5kt")]
 
 [node name="DoubleDataDisplay" parent="." instance=ExtResource("3_33hnj")]
+
+[node name="Salle de la porte" parent="." instance=ExtResource("4_1blqc")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.33406, 0.137876, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

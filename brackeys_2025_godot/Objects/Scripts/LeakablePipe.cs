@@ -4,8 +4,8 @@ using Brackeys_2025_Godot.Objects.Scripts;
 
 public partial class LeakablePipe : Hazard {
     
-    [Export] private Node3D _pipeFixed;
     [Export] private Node3D _pipeLeak;
+    [Export] private Node3D _pipeFixed;
     [Export] private int _fixTime = 150;
     
     private int _fixProgress;
