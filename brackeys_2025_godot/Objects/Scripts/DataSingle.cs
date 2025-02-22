@@ -15,4 +15,9 @@ public partial class DataSingle : DataDisplay {
     public override void _Process(double delta) {
         _label.Text = Data[0].ToString();
     }
+
+    public void Reset()
+    {
+        Data[0] = _defaultValue;
+    }
 }

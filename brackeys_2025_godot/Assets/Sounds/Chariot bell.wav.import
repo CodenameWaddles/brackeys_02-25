@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://crh42b7siu7aj"
+path="res://.godot/imported/Chariot bell.wav-66b2ca250fc852880a6eb7c99b76ffdd.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Chariot bell.wav"
+dest_files=["res://.godot/imported/Chariot bell.wav-66b2ca250fc852880a6eb7c99b76ffdd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
