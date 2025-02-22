@@ -451,6 +451,6 @@ transform = Transform3D(0.812033, 0.583612, 0, -0.583612, 0.812033, 0, 0, 0, 1, 
 shape = SubResource("BoxShape3D_ai15k")
 
 [node name="LeakablePipe" parent="." instance=ExtResource("9_tllxc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2793, 13.1262, -6.27649)
+transform = Transform3D(-0.282023, 0, -0.959408, 0, 1, 0, 0.959408, 0, -0.282023, -41.4501, 13.146, -6.27649)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

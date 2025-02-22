@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_opr7o"]
 [ext_resource type="PackedScene" uid="uid://bj3ccmt01fqi8" path="res://Zones/RoomsModelsNodes/generator.tscn" id="2_wv0fe"]
-[ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="6_hmkxp"]
 [ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="7_6qwm5"]
 [ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="7_epq7e"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_h6p3q"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="7_pvbji"]
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="8_yujga"]
+[ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="9_jhoak"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_atmdf"]
 
@@ -20,7 +20,7 @@ size = Vector3(0.797607, 0.176758, 2.01266)
 [node name="Zone1" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_opr7o")
 roomname = "Generator"
-ZoneHazards = [NodePath("sand")]
+ZoneHazards = []
 ZoneTimer = NodePath("Timer")
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
@@ -31,9 +31,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.22348, 0.501797, -0.108552)
 
 [node name="DoubleDataDisplay" parent="." instance=ExtResource("7_pvbji")]
 transform = Transform3D(-6.55671e-08, 1.5, 6.55671e-08, 0, -6.55671e-08, 1.5, 1.5, 6.55671e-08, 2.86603e-15, -28.5638, 11.9737, -4.0288)
-
-[node name="sand" parent="." instance=ExtResource("6_hmkxp")]
-transform = Transform3D(0.066657, 0, -0.997776, 0, 1, 0, 0.997776, 0, 0.066657, -11.4026, 2.00119, -6.4631)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
@@ -445,5 +442,8 @@ transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -31.17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stairs/StaticBody3D"]
 transform = Transform3D(0.812033, 0.583612, 0, -0.583612, 0.812033, 0, 0, 0, 1, -34.0457, 10.6048, -11.8074)
 shape = SubResource("BoxShape3D_ai15k")
+
+[node name="Tuyau origine ok" parent="." instance=ExtResource("9_jhoak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4501, 13.146, -6.27649)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

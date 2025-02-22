@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://sjjavwf3a570"]
+
+[ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_u7spn"]
+[ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="2_l51dc"]
+[ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="4_udx1t"]
+[ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="5_s75jm"]
+[ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="6_01u84"]
+[ext_resource type="PackedScene" uid="uid://dodxa5romgf8r" path="res://Zones/RoomsModelsNodes/water_final.tscn" id="7_droyn"]
+[ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="8_modnu"]
+
+[node name="zone_7" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
+script = ExtResource("1_u7spn")
+roomname = "Central Sewer"
+ZoneHazards = [NodePath("LeakablePipe"), NodePath("sand"), NodePath("sand2")]
+ZoneTimer = NodePath("Timer")
+DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
+ZoneDataMode = 1
+
+[node name="SingleDataDisplay" parent="." instance=ExtResource("2_l51dc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.9793, 3.95623, -4.66862)
+
+[node name="Quai(3)" parent="." instance=ExtResource("4_udx1t")]
+
+[node name="sand" parent="." instance=ExtResource("5_s75jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5577, 1.91977, -2.83736)
+
+[node name="sand2" parent="." instance=ExtResource("5_s75jm")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -25.9294, 1.41887, -6.43393)
+
+[node name="LeakablePipe" parent="." instance=ExtResource("8_modnu")]
+transform = Transform3D(0.787817, 0, -0.615909, 0, 1, 0, 0.615909, 0, 0.787817, -41.0517, -3.3079, -13.5888)
+
+[node name="WallLight" parent="." instance=ExtResource("6_01u84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.6247, 7.98079, -4.87166)
+
+[node name="WallLight2" parent="." instance=ExtResource("6_01u84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.7184, 4.70637, -0.711743)
+
+[node name="WallLight3" parent="." instance=ExtResource("6_01u84")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5472, 4.70637, -8.88725)
+
+[node name="water_final" parent="." instance=ExtResource("7_droyn")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.7002, 0.13406, -10.207)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
