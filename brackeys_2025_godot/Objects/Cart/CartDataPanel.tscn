@@ -70,10 +70,10 @@ script = ExtResource("1_n5ad5")
 DataDouble = NodePath("RotatablePanel/DoubleDataInputDisplay")
 DataSingle = NodePath("RotatablePanel/SingleDataInputDisplay")
 _animationPlayer = NodePath("RotatablePanel/AnimationPlayer")
-_greenLightMeshDouble = NodePath("diode_green_double/Industrial lantern A_1")
-_greenLightDouble = NodePath("diode_green_double/OmniLight3D")
-_greenLightMeshSingle = NodePath("diode_green_single/Industrial lantern A_1")
-_greenLightSingle = NodePath("diode_green_single/OmniLight3D")
+_greenLightMeshDouble = NodePath("RotatablePanel/diode_green_double/Industrial lantern A_1")
+_greenLightDouble = NodePath("RotatablePanel/diode_green_double/OmniLight3D")
+_greenLightMeshSingle = NodePath("RotatablePanel/diode_green_single/Industrial lantern A_1")
+_greenLightSingle = NodePath("RotatablePanel/diode_green_single/OmniLight3D")
 
 [node name="RotatablePanel" type="Node3D" parent="."]
 
@@ -94,23 +94,23 @@ libraries = {
 "": SubResource("AnimationLibrary_jfc71")
 }
 
-[node name="diode_green_double" parent="." instance=ExtResource("4_b4h67")]
-transform = Transform3D(-0.25, 3.7749e-08, 0, -3.7749e-08, -0.25, 0, 0, 0, 0.25, 0.568975, 0.160815, 0.390606)
+[node name="diode_green_double" parent="RotatablePanel" instance=ExtResource("4_b4h67")]
+transform = Transform3D(-0.25, 3.7749e-08, 0, -3.7749e-08, -0.25, 0, 0, 0, 0.25, 0.568975, 0.168805, 0.390606)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="diode_green_double"]
+[node name="OmniLight3D" type="OmniLight3D" parent="RotatablePanel/diode_green_double"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0937479, 0)
 light_color = Color(0.172549, 0.839216, 0.156863, 1)
 light_energy = 0.0
 omni_range = 0.4
 
-[node name="diode_green_single" parent="." instance=ExtResource("4_b4h67")]
+[node name="diode_green_single" parent="RotatablePanel" instance=ExtResource("4_b4h67")]
 transform = Transform3D(-0.25, -2.18557e-08, 0, -2.18557e-08, 0.25, 2.18557e-08, -1.91069e-15, 2.18557e-08, -0.25, 0.124054, -0.0838813, -0.296199)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="diode_green_single"]
+[node name="OmniLight3D" type="OmniLight3D" parent="RotatablePanel/diode_green_single"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0937479, 0)
 light_color = Color(0.172549, 0.839216, 0.156863, 1)
 light_energy = 0.0
 omni_range = 0.4
 
-[editable path="diode_green_double"]
-[editable path="diode_green_single"]
+[editable path="RotatablePanel/diode_green_double"]
+[editable path="RotatablePanel/diode_green_single"]

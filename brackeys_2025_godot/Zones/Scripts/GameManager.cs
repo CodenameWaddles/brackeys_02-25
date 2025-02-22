@@ -69,11 +69,7 @@ public partial class GameManager : Node
         _currentScene.Cart = Cart;
         Cart._state = Cart.State.Moving;
         
-        if (Cart.CartDataPanel._dataMode != _currentScene.ZoneDataMode)
-        {
-            Cart.CartDataPanel.SwitchDataMode();
-            GD.Print("new data mode : " + Cart.CartDataPanel._dataMode);
-        }
+        Cart.CartDataPanel.SetDataMode(_currentScene.ZoneDataMode);
         
         GD.Print("loaded scene : " + _currentScene.Name + ", index : " + _currentSceneIndex);
     }

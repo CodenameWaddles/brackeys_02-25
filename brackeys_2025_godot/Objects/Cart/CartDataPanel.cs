@@ -24,7 +24,12 @@ public partial class CartDataPanel : Node3D
 		
 	}
 	
-	public void SwitchDataMode() {
+	public void SetDataMode(DataMode dataMode) {
+		if (_dataMode == dataMode) return;
+		SwitchDataMode();
+	}
+	
+	private void SwitchDataMode() {
 		if(_dataMode == DataMode.Dual) {
 			_dataMode = DataMode.Single;
 			_animationPlayer.Play("switch");
@@ -38,7 +43,7 @@ public partial class CartDataPanel : Node3D
 		if(_dataMode == DataMode.Dual) {
 			_greenLightMeshDouble.SetInstanceShaderParameter("color", new Vector3(0.05f, 1, 0.05f));
 			_greenLightDouble.LightEnergy = 1;
-		} else {
+		} else if(_dataMode == DataMode.Single) {
 			_greenLightMeshSingle.SetInstanceShaderParameter("color", new Vector3(0.05f, 1, 0.05f));
 			_greenLightSingle.LightEnergy = 1;
 		}
