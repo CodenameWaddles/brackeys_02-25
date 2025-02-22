@@ -85,7 +85,7 @@ public partial class Cart : Node3D {
         else if (_state == State.Stopping)
         {
             _speed = Mathf.Lerp(_speed, 0, LerpWeight);
-            _wheels.VolumeDb = Mathf.Lerp(-30, -100, LerpWeight);
+            _wheels.VolumeDb = Mathf.Lerp(_wheels.VolumeDb, -50, LerpWeight);
             if (_speed < 0.1)
             {
                 _speed = 0;
