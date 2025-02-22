@@ -139,8 +139,7 @@ public partial class Cart : Node3D {
     }
     
     
-    public void Stop()
-    {
+    public void Stop() {
         _brakes.Play();
         _state = State.Stopping;
         _lampAnimation.Set("parameters/conditions/stopCart", true);
@@ -149,6 +148,7 @@ public partial class Cart : Node3D {
     
     public void Start() {
         _state = State.Starting;
+        CartDataPanel.TurnOffGreenLight();
         _doorCollider.Disabled = false;
         if (_movePlayerWithCart)
         {
