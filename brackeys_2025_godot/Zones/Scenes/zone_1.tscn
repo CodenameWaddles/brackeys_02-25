@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://blll5nq61dt7v"]
+[gd_scene load_steps=12 format=3 uid="uid://blll5nq61dt7v"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_opr7o"]
 [ext_resource type="PackedScene" uid="uid://bj3ccmt01fqi8" path="res://Zones/RoomsModelsNodes/generator.tscn" id="2_wv0fe"]
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="6_hmkxp"]
-[ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="7_6qwm5"]
+[ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="7_6qwm5"]
 [ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="7_epq7e"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_h6p3q"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="7_pvbji"]
+[ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="8_yujga"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_atmdf"]
 
@@ -18,7 +19,7 @@ size = Vector3(0.797607, 0.176758, 2.01266)
 
 [node name="Zone1" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_opr7o")
-ZoneHazards = [NodePath("sand")]
+ZoneHazards = []
 ZoneTimer = NodePath("Timer")
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
@@ -423,7 +424,19 @@ transform = Transform3D(0.689202, 0, -0.724569, 0, 1, 0, 0.724569, 0, 0.689202, 
 transform = Transform3D(0.995917, 0, 0.0902676, 0, 1, 0, -0.0902676, 0, 0.995917, -33.9714, 14.1792, 3.39952)
 
 [node name="stairs" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.45723)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 1.2)
+
+[node name="Stairs2Stack" parent="stairs" instance=ExtResource("8_yujga")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -20.3942, 1.29284, -12.5076)
+
+[node name="Stairs2Stack2" parent="stairs" instance=ExtResource("8_yujga")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -23.9888, 3.68433, -12.5076)
+
+[node name="Stairs2Stack3" parent="stairs" instance=ExtResource("8_yujga")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -27.584, 6.08108, -12.5076)
+
+[node name="Stairs2Stack4" parent="stairs" instance=ExtResource("8_yujga")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -31.175, 8.47727, -12.5076)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stairs"]
 

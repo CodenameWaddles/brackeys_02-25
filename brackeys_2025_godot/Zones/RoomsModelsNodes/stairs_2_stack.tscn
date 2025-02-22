@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2omwmy1xhp05"]
+
+[ext_resource type="PackedScene" uid="uid://dmutabg17sf5n" path="res://Zones/RoomsModelsNodes/stairs.tscn" id="1_shnex"]
+
+[node name="Stairs2Stack" type="Node3D"]
+
+[node name="stairs" parent="." instance=ExtResource("1_shnex")]
+
+[node name="stairs2" parent="." instance=ExtResource("1_shnex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.599395, 0.898774)

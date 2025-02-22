@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://gx5bpsg13ion"]
+[gd_scene load_steps=4 format=3 uid="uid://gx5bpsg13ion"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/DataDouble.cs" id="1_u5d6u"]
 [ext_resource type="PackedScene" uid="uid://blugenxdmdoqq" path="res://Objects/Interactable/screen.tscn" id="2_rivgo"]
+[ext_resource type="PackedScene" uid="uid://6qgfvwkbvidp" path="res://Objects/Cart/screen_mount.tscn" id="3_jrbsa"]
 
 [node name="DoubleDataDisplay" type="Node3D" node_paths=PackedStringArray("_screen")]
 script = ExtResource("1_u5d6u")
 _screen = NodePath("screen")
 
 [node name="screen" parent="." instance=ExtResource("2_rivgo")]
+transform = Transform3D(0.359938, 0, 0, 0, 0.359938, 0, 0, 0, 0.359938, 0.161151, 0.0601349, 0.226247)
+
+[node name="screen_mount" parent="." instance=ExtResource("3_jrbsa")]
+transform = Transform3D(0.449923, 0, 0, 0, 0.449923, 0, 0, 0, 0.449923, 0.161151, 0.0190831, 0.226247)
