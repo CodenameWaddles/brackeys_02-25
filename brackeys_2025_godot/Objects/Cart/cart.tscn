@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c0ia6t1bastf7" path="res://Objects/Cart/console_screen.tscn" id="6_q21cd"]
 [ext_resource type="AudioStream" uid="uid://gbwkyiq57dis" path="res://Assets/Sounds/Deuxième cycle.wav" id="6_vd27b"]
 [ext_resource type="PackedScene" uid="uid://c1giicc0dv73x" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
-[ext_resource type="PackedScene" uid="uid://bw42c6qirdns0" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
+[ext_resource type="PackedScene" uid="uid://rlqsfhy48v8i" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
 [ext_resource type="PackedScene" uid="uid://dvkexn38lytls" path="res://Objects/Cart/CartDataPanel.tscn" id="9_3h43f"]
 [ext_resource type="PackedScene" uid="uid://dj7j8jfg6b4hn" path="res://Objects/Cart/wagonnet_lantern.tscn" id="9_8qt2n"]
 [ext_resource type="PackedScene" uid="uid://558ljv1b0lt7" path="res://Objects/Cart/wagonnet_door_rotate_color.tscn" id="9_333ab"]
