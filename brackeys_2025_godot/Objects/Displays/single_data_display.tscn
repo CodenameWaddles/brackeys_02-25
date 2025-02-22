@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0dmbbc74cj44"]
+[gd_scene load_steps=4 format=3 uid="uid://d0dmbbc74cj44"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/DataSingle.cs" id="1_ku1tp"]
-[ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="2_7kqx8"]
+[ext_resource type="PackedScene" uid="uid://6qgfvwkbvidp" path="res://Objects/Cart/screen_mount.tscn" id="2_pst6j"]
+[ext_resource type="PackedScene" uid="uid://doooeoo82rpi8" path="res://Objects/Interactable/single_data_screen.tscn" id="3_ka7gk"]
 
-[node name="SingleDataDisplay" type="Node3D" node_paths=PackedStringArray("_label")]
+[node name="SingleDataDisplay" type="Node3D" node_paths=PackedStringArray("_screen")]
 script = ExtResource("1_ku1tp")
-_label = NodePath("Label3D")
+_screen = NodePath("screen/Plane")
+_maximumValue = 4
 
-[node name="Label3D" type="Label3D" parent="."]
-text = "Display"
-font = ExtResource("2_7kqx8")
+[node name="screen_mount" parent="." instance=ExtResource("2_pst6j")]
+transform = Transform3D(0.449923, 0, 0, 0, 0.449923, 0, 0, 0, 0.449923, 0, 0.019, 0)
+
+[node name="screen" parent="." instance=ExtResource("3_ka7gk")]
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, 0.06, 0)
+
+[editable path="screen"]

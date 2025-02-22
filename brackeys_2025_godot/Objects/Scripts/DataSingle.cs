@@ -5,7 +5,7 @@ using Godot.Collections;
 public partial class DataSingle : DataDisplay {
     
     [Export] private int _defaultValue;
-    [Export] Label3D _label;
+    [Export] private MeshInstance3D _screen;
     
     public override void _Ready() {
         Data = new Array<int>();
@@ -13,7 +13,7 @@ public partial class DataSingle : DataDisplay {
     }
     
     public override void _Process(double delta) {
-        _label.Text = Data[0].ToString();
+        _screen.SetInstanceShaderParameter("data", Data[0]);
     }
 
     public void Reset()

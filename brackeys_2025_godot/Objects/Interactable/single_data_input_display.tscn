@@ -1,25 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmh64qs3g6fcy"]
+[gd_scene load_steps=5 format=3 uid="uid://bmh64qs3g6fcy"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/DataSingle.cs" id="1_cefgu"]
 [ext_resource type="PackedScene" uid="uid://bi67jaxcu0j0b" path="res://Objects/Interactable/arrow_button.tscn" id="2_j5gva"]
-[ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="3_n3cwf"]
+[ext_resource type="PackedScene" uid="uid://doooeoo82rpi8" path="res://Objects/Interactable/single_data_screen.tscn" id="4_apff1"]
+[ext_resource type="PackedScene" uid="uid://6qgfvwkbvidp" path="res://Objects/Cart/screen_mount.tscn" id="4_fhh3h"]
 
-[node name="SingleDataInputDisplay" type="Node3D" node_paths=PackedStringArray("_label")]
+[node name="SingleDataInputDisplay" type="Node3D" node_paths=PackedStringArray("_screen")]
 script = ExtResource("1_cefgu")
-_defaultValue = 50
-_label = NodePath("InputText")
+_defaultValue = 2
+_screen = NodePath("screen/Plane")
+_maximumValue = 4
 
 [node name="PlusButton" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("2_j5gva")]
-transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.113, 0, 0.173332)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -0.178166, 0, 0.173332)
 _data = NodePath("..")
 
 [node name="MinusButton" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("2_j5gva")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113, 0, -0.0183624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.178166, 0, -0.0183624)
 _type = 1
 _data = NodePath("..")
 
-[node name="InputText" type="Label3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0.273068, 0.01242, 0.0604445)
-text = "50"
-font = ExtResource("3_n3cwf")
-font_size = 72
+[node name="screen_mount" parent="." instance=ExtResource("4_fhh3h")]
+transform = Transform3D(0.449923, 0, 0, 0, 0.449923, 0, 0, 0, 0.449923, 0.508231, 0.019, 0)
+
+[node name="screen" parent="." instance=ExtResource("4_apff1")]
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0.508231, 0.06, 0)
+
+[editable path="screen"]

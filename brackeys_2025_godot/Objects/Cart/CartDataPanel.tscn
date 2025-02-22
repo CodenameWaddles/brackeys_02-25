@@ -81,7 +81,7 @@ _greenLightSingle = NodePath("RotatablePanel/diode_green_single/OmniLight3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0919921, -0.164951)
 
 [node name="SingleDataInputDisplay" parent="RotatablePanel" instance=ExtResource("2_in1g0")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.361175, -0.06879, 0.110259)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0.160241, -0.069, 0)
 
 [node name="Panel" type="MeshInstance3D" parent="RotatablePanel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.464838, 0.00844496, 0.0179395)
@@ -104,7 +104,10 @@ light_energy = 0.0
 omni_range = 0.4
 
 [node name="diode_green_single" parent="RotatablePanel" instance=ExtResource("4_b4h67")]
-transform = Transform3D(-0.25, -2.18557e-08, 0, -2.18557e-08, 0.25, 2.18557e-08, -1.91069e-15, 2.18557e-08, -0.25, 0.124054, -0.0838813, -0.296199)
+transform = Transform3D(-0.25, -2.18557e-08, 0, -2.18557e-08, 0.25, 2.18557e-08, -1.91069e-15, 2.18557e-08, -0.25, 1.0871, -0.145087, -0.367594)
+
+[node name="Industrial lantern A_1" parent="RotatablePanel/diode_green_single" index="0"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0.0879169, 1.76215e-15, -0.133973)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="RotatablePanel/diode_green_single"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.0937479, 0)

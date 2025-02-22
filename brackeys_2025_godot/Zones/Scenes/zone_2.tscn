@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="6_e6hf8"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="7_edngt"]
 [ext_resource type="PackedScene" uid="uid://dodxa5romgf8r" path="res://Zones/RoomsModelsNodes/water_final.tscn" id="7_iupmb"]
-[ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="7_j7qy7"]
+[ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="7_j7qy7"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_l20nk"]
 [ext_resource type="Texture2D" uid="uid://b2s3n7e66scy" path="res://Assets/Textures/metal4x4.png" id="7_wyuq5"]
 
@@ -55,7 +55,6 @@ ZoneDataMode = 1
 
 [node name="SingleDataDisplay" parent="." instance=ExtResource("7_edngt")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.9793, 3.95623, -4.66862)
-_defaultValue = 45
 
 [node name="Plan" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.71, 0, 0, 0, 1.71, 0, 0, 0, 1.71, 0, 0, 0)

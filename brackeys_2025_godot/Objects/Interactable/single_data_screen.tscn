@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://doooeoo82rpi8"]
+
+[ext_resource type="PackedScene" uid="uid://df36ij4qccdsp" path="res://Assets/Models/screen.glb" id="1_6ipnh"]
+[ext_resource type="Material" uid="uid://bdhnsmogw0yax" path="res://Objects/Materials/single_data_display.tres" id="2_1d30q"]
+
+[node name="screen" instance=ExtResource("1_6ipnh")]
+
+[node name="Plane" parent="." index="0"]
+instance_shader_parameters/data = 4
+surface_material_override/0 = ExtResource("2_1d30q")
