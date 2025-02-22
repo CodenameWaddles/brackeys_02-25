@@ -34,6 +34,10 @@ public partial class Zone : Node3D
             EndTimer = new Timer();
             AddChild(EndTimer);
         }
+        else
+        {
+            Cart?.CartTimer?.Reset();
+        }
 
         RandomNumberGenerator rng = new RandomNumberGenerator();
         InitialIntegrityPercentage = rng.RandfRange(50, 100);
@@ -50,7 +54,10 @@ public partial class Zone : Node3D
     {
         IsComplete = (IntegrityPercentage <= IntegrityPercentageToComplete);
         Cart.StabilityMeter.SetStability(1 - (IntegrityPercentage / 100));
-
+        if (IsTimed)
+        {
+            Cart.CartTimer.UpdateTimerText((float)ZoneTimer.TimeLeft);
+        }
     }
 
     public void UpdateIntegrityPercentage()

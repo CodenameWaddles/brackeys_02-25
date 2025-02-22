@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci3anj71tdqpk"]
+
+[ext_resource type="Script" path="res://Objects/Cart/CartTimer.cs" id="1_uybvn"]
+[ext_resource type="PackedScene" uid="uid://6qgfvwkbvidp" path="res://Objects/Cart/screen_mount.tscn" id="2_lj1ew"]
+[ext_resource type="PackedScene" uid="uid://cjvvh2kb1g8iu" path="res://Objects/Cart/screen_model.tscn" id="3_4j3rp"]
+[ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="4_57os6"]
+
+[node name="CartTimer" type="Node3D" node_paths=PackedStringArray("_textViewport", "_screenQuad", "_timerText")]
+script = ExtResource("1_uybvn")
+_textViewport = NodePath("SubViewport")
+_screenQuad = NodePath("screen/Plane")
+_timerText = NodePath("SubViewport/RichTextLabel")
+
+[node name="screen_mount" parent="." instance=ExtResource("2_lj1ew")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 0.796146, 0, -0.165, 0)
+
+[node name="screen" parent="." instance=ExtResource("3_4j3rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.663455, 0, 0, 0)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(40, 16)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.937103, 0, 0.14331, 1)
+theme_override_fonts/normal_font = ExtResource("4_57os6")
+text = "
+"
+scroll_active = false
+scroll_following = true
+shortcut_keys_enabled = false
+
+[editable path="screen"]
