@@ -98,9 +98,10 @@ transform = Transform3D(-0.0312645, 0, -0.499022, 0, 0.5, 0, 0.499022, 0, -0.031
 [node name="TrashButton" parent="TrashSystem" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -26.3488, 6.6885, 3.37574)
 
-[node name="TrashChute" parent="TrashSystem" index="1"]
+[node name="TrashChute" parent="TrashSystem" index="1" node_paths=PackedStringArray("_trashbags")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5572, 14.1446, -2.26873)
-script = null
+_trashbags = [NodePath("../../trashbag2"), NodePath("../../trashbag")]
+_trashSpeed = 0.01
 
 [node name="ShovelPoster" parent="." instance=ExtResource("12_cq2jq")]
 transform = Transform3D(0.993242, 0, -0.116064, -0.116064, -4.37114e-08, -0.993242, -5.07332e-09, 1, -4.3416e-08, -14.9291, 2.88569, -10.6675)

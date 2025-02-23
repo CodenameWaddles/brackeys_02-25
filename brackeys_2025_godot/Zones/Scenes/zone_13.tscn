@@ -20,7 +20,7 @@ albedo_texture = ExtResource("6_ah3l6")
 
 [sub_resource type="BoxMesh" id="BoxMesh_rj60n"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x28su"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_jwuxi"]
 size = Vector3(0.929504, 1.01062, 2.27936)
 
 [node name="zone_13" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom")]
@@ -73,23 +73,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -26.34
 
 [node name="TrashChute" parent="TrashSystem" index="1" node_paths=PackedStringArray("_trashbags")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5572, 14.1446, -2.26873)
-_trashbags = [NodePath("")]
+_trashbags = [null]
 
 [node name="ShovelPoster" parent="." instance=ExtResource("14_nks3k")]
 transform = Transform3D(0.993242, 0, -0.116064, -0.116064, -4.37114e-08, -0.993242, -5.07332e-09, 1, -4.3416e-08, -14.9291, 2.88569, -10.6675)
-
-[node name="Stairs2Stack" parent="." instance=ExtResource("8_kyi4r")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -33.8476, 1.25, 2.8)
-
-[node name="stairs3" parent="Stairs2Stack" instance=ExtResource("9_waycn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19742, 1.78785)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Stairs2Stack"]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.11987, 1.65192, 2.27725)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stairs2Stack/StaticBody3D"]
-transform = Transform3D(0.701257, -0.712906, -0.00196709, 0.712909, 0.701256, 0.00103679, 0.000640285, -0.00212942, 0.999997, 0.239807, 0.18486, 0.405373)
-shape = SubResource("BoxShape3D_x28su")
 
 [node name="Lights" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2636, 0, 0)
@@ -120,5 +107,18 @@ transform = Transform3D(-0.207212, 0, 0.978296, 0, 1, 0, -0.978296, 0, -0.207212
 
 [node name="ScotchablePipe2" parent="." instance=ExtResource("15_axxgc")]
 transform = Transform3D(-0.0944559, 0, 0.995529, 0, 1, 0, -0.995529, 0, -0.0944559, -36.3509, 3.99076, 0.225257)
+
+[node name="Stairs2Stack" parent="." instance=ExtResource("8_kyi4r")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -33.8657, 1.25042, 2.8)
+
+[node name="stairs3" parent="Stairs2Stack" instance=ExtResource("9_waycn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19742, 1.78785)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stairs2Stack"]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.11987, 1.65192, 2.27725)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stairs2Stack/StaticBody3D"]
+transform = Transform3D(0.701257, -0.712906, -0.00196709, 0.712909, 0.701256, 0.00103679, 0.000640285, -0.00212942, 0.999997, 0.239807, 0.18486, 0.405373)
+shape = SubResource("BoxShape3D_jwuxi")
 
 [editable path="TrashSystem"]
