@@ -36,7 +36,7 @@ public partial class Zone : Node3D
         }
         else
         {
-            Cart?.CartTimer?.Reset();
+            Cart?.ResetCartTimer();
         }
 
         RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -56,7 +56,7 @@ public partial class Zone : Node3D
         Cart.StabilityMeter.SetStability(1 - (IntegrityPercentage / 100));
         if (IsTimed)
         {
-            Cart.CartTimer.UpdateTimerText((float)ZoneTimer.TimeLeft);
+            Cart.UpdateCartTimer((float)ZoneTimer.TimeLeft);
         }
     }
 

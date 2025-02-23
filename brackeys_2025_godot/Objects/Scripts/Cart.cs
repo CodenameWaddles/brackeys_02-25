@@ -19,7 +19,8 @@ public partial class Cart : Node3D {
     [Export] private AnimationTree _lampAnimation;
     [Export] public ConsoleScreen ConsoleScreen;
     [Export] public StabilityMeter StabilityMeter;
-    [Export] public CartTimer CartTimer;
+    [Export] public CartTimer CartTimer1;
+    [Export] public CartTimer CartTimer2;
     [Export] public TrashDeposit TrashDeposit;
     [Export] public CartMap CartMap;
     
@@ -202,5 +203,15 @@ public partial class Cart : Node3D {
         _shelfDoor1.OpenDoor();
         _shelfDoor2.OpenDoor();
         _toolSound.Play();
+    }
+    
+    public void UpdateCartTimer(float time) {
+        CartTimer1.UpdateTimerText(time);
+        CartTimer2.UpdateTimerText(time);
+    }
+    
+    public void ResetCartTimer() {
+        CartTimer1.Reset();
+        CartTimer2.Reset();
     }
 }

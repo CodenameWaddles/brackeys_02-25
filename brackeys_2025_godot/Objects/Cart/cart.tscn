@@ -195,7 +195,7 @@ states/start_dangle/node = SubResource("AnimationNodeAnimation_bkjjp")
 states/start_dangle/position = Vector2(442, 63)
 transitions = ["Start", "idle_move", SubResource("AnimationNodeStateMachineTransition_dgkq3"), "start_dangle", "idle_move", SubResource("AnimationNodeStateMachineTransition_y02y4"), "idle_move", "dangle_idle", SubResource("AnimationNodeStateMachineTransition_8yebu"), "dangle_idle", "start_dangle", SubResource("AnimationNodeStateMachineTransition_nogxl")]
 
-[node name="Cart" type="Node3D" node_paths=PackedStringArray("_doorCollider", "_animationPlayer", "_lampAnimation", "ConsoleScreen", "StabilityMeter", "CartTimer", "TrashDeposit", "CartMap", "_wheels", "_brakes", "_doorClosing", "_doorOpening", "_bell", "_alarm", "_music", "_toolSound", "_shelfDoor1", "_shelfDoor2", "CartDataPanel", "PressButton")]
+[node name="Cart" type="Node3D" node_paths=PackedStringArray("_doorCollider", "_animationPlayer", "_lampAnimation", "ConsoleScreen", "StabilityMeter", "CartTimer1", "CartTimer2", "TrashDeposit", "CartMap", "_wheels", "_brakes", "_doorClosing", "_doorOpening", "_bell", "_alarm", "_music", "_toolSound", "_shelfDoor1", "_shelfDoor2", "CartDataPanel", "PressButton")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77104, 0)
 script = ExtResource("2_xofmn")
 _doorCollider = NodePath("DoorCollider/CollisionShape3D")
@@ -203,7 +203,8 @@ _animationPlayer = NodePath("AnimationPlayer")
 _lampAnimation = NodePath("Lamp/AnimationTree")
 ConsoleScreen = NodePath("ConsoleScreen")
 StabilityMeter = NodePath("StabilityMeter")
-CartTimer = NodePath("CartTimer")
+CartTimer1 = NodePath("CartTimer")
+CartTimer2 = NodePath("CartTimer2")
 TrashDeposit = NodePath("TrashDepositInCart")
 CartMap = NodePath("CartMap")
 _wheels = NodePath("AudioPlayers/Wheels")
@@ -309,7 +310,7 @@ libraries = {
 }
 
 [node name="PressButton" parent="." instance=ExtResource("7_qxems")]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.232637, 0.258392, 1.4911)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.189592, 0.258392, 1.4911)
 
 [node name="ConsoleScreen" parent="." instance=ExtResource("6_q21cd")]
 transform = Transform3D(0.35, 0, 0, 0, 0.327462, 0.123568, 0, -0.123568, 0.327462, -0.466378, 0.326211, 1.49449)
@@ -368,6 +369,9 @@ transform = Transform3D(-5.06664e-08, -1.3576e-08, 1.2, -0.310583, 1.15911, 0, -
 [node name="CartTimer" parent="." instance=ExtResource("21_wnvkv")]
 transform = Transform3D(-8.74228e-09, -0.2, 0, -8.74228e-09, 3.82137e-16, -0.2, 0.2, -8.74228e-09, -8.74228e-09, -1.08118, 0.964748, -1.66977)
 
+[node name="CartTimer2" parent="." instance=ExtResource("21_wnvkv")]
+transform = Transform3D(-0.2, 5.98007e-09, 1.64301e-08, 0, 0.187939, -0.068404, -1.74846e-08, -0.068404, -0.187939, 0.668517, 0.327956, 1.58912)
+
 [node name="CartMap" parent="." instance=ExtResource("23_6leo0")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.488295, 1.04857, -1.37649)
 
@@ -375,7 +379,7 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.488295, 1.04857, -1.3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00247693, -0.335878, -1.5113)
 
 [node name="speaker" parent="." instance=ExtResource("24_u3cyw")]
-transform = Transform3D(0.13, 0, 0, 0, 0.122917, 0.0423239, 0, -0.0423239, 0.122917, 0.233, 0.323, 1.806)
+transform = Transform3D(0.13, 0, 0, 0, 0.122917, 0.0423239, 0, -0.0423239, 0.122917, 0.19, 0.323, 1.806)
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_body_exited"]
