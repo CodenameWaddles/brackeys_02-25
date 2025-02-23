@@ -3,12 +3,14 @@ public partial class BurningPlace : InteractableNeedObject
 {
 
     [Export] private Zone _zone;
-    private bool trashAreIssues = false;
+    
+    public int TrashCount { get; private set; } = 0;
     
     public override void _Ready()
     {
         Type = Pickupable.PickupType.Trash;
         MakeInteractable();
+        _zone.setBurningPlace(this);
     }
     
     protected override void ActivateSpecific()
@@ -18,7 +20,8 @@ public partial class BurningPlace : InteractableNeedObject
         held.IsSolved = true;
         held.MakeUninteractable();
         GameManager gm = (GameManager)GetTree().Root.GetChild(0);
-        gm._currentScene.UpdateIntegrityPercentage();
         _playerInteraction.DropItem();
+        TrashCount++;
+        gm._currentScene.UpdateIntegrityPercentage();
     }
 }

@@ -15,7 +15,9 @@ public partial class Zone : Node3D
     [Export] public DataDouble DisplayDataDoubleInRoom { get; private set; }
     [Export] public CartDataPanel.DataMode ZoneDataMode;
 
-    private Array<Trashbag> AdditionalTrashbags;
+    private BurningPlace _burningPlace;
+
+    private int _cartTrash;
     
     private float IntegrityPercentage;
     private float InitialIntegrityPercentage;
@@ -41,8 +43,8 @@ public partial class Zone : Node3D
         {
             Cart?.ResetCartTimer();
         }
-
-        SetupIntegrity();
+        
+        //SetupIntegrity();
         
     }
     
@@ -58,11 +60,15 @@ public partial class Zone : Node3D
 
     public void SetupIntegrity()
     {
+        if(Cart != null)
+        {
+            _cartTrash = Cart.TrashDeposit.TrashCount;
+        }
         RandomNumberGenerator rng = new RandomNumberGenerator();
         InitialIntegrityPercentage = rng.RandfRange(40, 70);
         IntegrityPercentageToComplete = rng.RandfRange(0, 30);
         
-        IntegritySteps = (InitialIntegrityPercentage - IntegrityPercentageToComplete) / (ZoneHazards.Count + 1); // +1 pour les datas
+        IntegritySteps = (InitialIntegrityPercentage - IntegrityPercentageToComplete) / (ZoneHazards.Count + 1 + _cartTrash); // +1 pour les datas
         IntegrityPercentageToComplete += IntegritySteps / 2; //petit offset pour que ce soit plus lisible
         IntegrityPercentage = InitialIntegrityPercentage;
     }
@@ -71,6 +77,10 @@ public partial class Zone : Node3D
     {
         //set le integrity percentage
         int nbOfHazardSolved = 0;
+        if(_burningPlace != null)
+        {
+            nbOfHazardSolved+= _burningPlace.TrashCount;
+        }
         foreach (var item in ZoneHazards)
         {
             if (item is Hazard)
@@ -85,7 +95,7 @@ public partial class Zone : Node3D
             }
         }
 
-        GD.Print("nb of hazard solved (excluding data) : " + nbOfHazardSolved + "/" + ZoneHazards.Count());
+        GD.Print("nb of hazard solved (excluding data) : " + nbOfHazardSolved + "/" + ZoneHazards.Count() + " + " + _cartTrash + " trash");
     
         if (MatchData())
         {
@@ -162,5 +172,9 @@ public partial class Zone : Node3D
         Cart.ConsoleScreen.AddMessage("Location : " + roomname + "\nInstability : " + Mathf.RoundToInt(IntegrityPercentage) + "%");
     }
     
+    public void setBurningPlace(BurningPlace burningPlace)
+    {
+        _burningPlace = burningPlace;
+    }
     
 }

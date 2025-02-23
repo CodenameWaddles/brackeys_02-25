@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://co34hl8xqgms7"]
 
-[ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="1_b8lij"]
+[ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="1_b8lij"]
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_xwwdd"]
-[ext_resource type="PackedScene" uid="uid://c6lrj7jan2kfl" path="res://Zones/RoomsModelsNodes/trash.tscn" id="3_vhm6w"]
+[ext_resource type="PackedScene" path="res://Zones/RoomsModelsNodes/trash.tscn" id="3_vhm6w"]
 [ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="4_lpswr"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="5_vec5x"]
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="6_v8p7c"]
 [ext_resource type="PackedScene" uid="uid://dmutabg17sf5n" path="res://Zones/RoomsModelsNodes/stairs.tscn" id="7_7vuqq"]
 [ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="8_lspst"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="9_6jhge"]
-[ext_resource type="PackedScene" uid="uid://bugsgt76yne5r" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="10_58x4j"]
+[ext_resource type="PackedScene" uid="uid://cskk8fr2tmd85" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="10_58x4j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h78t7"]
 albedo_texture = ExtResource("4_lpswr")
@@ -22,7 +22,7 @@ size = Vector3(0.929504, 1.01062, 2.27936)
 [node name="zone_3" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_xwwdd")
 roomname = "Trash Disposal Unit"
-ZoneHazards = [null, null, null]
+ZoneHazards = [NodePath("trashbag"), NodePath("trashbag2")]
 ZoneTimer = NodePath("Timer")
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
@@ -87,9 +87,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.80
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6573, 7.54533, -10.4717)
 
 [node name="trashbag" parent="." instance=ExtResource("10_58x4j")]
-transform = Transform3D(-0.413246, 0, 0.281475, 0, 0.5, 0, -0.281475, 0, -0.413246, -22.3941, 1.25906, -2.55146)
+transform = Transform3D(-0.413246, 0, 0.281475, 0, 0.5, 0, -0.281475, 0, -0.413246, -4.44806, 1.25906, 0.662494)
 
 [node name="trashbag2" parent="." instance=ExtResource("10_58x4j")]
-transform = Transform3D(-0.0312645, 0, -0.499022, 0, 0.5, 0, 0.499022, 0, -0.0312645, -23.0848, 1.25906, -4.3108)
+transform = Transform3D(-0.0312645, 0, -0.499022, 0, 0.5, 0, 0.499022, 0, -0.0312645, -4.86741, 1.25906, -3.16945)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

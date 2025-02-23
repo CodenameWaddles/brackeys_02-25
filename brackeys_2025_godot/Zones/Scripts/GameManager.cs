@@ -71,6 +71,7 @@ public partial class GameManager : Node
         
         _currentScene = GetNode<Zone>(tempScene.GetPath());
         _currentScene.Cart = Cart;
+        _currentScene.SetupIntegrity();
         Cart._state = Cart.State.Moving;
         
         Cart.CartDataPanel.SetDataMode(_currentScene.ZoneDataMode);

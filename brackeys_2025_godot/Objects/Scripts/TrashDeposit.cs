@@ -9,9 +9,12 @@ public partial class TrashDeposit : InteractableNeedObject
 
 	[Export] private Array<Node3D> _trashSlotsArray = new Array<Node3D>();
 	[Export] private PackedScene _trashPrefab;
+	[Export] private RigidBody3D _rigidBody;
 	
 	private playerInteraction _playerInteraction;
 	private Array<Trashbag> trashbagsHeld = new Array<Trashbag>();
+	
+	public int TrashCount { get; private set; } = 0;
 	
 	public override void _Ready()
 	{
@@ -48,6 +51,7 @@ public partial class TrashDeposit : InteractableNeedObject
 					trashbag.Reparent(gm.Cart);
 					trashbagsHeld[i] = trashbag;
 					gm._currentScene.UpdateIntegrityPercentage();
+					TrashCount++;
 					return; //vide
 				}
 			}
@@ -64,10 +68,12 @@ public partial class TrashDeposit : InteractableNeedObject
 				if (trashbagsHeld[previous_slot] != null)
 				{
 					trashbagsHeld[previous_slot] = null;
+					TrashCount--;
 				}
 				else
 				{
 					trashbagsHeld[i] = null;
+					TrashCount--;
 				}
 			}
 			else
