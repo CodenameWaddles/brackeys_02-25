@@ -16,7 +16,7 @@ public partial class TrashButton : Interactable
 	protected override void ActivateSpecific() {
 		if (GameManager.Instance._currentSceneIndex == 12)
 		{
-			GameManager.Instance.SendNextMessage();
+			GameManager.Instance.SendMessage(12);
 			return;
 		}
 		

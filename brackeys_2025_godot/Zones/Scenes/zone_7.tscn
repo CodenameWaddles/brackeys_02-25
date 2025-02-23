@@ -42,7 +42,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.54
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.7002, 0.13406, -10.207)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 180.0
+wait_time = 120.0
 one_shot = true
 
 [node name="BlowtorchPoster" parent="." instance=ExtResource("7_0p33i")]

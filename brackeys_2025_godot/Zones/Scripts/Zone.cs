@@ -135,12 +135,6 @@ public partial class Zone : Node3D
 
     public void _on_zone_timer_timeout()
     {
-        if (!IsTimed)
-        {
-            ZoneTimer.Stop();
-            return;
-        }
-        
         ZoneTimer.Stop();
         EndTimer.Timeout += _cart_leave_without_player;
         EndTimer.Start(10);
@@ -206,7 +200,7 @@ public partial class Zone : Node3D
     {
         if (!IsTimed) return;
         ZoneTimer.Start();
-        ZoneTimer.Timeout += _on_zone_timer_timeout;
+        //ZoneTimer.Timeout += _on_zone_timer_timeout;
     }
     
     public void DisposeTimer()

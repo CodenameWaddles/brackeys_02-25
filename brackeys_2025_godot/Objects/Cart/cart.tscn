@@ -266,7 +266,7 @@ volume_db = 40.0
 [node name="Music2" type="AudioStreamPlayer3D" parent="AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223682, 0.358515, 1.78867)
 stream = ExtResource("6_vd27b")
-volume_db = 20.0
+volume_db = -20.0
 
 [node name="Tools" type="AudioStreamPlayer3D" parent="AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.506189, 0.771365, -1.67223)

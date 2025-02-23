@@ -26,7 +26,7 @@ public partial class GameManager : Node
     private int _currentCycle = 0;
     public Zone _currentScene;
     public int _currentSceneIndex = 0;
-    private Array<String> _messages;
+    private Dictionary<int, String> _messages;
     
     // singleton
     private static GameManager _instance;
@@ -45,7 +45,7 @@ public partial class GameManager : Node
     public override void _Ready()
     {
         _instance = this;
-        _messages = new Array<string>();
+        _messages = new Dictionary<int, string>();
         SetupMessages();
         
         _roomFailedScreen.Visible = false;
@@ -57,7 +57,7 @@ public partial class GameManager : Node
         if (startIndex >= 6) //testing purposes. startIndex should be 0
         {
             Cart.OpenTools();
-            Cart.NextMusic();
+            //Cart.NextMusic();
         }
     }
 
@@ -106,24 +106,26 @@ public partial class GameManager : Node
             _currentScene._sendRoomMessage();
         }
         
+        GD.Print(_currentSceneIndex);
+        
         switch (_currentSceneIndex)
         {
             case 0: 
-                SendNextMessage(); //intro
+                SendMessage(_currentSceneIndex); //intro
                 break;
             case 2: 
-                SendNextMessage(); //trash
+                SendMessage(_currentSceneIndex); //trash
                 LightManager.Instance.NextFrequency();
                 break;
             case 3:
-                SendNextMessage(); //burn
+                SendMessage(_currentSceneIndex); //burn
                 break;
             case 4:
-                SendNextMessage(); //tools
+                SendMessage(_currentSceneIndex); //tools
                 Cart.OpenTools();
                 break;
             case 6:
-                SendNextMessage(); //timer
+                SendMessage(_currentSceneIndex); //timer
                 Cart.NextMusic();
                 LightManager.Instance.NextFrequency();
                 AudioManager.Instance.NextBangingFrequency();
@@ -137,7 +139,7 @@ public partial class GameManager : Node
                 break;
             case 10:
                 _audioManager._alarm.Play();
-                SendNextMessage(); //breach detected
+                SendMessage(_currentSceneIndex); //breach detected
                 break;
             case 11:
                 AudioManager.Instance.NextBangingFrequency();
@@ -198,20 +200,20 @@ public partial class GameManager : Node
         _roomFailedScreen.Visible = false;
     }
 
-    public void SendNextMessage()
+    public void SendMessage(int index)
     {
-        Cart.ConsoleScreen.AddMessage(_messages[0]);
-        _messages.RemoveAt(0);
+        Cart.ConsoleScreen.AddMessage(_messages[index]);
     }
 
     private void SetupMessages()
     {
-        _messages.Add("Big tests coming up, be wary.");
-        _messages.Add("Lot of trash today. There should be enough room for it under the cart's shelf.");
-        _messages.Add("Burn everything properly.");
-        _messages.Add("Issues detected. Use tools to maintain structural integrity.");
-        _messages.Add("Real tests start now. Be quick.");
-        _messages.Add("Breach detected.");
+        _messages.Add(0, "Big tests coming up, be wary.");
+        _messages.Add(2, "Lot of trash today. There should be enough room for it under the cart's shelf.");
+        _messages.Add(3, "Burn everything properly.");
+        _messages.Add(4, "Issues detected. Use tools to maintain structural integrity.");
+        _messages.Add(6, "Real tests start now. Be quick.");
+        _messages.Add(10, "Breach detected.");
+        _messages.Add(12, "Message après déchets");
         //_messages[5] = "Breach Detected, emergency status activated.";
         //_messages[6] = "Are you sure you want to bypass issue solving ? There is no coming back.";
         
