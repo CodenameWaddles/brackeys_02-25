@@ -8,9 +8,10 @@ public partial class BurningPlace : InteractableNeedObject
     {
         Type = Pickupable.PickupType.Trash;
         MakeInteractable();
-
-        _zone.Cart.TrashDeposit.SetTrashAsIssues();
-
+        
+        TrashDeposit deposit = (TrashDeposit) _zone.Cart.FindChild("TrashDepositInCart");
+        GD.Print("deposit : " + deposit);
+        deposit.SetTrashAsIssues();
     }
 
     protected override void ActivateSpecific()

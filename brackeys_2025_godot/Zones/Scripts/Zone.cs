@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using Brackeys_2025_Godot.Objects.Scripts;
 using Godot.Collections;
 using Array = System.Array;
@@ -47,7 +48,6 @@ public partial class Zone : Node3D
         IntegrityPercentageToComplete += IntegritySteps / 2; //petit offset pour que ce soit plus lisible
         IntegrityPercentage = InitialIntegrityPercentage;
         
-        
     }
     
     public override void _Process(double delta)
@@ -78,7 +78,7 @@ public partial class Zone : Node3D
             }
         }
 
-        GD.Print("nb of hazard solved (excluding data) : " + nbOfHazardSolved);
+        GD.Print("nb of hazard solved (excluding data) : " + nbOfHazardSolved + "/" + ZoneHazards.Count());
     
         if (MatchData())
         {

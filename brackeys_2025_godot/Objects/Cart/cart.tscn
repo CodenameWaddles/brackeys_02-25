@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://crh42b7siu7aj" path="res://Assets/Sounds/Chariot bell.wav" id="6_vhu3g"]
 [ext_resource type="AudioStream" uid="uid://brje0olkrcrsn" path="res://Assets/Sounds/Ringing.mp3" id="7_6pcuv"]
 [ext_resource type="PackedScene" uid="uid://c1giicc0dv73x" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
-[ext_resource type="PackedScene" uid="uid://rlqsfhy48v8i" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
+[ext_resource type="PackedScene" uid="uid://bw42c6qirdns0" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
 [ext_resource type="PackedScene" uid="uid://dvkexn38lytls" path="res://Objects/Cart/CartDataPanel.tscn" id="9_3h43f"]
 [ext_resource type="PackedScene" uid="uid://dj7j8jfg6b4hn" path="res://Objects/Cart/wagonnet_lantern.tscn" id="9_8qt2n"]
 [ext_resource type="PackedScene" uid="uid://558ljv1b0lt7" path="res://Objects/Cart/wagonnet_door_rotate_color.tscn" id="9_333ab"]
@@ -20,11 +20,11 @@
 [ext_resource type="Script" path="res://Objects/Scripts/Light.cs" id="11_atlc5"]
 [ext_resource type="AudioStream" uid="uid://dsx4tmk55qdob" path="res://Assets/Sounds/light_flicker.wav" id="12_kfh6o"]
 [ext_resource type="PackedScene" uid="uid://4wlusl7qhhhp" path="res://Objects/Cart/shelf_door.tscn" id="19_nqy77"]
-[ext_resource type="PackedScene" uid="uid://bt7wftvf8lgas" path="res://Objects/Cart/stability_meter.tscn" id="20_d7ntm"]
-[ext_resource type="PackedScene" uid="uid://ci3anj71tdqpk" path="res://Objects/Cart/cart_timer.tscn" id="21_wnvkv"]
-[ext_resource type="PackedScene" path="res://Objects/Interactable/Tools/trash_deposit_in_cart.tscn" id="22_x0php"]
-[ext_resource type="PackedScene" uid="uid://cf6x6hdx6s7yd" path="res://Objects/Displays/cart_map.tscn" id="23_6leo0"]
-[ext_resource type="PackedScene" uid="uid://cbsfqmeyhsf4e" path="res://Objects/Cart/speakerModel.tscn" id="24_u3cyw"]
+[ext_resource type="PackedScene" path="res://Objects/Cart/stability_meter.tscn" id="20_d7ntm"]
+[ext_resource type="PackedScene" path="res://Objects/Cart/cart_timer.tscn" id="21_wnvkv"]
+[ext_resource type="PackedScene" uid="uid://dbnkf1dr8osoo" path="res://Objects/Interactable/Tools/trash_deposit_in_cart.tscn" id="22_x0php"]
+[ext_resource type="PackedScene" uid="uid://tfjhmsgwhlmh" path="res://Objects/Displays/cart_map.tscn" id="23_6leo0"]
+[ext_resource type="PackedScene" path="res://Objects/Cart/speakerModel.tscn" id="24_u3cyw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dyco1"]
 size = Vector3(1.7416, 1, 3.26901)
@@ -372,11 +372,10 @@ transform = Transform3D(-0.2, 5.98007e-09, 1.64301e-08, 0, 0.187939, -0.068404, 
 [node name="CartMap" parent="." instance=ExtResource("23_6leo0")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.488295, 1.04857, -1.37649)
 
-[node name="TrashDepositInCart" parent="." instance=ExtResource("22_x0php")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00247693, -0.335878, -1.5113)
-
 [node name="speaker" parent="." instance=ExtResource("24_u3cyw")]
 transform = Transform3D(0.13, 0, 0, 0, 0.122917, 0.0423239, 0, -0.0423239, 0.122917, 0.19, 0.323, 1.806)
+
+[node name="TrashDepositInCart" parent="." instance=ExtResource("22_x0php")]
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_body_exited"]
