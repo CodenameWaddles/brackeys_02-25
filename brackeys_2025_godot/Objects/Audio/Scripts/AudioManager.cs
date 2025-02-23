@@ -10,7 +10,7 @@ public partial class AudioManager : Node
 	[Export] private Timer _timer;
 	[Export] private Vector2 _timerMaxAndMin;
 	
-	private Array<float> _bangingFrequencies = new Array<float> { 0.5f, 1f, 2f };
+	private Array<float> _bangingFrequencies = new Array<float> { 0.002f, 0.005f };
 	public float BangingFrequency { private set; get; }
 	private int _frequencyIndex = 0;
 
@@ -70,8 +70,8 @@ public partial class AudioManager : Node
 	
 	public void NextBangingFrequency()
 	{
-		BangingFrequency = _bangingFrequencies[_frequencyIndex];
 		_frequencyIndex = (_frequencyIndex + 1) % _bangingFrequencies.Count;
+		BangingFrequency = _bangingFrequencies[_frequencyIndex];
 	}
 	
 }

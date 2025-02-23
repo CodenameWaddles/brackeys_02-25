@@ -58,6 +58,9 @@ public partial class GameManager : Node
         {
             Cart.OpenTools();
             //Cart.NextMusic();
+            LightManager.Instance.NextFrequency();
+            LightManager.Instance.NextFrequency();
+            AudioManager.Instance.NextBangingFrequency();
         }
     }
 
@@ -105,8 +108,6 @@ public partial class GameManager : Node
         {
             _currentScene._sendRoomMessage();
         }
-        
-        GD.Print(_currentSceneIndex);
         
         switch (_currentSceneIndex)
         {
@@ -211,8 +212,9 @@ public partial class GameManager : Node
         _messages.Add(2, "Lot of trash today. There should be enough room for it under the cart's shelf.");
         _messages.Add(3, "Burn everything properly.");
         _messages.Add(4, "Issues detected. Use tools to maintain structural integrity.");
-        _messages.Add(6, "Real tests start now. Be quick.");
-        _messages.Add(10, "Breach detected.");
+        _messages.Add(6, "Real tests start now. Don't waste time.");
+        _messages.Add(9, "That door needs to be fixed. Use any means necessary.");
+        _messages.Add(10, "Breach detected. Emergency protocol activated.");
         _messages.Add(12, "Message après déchets");
         //_messages[5] = "Breach Detected, emergency status activated.";
         //_messages[6] = "Are you sure you want to bypass issue solving ? There is no coming back.";
