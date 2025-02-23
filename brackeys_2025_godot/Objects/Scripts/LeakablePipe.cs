@@ -21,7 +21,18 @@ public partial class LeakablePipe : Hazard {
             MakeUninteractable();
         }
     }
-    
+
+    public override void _Process(double delta)
+    {
+        if (!IsSolved && !_leakSound.IsPlaying())
+        {
+            _leakSound.Play();
+        }else if (IsSolved && _leakSound.IsPlaying())
+        {
+            _leakSound.Stop();
+        }
+    }
+
     private int _fixProgress;
     private GameManager _main;
     
@@ -39,7 +50,6 @@ public partial class LeakablePipe : Hazard {
         _fixProgress = 0;
         _pipeFixed.Visible = false;
         _pipeLeak.Visible = true;
-        _leakSound.Play();
         //_main._currentScene.UpdateIntegrityPercentage(); //osef psk on le suprime anyway ???? 
     }
 
@@ -48,7 +58,6 @@ public partial class LeakablePipe : Hazard {
         IsSolved = true;
         _pipeFixed.Visible = true;
         _pipeLeak.Visible = false;
-        _leakSound.Stop();
         _main._currentScene.UpdateIntegrityPercentage();
     }
 }
