@@ -162,6 +162,8 @@ public partial class Cart : Node3D {
     }
     
     public void Start() {
+        if(_state != State.Stopped) return;
+        _alarm.Stop();
         _state = State.Starting;
         CartDataPanel.TurnOffGreenLight();
         _doorCollider.Disabled = false;

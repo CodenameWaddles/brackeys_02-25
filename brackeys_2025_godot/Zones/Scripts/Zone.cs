@@ -151,9 +151,11 @@ public partial class Zone : Node3D
         EndTimer.Stop();
         if (Cart._playerIsInCart)
         {
-            Cart._movePlayerWithCart = true;
-            Cart.Start();
-            GD.Print("player in cart, continuing");
+            if (Cart._state.Equals(Cart.State.Stopped)) {
+                Cart._movePlayerWithCart = true;
+                Cart.Start();
+                GD.Print("player in cart, continuing");
+            }
             
         }
         else
