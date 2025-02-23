@@ -34,10 +34,10 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.22348, 0.501797, -0.108552)
 transform = Transform3D(-6.55671e-08, 1.5, 6.55671e-08, 0, -6.55671e-08, 1.5, 1.5, 6.55671e-08, 2.86603e-15, -28.5638, 11.9737, -4.0288)
 
 [node name="sand" parent="." instance=ExtResource("5_brnum")]
-transform = Transform3D(0.066657, 0, -0.997776, 0, 1, 0, 0.997776, 0, 0.066657, -19.1889, 2.00119, -12.4177)
+transform = Transform3D(0.066657, 0, -0.997776, 0, 1, 0, 0.997776, 0, 0.066657, -19.6443, 2.00119, -12.3873)
 
 [node name="sand2" parent="." instance=ExtResource("5_brnum")]
-transform = Transform3D(0.0933198, 0, -1.39689, 0, 1.4, 0, 1.39689, 0, 0.0933198, -19.514, 2.00119, -10.6714)
+transform = Transform3D(0.0933198, 0, -1.39689, 0, 1.4, 0, 1.39689, 0, 0.0933198, -19.9728, 2.00119, -10.6407)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0

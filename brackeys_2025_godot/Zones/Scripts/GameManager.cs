@@ -25,9 +25,24 @@ public partial class GameManager : Node
     public Zone _currentScene;
     private int _currentSceneIndex = 0;
     private Array<String> _messages;
+    
+    // singleton
+    private static GameManager _instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new GameManager();
+            }
+            return _instance;
+        }
+    }
 
     public override void _Ready()
     {
+        _instance = this;
         _messages = new Array<string>();
         SetupMessages();
         
@@ -97,7 +112,7 @@ public partial class GameManager : Node
                 break;
             case 4:
                 SendNextMessage(); //tools
-                Cart.openTools();
+                Cart.OpenTools();
                 break;
             case 6:
                 SendNextMessage(); //timer
@@ -190,6 +205,11 @@ public partial class GameManager : Node
         //_messages[5] = "Breach Detected, emergency status activated.";
         //_messages[6] = "Are you sure you want to bypass issue solving ? There is no coming back.";
         
+    }
+    
+    public void BreakBlowtorchEvent()
+    {
+        Cart.ConsoleScreen.AddMessage("If your blowtorch breaks, tape will do fine. I think.");
     }
     
     

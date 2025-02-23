@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://brlq4ot8qypvv"]
+[gd_scene load_steps=6 format=3 uid="uid://brlq4ot8qypvv"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_uj3x0"]
 [ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="2_uy4j6"]
 [ext_resource type="PackedScene" uid="uid://cey6ht5rcp1yh" path="res://Zones/RoomsModelsNodes/incinerateur.tscn" id="3_dwx3v"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="4_m6o68"]
+[ext_resource type="PackedScene" uid="uid://sosyeegoqc0s" path="res://Objects/Interactable/Hazards/break_pipe.tscn" id="5_8b43w"]
 
 [node name="zone_9" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_uj3x0")
 roomname = "Incinerator"
-ZoneHazards = []
+ZoneHazards = [NodePath("break_pipe")]
 ZoneTimer = NodePath("Timer")
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
@@ -23,5 +24,8 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.325393, 1.24887, 0)
 
 [node name="SingleDataDisplay" parent="." instance=ExtResource("4_m6o68")]
 transform = Transform3D(-1.5, 1.31134e-07, -2.20231e-21, -6.57731e-08, -0.752357, 1.29767, 1.13446e-07, 1.29767, 0.752357, -28.4628, 4.1816, 1.438)
+
+[node name="break_pipe" parent="." instance=ExtResource("5_8b43w")]
+transform = Transform3D(0.973431, -0.22898, 0, 0.22898, 0.973431, 0, 0, 0, 1, -11.8791, 4.02598, -14.0564)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

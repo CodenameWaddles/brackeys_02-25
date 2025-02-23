@@ -203,7 +203,7 @@ public partial class Cart : Node3D {
         }
     }
 
-    public void openTools() {
+    public void OpenTools() {
         _shelfDoor1.OpenDoor();
         _shelfDoor2.OpenDoor();
         _toolSound.Play();

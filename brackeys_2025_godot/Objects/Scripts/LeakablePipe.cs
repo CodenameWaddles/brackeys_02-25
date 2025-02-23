@@ -7,6 +7,7 @@ public partial class LeakablePipe : Hazard {
     [Export] private Node3D _pipeLeak;
     [Export] private Node3D _pipeFixed;
     [Export] private int _fixTime = 150;
+    [Export] private AudioStreamPlayer3D _leakSound;
     
     private int _fixProgress;
     private GameManager _main;
@@ -31,6 +32,7 @@ public partial class LeakablePipe : Hazard {
         _fixProgress = 0;
         _pipeFixed.Visible = false;
         _pipeLeak.Visible = true;
+        _leakSound.Play();
         //_main._currentScene.UpdateIntegrityPercentage(); //osef psk on le suprime anyway ???? 
     }
 
@@ -39,6 +41,7 @@ public partial class LeakablePipe : Hazard {
         IsSolved = true;
         _pipeFixed.Visible = true;
         _pipeLeak.Visible = false;
+        _leakSound.Stop();
         _main._currentScene.UpdateIntegrityPercentage();
     }
 }
