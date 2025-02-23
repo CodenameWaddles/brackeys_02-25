@@ -55,15 +55,17 @@ public partial class Zone : Node3D
         {
             IsComplete = true; //pr test
         }
-        
-        //IsComplete = (IntegrityPercentage <= IntegrityPercentageToComplete);
-        Cart.StabilityMeter.SetStability(1 - (IntegrityPercentage / 100));
-        if (IsTimed)
-        {
-            Cart.UpdateCartTimer((float)ZoneTimer.TimeLeft);
-            if (IsComplete && !ZoneTimer.IsStopped())
+
+        if (!IsComplete) {
+            IsComplete = (IntegrityPercentage <= IntegrityPercentageToComplete);
+            Cart.StabilityMeter.SetStability(1 - (IntegrityPercentage / 100));
+            if (IsTimed)
             {
-                ZoneTimer.Stop();
+                Cart.UpdateCartTimer((float)ZoneTimer.TimeLeft);
+                if (IsComplete && !ZoneTimer.IsStopped())
+                {
+                    ZoneTimer.Stop();
+                }
             }
         }
     }
