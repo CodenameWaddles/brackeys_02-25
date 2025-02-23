@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlmx0mcf2pncd"]
+[gd_scene load_steps=9 format=3 uid="uid://dlmx0mcf2pncd"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_f74ch"]
 [ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="2_0rvu8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://druiscw0l16g3" path="res://Objects/Lights/fire_particles.tscn" id="5_3xj85"]
 [ext_resource type="PackedScene" uid="uid://b86wbn0qus7d" path="res://Objects/Interactable/Tools/burning_place.tscn" id="6_bv3dg"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_uxgrc"]
+[ext_resource type="PackedScene" uid="uid://dqbu1evx6i23r" path="res://Objects/Interactable/Hazards/blowtorch_poster.tscn" id="8_lw17i"]
 
 [node name="zone_4" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_f74ch")
@@ -42,5 +43,17 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -15.88
 
 [node name="WallLight2" parent="." instance=ExtResource("7_uxgrc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8815, 4.11422, -11.5661)
+
+[node name="BlowtorchPoster" parent="." instance=ExtResource("8_lw17i")]
+transform = Transform3D(-0.99571, -8.74228e-08, -0.092527, 0.092527, -4.37114e-08, -0.99571, 8.30033e-08, -1, 5.16128e-08, -5.57578, 3.52323, 6.63905)
+_isHazard = false
+
+[node name="BlowtorchPoster2" parent="." instance=ExtResource("8_lw17i")]
+transform = Transform3D(-0.999743, -0.00120366, 0.0226554, -0.0226873, 0.0530369, -0.998335, 8.83955e-08, -0.998592, -0.0530505, -6.65708, 3.04365, 6.63375)
+_isHazard = false
+
+[node name="BlowtorchPoster3" parent="." instance=ExtResource("8_lw17i")]
+transform = Transform3D(0.995725, 1.8688e-10, 0.0923706, 0.0923706, -4.03765e-09, -0.995725, 1.8688e-10, 1, -4.03765e-09, -8.08529, 2.83802, -15.4824)
+_isHazard = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

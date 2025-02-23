@@ -7,11 +7,16 @@ public partial class Poster : Hazard
 	[Export] private Node3D _posterFlat;
 	[Export] private Node3D _posterFolded;
 	[Export] private AudioStreamPlayer3D _tapeSound;
-	
-	public override void _Ready()
-	{
+	[Export] private bool _isHazard = true;
+
+	public override void _Ready() {
 		Type = Pickupable.PickupType.Tape;
-		MakeInteractable();
+		if (_isHazard) {
+			MakeInteractable();
+		}
+		else {
+			MakeUninteractable();
+		}
 	}
 
 	public override void _Process(double delta)

@@ -9,14 +9,21 @@ public partial class LeakablePipe : Hazard {
     [Export] private int _fixTime = 150;
     [Export] private AudioStreamPlayer3D _leakSound;
     
+    [Export] private bool _isHazard = true;
+
+    public override void _Ready() {
+        if (_isHazard) {
+            Type = Pickupable.PickupType.Blowtorch;
+            _main = (GameManager) GetTree().Root.GetChild(0);
+            MakeInteractable();
+        }
+        else {
+            MakeUninteractable();
+        }
+    }
+    
     private int _fixProgress;
     private GameManager _main;
-    
-    public override void _Ready() {
-        Type = Pickupable.PickupType.Blowtorch;
-        _main = (GameManager) GetTree().Root.GetChild(0);
-        MakeInteractable();
-    }
     
     protected override void ActivateSpecific() {
         if(_fixProgress < _fixTime) {

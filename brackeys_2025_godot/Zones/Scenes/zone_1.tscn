@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://blll5nq61dt7v"]
+[gd_scene load_steps=13 format=3 uid="uid://blll5nq61dt7v"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_opr7o"]
 [ext_resource type="PackedScene" uid="uid://bj3ccmt01fqi8" path="res://Zones/RoomsModelsNodes/generator.tscn" id="2_wv0fe"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_h6p3q"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="7_pvbji"]
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="8_yujga"]
+[ext_resource type="PackedScene" uid="uid://beej6ryapcf2k" path="res://Objects/Interactable/Hazards/tape_poster.tscn" id="9_3bn8l"]
 [ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="9_jhoak"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_atmdf"]
@@ -517,5 +518,9 @@ shape = SubResource("BoxShape3D_ai15k")
 
 [node name="Tuyau origine ok" parent="." instance=ExtResource("9_jhoak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4501, 13.146, -6.27649)
+
+[node name="TapePoster" parent="." instance=ExtResource("9_3bn8l")]
+transform = Transform3D(0.998536, 0, -0.0540962, -0.0540962, -4.37114e-08, -0.998536, -2.36462e-09, 1, -4.36474e-08, -7.99564, 3.08046, -15.563)
+_isHazard = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

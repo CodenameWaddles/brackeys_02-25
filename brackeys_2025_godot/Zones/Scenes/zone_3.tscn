@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://co34hl8xqgms7"]
+[gd_scene load_steps=16 format=3 uid="uid://co34hl8xqgms7"]
 
 [ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="1_b8lij"]
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_xwwdd"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="9_6jhge"]
 [ext_resource type="PackedScene" uid="uid://cskk8fr2tmd85" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="10_58x4j"]
 [ext_resource type="PackedScene" uid="uid://dw8rud7ihqw8h" path="res://Objects/Tunnel/trash_system.tscn" id="11_2em08"]
+[ext_resource type="PackedScene" uid="uid://dkle3a28feg6j" path="res://Objects/Interactable/Hazards/shovel_poster.tscn" id="12_cq2jq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h78t7"]
 albedo_texture = ExtResource("4_lpswr")
@@ -97,6 +98,10 @@ transform = Transform3D(-0.0312645, 0, -0.499022, 0, 0.5, 0, 0.499022, 0, -0.031
 
 [node name="TrashChute" parent="TrashSystem" index="1" node_paths=PackedStringArray("_trashbags")]
 _trashbags = [NodePath("../../trashbag"), NodePath("../../trashbag2")]
+
+[node name="ShovelPoster" parent="." instance=ExtResource("12_cq2jq")]
+transform = Transform3D(0.993242, 0, -0.116064, -0.116064, -4.37114e-08, -0.993242, -5.07332e-09, 1, -4.3416e-08, -14.9291, 2.88569, -10.6675)
+_isHazard = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjyky644ylaof"]
+[gd_scene load_steps=14 format=3 uid="uid://cjyky644ylaof"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_7sgdk"]
 [ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="2_3dh2v"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_kndnu"]
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="8_xxinq"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="9_tllxc"]
+[ext_resource type="PackedScene" uid="uid://beej6ryapcf2k" path="res://Objects/Interactable/Hazards/tape_poster.tscn" id="10_anw2p"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_atmdf"]
 
@@ -524,5 +525,8 @@ _shadow = false
 [node name="WallLight11" parent="LightColumn4/LightSegment3" instance=ExtResource("7_kndnu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 54.2, -4.618)
 _shadow = false
+
+[node name="TapePoster" parent="." instance=ExtResource("10_anw2p")]
+transform = Transform3D(0.998536, 0, -0.0540962, -0.0540962, -4.37114e-08, -0.998536, -2.36462e-09, 1, -4.36474e-08, -7.99564, 3.08046, -15.563)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
