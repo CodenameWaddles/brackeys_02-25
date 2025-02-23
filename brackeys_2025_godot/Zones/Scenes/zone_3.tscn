@@ -48,7 +48,7 @@ size = Vector3(55.1528, 21.2058, 53.167)
 transform = Transform3D(9.05975e-08, 1.2, 5.24537e-08, 0, -5.24537e-08, 1.2, 1.2, -9.05975e-08, -3.96014e-15, -35.3247, 2.90731, -4.80678)
 
 [node name="Stairs2Stack" parent="." instance=ExtResource("6_v8p7c")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -33.8476, 1.25, 2.8)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -33.8657, 1.25042, 2.8)
 
 [node name="stairs3" parent="Stairs2Stack" instance=ExtResource("7_7vuqq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19742, 1.78785)

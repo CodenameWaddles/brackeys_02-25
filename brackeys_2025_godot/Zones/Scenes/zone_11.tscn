@@ -24,7 +24,6 @@ script = ExtResource("1_rwayg")
 roomname = "Generator"
 ZoneHazards = [NodePath("sand"), NodePath("sand2")]
 IsTimed = true
-TimerTime = 140
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
 [node name="Quai(3)" parent="." instance=ExtResource("2_6shq2")]

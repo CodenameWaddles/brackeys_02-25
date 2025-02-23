@@ -15,7 +15,6 @@ script = ExtResource("1_7j3es")
 roomname = "Central Sewer"
 ZoneHazards = [NodePath("sand"), NodePath("sand4"), NodePath("sand2"), NodePath("sand3"), NodePath("ScotchablePipe"), NodePath("BlowtorchPoster")]
 IsTimed = true
-TimerTime = 120
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
 
