@@ -22,6 +22,7 @@ public partial class Light : OmniLight3D
 		if(_flickering) {
 			RandomNumberGenerator rng = new RandomNumberGenerator();
 			if(rng.Randf() < LightManager.Instance.FlickeringFrequency) {
+				_audioPlayer.VolumeDb = LightManager.Instance.FlickeringVolume;
 				Flicker(false);
 			}
 		}
