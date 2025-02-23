@@ -36,7 +36,7 @@ public partial class AudioManager : Node
 		_timer.Stop();
 		IsEnabled = false;
 	}
-
+	
 	private void _on_timer_timeout()
 	{
 		PlayRandomSoundscape();

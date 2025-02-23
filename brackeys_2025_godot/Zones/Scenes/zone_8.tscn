@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjvjidsafjj8e"]
+[gd_scene load_steps=16 format=3 uid="uid://bjvjidsafjj8e"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_g5dbk"]
 [ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="2_g7rqd"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="9_iwf3t"]
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="10_ue3vg"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="11_cichf"]
+[ext_resource type="PackedScene" uid="uid://bugsgt76yne5r" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="12_pvq4p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h78t7"]
 albedo_texture = ExtResource("4_vc08y")
@@ -23,7 +24,7 @@ size = Vector3(0.929504, 1.01062, 2.27936)
 [node name="zone_8" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_g5dbk")
 roomname = "Trash Disposal Unit"
-ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("sand"), NodePath("sand2"), NodePath("sand3"), NodePath("sand4")]
+ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("sand"), NodePath("sand2"), NodePath("sand3"), NodePath("sand4"), NodePath("trashbag")]
 ZoneTimer = NodePath("Timer")
 IsTimed = true
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
@@ -100,5 +101,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.80
 
 [node name="WallLight6" parent="Lights" instance=ExtResource("11_cichf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6573, 7.54533, -10.4717)
+
+[node name="trashbag" parent="." instance=ExtResource("12_pvq4p")]
+transform = Transform3D(-0.310013, 0, 0.392291, 0, 0.5, 0, -0.392291, 0, -0.310013, -26.0282, 1.13526, -3.59662)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

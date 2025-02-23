@@ -21,7 +21,6 @@ public partial class Sand : Hazard
 	protected override void ActivateSpecific()
 	{
 		
-		//					/!\ SUSSY CODE /!\				uwu ça marche
 		playerInteraction player = (playerInteraction)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("Camera");
 			
 		Node3D shovel = (Node3D)player._hand.GetChild(0);
