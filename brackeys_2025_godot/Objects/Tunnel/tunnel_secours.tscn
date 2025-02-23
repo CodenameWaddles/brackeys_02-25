@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bac6epmvhs368"]
+
+[ext_resource type="PackedScene" uid="uid://dnu204sm8hkaa" path="res://Zones/RoomsModelsNodes/tunnel_avec_porte_de_secours.tscn" id="1_wgock"]
+
+[node name="TunnelSecours" type="Node3D"]
+
+[node name="Tunnel avec porte de secours" parent="." instance=ExtResource("1_wgock")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
