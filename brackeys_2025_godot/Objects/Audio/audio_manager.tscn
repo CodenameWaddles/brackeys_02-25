@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxuquqsfkx8sa"]
+[gd_scene load_steps=12 format=3 uid="uid://cxuquqsfkx8sa"]
 
 [ext_resource type="Script" path="res://Objects/Audio/Scripts/AudioManager.cs" id="1_rnatx"]
 [ext_resource type="AudioStream" uid="uid://cbxtm0x8on2x7" path="res://Assets/Sounds/Soundscape 1.wav" id="2_8bjw1"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bt8d3ivk1m3j6" path="res://Assets/Sounds/Soundscape 7.mp3" id="8_bhugk"]
 [ext_resource type="AudioStream" uid="uid://8tx4qqupsq6v" path="res://Assets/Sounds/Soundscape 8.wav" id="9_r08hn"]
 [ext_resource type="AudioStream" uid="uid://chxesg04xb3s4" path="res://Assets/Sounds/Soundscape 9.wav" id="10_jvuq6"]
+[ext_resource type="AudioStream" uid="uid://dtpxrocri8xcg" path="res://Assets/Sounds/Alarm.mp3" id="11_5i1lw"]
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("_soundscapes", "_timer")]
 script = ExtResource("1_rnatx")
@@ -52,6 +53,9 @@ volume_db = -20.0
 [node name="Soundscape9" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_jvuq6")
 volume_db = -20.0
+
+[node name="Alarm" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_5i1lw")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://sjjavwf3a570"]
+[gd_scene load_steps=9 format=3 uid="uid://sjjavwf3a570"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_u7spn"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="4_udx1t"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="6_01u84"]
 [ext_resource type="PackedScene" uid="uid://dqbu1evx6i23r" path="res://Objects/Interactable/Hazards/blowtorch_poster.tscn" id="7_0p33i"]
 [ext_resource type="PackedScene" uid="uid://dodxa5romgf8r" path="res://Zones/RoomsModelsNodes/water_final.tscn" id="7_droyn"]
+[ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="8_4l1dh"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="8_modnu"]
 
 [node name="zone_7" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer")]
@@ -40,10 +41,13 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.54
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.7002, 0.13406, -10.207)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 180.0
 one_shot = true
 
 [node name="BlowtorchPoster" parent="." instance=ExtResource("7_0p33i")]
 transform = Transform3D(0.977105, 0, 0.212758, 0.212758, -4.37114e-08, -0.977105, 9.29993e-09, 1, -4.27106e-08, -9, 3, -15.502)
+
+[node name="SingleDataDisplay" parent="." instance=ExtResource("8_4l1dh")]
+transform = Transform3D(3.38832e-08, 0.775159, 1.28418, 1.5, -6.55671e-08, -2.00912e-15, 5.61335e-08, 1.28418, -0.775159, -44.9015, -4.40209, -16.4808)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

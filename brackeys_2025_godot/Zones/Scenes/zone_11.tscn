@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="6_2hukg"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_bd8ri"]
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="8_dnyra"]
-[ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="9_p6anq"]
+[ext_resource type="PackedScene" uid="uid://dfjuf4o2dwn23" path="res://Objects/Interactable/Hazards/scotchable_pipe.tscn" id="10_eae11"]
 [ext_resource type="PackedScene" uid="uid://beej6ryapcf2k" path="res://Objects/Interactable/Hazards/tape_poster.tscn" id="10_j2cuc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_atmdf"]
@@ -24,6 +24,7 @@ script = ExtResource("1_rwayg")
 roomname = "Generator"
 ZoneHazards = [NodePath("sand"), NodePath("sand2")]
 ZoneTimer = NodePath("Timer")
+IsTimed = true
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
 [node name="Quai(3)" parent="." instance=ExtResource("2_6shq2")]
@@ -41,7 +42,7 @@ transform = Transform3D(0.066657, 0, -0.997776, 0, 1, 0, 0.997776, 0, 0.066657, 
 transform = Transform3D(0.0933198, 0, -1.39689, 0, 1.4, 0, 1.39689, 0, 0.0933198, -19.9728, 2.00119, -10.6407)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 110.0
 one_shot = true
 
 [node name="FogVolume" type="FogVolume" parent="."]
@@ -95,9 +96,6 @@ transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -31.17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stairs/StaticBody3D"]
 transform = Transform3D(0.812033, 0.583612, 0, -0.583612, 0.812033, 0, 0, 0, 1, -34.0457, 10.6048, -11.8074)
 shape = SubResource("BoxShape3D_ai15k")
-
-[node name="LeakablePipe" parent="." instance=ExtResource("9_p6anq")]
-transform = Transform3D(-0.282023, 0, -0.959408, 0, 1, 0, 0.959408, 0, -0.282023, -41.4501, 13.146, -6.27649)
 
 [node name="LightColumn" type="Node3D" parent="."]
 
@@ -528,5 +526,8 @@ _shadow = false
 
 [node name="TapePoster" parent="." instance=ExtResource("10_j2cuc")]
 transform = Transform3D(0.998536, 0, -0.0540962, -0.0540962, -4.37114e-08, -0.998536, -2.36462e-09, 1, -4.36474e-08, -7.99564, 3.08046, -15.563)
+
+[node name="ScotchablePipe" parent="." instance=ExtResource("10_eae11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4501, 13.146, -6.27649)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

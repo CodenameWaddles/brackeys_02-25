@@ -1,0 +1,120 @@
+[gd_scene load_steps=18 format=3 uid="uid://cicrmk46j6qdg"]
+
+[ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_ory0k"]
+[ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="2_x1q6d"]
+[ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="3_45wvu"]
+[ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="4_a2m1y"]
+[ext_resource type="PackedScene" uid="uid://c6lrj7jan2kfl" path="res://Zones/RoomsModelsNodes/trash.tscn" id="5_3iwx5"]
+[ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="6_ah3l6"]
+[ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="7_6pqxt"]
+[ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="8_kyi4r"]
+[ext_resource type="PackedScene" uid="uid://dmutabg17sf5n" path="res://Zones/RoomsModelsNodes/stairs.tscn" id="9_waycn"]
+[ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="10_60q06"]
+[ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="11_2xrnu"]
+[ext_resource type="PackedScene" uid="uid://cskk8fr2tmd85" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="12_sc8tr"]
+[ext_resource type="PackedScene" uid="uid://dw8rud7ihqw8h" path="res://Objects/Tunnel/trash_system.tscn" id="13_eqmao"]
+[ext_resource type="PackedScene" uid="uid://dkle3a28feg6j" path="res://Objects/Interactable/Hazards/shovel_poster.tscn" id="14_nks3k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h78t7"]
+albedo_texture = ExtResource("6_ah3l6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ppa64"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pqq3x"]
+size = Vector3(0.929504, 1.01062, 2.27936)
+
+[node name="zone_13" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
+script = ExtResource("1_ory0k")
+roomname = "Trash Disposal Unit"
+ZoneHazards = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+ZoneTimer = NodePath("Timer")
+IsTimed = true
+DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
+
+[node name="LeakablePipe" parent="." instance=ExtResource("2_x1q6d")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.102, 3.99076, 0.225257)
+
+[node name="LeakablePipe2" parent="." instance=ExtResource("2_x1q6d")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -47.102, 4.11796, 2.22145)
+
+[node name="sand" parent="." instance=ExtResource("3_45wvu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -41.1844, 1.25907, 1.39812)
+
+[node name="sand2" parent="." instance=ExtResource("3_45wvu")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -27.0258, 1.25907, -6.33295)
+
+[node name="sand4" parent="." instance=ExtResource("3_45wvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3915, 1.25907, -6.32416)
+
+[node name="sand3" parent="." instance=ExtResource("3_45wvu")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -25.4321, 1.25907, -2.29854)
+
+[node name="Quai(3)" parent="." instance=ExtResource("4_a2m1y")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 160.0
+one_shot = true
+
+[node name="Salle des dechets" parent="." instance=ExtResource("5_3iwx5")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.22221, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 30, -32.5692, 59.5303, -3.49422)
+material_override = SubResource("StandardMaterial3D_h78t7")
+mesh = SubResource("BoxMesh_ppa64")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1714, 53.6134, -2.27588)
+size = Vector3(55.1528, 23.5415, 53.167)
+
+[node name="DoubleDataDisplay" parent="." instance=ExtResource("7_6pqxt")]
+transform = Transform3D(1.13247e-07, 1.5, 6.55671e-08, 0, -6.55671e-08, 1.5, 1.5, -1.13247e-07, -4.95018e-15, -46.0098, 2.90731, -4.5013)
+
+[node name="Stairs2Stack" parent="." instance=ExtResource("8_kyi4r")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -40.4128, 1.25, 2.8)
+
+[node name="stairs" parent="." instance=ExtResource("9_waycn")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -36.8371, 3.64484, 2.8)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.8583, 4.55383, 2.56026)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.701257, -0.712906, -0.00196709, 0.712909, 0.701256, 0.00103679, 0.000640285, -0.00212942, 0.999997, 0.239807, 0.18486, 0.405373)
+shape = SubResource("BoxShape3D_pqq3x")
+
+[node name="Tuyau origine ok" parent="." instance=ExtResource("10_60q06")]
+transform = Transform3D(1, 0, 0, 0, 0.0416756, -0.999783, 0, 1.99957, 0.0208378, -47.102, 7.52204, 2.22145)
+
+[node name="Tuyau origine ok4" parent="." instance=ExtResource("10_60q06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.102, 4.04083, -1.88681)
+
+[node name="Lights" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.806, 0, 0)
+
+[node name="WallLight" parent="Lights" instance=ExtResource("11_2xrnu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.43146, 4.93239, -1.49325)
+
+[node name="WallLight2" parent="Lights" instance=ExtResource("11_2xrnu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.43146, 4.93239, 3.26056)
+
+[node name="WallLight5" parent="Lights" instance=ExtResource("11_2xrnu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.8007, 7.54533, 0.260377)
+
+[node name="WallLight6" parent="Lights" instance=ExtResource("11_2xrnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6573, 7.54533, -10.4717)
+
+[node name="trashbag" parent="." instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.310013, 0, 0.392291, 0, 0.5, 0, -0.392291, 0, -0.310013, -25.1748, 21.6921, -2.51667)
+
+[node name="TrashSystem" parent="." instance=ExtResource("13_eqmao")]
+
+[node name="TrashChute" parent="TrashSystem" index="1" node_paths=PackedStringArray("_trashbags")]
+_trashbags = [NodePath("")]
+
+[node name="ShovelPoster" parent="." instance=ExtResource("14_nks3k")]
+transform = Transform3D(0.993242, 0, -0.116064, -0.116064, -4.37114e-08, -0.993242, -5.07332e-09, 1, -4.3416e-08, -14.9291, 2.88569, -10.6675)
+
+[connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
+
+[editable path="TrashSystem"]

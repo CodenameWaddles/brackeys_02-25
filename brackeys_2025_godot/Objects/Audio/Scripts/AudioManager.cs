@@ -6,6 +6,7 @@ using Array = Godot.Collections.Array;
 public partial class AudioManager : Node
 {
 	[Export] private Array<AudioStreamPlayer3D> _soundscapes;
+	[Export] public AudioStreamPlayer3D _alarm;
 	[Export] private Timer _timer;
 	[Export] private Vector2 _timerMaxAndMin;
 	

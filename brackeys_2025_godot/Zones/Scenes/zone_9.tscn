@@ -21,7 +21,7 @@ DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 140.0
 one_shot = true
 
 [node name="Quai(3)" parent="." instance=ExtResource("2_uy4j6")]

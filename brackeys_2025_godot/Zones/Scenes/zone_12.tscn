@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://ljexx0l02j4u"]
+
+[ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_7j3es"]
+[ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_kakf1"]
+[ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="3_jkqlm"]
+[ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="5_p0ht5"]
+[ext_resource type="PackedScene" uid="uid://dodxa5romgf8r" path="res://Zones/RoomsModelsNodes/water_final.tscn" id="6_3vq6j"]
+[ext_resource type="PackedScene" uid="uid://dqbu1evx6i23r" path="res://Objects/Interactable/Hazards/blowtorch_poster.tscn" id="7_aeyty"]
+[ext_resource type="PackedScene" uid="uid://dfjuf4o2dwn23" path="res://Objects/Interactable/Hazards/scotchable_pipe.tscn" id="7_g1jv1"]
+[ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="8_y4not"]
+[ext_resource type="PackedScene" uid="uid://dn78ah4hsnwvh" path="res://Objects/Lights/water.tscn" id="9_v84t5"]
+
+[node name="zone_12" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer")]
+script = ExtResource("1_7j3es")
+roomname = "Central Sewer"
+ZoneHazards = [NodePath("sand"), NodePath("sand4"), NodePath("sand2"), NodePath("sand3"), NodePath("ScotchablePipe"), NodePath("BlowtorchPoster")]
+ZoneTimer = NodePath("Timer")
+IsTimed = true
+ZoneDataMode = 1
+
+[node name="Quai(3)" parent="." instance=ExtResource("2_kakf1")]
+
+[node name="sand" parent="." instance=ExtResource("3_jkqlm")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -10.5577, 1.91977, -2.83736)
+
+[node name="sand4" parent="." instance=ExtResource("3_jkqlm")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11.8445, 1.91977, -6.2492)
+
+[node name="sand2" parent="." instance=ExtResource("3_jkqlm")]
+transform = Transform3D(0.796192, 0, -0.605044, 0, 1, 0, 0.605044, 0, 0.796192, -37.0002, -2.20126, -11.1984)
+
+[node name="sand3" parent="." instance=ExtResource("3_jkqlm")]
+transform = Transform3D(1.03197, 0, 0.612399, 0, 1.2, 0, -0.612399, 0, 1.03197, -38.0828, -2.20126, -9.62621)
+
+[node name="WallLight" parent="." instance=ExtResource("5_p0ht5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.6247, 7.98079, -4.87166)
+
+[node name="WallLight2" parent="." instance=ExtResource("5_p0ht5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.7184, 4.70637, -0.711743)
+
+[node name="WallLight3" parent="." instance=ExtResource("5_p0ht5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5472, 4.70637, -8.88725)
+
+[node name="water_final" parent="." instance=ExtResource("6_3vq6j")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.7002, 0.13406, -10.207)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+
+[node name="BlowtorchPoster" parent="." instance=ExtResource("7_aeyty")]
+transform = Transform3D(0.977105, 0, 0.212758, 0.212758, -4.37114e-08, -0.977105, 9.29993e-09, 1, -4.27106e-08, -9, 3, -15.502)
+
+[node name="ScotchablePipe" parent="." instance=ExtResource("7_g1jv1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.0517, -3.3079, -13.5888)
+
+[node name="SingleDataDisplay" parent="." instance=ExtResource("8_y4not")]
+transform = Transform3D(3.38832e-08, 0.775159, 1.28418, 1.5, -6.55671e-08, -2.00912e-15, 5.61335e-08, 1.28418, -0.775159, -44.9015, -4.40209, -16.4808)
+
+[node name="water" parent="." instance=ExtResource("9_v84t5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.2446, -5.98923, -11.0441)
+
+[connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

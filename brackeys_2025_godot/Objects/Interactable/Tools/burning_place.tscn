@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b86wbn0qus7d"]
+[gd_scene load_steps=5 format=3 uid="uid://b86wbn0qus7d"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/BurningPlace.cs" id="1_o4d2o"]
+[ext_resource type="AudioStream" uid="uid://bwpplnnla2iue" path="res://Assets/Sounds/Incinerateur ambiance.wav" id="2_48pjm"]
+[ext_resource type="AudioStream" uid="uid://c4ywdb3otm2ld" path="res://Assets/Sounds/Incineration.wav" id="2_llwc4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rm1qo"]
 
-[node name="burning_place" type="Node3D"]
+[node name="burning_place" type="Node3D" node_paths=PackedStringArray("ambiantSound", "burnSound")]
 script = ExtResource("1_o4d2o")
+ambiantSound = NodePath("AudioStreamPlayer3D")
+burnSound = NodePath("AudioStreamPlayer3D2")
 Type = 3
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
@@ -15,3 +19,9 @@ freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_rm1qo")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_48pjm")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_llwc4")

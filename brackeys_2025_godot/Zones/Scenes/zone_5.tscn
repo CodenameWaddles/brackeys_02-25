@@ -17,7 +17,7 @@ size = Vector3(2.80225, 1, 15.7668)
 [node name="zone_5" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_xjcoq")
 roomname = "Containment"
-ZoneHazards = [NodePath("LeakablePipe")]
+ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("LeakablePipe3")]
 ZoneTimer = NodePath("Timer")
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
@@ -48,7 +48,22 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -28.26
 [node name="LeakablePipe" parent="." instance=ExtResource("6_as2a5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8793, 2.81983, -11.2172)
 
+[node name="LeakablePipe2" parent="." instance=ExtResource("6_as2a5")]
+transform = Transform3D(0.730568, 0, 0.68284, 0, 1, 0, -0.68284, 0, 0.730568, -29.2846, -1.17064, -10.1598)
+
+[node name="LeakablePipe3" parent="." instance=ExtResource("6_as2a5")]
+transform = Transform3D(-0.390185, 0, 0.920737, 0, 1, 0, -0.920737, 0, -0.390185, -29.2846, -2.60028, 2.54526)
+
 [node name="Tuyau origine ok5" parent="." instance=ExtResource("7_wests")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8793, 9.74654, -11.2172)
+
+[node name="Tuyau origine ok6" parent="." instance=ExtResource("7_wests")]
+transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, -29.2846, 6.23167, -10.1598)
+
+[node name="Tuyau origine ok8" parent="." instance=ExtResource("7_wests")]
+transform = Transform3D(1, 0, 0, 0, 1.2, 0, 0, 0, 1, -29.2846, 2.12909, 2.54526)
+
+[node name="Tuyau origine ok7" parent="." instance=ExtResource("7_wests")]
+transform = Transform3D(1, 0, 0, 0, -1.74846e-07, -1, 0, 4, -4.37114e-08, -29.2846, 6.23167, 4.06358)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

@@ -128,6 +128,8 @@ public partial class GameManager : Node
                 LightManager.Instance.NextFrequency();
                 break;
             case 10:
+                _audioManager._alarm.Play();
+                SendNextMessage(); //breach detected
                 break;
             case 11:
                 AudioManager.Instance.NextBangingFrequency();
@@ -202,6 +204,7 @@ public partial class GameManager : Node
         _messages.Add("Burn everything properly.");
         _messages.Add("Issues detected. Use tools to maintain structural integrity.");
         _messages.Add("Real tests start now. Be quick.");
+        _messages.Add("Breach detected.");
         //_messages[5] = "Breach Detected, emergency status activated.";
         //_messages[6] = "Are you sure you want to bypass issue solving ? There is no coming back.";
         
