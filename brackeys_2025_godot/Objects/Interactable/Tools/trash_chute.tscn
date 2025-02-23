@@ -1,18 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc631bqihbykg"]
+[gd_scene load_steps=4 format=3 uid="uid://cc631bqihbykg"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/TrashChute.cs" id="1_l14gs"]
 [ext_resource type="AudioStream" uid="uid://t1dp2y8xkt8" path="res://Assets/Sounds/trash_falling.wav" id="3_8dxf6"]
+[ext_resource type="PackedScene" uid="uid://daehc8b882iba" path="res://Objects/Tunnel/TrashDoors.tscn" id="3_gwo24"]
 
-[node name="TrashChute" type="Node3D" node_paths=PackedStringArray("_trashbags", "_trashEndPoint", "_trashOpenSound")]
+[node name="TrashChute" type="Node3D" node_paths=PackedStringArray("_trashbags", "_trashEndPoint", "_trashOpenSound", "_trashDoors")]
 script = ExtResource("1_l14gs")
 _trashbags = []
 _trashEndPoint = NodePath("EndPoint")
-_trashSpeed = 0.1
 _trashOpenSound = NodePath("OpenSound")
+_trashDoors = NodePath("TrashDoors")
 
 [node name="EndPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.72186, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.7289, 0)
 
 [node name="OpenSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_8dxf6")
 volume_db = -15.0
+
+[node name="TrashDoors" parent="." instance=ExtResource("3_gwo24")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 0, -1.93557, 0)

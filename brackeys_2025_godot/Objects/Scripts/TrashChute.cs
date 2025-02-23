@@ -7,8 +7,9 @@ public partial class TrashChute : Node3D
 	[Export] private TrashButton _trashButton;
 	[Export] private Array<Trashbag> _trashbags;
 	[Export] private Node3D _trashEndPoint;
-	[Export] private float _trashSpeed = 0.01f;
+	[Export] private float _trashSpeed = 0.1f;
 	[Export] private AudioStreamPlayer3D _trashOpenSound;
+	[Export] private TrashDoors _trashDoors;
 	
 	private bool _trashIsSpawning = false;
 	private float _trashFallingT = 0;
@@ -40,6 +41,7 @@ public partial class TrashChute : Node3D
 	
 	private void _on_TrashButtonPressed(int trashAmount)
 	{
+		_trashDoors.OpenDoors();
 		_trashIsSpawning = true;
 		_trashOpenSound.Play();
 		GD.Print("TrashChute received " + trashAmount + " trash");

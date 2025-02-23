@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://baxi5p0ubistn"]
+
+[ext_resource type="PackedScene" uid="uid://oidpwfifysc1" path="res://Assets/Rooms/trash_door.glb" id="1_8dpyb"]
+
+[node name="trash_door" instance=ExtResource("1_8dpyb")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.0261909, 0, 0, 0, 1, -0.97547, 0, 0)
