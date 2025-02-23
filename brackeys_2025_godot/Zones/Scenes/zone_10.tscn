@@ -20,6 +20,7 @@ script = ExtResource("1_qgu54")
 roomname = "Containment"
 ZoneHazards = [null]
 ZoneTimer = NodePath("Timer")
+IsTimed = true
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
 [node name="Timer" type="Timer" parent="."]
