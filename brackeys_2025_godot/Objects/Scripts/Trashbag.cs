@@ -21,7 +21,7 @@ public partial class Trashbag : Pickupable
 			{
 				GameManager gm = (GameManager) GetTree().Root.GetChild(0);
 				TrashDeposit trashDeposit = gm.Cart.TrashDeposit;
-				trashDeposit.RemoveBag();
+				trashDeposit.RemoveBag(this);
 				IsInCart = false;
 				Reparent(gm);
 			}

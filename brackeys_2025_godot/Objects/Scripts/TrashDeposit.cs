@@ -58,29 +58,19 @@ public partial class TrashDeposit : InteractableNeedObject
 		}
 	}
 
-	public void RemoveBag()
+	public void RemoveBag(Trashbag trashbag)
 	{
-		int previous_slot = 0;
-		for (int i = 0; i < _trashSlotsArray.Count(); i++)
+		for (int i = 0; i < _trashSlotsArray.Count; i++)
 		{
-			if (trashbagsHeld[i] == null)
+			if (trashbagsHeld[i] == trashbag)
 			{
-				if (trashbagsHeld[previous_slot] != null)
-				{
-					trashbagsHeld[previous_slot] = null;
-					TrashCount--;
-				}
-				else
-				{
-					trashbagsHeld[i] = null;
-					TrashCount--;
-				}
-			}
-			else
-			{
-				previous_slot = i;
+				trashbagsHeld[i] = null;
+				TrashCount--;
+				GD.Print(TrashCount);
+				return;
 			}
 		}
+		
 	}
 
 	public void SetTrashAsIssues()

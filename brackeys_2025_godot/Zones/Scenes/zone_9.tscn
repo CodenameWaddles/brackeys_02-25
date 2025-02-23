@@ -11,13 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://druiscw0l16g3" path="res://Objects/Lights/fire_particles.tscn" id="9_ds1oq"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="10_qq6mu"]
 
-[node name="zone_9" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom")]
+[node name="zone_9" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom", "ZoneTimer")]
 script = ExtResource("1_uj3x0")
 roomname = "Incinerator"
 ZoneHazards = [NodePath("break_pipe"), NodePath("BlowtorchPoster"), NodePath("BlowtorchPoster2"), NodePath("BlowtorchPoster3")]
 IsTimed = true
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
+ZoneTimer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 140.0

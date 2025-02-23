@@ -73,6 +73,7 @@ public partial class Zone : Node3D
         {
             Cart.ParkedSignal += StartTimer;
             _cartTrash = Cart.TrashDeposit.TrashCount;
+            GD.Print(Cart.TrashDeposit.TrashCount);
         }
         RandomNumberGenerator rng = new RandomNumberGenerator();
         InitialIntegrityPercentage = rng.RandfRange(40, 70);
@@ -205,6 +206,7 @@ public partial class Zone : Node3D
     
     public void DisposeTimer()
     {
+        if (!IsTimed) return;
         ZoneTimer.Stop();
         Cart.ParkedSignal -= StartTimer;
     }
