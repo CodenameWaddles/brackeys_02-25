@@ -33,10 +33,12 @@ public partial class Zone : Node3D
     {
         IsComplete = false;
         
+        
         if (IsTimed)
         {
             EndTimer = new Timer();
             AddChild(EndTimer);
+            ZoneTimer = (Timer) FindChild("Timer");
         }
         else
         {
@@ -54,6 +56,10 @@ public partial class Zone : Node3D
         if (IsTimed)
         {
             Cart.UpdateCartTimer((float)ZoneTimer.TimeLeft);
+            if (IsComplete && !ZoneTimer.IsStopped())
+            {
+                ZoneTimer.Stop();
+            }
         }
     }
 
