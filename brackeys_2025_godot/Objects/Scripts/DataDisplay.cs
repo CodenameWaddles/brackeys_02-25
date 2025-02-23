@@ -8,6 +8,9 @@ public abstract partial class DataDisplay : Node {
     [Export] public int _minimumValue { get; protected set; } = 0;
     [Export] public int _maximumValue { get; protected set; } = 100;
     
+    [Export] private AudioStreamPlayer3D _incrementSound;
+    [Export] private AudioStreamPlayer3D _decrementSound;
+    
     protected Dictionary<int, float> _amplitudeTable = new(){{0, 0.05f}, {1, 0.15f}, {2, 0.25f}, {3, 0.35f}, {4, 0.25f}, {5, 0.3f}};
     protected Dictionary<int, float> _periodTable = new(){{0, 10f}, {1, 14f}, {2, 18f}, {3, 22f}, {4, 18f}, {5, 20f}};
     
@@ -16,12 +19,14 @@ public abstract partial class DataDisplay : Node {
     public void IncrementData(int i) {
         if(Data[i] < _maximumValue) {
             Data[i]++;
+            _incrementSound.Play();
         }
     }
 
     public void DecrementData(int i) {
         if(Data[i] > _minimumValue) {
             Data[i]--;
+            _decrementSound.Play();
         }
     }
 

@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4jj5gmlr6a0l"]
+[gd_scene load_steps=7 format=3 uid="uid://b4jj5gmlr6a0l"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/DataDouble.cs" id="1_jakav"]
 [ext_resource type="PackedScene" uid="uid://bi67jaxcu0j0b" path="res://Objects/Interactable/arrow_button.tscn" id="1_m0rd3"]
 [ext_resource type="PackedScene" uid="uid://blugenxdmdoqq" path="res://Objects/Interactable/screen.tscn" id="3_5apd7"]
 [ext_resource type="PackedScene" uid="uid://6qgfvwkbvidp" path="res://Objects/Cart/screen_mount.tscn" id="4_7la4h"]
+[ext_resource type="AudioStream" uid="uid://crx2mvsagrasg" path="res://Assets/Sounds/increment.wav" id="5_8s4rc"]
+[ext_resource type="AudioStream" uid="uid://ceb610kqnerst" path="res://Assets/Sounds/decrement.wav" id="6_156ir"]
 
-[node name="DoubleDataInputDisplay" type="Node3D" node_paths=PackedStringArray("_screen")]
+[node name="DoubleDataInputDisplay" type="Node3D" node_paths=PackedStringArray("_screen", "_incrementSound", "_decrementSound")]
 script = ExtResource("1_jakav")
 _screen = NodePath("screen")
 _maximumValue = 3
+_incrementSound = NodePath("IncrementSound")
+_decrementSound = NodePath("DecrementSound")
 
 [node name="APlus" parent="." node_paths=PackedStringArray("_data") instance=ExtResource("1_m0rd3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.00086, -0.000654697, 0.406597)
@@ -35,3 +39,11 @@ transform = Transform3D(0.359938, 0, 0, 0, 0.359938, 0, 0, 0, 0.359938, 0.161151
 
 [node name="screen_mount" parent="." instance=ExtResource("4_7la4h")]
 transform = Transform3D(0.449923, 0, 0, 0, 0.449923, 0, 0, 0, 0.449923, 0.161151, 0.0190831, 0.226247)
+
+[node name="IncrementSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_8s4rc")
+volume_db = -40.0
+
+[node name="DecrementSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_156ir")
+volume_db = -40.0
