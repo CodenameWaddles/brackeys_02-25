@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://cf6x6hdx6s7yd"]
+
+[ext_resource type="Script" path="res://Objects/Displays/CartMap.cs" id="1_3clt1"]
+[ext_resource type="Texture2D" uid="uid://bfh44qeoophi4" path="res://Assets/Textures/map.png" id="2_ht4fm"]
+[ext_resource type="PackedScene" uid="uid://dryn2vfl042sw" path="res://Objects/Displays/diode.tscn" id="3_4et17"]
+[ext_resource type="Shader" path="res://Objects/Shaders/glass_shader.gdshader" id="4_wm7s6"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_1kgvg"]
+size = Vector2(1, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_af3v3"]
+albedo_texture = ExtResource("2_ht4fm")
+
+[sub_resource type="BoxMesh" id="BoxMesh_kj7wm"]
+size = Vector3(1, 0.725, 0.01)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35vhd"]
+render_priority = 0
+shader = ExtResource("4_wm7s6")
+shader_parameter/Color = Vector4(1, 1, 1, 0.3)
+shader_parameter/Shine = 0.2
+shader_parameter/Roughness = 0.2
+
+[sub_resource type="QuadMesh" id="QuadMesh_ln4ih"]
+size = Vector2(1, 0.725)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eejy2"]
+albedo_color = Color(0.638236, 0.540879, 0.398213, 1)
+
+[node name="CartMap" type="Node3D" node_paths=PackedStringArray("_mapLightMeshes", "_mapLights")]
+script = ExtResource("1_3clt1")
+_mapLightMeshes = [NodePath("zone1/Industrial lantern A_1"), NodePath("zone2/Industrial lantern A_1"), NodePath("zone3/Industrial lantern A_1"), NodePath("zone4/Industrial lantern A_1"), NodePath("zone5/Industrial lantern A_1")]
+_mapLights = [NodePath("zone1/OmniLight3D"), NodePath("zone2/OmniLight3D"), NodePath("zone3/OmniLight3D"), NodePath("zone4/OmniLight3D"), NodePath("zone5/OmniLight3D")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_1kgvg")
+surface_material_override/0 = SubResource("StandardMaterial3D_af3v3")
+
+[node name="zone1" parent="." instance=ExtResource("3_4et17")]
+transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, -0.0800139, -0.0963266, -0.0169638)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="zone1"]
+transform = Transform3D(7.69231, 0, 0, 0, 7.69231, 0, 0, 0, 7.69231, 0, -0.170959, 0)
+light_color = Color(0.768627, 0.545098, 0.168627, 1)
+omni_range = 0.1
+omni_attenuation = 0.5
+
+[node name="zone2" parent="." instance=ExtResource("3_4et17")]
+transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, 0.233117, 0.267234, -0.0169639)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="zone2"]
+transform = Transform3D(7.69231, 0, 0, 0, 7.69231, 2.84217e-14, 0, -2.84217e-14, 7.69231, 0, -0.170959, 0)
+light_color = Color(0.767658, 0.545278, 0.185216, 1)
+omni_range = 0.1
+omni_attenuation = 0.5
+
+[node name="zone3" parent="." instance=ExtResource("3_4et17")]
+transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, -0.0799498, 0.267531, -0.0169638)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="zone3"]
+transform = Transform3D(7.69231, 0, 0, 0, 7.69231, 2.84217e-14, 0, -2.84217e-14, 7.69231, 0, -0.170959, 0)
+light_color = Color(0.767658, 0.545278, 0.185216, 1)
+omni_range = 0.1
+omni_attenuation = 0.5
+
+[node name="zone4" parent="." instance=ExtResource("3_4et17")]
+transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, -0.437895, 0.0396816, -0.0169638)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="zone4"]
+transform = Transform3D(7.69231, 0, 0, 0, 7.69231, 2.84217e-14, 0, -2.84217e-14, 7.69231, 0, -0.170959, 0)
+light_color = Color(0.767658, 0.545278, 0.185216, 1)
+omni_range = 0.1
+omni_attenuation = 0.5
+
+[node name="zone5" parent="." instance=ExtResource("3_4et17")]
+transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-09, -0.178636, 0.0398509, -0.0169638)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="zone5"]
+transform = Transform3D(7.69231, 0, 0, 0, 7.69231, 2.84217e-14, 0, -2.84217e-14, 7.69231, 0, -0.170959, 0)
+light_color = Color(0.767658, 0.545278, 0.185216, 1)
+omni_range = 0.1
+omni_attenuation = 0.5
+
+[node name="glass" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.32107, 0, 0, 0, 1, 0, 0, 0, 1, 7.96318e-05, -5.96046e-08, 0.0286275)
+mesh = SubResource("BoxMesh_kj7wm")
+surface_material_override/0 = SubResource("ShaderMaterial_35vhd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.32107, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0221655)
+mesh = SubResource("QuadMesh_ln4ih")
+surface_material_override/0 = SubResource("StandardMaterial3D_eejy2")
+
+[editable path="zone1"]
+[editable path="zone2"]
+[editable path="zone3"]
+[editable path="zone4"]
+[editable path="zone5"]

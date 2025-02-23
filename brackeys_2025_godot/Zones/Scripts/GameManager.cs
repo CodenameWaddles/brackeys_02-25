@@ -102,6 +102,8 @@ public partial class GameManager : Node
                 break;
         }
         
+        Cart.CartMap.DeactivateMapLights();
+        Cart.CartMap.ActivateMapLight(_currentSceneIndex%4);
     }
     
     private void _cartArrived()

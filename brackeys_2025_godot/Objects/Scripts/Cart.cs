@@ -21,6 +21,7 @@ public partial class Cart : Node3D {
     [Export] public StabilityMeter StabilityMeter;
     [Export] public CartTimer CartTimer;
     [Export] public TrashDeposit TrashDeposit;
+    [Export] public CartMap CartMap;
     
     //audio
     [Export] private AudioStreamPlayer3D _wheels;
