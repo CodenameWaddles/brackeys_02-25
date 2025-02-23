@@ -179,7 +179,7 @@ public partial class Zone : Node3D
     private void SetRandomData() {
         switch (ZoneDataMode) {
             case CartDataPanel.DataMode.Dual:
-                DisplayDataDoubleInRoom.SetRandomData();
+                DisplayDataDoubleInRoom.SetRandomData(); //passer en arg la valeur du cart (marche pas bruh)
                 break;
             case CartDataPanel.DataMode.Single:
                 DisplayDataSingleInRoom.SetRandomData();
