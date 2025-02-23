@@ -31,7 +31,8 @@ public partial class Cart : Node3D {
     [Export] private AudioStreamPlayer3D _doorOpening;
     [Export] private AudioStreamPlayer3D _bell;
     [Export] public AudioStreamPlayer3D _alarm;
-    [Export] private AudioStreamPlayer3D _music;
+    [Export] private AudioStreamPlayer3D _music1;
+    [Export] private AudioStreamPlayer3D _music2;
     [Export] private AudioStreamPlayer3D _toolSound;
     
     [Export] private ShelfDoor _shelfDoor1;
@@ -56,12 +57,15 @@ public partial class Cart : Node3D {
     public bool _playerIsInCart;
     private float _musicTime = 0.0f;
     
+    private AudioStreamPlayer3D _currentMusic;
+    
     public override void _Ready()
     {
         InputDataDoubleOnWagon = CartDataPanel.DataDouble;
         InputDataSingleOnWagon = CartDataPanel.DataSingle;
         _speed = InitialSpeed;
         PressButton.ButtonPressed += Start;
+        _currentMusic = _music1;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -109,8 +113,8 @@ public partial class Cart : Node3D {
                     _player.Reparent(GetTree().Root.GetNode("Main"));
                 }
                 
-                _musicTime = _music.GetPlaybackPosition();
-                _music.Stop();
+                _musicTime = _currentMusic.GetPlaybackPosition();
+                _currentMusic.Stop();
                 _wheels.Stop();
                 _animationPlayer.Play("open_door");
                 _bell.Play();
@@ -124,9 +128,9 @@ public partial class Cart : Node3D {
         if (_state == State.Moving)
         {
             PressButton.MakeUninteractable();   
-            if (!_music.IsPlaying())
+            if (!_currentMusic.IsPlaying())
             {
-                _music.Play(_musicTime);
+                _currentMusic.Play(_musicTime);
             }
         }
         
@@ -213,5 +217,16 @@ public partial class Cart : Node3D {
     public void ResetCartTimer() {
         CartTimer1.Reset();
         CartTimer2.Reset();
+    }
+    
+    public void NextMusic() {
+        if (_currentMusic == _music1)
+        {
+            _currentMusic = _music2;
+        }
+        else
+        {
+            _currentMusic = _music1;
+        }
     }
 }
