@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=21 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://blll5nq61dt7v" path="res://Zones/Scenes/zone_1.tscn" id="2_3h40t"]
@@ -11,11 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="6_rr8l2"]
 [ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/tape.tscn" id="7_l66rf"]
 [ext_resource type="Script" path="res://Zones/Scripts/LightManager.cs" id="8_rio7b"]
-[ext_resource type="PackedScene" uid="uid://b18ah6lt7x5ow" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
+[ext_resource type="PackedScene" uid="uid://n5yokdmfhjnb" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
 [ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="9_bni7l"]
-[ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
+[ext_resource type="PackedScene" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
 [ext_resource type="PackedScene" uid="uid://cxuquqsfkx8sa" path="res://Objects/Audio/audio_manager.tscn" id="13_2yeii"]
 [ext_resource type="PackedScene" uid="uid://dp3ata2fjdami" path="res://UIS/failed_room_screen.tscn" id="15_xa325"]
+[ext_resource type="PackedScene" uid="uid://cqrfv3e4y6q0v" path="res://Zones/RoomsModelsNodes/rails.tscn" id="17_kd7hi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j74ki"]
 
@@ -96,5 +97,29 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.676, 1.802, 68.3846)
 visible = false
 mesh = SubResource("BoxMesh_i06lb")
+
+[node name="Rails" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53, 0)
+
+[node name="Rail" parent="Rails" instance=ExtResource("17_kd7hi")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.63, 0.189, 19.5286)
+
+[node name="Rail2" parent="Rails" instance=ExtResource("17_kd7hi")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629999, 0.189, 8.83442)
+
+[node name="Rail3" parent="Rails" instance=ExtResource("17_kd7hi")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629999, 0.189, -1.85722)
+
+[node name="Rail4" parent="Rails" instance=ExtResource("17_kd7hi")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629998, 0.189, -12.5514)
+
+[node name="Rail5" parent="Rails" instance=ExtResource("17_kd7hi")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629998, 0.189, -23.2463)
+
+[node name="Rail6" parent="Rails" instance=ExtResource("17_kd7hi")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629998, 0.189, -33.9379)
+
+[node name="Rail7" parent="Rails" instance=ExtResource("17_kd7hi")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629997, 0.189, -44.644)
 
 [connection signal="timeout" from="ResetRoomTimer" to="." method="_on_reset_timer_timeout"]
