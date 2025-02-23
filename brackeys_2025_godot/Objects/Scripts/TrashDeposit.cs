@@ -88,8 +88,12 @@ public partial class TrashDeposit : InteractableNeedObject
 	{
 		for (int i = 0; i < _trashSlotsArray.Count; i++)
 		{
-			trashbagsHeld[i].QueueFree();
-			trashbagsHeld[i] = null;
+			if(trashbagsHeld[i] != null)
+			{
+				trashbagsHeld[i].QueueFree();
+				trashbagsHeld[i] = null;
+			}
+			
 		}
 	}
 	
