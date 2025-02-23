@@ -82,8 +82,8 @@ public partial class GameManager : Node
         _tunelPostZone = tempTunnel; //on dit que le post tunel = ce nouveau tunel
 
         //load new scene
-        if (_currentScene != null)
-        {
+        if (_currentScene != null) {
+            _currentScene.DisposeTimer();
             _currentScene.QueueFree();
         }
         
