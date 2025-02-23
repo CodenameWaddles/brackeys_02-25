@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqopj1jwrwxhg"]
+[gd_scene load_steps=15 format=3 uid="uid://dqopj1jwrwxhg"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_qgu54"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_bfssy"]
@@ -15,6 +15,16 @@ data = PackedVector3Array(2.4684, -0.1642, -2.2686, 2.0678, -0.0018, -2.2686, 2.
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jaq5q"]
 size = Vector3(2.80225, 1, 15.7668)
+
+[sub_resource type="QuadMesh" id="QuadMesh_p12fu"]
+size = Vector2(10.82, 13.98)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj1g0"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.862745)
+
+[sub_resource type="QuadMesh" id="QuadMesh_tw2e1"]
+size = Vector2(2.615, 2.345)
 
 [node name="zone_10" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
 script = ExtResource("1_qgu54")
@@ -60,5 +70,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8793, 9.74654, -11.2172)
 
 [node name="scotchable_door" parent="." instance=ExtResource("9_1khqx")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -29.9023, 0.0579681, -3.63897)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.0781, -1.47847, -4.20287)
+mesh = SubResource("QuadMesh_p12fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_uj1g0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.213743, -0.119814, 0.969515, -0.0229014, 0.991563, 0.127587, -0.976622, -0.0494741, 0.209196, -29.3224, -3.36158, -1.95218)
+mesh = SubResource("QuadMesh_tw2e1")
+surface_material_override/0 = SubResource("StandardMaterial3D_uj1g0")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
