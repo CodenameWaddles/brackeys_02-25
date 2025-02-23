@@ -31,10 +31,10 @@ tracks/0/path = NodePath("big_button/Cylinder:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(0.129409, 0.707107, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.129409, 0.707107),
 "update": 0,
-"values": [Vector3(0, 0.0617862, 0), Vector3(0, 0.03, 0), Vector3(0, 0.0617862, 0)]
+"values": [Vector3(0, 0.0617862, 0), Vector3(0, 0.03, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fl0cl"]
