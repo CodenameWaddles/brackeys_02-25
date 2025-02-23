@@ -15,7 +15,7 @@ data = PackedVector3Array(2.4684, -0.1642, -2.2686, 2.0678, -0.0018, -2.2686, 2.
 [sub_resource type="BoxShape3D" id="BoxShape3D_jaq5q"]
 size = Vector3(2.80225, 1, 15.7668)
 
-[node name="zone_5" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
+[node name="zone_10" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_qgu54")
 roomname = "Containment"
 ZoneHazards = [null]

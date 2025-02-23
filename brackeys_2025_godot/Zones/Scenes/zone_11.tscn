@@ -19,7 +19,7 @@ albedo_texture = ExtResource("6_2hukg")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ai15k"]
 size = Vector3(0.797607, 0.176758, 2.01266)
 
-[node name="Zone6" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
+[node name="Zone 11" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_rwayg")
 roomname = "Generator"
 ZoneHazards = [NodePath("sand"), NodePath("sand2")]
