@@ -20,6 +20,7 @@ _fixTime = 250
 _leakSound = NodePath("leaksound")
 
 [node name="pipe" parent="." instance=ExtResource("2_y23tr")]
+visible = false
 
 [node name="pipeLeak" parent="." instance=ExtResource("3_l4qhx")]
 
@@ -40,5 +41,6 @@ shape = SubResource("ConcavePolygonShape3D_mr861")
 
 [node name="leaksound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_blifg")
+volume_db = -20.0
 autoplay = true
 parameters/looping = false
