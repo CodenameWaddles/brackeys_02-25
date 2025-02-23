@@ -42,6 +42,7 @@ transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-0
 [node name="OmniLight3D" type="OmniLight3D" parent="zone1"]
 transform = Transform3D(7.69231, 0, 0, 0, 7.69231, 0, 0, 0, 7.69231, 0, -0.170959, 0)
 light_color = Color(0.768627, 0.545098, 0.168627, 1)
+light_energy = 0.0
 omni_range = 0.1
 omni_attenuation = 0.5
 
@@ -51,6 +52,7 @@ transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-0
 [node name="OmniLight3D" type="OmniLight3D" parent="zone2"]
 transform = Transform3D(7.69231, 0, 0, 0, 7.69231, 2.84217e-14, 0, -2.84217e-14, 7.69231, 0, -0.170959, 0)
 light_color = Color(0.767658, 0.545278, 0.185216, 1)
+light_energy = 0.0
 omni_range = 0.1
 omni_attenuation = 0.5
 
@@ -60,6 +62,7 @@ transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-0
 [node name="OmniLight3D" type="OmniLight3D" parent="zone3"]
 transform = Transform3D(7.69231, 0, 0, 0, 7.69231, 2.84217e-14, 0, -2.84217e-14, 7.69231, 0, -0.170959, 0)
 light_color = Color(0.767658, 0.545278, 0.185216, 1)
+light_energy = 0.0
 omni_range = 0.1
 omni_attenuation = 0.5
 
@@ -69,6 +72,7 @@ transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-0
 [node name="OmniLight3D" type="OmniLight3D" parent="zone4"]
 transform = Transform3D(7.69231, 0, 0, 0, 7.69231, 2.84217e-14, 0, -2.84217e-14, 7.69231, 0, -0.170959, 0)
 light_color = Color(0.767658, 0.545278, 0.185216, 1)
+light_energy = 0.0
 omni_range = 0.1
 omni_attenuation = 0.5
 
@@ -78,6 +82,7 @@ transform = Transform3D(0.13, 0, 0, 0, -5.68248e-09, 0.13, 0, -0.13, -5.68248e-0
 [node name="OmniLight3D" type="OmniLight3D" parent="zone5"]
 transform = Transform3D(7.69231, 0, 0, 0, 7.69231, 2.84217e-14, 0, -2.84217e-14, 7.69231, 0, -0.170959, 0)
 light_color = Color(0.767658, 0.545278, 0.185216, 1)
+light_energy = 0.0
 omni_range = 0.1
 omni_attenuation = 0.5
 
