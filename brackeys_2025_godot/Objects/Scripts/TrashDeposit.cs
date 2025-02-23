@@ -1,82 +1,79 @@
 using Godot;
 using System;
+using System.Linq;
 using Godot.Collections;
 using Array = Godot.Collections.Array;
 
 public partial class TrashDeposit : InteractableNeedObject
 {
 
-	[Export] private Array<Node3D> _trashSlotsArray;
+	[Export] private Array<Node3D> _trashSlotsArray = new Array<Node3D>();
 	[Export] private PackedScene _trashPrefab;
 	
-	private Dictionary<Vector3, bool> _trashSlots = new Dictionary<Vector3, bool>();
 	private playerInteraction _playerInteraction;
+	private Array<Trashbag> trashbagsHeld = new Array<Trashbag>();
 	
 	public override void _Ready()
 	{
 		Type = Pickupable.PickupType.Trash;
 		MakeInteractable();
 		_playerInteraction = (playerInteraction)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("Camera");
-		SetupTrahSlots();
-		GD.Print(_trashSlots.Values);
-
-	}
-
-	public override void _Process(double delta)
-	{
-		base._Process(delta);
-	}
-
-	public void SetupTrahSlots()
-	{
-		foreach (var trash in _trashSlotsArray)
+		for (int i = 0; i < _trashSlotsArray.Count; i++)
 		{
-			_trashSlots[trash.Position] = false;
+			trashbagsHeld.Add(null);
 		}
-		
 	}
 
 	protected override void ActivateSpecific()
 	{
 		if (_playerInteraction.held.Type == Pickupable.PickupType.Trash)
 		{
-			foreach (var slot in _trashSlots)
+			for(int i = 0; i < _trashSlotsArray.Count; i++)
 			{
-				if (slot.Value == false) // slot free
+				if (trashbagsHeld[i] == null)
 				{
+					//on suprime l'ancien bag
+					Trashbag temp = (Trashbag)_playerInteraction.held;
+					temp.IsSolved = true;
+					temp.MakeUninteractable();
 					_playerInteraction.DropItem();
-					Node3D trashbag = (Node3D) _trashPrefab.Instantiate();
-					
-					AddChild(trashbag);
-					trashbag.Position = slot.Key;
-					_trashSlots[slot.Key] = true;
-					break;
+					//on instancie une poubelle dans le wagon
+					Node3D item = (Node3D) _trashPrefab.Instantiate();
+					AddChild(item);
+					item.Position = _trashSlotsArray[i].Position;
+					Trashbag trashbag = (Trashbag)item;
+					trashbag.IsInCart = true;
+					trashbag.IsSolved = true;
+					GameManager gm = (GameManager)GetTree().Root.GetChild(0);
+					trashbag.Reparent(gm.Cart);
+					trashbagsHeld[i] = trashbag;
+					gm._currentScene.UpdateIntegrityPercentage();
+					return; //vide
 				}
-				return; //plein
 			}
 		}
-		GD.Print(_trashSlots.Values);
 	}
 
 	public void RemoveBag()
 	{
-		Vector3 previous_slot = Vector3.Zero;
-		foreach (var slot in _trashSlots)
+		int previous_slot = 0;
+		for (int i = 0; i < _trashSlotsArray.Count(); i++)
 		{
-			if (slot.Value == false)
+			if (trashbagsHeld[i] == null)
 			{
-				if (previous_slot != Vector3.Zero)//le previous était plein
+				if (trashbagsHeld[previous_slot] != null)
 				{
-					_trashSlots.Remove(previous_slot);
+					trashbagsHeld[previous_slot] = null;
 				}
 				else
 				{
-					_trashSlots.Remove(slot.Key);
+					trashbagsHeld[i] = null;
 				}
-				break;
+			}
+			else
+			{
+				previous_slot = i;
 			}
 		}
-		GD.Print(_trashSlots.Values);
 	}
-	
 }

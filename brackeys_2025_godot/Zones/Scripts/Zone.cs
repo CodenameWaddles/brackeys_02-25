@@ -40,7 +40,7 @@ public partial class Zone : Node3D
         }
 
         RandomNumberGenerator rng = new RandomNumberGenerator();
-        InitialIntegrityPercentage = rng.RandfRange(50, 100);
+        InitialIntegrityPercentage = rng.RandfRange(40, 70);
         IntegrityPercentageToComplete = rng.RandfRange(0, 30);
 
         IntegritySteps = (InitialIntegrityPercentage - IntegrityPercentageToComplete) / (ZoneHazards.Count + 1); // +1 pour les datas
@@ -77,6 +77,8 @@ public partial class Zone : Node3D
                 if (trashbag.IsSolved) nbOfHazardSolved++;
             }
         }
+
+        GD.Print("nb of hazard solved (excluding data) : " + nbOfHazardSolved);
     
         if (MatchData())
         {
@@ -150,7 +152,7 @@ public partial class Zone : Node3D
     public void _sendRoomMessage()
     {
         String data = dataMatched ? "yes" : "no";
-        Cart.ConsoleScreen.AddMessage("Location : " + roomname + "\nData transfered : " + data + "\nIssues detected : " + ZoneHazards.Count);
+        Cart.ConsoleScreen.AddMessage("Location : " + roomname + "\nInstability : " + Mathf.RoundToInt(IntegrityPercentage) + "%");
     }
     
     

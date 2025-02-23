@@ -77,7 +77,7 @@ public partial class playerInteraction : Node3D {
                     
                 }
                 else {
-                    if(held.Type == pickupable.Type && pickupable.IsPickedUp) {
+                    if(held == pickupable && pickupable.IsPickedUp) {
                         pickupable.Activate();
                         DropItem();
                     }

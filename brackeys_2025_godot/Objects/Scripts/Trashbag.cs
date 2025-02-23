@@ -13,7 +13,7 @@ public partial class Trashbag : Pickupable
 		_isInteractable = true;
 		Type = PickupType.Trash;
 	}
-	
+
 	protected override void ActivateSpecific() {
 		if(!IsPickedUp) {
 			if (IsInCart)
@@ -21,6 +21,8 @@ public partial class Trashbag : Pickupable
 				GameManager gm = (GameManager) GetTree().Root.GetChild(0);
 				TrashDeposit trashDeposit = gm.Cart.TrashDeposit;
 				trashDeposit.RemoveBag();
+				IsInCart = false;
+				Reparent(gm);
 			}
 			IsPickedUp = true;
 			Item.Visible = false;

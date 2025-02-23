@@ -23,14 +23,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032959, 0, 0)
 shape = SubResource("BoxShape3D_1shw0")
 
 [node name="Slot1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.776398, 0, 0.303759)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495432, -0.273625, 0.175252)
 
 [node name="Slot2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194696, 0, 0.338216)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194696, -0.273625, 0.209709)
 
 [node name="Slot3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.839741, 0, 0.401429)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.524664, -0.273625, 0.272921)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.11859, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_qoyuu")
