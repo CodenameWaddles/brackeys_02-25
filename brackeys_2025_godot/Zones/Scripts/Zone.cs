@@ -56,17 +56,14 @@ public partial class Zone : Node3D
             IsComplete = true; //pr test
         }
 
+        if (IsTimed && Cart._state.Equals(Cart.State.Stopped))
+        {
+            Cart.UpdateCartTimer((float)ZoneTimer.TimeLeft);
+        }
+        
         if (!IsComplete) {
             IsComplete = (IntegrityPercentage <= IntegrityPercentageToComplete);
             Cart.StabilityMeter.SetStability(1 - (IntegrityPercentage / 100));
-            if (IsTimed)
-            {
-                Cart.UpdateCartTimer((float)ZoneTimer.TimeLeft);
-                if (IsComplete && !ZoneTimer.IsStopped())
-                {
-                    ZoneTimer.Stop();
-                }
-            }
         }
     }
 
@@ -215,6 +212,7 @@ public partial class Zone : Node3D
     
     public void DisposeTimer()
     {
+        ZoneTimer.Stop();
         Cart.ParkedSignal -= StartTimer;
     }
    

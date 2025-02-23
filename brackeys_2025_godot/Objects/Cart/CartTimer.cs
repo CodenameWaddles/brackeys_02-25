@@ -6,6 +6,9 @@ public partial class CartTimer : Node3D
 	[Export] private Viewport _textViewport;
 	[Export] private MeshInstance3D _screenQuad;
 	[Export] private RichTextLabel _timerText;
+	[Export] private AudioStreamPlayer3D _timerSound;
+	
+	private bool _isTicking = false;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -24,7 +27,6 @@ public partial class CartTimer : Node3D
 		_timerText.Text = "";
 	}
 	
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public void UpdateTimerText(float time)
 	{
 		int rounded = Mathf.RoundToInt(time);
@@ -36,6 +38,7 @@ public partial class CartTimer : Node3D
 			text += "0";
 		}
 		text += rounded.ToString();
+		if(text != _timerText.Text) _timerSound.Play();
 		_timerText.Text = text;
 	}
 }

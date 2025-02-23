@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci3anj71tdqpk"]
+[gd_scene load_steps=6 format=3 uid="uid://ci3anj71tdqpk"]
 
 [ext_resource type="Script" path="res://Objects/Cart/CartTimer.cs" id="1_uybvn"]
 [ext_resource type="PackedScene" uid="uid://bmlyl6v024jmx" path="res://Objects/Cart/screen_mount.tscn" id="2_lj1ew"]
 [ext_resource type="PackedScene" uid="uid://cjvvh2kb1g8iu" path="res://Objects/Cart/screen_model.tscn" id="3_4j3rp"]
 [ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="4_57os6"]
+[ext_resource type="AudioStream" uid="uid://i6lkkvk2he6k" path="res://Assets/Sounds/tic_tac.wav" id="5_npxxt"]
 
-[node name="CartTimer" type="Node3D" node_paths=PackedStringArray("_textViewport", "_screenQuad", "_timerText")]
+[node name="CartTimer" type="Node3D" node_paths=PackedStringArray("_textViewport", "_screenQuad", "_timerText", "_timerSound")]
 script = ExtResource("1_uybvn")
 _textViewport = NodePath("SubViewport")
 _screenQuad = NodePath("screen/Plane")
 _timerText = NodePath("SubViewport/RichTextLabel")
+_timerSound = NodePath("tic_tac")
 
 [node name="screen_mount" parent="." instance=ExtResource("2_lj1ew")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 0.796146, 0, -0.165, 0)
@@ -34,5 +36,9 @@ text = "
 scroll_active = false
 scroll_following = true
 shortcut_keys_enabled = false
+
+[node name="tic_tac" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_npxxt")
+volume_db = -25.0
 
 [editable path="screen"]
