@@ -51,7 +51,12 @@ public partial class Zone : Node3D
     
     public override void _Process(double delta)
     {
-        IsComplete = (IntegrityPercentage <= IntegrityPercentageToComplete);
+        if (Input.IsActionJustPressed("test"))
+        {
+            IsComplete = true; //pr test
+        }
+        
+        //IsComplete = (IntegrityPercentage <= IntegrityPercentageToComplete);
         Cart.StabilityMeter.SetStability(1 - (IntegrityPercentage / 100));
         if (IsTimed)
         {
@@ -202,7 +207,8 @@ public partial class Zone : Node3D
     private void StartTimer()
     {
         if (!IsTimed) return;
-        ZoneTimer.Start();
+        GD.Print("zone timer : " + ZoneTimer);
+        ZoneTimer.Start(ZoneTimer.WaitTime);
     }
    
 }

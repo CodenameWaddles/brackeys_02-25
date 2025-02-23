@@ -12,9 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://chxesg04xb3s4" path="res://Assets/Sounds/Soundscape 9.wav" id="10_jvuq6"]
 [ext_resource type="AudioStream" uid="uid://dtpxrocri8xcg" path="res://Assets/Sounds/Alarm.mp3" id="11_5i1lw"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("_soundscapes", "_timer")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("_soundscapes", "_alarm", "_timer")]
 script = ExtResource("1_rnatx")
 _soundscapes = [NodePath("Soundscape1"), NodePath("Soundscape2"), NodePath("Soundscape3"), NodePath("Soundscape4"), NodePath("Soundscape5"), NodePath("Soundscape6"), NodePath("Soundscape7"), NodePath("Soundscape8"), NodePath("Soundscape9")]
+_alarm = NodePath("Alarm")
 _timer = NodePath("Timer")
 _timerMaxAndMin = Vector2(5, 10)
 
@@ -55,7 +56,9 @@ stream = ExtResource("10_jvuq6")
 volume_db = -20.0
 
 [node name="Alarm" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
 stream = ExtResource("11_5i1lw")
+volume_db = -15.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
