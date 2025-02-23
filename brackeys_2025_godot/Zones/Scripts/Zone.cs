@@ -179,10 +179,10 @@ public partial class Zone : Node3D
     private void SetRandomData() {
         switch (ZoneDataMode) {
             case CartDataPanel.DataMode.Dual:
-                DisplayDataDoubleInRoom.SetRandomData(Cart.CartDataPanel.DataDouble.Data[0]);
+                DisplayDataDoubleInRoom.SetRandomData();
                 break;
             case CartDataPanel.DataMode.Single:
-                DisplayDataSingleInRoom.SetRandomData(Cart.CartDataPanel.DataSingle.Data[0]);
+                DisplayDataSingleInRoom.SetRandomData();
                 break;
         }
     }
@@ -190,5 +190,5 @@ public partial class Zone : Node3D
     private void StartTimer() {
         ZoneTimer.Start();
     }
-    
+   
 }

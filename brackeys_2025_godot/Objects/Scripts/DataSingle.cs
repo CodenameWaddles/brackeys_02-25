@@ -16,7 +16,7 @@ public partial class DataSingle : DataDisplay {
         _screen.SetInstanceShaderParameter("data", Data[0]);
     }
     
-    public void SetRandomData(int exclude) {
+    public void SetRandomData(int exclude = 0) {
         RandomNumberGenerator rng = new RandomNumberGenerator();
         Data[0] = rng.RandiRange(_minimumValue, _maximumValue);
         while (Data[0] == exclude)
