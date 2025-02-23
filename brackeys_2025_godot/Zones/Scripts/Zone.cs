@@ -139,7 +139,10 @@ public partial class Zone : Node3D
         ZoneTimer.Stop();
         EndTimer.Timeout += _cart_leave_without_player;
         EndTimer.Start(10);
-        Cart._alarm.Play();
+        if(Cart._state.Equals(Cart.State.Stopped))
+        {
+            Cart._alarm.Play();
+        }
         GD.Print("playing alarm");
     }
 
@@ -173,6 +176,7 @@ public partial class Zone : Node3D
     private void _restart_zone()
     {
         EndTimer.Stop();
+        Cart.TrashDeposit.Reset();
         GameManager.Instance._failedCurrentScene();
     }
 
