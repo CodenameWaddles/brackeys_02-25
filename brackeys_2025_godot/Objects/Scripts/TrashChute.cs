@@ -30,7 +30,6 @@ public partial class TrashChute : Node3D
 				}
 			}
 		}
-		
 	}
 	
 	private void _on_TrashButtonPressed(int trashAmount)

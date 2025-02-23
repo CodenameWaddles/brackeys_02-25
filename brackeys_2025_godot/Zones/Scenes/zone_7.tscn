@@ -9,12 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="8_4l1dh"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="8_modnu"]
 
-[node name="zone_7" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer")]
+[node name="zone_7" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_u7spn")
 roomname = "Central Sewer"
 ZoneHazards = [NodePath("LeakablePipe"), NodePath("sand"), NodePath("sand2"), NodePath("BlowtorchPoster")]
 ZoneTimer = NodePath("Timer")
 IsTimed = true
+DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
 
 [node name="Quai(3)" parent="." instance=ExtResource("4_udx1t")]
@@ -45,7 +46,7 @@ wait_time = 180.0
 one_shot = true
 
 [node name="BlowtorchPoster" parent="." instance=ExtResource("7_0p33i")]
-transform = Transform3D(0.977105, 0, 0.212758, 0.212758, -4.37114e-08, -0.977105, 9.29993e-09, 1, -4.27106e-08, -9, 3, -15.502)
+transform = Transform3D(-0.875533, 0.442315, 0.194419, -0.222475, -0.011873, -0.974866, -0.42889, -0.896781, 0.108799, -34.2018, 0.121491, -6.27627)
 
 [node name="SingleDataDisplay" parent="." instance=ExtResource("8_4l1dh")]
 transform = Transform3D(3.38832e-08, 0.775159, 1.28418, 1.5, -6.55671e-08, -2.00912e-15, 5.61335e-08, 1.28418, -0.775159, -44.9015, -4.40209, -16.4808)

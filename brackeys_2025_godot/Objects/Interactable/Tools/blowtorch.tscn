@@ -6,8 +6,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_72gb5"]
 size = Vector3(0.282654, 0.434143, 0.350586)
 
-[node name="Blowtorch" type="Node3D"]
+[node name="Blowtorch" type="Node3D" node_paths=PackedStringArray("Item")]
 script = ExtResource("1_ytnnm")
+Item = NodePath("Chalumeau(1)")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 2

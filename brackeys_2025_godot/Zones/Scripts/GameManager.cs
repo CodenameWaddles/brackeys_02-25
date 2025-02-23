@@ -5,6 +5,8 @@ using Godot.Collections;
 
 public partial class GameManager : Node
 {
+    [Export] private int startIndex = 0;
+    
     [Export] private Array<PackedScene> _scenes = new Array<PackedScene>();
     [Export] private Vector3 _scenePosition = new Vector3(0, 0, 0); //remplacer tmtc
     [Export] public Cart Cart;
@@ -50,7 +52,13 @@ public partial class GameManager : Node
         Cart.ArrivedSignal += _cartArrived;
         _player.Reparent(Cart);
         _audioManager.Disable();
-        _loadScene(0);
+        _loadScene(startIndex);
+        
+        if (startIndex >= 6) //testing purposes. startIndex should be 0
+        {
+            Cart.OpenTools();
+            Cart.NextMusic();
+        }
     }
 
     public override void _Process(double delta)

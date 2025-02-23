@@ -39,11 +39,10 @@ public partial class AudioManager : Node
 	
 	public void PlayRandomSoundscape()
 	{
-		Array<AudioStreamPlayer3D> soundPool = _soundscapes;
+		Array<AudioStreamPlayer3D> soundPool = _soundscapes.Duplicate();
 		soundPool.Remove(_playingSound);
 		Random r = new Random();
 		int index = r.Next(soundPool.Count);
-		
 		soundPool[index].Play();
 		_playingSound = soundPool[index];
 	}

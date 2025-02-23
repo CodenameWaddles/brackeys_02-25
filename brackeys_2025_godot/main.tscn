@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=28 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://brlq4ot8qypvv" path="res://Zones/Scenes/zone_9.tscn" id="2_2apei"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dqopj1jwrwxhg" path="res://Zones/Scenes/zone_10.tscn" id="11_f4bw3"]
 [ext_resource type="PackedScene" uid="uid://b3e0tj0ry08qf" path="res://Zones/Scenes/zone_11.tscn" id="12_6lbj4"]
 [ext_resource type="PackedScene" uid="uid://cxuquqsfkx8sa" path="res://Objects/Audio/audio_manager.tscn" id="13_2yeii"]
+[ext_resource type="PackedScene" uid="uid://ljexx0l02j4u" path="res://Zones/Scenes/zone_12.tscn" id="13_xpvod"]
 [ext_resource type="PackedScene" uid="uid://dp3ata2fjdami" path="res://UIS/failed_room_screen.tscn" id="15_xa325"]
 [ext_resource type="PackedScene" path="res://Zones/RoomsModelsNodes/rails.tscn" id="17_kd7hi"]
 
@@ -39,7 +40,8 @@ volumetric_fog_emission_energy = 2.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
 script = ExtResource("1_yxd7y")
-_scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("6_m1i8t"), ExtResource("7_a5t7k"), ExtResource("8_5vsux"), ExtResource("9_wnaab"), ExtResource("2_2apei"), ExtResource("11_f4bw3"), ExtResource("12_6lbj4")]
+startIndex = 6
+_scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("6_m1i8t"), ExtResource("7_a5t7k"), ExtResource("8_5vsux"), ExtResource("9_wnaab"), ExtResource("2_2apei"), ExtResource("11_f4bw3"), ExtResource("12_6lbj4"), ExtResource("13_xpvod")]
 Cart = NodePath("cart")
 _player = NodePath("Character")
 _audioManager = NodePath("AudioManager")

@@ -86,7 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.0517, -3.3079, -13.5888)
 transform = Transform3D(3.38832e-08, 0.775159, 1.28418, 1.5, -6.55671e-08, -2.00912e-15, 5.61335e-08, 1.28418, -0.775159, -44.9015, -4.40209, -16.4808)
 
 [node name="BlowtorchPoster" parent="." instance=ExtResource("8_f3ike")]
-transform = Transform3D(0.977105, 0, 0.212758, 0.212758, -4.37114e-08, -0.977105, 9.29993e-09, 1, -4.27106e-08, -9, 3, -15.502)
+transform = Transform3D(-0.875533, 0.442315, 0.194419, -0.222475, -0.011873, -0.974866, -0.42889, -0.896781, 0.108799, -34.2018, 0.121491, -6.27627)
 _isHazard = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
