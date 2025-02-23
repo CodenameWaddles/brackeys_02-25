@@ -14,3 +14,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.51602, 0, 1.29232)
 
 [node name="Porte base" parent="." instance=ExtResource("3_75uqv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.51602, 0, 1.29232)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]

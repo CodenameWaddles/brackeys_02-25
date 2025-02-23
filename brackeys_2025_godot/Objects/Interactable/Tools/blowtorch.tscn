@@ -26,3 +26,4 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.403441, 0)
 
 [node name="useSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_l15tu")
+volume_db = 10.0

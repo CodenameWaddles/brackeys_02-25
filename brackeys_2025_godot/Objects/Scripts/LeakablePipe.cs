@@ -37,12 +37,14 @@ public partial class LeakablePipe : Hazard {
     private GameManager _main;
     
     protected override void ActivateSpecific() {
+        playerInteraction player = (playerInteraction)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("Camera");
+        Blowtorch blowtorch = (Blowtorch)player.held;
         if(_fixProgress < _fixTime) {
             _fixProgress++;
-            playerInteraction player = (playerInteraction)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("Camera");
-            pl
-            
-        } else {
+            blowtorch.isBeingUsed = true;
+        } else
+        {
+            blowtorch.isBeingUsed = false;
             MakeUninteractable();
         }
     }
