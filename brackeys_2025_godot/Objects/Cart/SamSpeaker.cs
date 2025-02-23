@@ -38,7 +38,7 @@ public partial class SamSpeaker : Node3D
 	public async void PlaySounds() {
 		foreach (var clip in _audioClips) {
 			clip.Play();
-			await ToSignal(GetTree().CreateTimer(clip.Stream.GetLength()), "timeout");
+			await ToSignal(GetTree().CreateTimer(clip.Stream.GetLength() + 0.2f), "timeout");
 		}
 		_audioClips.Clear();
 	}
