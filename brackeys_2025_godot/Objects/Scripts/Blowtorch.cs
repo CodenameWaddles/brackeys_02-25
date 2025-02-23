@@ -22,5 +22,12 @@ public partial class Blowtorch : Pickupable
                 useSound.Play();
             }
         }
+        else
+        {
+            if (useSound.IsPlaying())
+            {
+                useSound.Stop();
+            }
+        }
     }
 }

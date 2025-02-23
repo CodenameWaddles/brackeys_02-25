@@ -20,14 +20,29 @@ public partial class BreakPipe : Hazard
 		_main = (GameManager) GetTree().Root.GetChild(0);
 		MakeInteractable();
 	}
-    
+	
+	public override void _Process(double delta)
+	{
+		if (!IsSolved && !_leakSound.IsPlaying())
+		{
+			_leakSound.Play();
+		}else if (IsSolved && _leakSound.IsPlaying())
+		{
+			_leakSound.Stop();
+		}
+	}
+	
 	protected override void ActivateSpecific() {
+		playerInteraction player = (playerInteraction)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("Camera");
+		Blowtorch blowtorch = (Blowtorch)player.held;
 		switch (_fixAttempt) {
 			case 0:
 				if(_fixProgress < _fixTime) {
 					_fixProgress++;
+					blowtorch.isBeingUsed = true;
 				} else {
 					_fixAttempt++;
+					blowtorch.isBeingUsed = false;
 					BreakBlowtorch();
 				}
 				break;
