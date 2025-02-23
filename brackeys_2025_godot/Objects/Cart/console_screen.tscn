@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://Objects/Shaders/crt_shader.gdshader" id="3_tbijf"]
 [ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="3_tlxws"]
 [ext_resource type="Script" path="res://Objects/Cart/ScreenText.cs" id="5_iept1"]
-[ext_resource type="PackedScene" uid="uid://6qgfvwkbvidp" path="res://Objects/Cart/screen_mount.tscn" id="6_elwdc"]
+[ext_resource type="PackedScene" uid="uid://bmlyl6v024jmx" path="res://Objects/Cart/screen_mount.tscn" id="6_elwdc"]
 [ext_resource type="PackedScene" uid="uid://dryn2vfl042sw" path="res://Objects/Displays/diode.tscn" id="7_w085y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_61jf1"]
