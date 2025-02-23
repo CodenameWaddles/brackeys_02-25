@@ -4,6 +4,7 @@ using Brackeys_2025_Godot.Objects.Scripts;
 
 public partial class Trashbag : Pickupable
 {
+	[Export] public RigidBody3D RigidBody;
 
 	public bool IsSolved;
 	public bool IsInCart;

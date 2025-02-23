@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dlmx0mcf2pncd"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_f74ch"]
-[ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="2_0rvu8"]
+[ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="2_0rvu8"]
 [ext_resource type="PackedScene" uid="uid://cey6ht5rcp1yh" path="res://Zones/RoomsModelsNodes/incinerateur.tscn" id="3_kj5l8"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="4_ykpdr"]
 [ext_resource type="PackedScene" uid="uid://druiscw0l16g3" path="res://Objects/Lights/fire_particles.tscn" id="5_3xj85"]

@@ -3,12 +3,13 @@
 [ext_resource type="Script" path="res://Objects/Scripts/Trashbag.cs" id="1_khv5y"]
 [ext_resource type="PackedScene" path="res://Objects/Interactable/Hazards/projectsac_poubelle.tscn" id="2_r4jj2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hcv2g"]
-size = Vector3(1, 0.642609, 0.789917)
+[sub_resource type="BoxShape3D" id="BoxShape3D_33eep"]
+size = Vector3(1.16516, 0.984497, 1.69141)
 
-[node name="trashbag" type="Node3D" node_paths=PackedStringArray("Item")]
+[node name="trashbag" type="Node3D" node_paths=PackedStringArray("RigidBody", "Item")]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
 script = ExtResource("1_khv5y")
+RigidBody = NodePath("RigidBody3D")
 Item = NodePath("Projectsac poubelle")
 
 [node name="Projectsac poubelle" parent="." instance=ExtResource("2_r4jj2")]
@@ -19,5 +20,5 @@ collision_mask = 2
 freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1.34863, 0, 0, 0, 1.34, 0, 0, 0, 1.85038, 0, 0.460229, -0.194367)
-shape = SubResource("BoxShape3D_hcv2g")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0825806, 0.452478, -0.262726)
+shape = SubResource("BoxShape3D_33eep")

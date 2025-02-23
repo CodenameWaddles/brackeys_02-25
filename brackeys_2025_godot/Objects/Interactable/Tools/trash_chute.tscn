@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc631bqihbykg"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/TrashChute.cs" id="1_l14gs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m40sv"]
+size = Vector3(5.45605, 0.253906, 6.52679)
+
+[node name="TrashChute" type="Node3D" node_paths=PackedStringArray("_trashbags", "_trashEndPoint")]
+script = ExtResource("1_l14gs")
+_trashbags = []
+_trashEndPoint = NodePath("EndPoint")
+_trashSpeed = 0.1
+
+[node name="Ground" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.9533, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.180176, -0.0683594, 0.447418)
+shape = SubResource("BoxShape3D_m40sv")
+
+[node name="EndPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.72186, 0)
+
+[connection signal="body_entered" from="Ground" to="." method="OnGroundBodyEntered"]

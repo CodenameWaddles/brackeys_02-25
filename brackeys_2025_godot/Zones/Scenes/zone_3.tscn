@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://co34hl8xqgms7"]
+[gd_scene load_steps=16 format=3 uid="uid://co34hl8xqgms7"]
 
 [ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="1_b8lij"]
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_xwwdd"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="8_lspst"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="9_6jhge"]
 [ext_resource type="PackedScene" uid="uid://cskk8fr2tmd85" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="10_58x4j"]
+[ext_resource type="PackedScene" uid="uid://cwcwab86voq2f" path="res://Objects/Interactable/trash_button.tscn" id="11_4usqn"]
+[ext_resource type="PackedScene" uid="uid://cc631bqihbykg" path="res://Objects/Interactable/Tools/trash_chute.tscn" id="12_gkh1l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h78t7"]
 albedo_texture = ExtResource("4_lpswr")
@@ -87,9 +89,18 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.80
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6573, 7.54533, -10.4717)
 
 [node name="trashbag" parent="." instance=ExtResource("10_58x4j")]
-transform = Transform3D(-0.413246, 0, 0.281475, 0, 0.5, 0, -0.281475, 0, -0.413246, -4.44806, 1.25906, 0.662494)
+transform = Transform3D(-0.413246, 0, 0.281475, 0, 0.5, 0, -0.281475, 0, -0.413246, -25.9127, 13.2591, -2.46336)
 
 [node name="trashbag2" parent="." instance=ExtResource("10_58x4j")]
-transform = Transform3D(-0.0312645, 0, -0.499022, 0, 0.5, 0, 0.499022, 0, -0.0312645, -4.86741, 1.25906, -3.16945)
+transform = Transform3D(-0.0312645, 0, -0.499022, 0, 0.5, 0, 0.499022, 0, -0.0312645, -27.9162, 12.2591, -3.11055)
+
+[node name="TrashButton" parent="." instance=ExtResource("11_4usqn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5384, 2.4535, -2.39013)
+trashAmount = 2
+
+[node name="TrashChute" parent="." node_paths=PackedStringArray("_trashButton", "_trashbags") instance=ExtResource("12_gkh1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.74, 10.5254, -2.37337)
+_trashButton = NodePath("../TrashButton")
+_trashbags = [NodePath("../trashbag"), NodePath("../trashbag2")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
