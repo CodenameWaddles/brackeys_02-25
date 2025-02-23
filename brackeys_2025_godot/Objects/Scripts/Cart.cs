@@ -31,6 +31,7 @@ public partial class Cart : Node3D {
     [Export] private AudioStreamPlayer3D _bell;
     [Export] public AudioStreamPlayer3D _alarm;
     [Export] private AudioStreamPlayer3D _music;
+    [Export] private AudioStreamPlayer3D _toolSound;
     
     [Export] private ShelfDoor _shelfDoor1;
     [Export] private ShelfDoor _shelfDoor2;
@@ -200,5 +201,12 @@ public partial class Cart : Node3D {
     public void openTools() {
         _shelfDoor1.OpenDoor();
         _shelfDoor2.OpenDoor();
+        _toolSound.Play();
+    }
+
+    public override void _Process(double delta) {
+        if(Input.IsActionJustPressed("ui_accept")) {
+            openTools();
+        }
     }
 }
