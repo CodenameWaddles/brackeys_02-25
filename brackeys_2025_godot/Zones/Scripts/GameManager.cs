@@ -89,6 +89,7 @@ public partial class GameManager : Node
                 break;
             case 2: 
                 SendNextMessage(); //trash
+                LightManager.Instance.NextFrequency();
                 break;
             case 3:
                 SendNextMessage(); //burn
@@ -100,6 +101,25 @@ public partial class GameManager : Node
             case 6:
                 SendNextMessage(); //timer
                 Cart.NextMusic();
+                LightManager.Instance.NextFrequency();
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                LightManager.Instance.NextFrequency();
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                LightManager.Instance.NextFrequency();
+                break;
+            case 13:
+                break;
+            case 14:
                 break;
         }
         

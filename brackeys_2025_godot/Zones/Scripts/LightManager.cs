@@ -22,9 +22,11 @@ public partial class LightManager : Node
 	private int index = 0;
 	
 	public float FlickeringFrequency { get; private set; }
+	public int FlickeringVolume { get; private set; } = -20;
 	
 	public override void _Ready()
 	{
+		_instance = this;
 		FlickeringFrequency = _flickeringFrequencies[0];
 	}
 	
