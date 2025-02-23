@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbkr04vo7uhhe"]
+[gd_scene load_steps=5 format=3 uid="uid://bbkr04vo7uhhe"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/Blowtorch.cs" id="1_ytnnm"]
 [ext_resource type="PackedScene" uid="uid://bbksuduvqki2" path="res://Objects/Interactable/Tools/blowtorchmodel.tscn" id="2_1p6x6"]
+[ext_resource type="AudioStream" uid="uid://c5phnvo1chqpr" path="res://Assets/Sounds/Soudure.wav" id="3_l15tu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_72gb5"]
 size = Vector3(0.282654, 0.434143, 0.350586)
 
-[node name="Blowtorch" type="Node3D" node_paths=PackedStringArray("Item")]
+[node name="Blowtorch" type="Node3D" node_paths=PackedStringArray("useSound", "Item")]
 script = ExtResource("1_ytnnm")
+useSound = NodePath("useSound")
 Item = NodePath("Chalumeau(1)")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
@@ -21,3 +23,6 @@ shape = SubResource("BoxShape3D_72gb5")
 
 [node name="Chalumeau(1)" parent="." instance=ExtResource("2_1p6x6")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.403441, 0)
+
+[node name="useSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_l15tu")

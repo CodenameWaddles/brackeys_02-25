@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://n5yokdmfhjnb"]
 
-[ext_resource type="PackedScene" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="1_xukhq"]
-[ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="2_blapk"]
-[ext_resource type="PackedScene" uid="uid://cqrfv3e4y6q0v" path="res://Zones/RoomsModelsNodes/rails.tscn" id="3_mwvdh"]
+[ext_resource type="PackedScene" uid="uid://dd23o2xljhtck" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="1_xukhq"]
+[ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="2_blapk"]
+[ext_resource type="PackedScene" path="res://Zones/RoomsModelsNodes/rails.tscn" id="3_mwvdh"]
 [ext_resource type="PackedScene" uid="uid://bac6epmvhs368" path="res://Objects/Tunnel/tunnel_secours.tscn" id="4_8c1ur"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n5dc1"]
@@ -74,9 +74,6 @@ transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-0
 [node name="Rail12" parent="Rails" instance=ExtResource("3_mwvdh")]
 transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.1196, 0.189171, -123.008)
 
-[node name="Rail14" parent="Rails" instance=ExtResource("3_mwvdh")]
-transform = Transform3D(-114.49, 0, -1.0009e-05, 0, 114.49, 0, 1.0009e-05, 0, -114.49, -1431.68, 2.2133, -121.717)
-
 [node name="Rail13" parent="Rails" instance=ExtResource("3_mwvdh")]
 transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.1196, 0.189171, -133.697)
 
@@ -139,9 +136,6 @@ transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-0
 
 [node name="Rail12" parent="mirror/Rails2" instance=ExtResource("3_mwvdh")]
 transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.1196, 0.189171, -123.008)
-
-[node name="Rail14" parent="mirror/Rails2" instance=ExtResource("3_mwvdh")]
-transform = Transform3D(-114.49, 0, -1.0009e-05, 0, 114.49, 0, 1.0009e-05, 0, -114.49, -1431.68, 2.2133, -121.717)
 
 [node name="Rail13" parent="mirror/Rails2" instance=ExtResource("3_mwvdh")]
 transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.1196, 0.189171, -133.697)

@@ -39,6 +39,9 @@ public partial class LeakablePipe : Hazard {
     protected override void ActivateSpecific() {
         if(_fixProgress < _fixTime) {
             _fixProgress++;
+            playerInteraction player = (playerInteraction)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("Camera");
+            pl
+            
         } else {
             MakeUninteractable();
         }
