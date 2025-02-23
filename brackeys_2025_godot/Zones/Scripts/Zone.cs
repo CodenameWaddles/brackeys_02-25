@@ -14,6 +14,8 @@ public partial class Zone : Node3D
     [Export] public DataSingle DisplayDataSingleInRoom { get; private set; }
     [Export] public DataDouble DisplayDataDoubleInRoom { get; private set; }
     [Export] public CartDataPanel.DataMode ZoneDataMode;
+
+    private Array<Trashbag> AdditionalTrashbags;
     
     private float IntegrityPercentage;
     private float InitialIntegrityPercentage;
@@ -40,13 +42,7 @@ public partial class Zone : Node3D
             Cart?.ResetCartTimer();
         }
 
-        RandomNumberGenerator rng = new RandomNumberGenerator();
-        InitialIntegrityPercentage = rng.RandfRange(40, 70);
-        IntegrityPercentageToComplete = rng.RandfRange(0, 30);
-
-        IntegritySteps = (InitialIntegrityPercentage - IntegrityPercentageToComplete) / (ZoneHazards.Count + 1); // +1 pour les datas
-        IntegrityPercentageToComplete += IntegritySteps / 2; //petit offset pour que ce soit plus lisible
-        IntegrityPercentage = InitialIntegrityPercentage;
+        SetupIntegrity();
         
     }
     
@@ -58,6 +54,17 @@ public partial class Zone : Node3D
         {
             Cart.UpdateCartTimer((float)ZoneTimer.TimeLeft);
         }
+    }
+
+    public void SetupIntegrity()
+    {
+        RandomNumberGenerator rng = new RandomNumberGenerator();
+        InitialIntegrityPercentage = rng.RandfRange(40, 70);
+        IntegrityPercentageToComplete = rng.RandfRange(0, 30);
+        
+        IntegritySteps = (InitialIntegrityPercentage - IntegrityPercentageToComplete) / (ZoneHazards.Count + 1); // +1 pour les datas
+        IntegrityPercentageToComplete += IntegritySteps / 2; //petit offset pour que ce soit plus lisible
+        IntegrityPercentage = InitialIntegrityPercentage;
     }
 
     public void UpdateIntegrityPercentage()

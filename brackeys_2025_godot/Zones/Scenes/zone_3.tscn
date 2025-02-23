@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dmutabg17sf5n" path="res://Zones/RoomsModelsNodes/stairs.tscn" id="7_7vuqq"]
 [ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="8_lspst"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="9_6jhge"]
-[ext_resource type="PackedScene" uid="uid://bugsgt76yne5r" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="10_on5cb"]
+[ext_resource type="PackedScene" uid="uid://bugsgt76yne5r" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="10_58x4j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h78t7"]
 albedo_texture = ExtResource("4_lpswr")
@@ -22,7 +22,7 @@ size = Vector3(0.929504, 1.01062, 2.27936)
 [node name="zone_3" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_xwwdd")
 roomname = "Trash Disposal Unit"
-ZoneHazards = [NodePath("trashbag"), NodePath("trashbag2"), NodePath("trashbag3")]
+ZoneHazards = [null, null, null]
 ZoneTimer = NodePath("Timer")
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
@@ -86,13 +86,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.80
 [node name="WallLight6" parent="Lights" instance=ExtResource("9_6jhge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6573, 7.54533, -10.4717)
 
-[node name="trashbag" parent="." instance=ExtResource("10_on5cb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59265, 1.25906, -3.17827)
+[node name="trashbag" parent="." instance=ExtResource("10_58x4j")]
+transform = Transform3D(-0.413246, 0, 0.281475, 0, 0.5, 0, -0.281475, 0, -0.413246, -22.3941, 1.25906, -2.55146)
 
-[node name="trashbag2" parent="." instance=ExtResource("10_on5cb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0043, 1.25907, -5.26803)
-
-[node name="trashbag3" parent="." instance=ExtResource("10_on5cb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7052, 1.25907, -1.051)
+[node name="trashbag2" parent="." instance=ExtResource("10_58x4j")]
+transform = Transform3D(-0.0312645, 0, -0.499022, 0, 0.5, 0, 0.499022, 0, -0.0312645, -23.0848, 1.25906, -4.3108)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
