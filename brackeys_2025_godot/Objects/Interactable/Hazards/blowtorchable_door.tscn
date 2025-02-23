@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbaenahr2t02r"]
+[gd_scene load_steps=5 format=3 uid="uid://cbaenahr2t02r"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/BlowtorchableDoor.cs" id="1_ucmev"]
 [ext_resource type="PackedScene" uid="uid://drfruve4qjhek" path="res://Zones/RoomsModelsNodes/porte_bombée.tscn" id="2_yf2i0"]
 [ext_resource type="PackedScene" uid="uid://460sl4uqct0" path="res://Zones/RoomsModelsNodes/porte_base.tscn" id="3_75uqv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ts5xc"]
+size = Vector3(0.934021, 2.09326, 3.19421)
 
 [node name="blowtorchable_door" type="Node3D" node_paths=PackedStringArray("_doorFixed", "_doorDamaged")]
 script = ExtResource("1_ucmev")
@@ -16,3 +19,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.51602, 0, 1.29232)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.51602, 0, 1.29232)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.997351, -0.0727334, 0, 0.0727334, 0.997351, 0, 0, 0, 1, 0.356465, -0.537523, -0.164612)
+shape = SubResource("BoxShape3D_ts5xc")

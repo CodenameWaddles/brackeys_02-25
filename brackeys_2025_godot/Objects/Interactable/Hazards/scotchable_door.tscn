@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://s5s5j51th0id"]
+[gd_scene load_steps=5 format=3 uid="uid://s5s5j51th0id"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/BlowtorchableDoor.cs" id="1_j3ydt"]
 [ext_resource type="PackedScene" uid="uid://drfruve4qjhek" path="res://Zones/RoomsModelsNodes/porte_bombée.tscn" id="2_535gc"]
 [ext_resource type="PackedScene" uid="uid://pko2a11kprjv" path="res://Zones/RoomsModelsNodes/porte_bombée_scotch.tscn" id="2_hg7jj"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fuomf"]
+size = Vector3(0.934021, 2.09326, 3.19421)
+
 [node name="scotchable_door" type="Node3D" node_paths=PackedStringArray("_doorFixed", "_doorDamaged")]
 script = ExtResource("1_j3ydt")
 _doorFixed = NodePath("Porte bombée scotch")
 _doorDamaged = NodePath("Porte bombée")
+_fixTime = 100
+Type = 1
 
 [node name="Porte bombée scotch" parent="." instance=ExtResource("2_hg7jj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.51602, 0, 1.29232)
@@ -16,3 +21,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.51602, 0, 1.29232)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.51602, 0, 1.29232)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.997351, -0.0727334, 0, 0.0727334, 0.997351, 0, 0, 0, 1, 0.356465, -0.537523, -0.164612)
+shape = SubResource("BoxShape3D_fuomf")
