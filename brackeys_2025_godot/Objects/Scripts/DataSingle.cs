@@ -16,9 +16,16 @@ public partial class DataSingle : DataDisplay {
         _screen.SetInstanceShaderParameter("data", Data[0]);
     }
     
-    public void SetRandomData() {
+    public void SetRandomData(int exclude) {
         RandomNumberGenerator rng = new RandomNumberGenerator();
         Data[0] = rng.RandiRange(_minimumValue, _maximumValue);
+        while (Data[0] == exclude)
+        {
+            Data[0] = rng.RandiRange(_minimumValue, _maximumValue);
+        }
+
+        GD.Print("excluding : " + exclude);
+        GD.Print("Data[0] : " + Data[0]);
     }
 
     public void Reset()

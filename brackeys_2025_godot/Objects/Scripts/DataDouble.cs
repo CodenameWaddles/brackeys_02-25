@@ -23,12 +23,17 @@ public partial class DataDouble : DataDisplay {
         _mesh.SetInstanceShaderParameter("period", _periodTable[Data[1]]);
     }
 
-    public void SetRandomData() {
+    public void SetRandomData(int exclude = 0) {
         RandomNumberGenerator rng = new RandomNumberGenerator();
         Data[0] = rng.RandiRange(_minimumValue, _maximumValue);
-        Data[1] = rng.RandiRange(_minimumValue, _maximumValue);
-        GD.Print(Data[0]);
-        GD.Print(Data[1]);
+        while (Data[0] == exclude)
+        {
+            Data[0] = rng.RandiRange(_minimumValue, _maximumValue);
+        }
+        Data[1] = rng.RandiRange(_minimumValue, _maximumValue); //que pour data 0
+        GD.Print("Excluding value : " + exclude);
+        GD.Print("Data[0] : " + Data[0]);
+        GD.Print( "Data[1] : " + Data[1]);
     }
     
     public void Reset()

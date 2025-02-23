@@ -95,7 +95,7 @@ public partial class Zone : Node3D
             }
         }
 
-        GD.Print("nb of hazard solved (excluding data) : " + nbOfHazardSolved + "/" + ZoneHazards.Count() + " + " + _cartTrash + " trash");
+        //GD.Print("nb of hazard solved (excluding data) : " + nbOfHazardSolved + "/" + ZoneHazards.Count() + " + " + _cartTrash + " trash");
     
         if (MatchData())
         {
@@ -168,7 +168,6 @@ public partial class Zone : Node3D
 
     public void _sendRoomMessage()
     {
-        String data = dataMatched ? "yes" : "no";
         Cart.ConsoleScreen.AddMessage("Location : " + roomname + "\nInstability : " + Mathf.RoundToInt(IntegrityPercentage) + "%");
     }
     
@@ -180,10 +179,10 @@ public partial class Zone : Node3D
     private void SetRandomData() {
         switch (ZoneDataMode) {
             case CartDataPanel.DataMode.Dual:
-                DisplayDataDoubleInRoom.SetRandomData();
+                DisplayDataDoubleInRoom.SetRandomData(Cart.CartDataPanel.DataDouble.Data[0]);
                 break;
             case CartDataPanel.DataMode.Single:
-                DisplayDataSingleInRoom.SetRandomData();
+                DisplayDataSingleInRoom.SetRandomData(Cart.CartDataPanel.DataSingle.Data[0]);
                 break;
         }
     }
