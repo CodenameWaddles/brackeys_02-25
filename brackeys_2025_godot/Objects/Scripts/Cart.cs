@@ -45,6 +45,8 @@ public partial class Cart : Node3D {
     
     [Signal]
     public delegate void ArrivedSignalEventHandler();
+    [Signal]
+    public delegate void ParkedSignalEventHandler();
     
     public DataSingle InputDataSingleOnWagon { get; private set; }
     public DataDouble InputDataDoubleOnWagon { get; private set; }
@@ -117,6 +119,7 @@ public partial class Cart : Node3D {
                 _currentMusic.Stop();
                 _wheels.Stop();
                 _animationPlayer.Play("open_door");
+                EmitSignal(SignalName.ParkedSignal);
                 _bell.Play();
                 _doorOpening.Play();
                 GameManager main = (GameManager)GetTree().Root.GetChild(0);

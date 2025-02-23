@@ -35,7 +35,6 @@ public partial class Zone : Node3D
         
         if (IsTimed)
         {
-            ZoneTimer.Start();
             EndTimer = new Timer();
             AddChild(EndTimer);
         }
@@ -44,7 +43,6 @@ public partial class Zone : Node3D
             Cart?.ResetCartTimer();
         }
         
-        //SetupIntegrity();
         SetRandomData();
 
     }
@@ -63,6 +61,7 @@ public partial class Zone : Node3D
     {
         if(Cart != null)
         {
+            Cart.ParkedSignal += StartTimer;
             _cartTrash = Cart.TrashDeposit.TrashCount;
         }
         RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -187,6 +186,10 @@ public partial class Zone : Node3D
                 DisplayDataSingleInRoom.SetRandomData();
                 break;
         }
+    }
+
+    private void StartTimer() {
+        ZoneTimer.Start();
     }
     
 }
