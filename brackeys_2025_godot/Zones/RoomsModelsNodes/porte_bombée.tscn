@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://drfruve4qjhek"]
+
+[ext_resource type="PackedScene" uid="uid://dp706686lp0gv" path="res://Assets/Rooms/DoorRooms/Porte bombée.fbx" id="1_5cpkq"]
+
+[node name="Porte bombée" instance=ExtResource("1_5cpkq")]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://460sl4uqct0"]
+
+[ext_resource type="PackedScene" uid="uid://bj4jm2nh8hyuj" path="res://Assets/Rooms/DoorRooms/Porte base.fbx" id="1_u8hxa"]
+
+[node name="Porte base" instance=ExtResource("1_u8hxa")]

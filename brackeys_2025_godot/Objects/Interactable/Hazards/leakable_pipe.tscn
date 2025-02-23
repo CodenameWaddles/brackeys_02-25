@@ -44,3 +44,5 @@ stream = ExtResource("4_blifg")
 volume_db = -20.0
 autoplay = true
 parameters/looping = false
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]

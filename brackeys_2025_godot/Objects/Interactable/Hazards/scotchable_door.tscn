@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://s5s5j51th0id"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/BlowtorchableDoor.cs" id="1_j3ydt"]
+[ext_resource type="PackedScene" uid="uid://drfruve4qjhek" path="res://Zones/RoomsModelsNodes/porte_bombée.tscn" id="2_535gc"]
+[ext_resource type="PackedScene" uid="uid://pko2a11kprjv" path="res://Zones/RoomsModelsNodes/porte_bombée_scotch.tscn" id="2_hg7jj"]
+
+[node name="scotchable_door" type="Node3D" node_paths=PackedStringArray("_doorFixed", "_doorDamaged")]
+script = ExtResource("1_j3ydt")
+_doorFixed = NodePath("Porte bombée scotch")
+_doorDamaged = NodePath("Porte bombée")
+
+[node name="Porte bombée scotch" parent="." instance=ExtResource("2_hg7jj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.51602, 0, 1.29232)
+
+[node name="Porte bombée" parent="." instance=ExtResource("2_535gc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.51602, 0, 1.29232)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
