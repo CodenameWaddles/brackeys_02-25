@@ -180,7 +180,6 @@ public partial class GameManager : Node
 
         Cart.GlobalPosition = _resetPoint.Position;
         _player.GlobalPosition = _resetPoint.Position + new Vector3(0, 0.1f, 0);
-        _player.Rotation = new Vector3(0, -90, 0);
         _player.Reparent(Cart);
         _currentSceneIndex--;
         Cart._playerIsInCart = true;

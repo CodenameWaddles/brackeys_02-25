@@ -178,8 +178,7 @@ public partial class Zone : Node3D
     private void _restart_zone()
     {
         EndTimer.Stop();
-        GameManager gm = (GameManager)GetTree().Root.GetChild(0);
-        gm._failedCurrentScene();
+        GameManager.Instance._failedCurrentScene();
     }
 
     public void _sendRoomMessage()
