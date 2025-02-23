@@ -31,8 +31,8 @@ volumetric_fog_emission_energy = 2.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
 script = ExtResource("1_yxd7y")
-_scenes = [ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("6_m1i8t")]
-Cart = NodePath("cart")
+_scenes = [ExtResource("5_ueelr"), ExtResource("4_4rtxn"), ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("6_m1i8t")]
+Cart = NodePath("Cart")
 _player = NodePath("Character")
 _audioManager = NodePath("AudioManager")
 _resetRoomTimer = NodePath("ResetRoomTimer")
@@ -44,17 +44,16 @@ _tunelPostZone = NodePath("TunnelSidePost")
 _resetPoint = NodePath("MeshInstance3D3")
 _tunelPrefab = ExtResource("8_yx5qa")
 
-[node name="cart" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_kfp56")]
+[node name="Cart" parent="." instance=ExtResource("2_kfp56")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.676, 1.802, 123)
-_player = NodePath("../Character")
 
-[node name="Blowtorch" parent="cart" instance=ExtResource("6_rr8l2")]
+[node name="Blowtorch" parent="Cart" instance=ExtResource("6_rr8l2")]
 transform = Transform3D(1.00002, 0, 0, 0, 1, 0, 0, 0, 1.00002, -0.758102, 0.321864, -1.58911)
 
-[node name="Shovel" parent="cart" instance=ExtResource("9_bni7l")]
+[node name="Shovel" parent="Cart" instance=ExtResource("9_bni7l")]
 transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -0.507917, 1.05105, -1.62469)
 
-[node name="Tape" parent="cart" instance=ExtResource("7_l66rf")]
+[node name="Tape" parent="Cart" instance=ExtResource("7_l66rf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.359502, 0.155308, -1.66697)
 
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
