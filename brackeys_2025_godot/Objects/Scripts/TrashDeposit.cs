@@ -87,5 +87,14 @@ public partial class TrashDeposit : InteractableNeedObject
 			bag.IsSolved = false;
 		}
 	}
+
+	public void Reset() //jsp.
+	{
+		for (int i = 0; i < _trashSlotsArray.Count; i++)
+		{
+			trashbagsHeld[i].QueueFree();
+			trashbagsHeld[i] = null;
+		}
+	}
 	
 }

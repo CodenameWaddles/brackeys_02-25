@@ -3,17 +3,14 @@ public partial class BurningPlace : InteractableNeedObject
 {
 
     [Export] private Zone _zone;
+    private bool trashAreIssues = false;
     
     public override void _Ready()
     {
         Type = Pickupable.PickupType.Trash;
         MakeInteractable();
-        
-        TrashDeposit deposit = (TrashDeposit) _zone.Cart.FindChild("TrashDepositInCart");
-        GD.Print("deposit : " + deposit);
-        deposit.SetTrashAsIssues();
     }
-
+    
     protected override void ActivateSpecific()
     {
         playerInteraction _playerInteraction = (playerInteraction) GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("Camera");
