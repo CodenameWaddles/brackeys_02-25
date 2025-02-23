@@ -86,7 +86,9 @@ public partial class playerInteraction : Node3D {
         }
         // interact with interactable need object
         else if (_hovering is InteractableNeedObject interactableNeedObject) {
-            if (Input.IsActionPressed("interact")) {
+            if (Input.IsActionPressed("interact"))
+            {
+                if (held == null) return;
                 if (interactableNeedObject.Type == held.Type) {
                     interactableNeedObject.Activate();
                 }

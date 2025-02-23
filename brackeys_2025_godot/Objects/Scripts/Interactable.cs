@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract partial class Interactable : Node {
+public abstract partial class Interactable : Node3D {
     
     protected bool _isInteractable;
     public bool IsInteractable { get => _isInteractable; }

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbnkf1dr8osoo"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/TrashDeposit.cs" id="1_1wigm"]
+[ext_resource type="PackedScene" uid="uid://bugsgt76yne5r" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="2_0demk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1shw0"]
+size = Vector3(2.09033, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qoyuu"]
+
+[node name="TrashDepositInCart" type="Node3D" node_paths=PackedStringArray("_trashSlotsArray")]
+script = ExtResource("1_1wigm")
+_trashSlotsArray = [NodePath("Slot1"), NodePath("Slot2"), NodePath("Slot3")]
+_trashPrefab = ExtResource("2_0demk")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032959, 0, 0)
+shape = SubResource("BoxShape3D_1shw0")
+
+[node name="Slot1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.776398, 0, 0.303759)
+
+[node name="Slot2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194696, 0, 0.338216)
+
+[node name="Slot3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.839741, 0, 0.401429)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.11859, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_qoyuu")

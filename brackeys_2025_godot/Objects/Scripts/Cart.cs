@@ -20,6 +20,7 @@ public partial class Cart : Node3D {
     [Export] public ConsoleScreen ConsoleScreen;
     [Export] public StabilityMeter StabilityMeter;
     [Export] public CartTimer CartTimer;
+    [Export] public TrashDeposit TrashDeposit;
     
     //audio
     [Export] private AudioStreamPlayer3D _wheels;

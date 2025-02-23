@@ -7,7 +7,7 @@ public partial class GameManager : Node
 {
     [Export] private Array<PackedScene> _scenes = new Array<PackedScene>();
     [Export] private Vector3 _scenePosition = new Vector3(0, 0, 0); //remplacer tmtc
-    [Export] private Cart Cart;
+    [Export] public Cart Cart;
     [Export] private CharacterBody3D _player;
     [Export] public AudioManager _audioManager;
     [Export] private Timer _resetRoomTimer;
