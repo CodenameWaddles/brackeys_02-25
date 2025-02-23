@@ -9,7 +9,6 @@
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -33.1939, 6.6885, 3.77197)
 trashAmount = 2
 
-[node name="TrashChute" parent="." node_paths=PackedStringArray("_trashButton", "_trashbags") instance=ExtResource("2_pp3no")]
+[node name="TrashChute" parent="." node_paths=PackedStringArray("_trashButton") instance=ExtResource("2_pp3no")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.74, 10.5254, -2.37337)
 _trashButton = NodePath("../TrashButton")
-_trashbags = [NodePath(""), NodePath("")]

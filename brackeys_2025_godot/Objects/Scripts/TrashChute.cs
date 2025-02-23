@@ -8,17 +8,20 @@ public partial class TrashChute : Node3D
 	[Export] private Array<Trashbag> _trashbags;
 	[Export] private Node3D _trashEndPoint;
 	[Export] private float _trashSpeed = 0.01f;
+	[Export] private AudioStreamPlayer3D _trashOpenSound;
 	
 	private bool _trashIsSpawning = false;
 	private float _trashFallingT = 0;
+	private Dictionary<Trashbag, bool> _trashbagSounds = new Dictionary<Trashbag, bool>();
 	
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		foreach (var bag in _trashbags) {
+			_trashbagSounds.Add(bag, false);
+		}
 		_trashButton.TrashButtonPressed += _on_TrashButtonPressed;
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	
 	public override void _Process(double delta)
 	{
 		if (_trashIsSpawning) {
@@ -27,6 +30,9 @@ public partial class TrashChute : Node3D
 				if(bag.GlobalPosition.Y > _trashEndPoint.GlobalPosition.Y) {
 					bag.Position = new Vector3(bag.Position.X, bag.Position.Y - _trashSpeed, bag.Position.Z);
 					_trashIsSpawning = true; //keep stuff falling
+				}else if(!_trashbagSounds[bag]){
+					bag.PlayGroundSound();
+					_trashbagSounds[bag] = true;
 				}
 			}
 		}
@@ -35,6 +41,7 @@ public partial class TrashChute : Node3D
 	private void _on_TrashButtonPressed(int trashAmount)
 	{
 		_trashIsSpawning = true;
+		_trashOpenSound.Play();
 		GD.Print("TrashChute received " + trashAmount + " trash");
 	}
 }

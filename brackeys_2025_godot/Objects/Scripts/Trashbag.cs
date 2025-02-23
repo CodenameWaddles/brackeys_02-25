@@ -5,6 +5,7 @@ using Brackeys_2025_Godot.Objects.Scripts;
 public partial class Trashbag : Pickupable
 {
 	[Export] public RigidBody3D RigidBody;
+	[Export] private AudioStreamPlayer3D _trashGroundSound;
 
 	public bool IsSolved;
 	public bool IsInCart;
@@ -32,6 +33,10 @@ public partial class Trashbag : Pickupable
 			IsPickedUp = false;
 			Item.Visible = true;
 		}
+	}
+	
+	public void PlayGroundSound() {
+		_trashGroundSound.Play();
 	}
 	
 }
