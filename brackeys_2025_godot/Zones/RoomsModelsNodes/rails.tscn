@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqrfv3e4y6q0v"]
+[gd_scene load_steps=2 format=3 uid="uid://cks1jjkyhc157"]
 
 [ext_resource type="PackedScene" uid="uid://p1htppp2rykj" path="res://Assets/Models/Rail.fbx" id="1_emrmm"]
 
 [node name="Rail" instance=ExtResource("1_emrmm")]
 
 [node name="Cylindre" parent="." index="0"]
-transform = Transform3D(0, 1, 0, -0.6275, 0, 0, 0, 0, 0.714292, -6.45159e-16, -6.24452e-09, -0.0932088)
+transform = Transform3D(0, 1, 0, -0.6275, 0, 0, 0, 0, 0.714292, 0, 0, -0.093)

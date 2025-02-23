@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cxuquqsfkx8sa" path="res://Objects/Audio/audio_manager.tscn" id="13_2yeii"]
 [ext_resource type="PackedScene" uid="uid://ljexx0l02j4u" path="res://Zones/Scenes/zone_12.tscn" id="13_xpvod"]
 [ext_resource type="PackedScene" uid="uid://dp3ata2fjdami" path="res://UIS/failed_room_screen.tscn" id="15_xa325"]
-[ext_resource type="PackedScene" path="res://Zones/RoomsModelsNodes/rails.tscn" id="17_kd7hi"]
+[ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="17_kd7hi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j74ki"]
 
@@ -40,7 +40,6 @@ volumetric_fog_emission_energy = 2.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
 script = ExtResource("1_yxd7y")
-startIndex = 4
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("6_m1i8t"), ExtResource("7_a5t7k"), ExtResource("8_5vsux"), ExtResource("9_wnaab"), ExtResource("2_2apei"), ExtResource("11_f4bw3"), ExtResource("12_6lbj4"), ExtResource("13_xpvod")]
 Cart = NodePath("cart")
 _player = NodePath("Character")
