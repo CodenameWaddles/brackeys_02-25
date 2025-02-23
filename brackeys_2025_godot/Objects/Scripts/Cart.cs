@@ -203,10 +203,4 @@ public partial class Cart : Node3D {
         _shelfDoor2.OpenDoor();
         _toolSound.Play();
     }
-
-    public override void _Process(double delta) {
-        if(Input.IsActionJustPressed("ui_accept")) {
-            openTools();
-        }
-    }
 }
