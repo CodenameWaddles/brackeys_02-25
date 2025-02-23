@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlmx0mcf2pncd"]
+[gd_scene load_steps=10 format=3 uid="uid://dlmx0mcf2pncd"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_f74ch"]
-[ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="2_0rvu8"]
+[ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_0rvu8"]
 [ext_resource type="PackedScene" uid="uid://cey6ht5rcp1yh" path="res://Zones/RoomsModelsNodes/incinerateur.tscn" id="3_kj5l8"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="4_ykpdr"]
 [ext_resource type="PackedScene" uid="uid://druiscw0l16g3" path="res://Objects/Lights/fire_particles.tscn" id="5_3xj85"]
 [ext_resource type="PackedScene" uid="uid://b86wbn0qus7d" path="res://Objects/Interactable/Tools/burning_place.tscn" id="6_bv3dg"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_uxgrc"]
 [ext_resource type="PackedScene" uid="uid://dqbu1evx6i23r" path="res://Objects/Interactable/Hazards/blowtorch_poster.tscn" id="8_lw17i"]
+[ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="9_r16qr"]
 
 [node name="zone_4" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_f74ch")
@@ -55,5 +56,11 @@ _isHazard = false
 [node name="BlowtorchPoster3" parent="." instance=ExtResource("8_lw17i")]
 transform = Transform3D(0.995725, 1.8688e-10, 0.0923706, 0.0923706, -4.03765e-09, -0.995725, 1.8688e-10, 1, -4.03765e-09, -8.08529, 2.83802, -15.4824)
 _isHazard = false
+
+[node name="Tuyau origine ok4" parent="." instance=ExtResource("9_r16qr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5751, 3.82442, -13.5648)
+
+[node name="Tuyau origine ok5" parent="." instance=ExtResource("9_r16qr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5751, 10.7998, -13.5648)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

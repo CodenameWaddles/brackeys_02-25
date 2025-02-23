@@ -118,9 +118,9 @@ public partial class GameManager : Node
                 SendNextMessage(); //timer
                 Cart.NextMusic();
                 LightManager.Instance.NextFrequency();
+                AudioManager.Instance.NextBangingFrequency();
                 break;
             case 7:
-                AudioManager.Instance.NextBangingFrequency();
                 break;
             case 8:
                 break;
@@ -130,9 +130,9 @@ public partial class GameManager : Node
             case 10:
                 break;
             case 11:
+                AudioManager.Instance.NextBangingFrequency();
                 break;
             case 12:
-                AudioManager.Instance.NextBangingFrequency();
                 LightManager.Instance.NextFrequency();
                 break;
             case 13:
