@@ -404,9 +404,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="Hand" type="Node3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215063, -0.1037, -0.304281)
 
-[node name="Camera" type="Camera3D" parent="Head" node_paths=PackedStringArray("_hand", "_rayCast")]
+[node name="Camera" type="Camera3D" parent="Head" node_paths=PackedStringArray("_hand", "_headLight", "_rayCast")]
 script = ExtResource("2_32abm")
 _hand = NodePath("../Hand")
+_headLight = NodePath("SpotLight3D")
 _rayCast = NodePath("../RayCast3D")
 
 [node name="ColorRect" type="ColorRect" parent="Head/Camera"]

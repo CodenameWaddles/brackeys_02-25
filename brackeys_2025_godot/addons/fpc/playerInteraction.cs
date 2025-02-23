@@ -4,6 +4,7 @@ using System;
 public partial class playerInteraction : Node3D {
 
     [Export] public Node3D _hand; //LAISSER PUBLIC
+    [Export] public HeadLight _headLight;
 
     public Pickupable held { get; private set; } = null;
     private Interactable _hovering;

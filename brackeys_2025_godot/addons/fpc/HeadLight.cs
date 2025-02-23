@@ -12,6 +12,13 @@ public partial class HeadLight : SpotLight3D
 	private void Deactivate() {
 		LightEnergy = 0;
 	}
+	
+	public override void _Process(double delta) {
+		RandomNumberGenerator rng = new RandomNumberGenerator();
+		if(rng.Randf() < LightManager.Instance.FlickeringFrequency) {
+			Flicker(false);
+		}
+	}
 
 	public async void Flicker(bool turnOff) {
 		RandomNumberGenerator rng = new RandomNumberGenerator();
