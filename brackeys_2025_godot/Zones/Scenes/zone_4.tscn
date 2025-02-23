@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlmx0mcf2pncd"]
+[gd_scene load_steps=7 format=3 uid="uid://dlmx0mcf2pncd"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_f74ch"]
 [ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="2_0rvu8"]
 [ext_resource type="PackedScene" uid="uid://cey6ht5rcp1yh" path="res://Zones/RoomsModelsNodes/incinerateur.tscn" id="3_kj5l8"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="4_ykpdr"]
+[ext_resource type="PackedScene" uid="uid://druiscw0l16g3" path="res://Objects/Lights/fire_particles.tscn" id="5_3xj85"]
+[ext_resource type="PackedScene" uid="uid://b86wbn0qus7d" path="res://Objects/Interactable/Tools/burning_place.tscn" id="6_bv3dg"]
 
 [node name="zone_4" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
 script = ExtResource("1_f74ch")
@@ -23,5 +25,15 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.325393, 1.22348, 0)
 
 [node name="SingleDataDisplay" parent="." instance=ExtResource("4_ykpdr")]
 transform = Transform3D(-1.5, 1.31134e-07, -2.20231e-21, -6.57731e-08, -0.752357, 1.29767, 1.13446e-07, 1.29767, 0.752357, -28.4628, 4.1816, 1.438)
+
+[node name="Node3D" parent="." instance=ExtResource("5_3xj85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0536, 4.3439, -3.03978)
+
+[node name="Node3D2" parent="." instance=ExtResource("5_3xj85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0536, 4.72312, -4.6314)
+
+[node name="burning_place" parent="." node_paths=PackedStringArray("_zone") instance=ExtResource("6_bv3dg")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -22.2028, 3.7849, -3.72254)
+_zone = NodePath("..")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

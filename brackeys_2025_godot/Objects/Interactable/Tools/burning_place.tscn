@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b86wbn0qus7d"]
+
+[ext_resource type="Script" path="res://Objects/Scripts/BurningPlace.cs" id="1_o4d2o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rm1qo"]
+
+[node name="burning_place" type="Node3D"]
+script = ExtResource("1_o4d2o")
+Type = 3
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_rm1qo")
