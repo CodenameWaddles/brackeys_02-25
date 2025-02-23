@@ -99,6 +99,7 @@ public partial class GameManager : Node
                 break;
             case 6:
                 SendNextMessage(); //timer
+                Cart.NextMusic();
                 break;
         }
         
