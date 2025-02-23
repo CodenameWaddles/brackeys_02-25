@@ -76,4 +76,16 @@ public partial class TrashDeposit : InteractableNeedObject
 			}
 		}
 	}
+
+	public void SetTrashAsIssues()
+	{
+		GameManager gm = (GameManager)GetTree().Root.GetChild(0);
+		Zone zone = gm._currentScene;
+		foreach (var bag in trashbagsHeld)
+		{
+			zone.ZoneHazards.Add(bag);
+			bag.IsSolved = false;
+		}
+	}
+	
 }
