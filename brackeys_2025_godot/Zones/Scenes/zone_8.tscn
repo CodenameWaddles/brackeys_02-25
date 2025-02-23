@@ -28,7 +28,7 @@ script = ExtResource("1_g5dbk")
 roomname = "Trash Disposal Unit"
 ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("sand"), NodePath("sand2"), NodePath("sand3"), NodePath("sand4"), NodePath("trashbag"), NodePath("ShovelPoster")]
 IsTimed = true
-DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
+DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay2")
 ZoneTimer = NodePath("Timer")
 
 [node name="LeakablePipe" parent="." instance=ExtResource("9_iwf3t")]
@@ -38,16 +38,16 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.35
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.3509, 4.11796, 2.22145)
 
 [node name="sand" parent="." instance=ExtResource("10_ue3vg")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -41.1844, 1.25907, 1.39812)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35.017, 1.25907, 1.39812)
 
 [node name="sand2" parent="." instance=ExtResource("10_ue3vg")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -27.0258, 1.25907, -6.33295)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20.8584, 1.25907, -6.33295)
 
 [node name="sand4" parent="." instance=ExtResource("10_ue3vg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3915, 1.25907, -6.32416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2241, 1.25907, -6.32416)
 
 [node name="sand3" parent="." instance=ExtResource("10_ue3vg")]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -25.4321, 1.25907, -2.29854)
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -19.2647, 1.25907, -2.29854)
 
 [node name="Quai(3)" parent="." instance=ExtResource("2_g7rqd")]
 
@@ -118,6 +118,9 @@ transform = Transform3D(1, 0, 0, 0, 0.0416756, -0.999783, 0, 1.99957, 0.0208378,
 
 [node name="Tuyau origine ok4" parent="." instance=ExtResource("8_kfbea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3621, 4.04083, -1.88681)
+
+[node name="DoubleDataDisplay2" parent="." instance=ExtResource("5_jwly0")]
+transform = Transform3D(9.05975e-08, 1.2, 5.24537e-08, 0, -5.24537e-08, 1.2, 1.2, -9.05975e-08, -3.96014e-15, -35.3247, 2.90731, -4.80678)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
 
