@@ -38,8 +38,8 @@ public partial class ConsoleScreen : Interactable
 				message += "\n \n> ";
 			}
 		}
-		_screenText.TypeText(message, 0.1f);
-
+		_screenText.TypeText(message, 0.075f);
+		SamSpeaker.Instance.PlaySounds();
 		MakeUninteractable();
 	}
 

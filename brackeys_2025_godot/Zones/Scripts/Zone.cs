@@ -179,6 +179,16 @@ public partial class Zone : Node3D
     public void _sendRoomMessage()
     {
         Cart.ConsoleScreen.AddMessage("Location : " + roomname + "\nInstability : " + Mathf.RoundToInt(IntegrityPercentage) + "%");
+        SamSpeaker.Instance.AddZoneSound(GameManager.Instance._currentSceneIndex%5);
+        if (IntegrityPercentage < 30) {
+            SamSpeaker.Instance.AddStabilitySound(0);
+        }
+        else if (IntegrityPercentage < 60) {
+            SamSpeaker.Instance.AddStabilitySound(1);
+        }
+        else {
+            SamSpeaker.Instance.AddStabilitySound(2);
+        }
     }
     
     public void setBurningPlace(BurningPlace burningPlace)

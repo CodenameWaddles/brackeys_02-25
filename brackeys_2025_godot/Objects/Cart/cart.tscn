@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bsv0rixeuanqn"]
+[gd_scene load_steps=56 format=3 uid="uid://bsv0rixeuanqn"]
 
 [ext_resource type="AudioStream" uid="uid://clsvq7b4yylfu" path="res://Assets/Sounds/Boucle son train.wav" id="2_0k18e"]
 [ext_resource type="AudioStream" uid="uid://cvfy6q83tt4xl" path="res://Assets/Sounds/Door Opening 1.2.wav" id="2_hp8xq"]
@@ -17,8 +17,17 @@
 [ext_resource type="PackedScene" uid="uid://558ljv1b0lt7" path="res://Objects/Cart/wagonnet_door_rotate_color.tscn" id="9_333ab"]
 [ext_resource type="AudioStream" uid="uid://b36sko643aad0" path="res://Assets/Sounds/tools_open.mp3" id="10_27343"]
 [ext_resource type="PackedScene" uid="uid://3idb3tp67d0y" path="res://Objects/Cart/ampoule_lanterne.tscn" id="10_v02ti"]
+[ext_resource type="AudioStream" uid="uid://c5vpkhsemljv8" path="res://Assets/Sounds/sam_generator.wav" id="11_3sa2y"]
 [ext_resource type="Script" path="res://Objects/Scripts/Light.cs" id="11_atlc5"]
+[ext_resource type="Script" path="res://Objects/Cart/SamSpeaker.cs" id="11_p3e0r"]
+[ext_resource type="AudioStream" uid="uid://bhbjysp4x6q7r" path="res://Assets/Sounds/sam_water.wav" id="12_2bqui"]
 [ext_resource type="AudioStream" uid="uid://dsx4tmk55qdob" path="res://Assets/Sounds/light_flicker.wav" id="12_kfh6o"]
+[ext_resource type="AudioStream" uid="uid://dg28vspoqvel3" path="res://Assets/Sounds/sam_trash.wav" id="13_p2mrl"]
+[ext_resource type="AudioStream" uid="uid://brwwibligri6x" path="res://Assets/Sounds/sam_burn.wav" id="14_ajfiw"]
+[ext_resource type="AudioStream" uid="uid://dscmr430otfy8" path="res://Assets/Sounds/sam_containment.wav" id="15_gf0pb"]
+[ext_resource type="AudioStream" uid="uid://dj1m8yu73f3ve" path="res://Assets/Sounds/sam_low_instable.wav" id="17_ge1uc"]
+[ext_resource type="AudioStream" uid="uid://dbrhm8uw2ynpa" path="res://Assets/Sounds/sam_medium_instable.wav" id="18_jsani"]
+[ext_resource type="AudioStream" uid="uid://cxqj82rwnqtsu" path="res://Assets/Sounds/sam_high_instable.wav" id="19_k1kur"]
 [ext_resource type="PackedScene" uid="uid://4wlusl7qhhhp" path="res://Objects/Cart/shelf_door.tscn" id="19_nqy77"]
 [ext_resource type="PackedScene" uid="uid://bt7wftvf8lgas" path="res://Objects/Cart/stability_meter.tscn" id="20_d7ntm"]
 [ext_resource type="PackedScene" uid="uid://ci3anj71tdqpk" path="res://Objects/Cart/cart_timer.tscn" id="21_wnvkv"]
@@ -272,6 +281,44 @@ volume_db = -20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.506189, 0.771365, -1.67223)
 stream = ExtResource("10_27343")
 volume_db = -20.0
+
+[node name="SamSpeaker" type="Node3D" parent="AudioPlayers" node_paths=PackedStringArray("_audioPlayers", "_stabilityAudios")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223682, 0.358515, 1.78867)
+script = ExtResource("11_p3e0r")
+_audioPlayers = [NodePath("generator"), NodePath("water"), NodePath("trash"), NodePath("burn"), NodePath("contain")]
+_stabilityAudios = [NodePath("stabLow"), NodePath("stabMed"), NodePath("StabHigh")]
+
+[node name="generator" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+stream = ExtResource("11_3sa2y")
+volume_db = -25.0
+
+[node name="water" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+stream = ExtResource("12_2bqui")
+volume_db = -25.0
+
+[node name="trash" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+stream = ExtResource("13_p2mrl")
+volume_db = -25.0
+
+[node name="burn" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+stream = ExtResource("14_ajfiw")
+volume_db = -25.0
+
+[node name="contain" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+stream = ExtResource("15_gf0pb")
+volume_db = -25.0
+
+[node name="stabLow" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+stream = ExtResource("17_ge1uc")
+volume_db = -25.0
+
+[node name="stabMed" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+stream = ExtResource("18_jsani")
+volume_db = -25.0
+
+[node name="StabHigh" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+stream = ExtResource("19_k1kur")
+volume_db = -25.0
 
 [node name="PlayerDetectionArea" type="Area3D" parent="."]
 
