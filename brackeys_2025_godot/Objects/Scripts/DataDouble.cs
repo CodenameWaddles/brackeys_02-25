@@ -22,6 +22,14 @@ public partial class DataDouble : DataDisplay {
         _mesh.SetInstanceShaderParameter("amplitude", _amplitudeTable[Data[0]]);
         _mesh.SetInstanceShaderParameter("period", _periodTable[Data[1]]);
     }
+
+    public void SetRandomData() {
+        RandomNumberGenerator rng = new RandomNumberGenerator();
+        Data[0] = rng.RandiRange(_minimumValue, _maximumValue);
+        Data[1] = rng.RandiRange(_minimumValue, _maximumValue);
+        GD.Print(Data[0]);
+        GD.Print(Data[1]);
+    }
     
     public void Reset()
     {

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://w8ldudw75xle"
-path="res://.godot/imported/Générateur altéré.fbx-e3f66d8a49a177077f355714ab669bc5.scn"
+path="res://.godot/imported/Générateur altéré.fbx-703eebcc65cb39f18025d88784195dd1.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Générateur altéré.fbx"
-dest_files=["res://.godot/imported/Générateur altéré.fbx-e3f66d8a49a177077f355714ab669bc5.scn"]
+source_file="res://Assets/Rooms/Générateur altéré.fbx"
+dest_files=["res://.godot/imported/Générateur altéré.fbx-703eebcc65cb39f18025d88784195dd1.scn"]
 
 [params]
 

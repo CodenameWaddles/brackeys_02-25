@@ -45,7 +45,8 @@ public partial class Zone : Node3D
         }
         
         //SetupIntegrity();
-        
+        SetRandomData();
+
     }
     
     public override void _Process(double delta)
@@ -175,6 +176,17 @@ public partial class Zone : Node3D
     public void setBurningPlace(BurningPlace burningPlace)
     {
         _burningPlace = burningPlace;
+    }
+
+    private void SetRandomData() {
+        switch (ZoneDataMode) {
+            case CartDataPanel.DataMode.Dual:
+                DisplayDataDoubleInRoom.SetRandomData();
+                break;
+            case CartDataPanel.DataMode.Single:
+                DisplayDataSingleInRoom.SetRandomData();
+                break;
+        }
     }
     
 }

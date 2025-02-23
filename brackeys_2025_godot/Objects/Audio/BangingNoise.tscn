@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://0nbpiiwabqf5"]
+
+[ext_resource type="Script" path="res://Objects/Audio/Scripts/BangingNoise.cs" id="1_ojn0q"]
+[ext_resource type="AudioStream" uid="uid://b086jxrv01jkt" path="res://Assets/Sounds/bang.wav" id="1_wu8sn"]
+
+[node name="BangingNoise" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_wu8sn")
+script = ExtResource("1_ojn0q")

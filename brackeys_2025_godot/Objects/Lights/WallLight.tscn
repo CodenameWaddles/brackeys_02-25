@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyxq07typd21r"]
+[gd_scene load_steps=6 format=3 uid="uid://dyxq07typd21r"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/Light.cs" id="1_0lmda"]
+[ext_resource type="Script" path="res://Objects/Lights/WallLight.cs" id="1_frkc5"]
 [ext_resource type="PackedScene" uid="uid://dj7j8jfg6b4hn" path="res://Objects/Cart/wagonnet_lantern.tscn" id="1_vx10u"]
 [ext_resource type="PackedScene" uid="uid://3idb3tp67d0y" path="res://Objects/Cart/ampoule_lanterne.tscn" id="2_bkn3c"]
 [ext_resource type="AudioStream" uid="uid://dsx4tmk55qdob" path="res://Assets/Sounds/light_flicker.wav" id="4_1q4k7"]
 
-[node name="WallLight" type="Node3D"]
+[node name="WallLight" type="Node3D" node_paths=PackedStringArray("_light")]
+script = ExtResource("1_frkc5")
+_light = NodePath("OmniLight3D")
 
 [node name="Wagonnet Lantern" parent="." instance=ExtResource("1_vx10u")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

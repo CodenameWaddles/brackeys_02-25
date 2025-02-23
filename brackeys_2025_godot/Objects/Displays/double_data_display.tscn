@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" path="res://Objects/Scripts/DataDouble.cs" id="1_u5d6u"]
 [ext_resource type="PackedScene" uid="uid://blugenxdmdoqq" path="res://Objects/Interactable/screen.tscn" id="2_rivgo"]
-[ext_resource type="PackedScene" uid="uid://6qgfvwkbvidp" path="res://Objects/Cart/screen_mount.tscn" id="3_jrbsa"]
+[ext_resource type="PackedScene" uid="uid://bmlyl6v024jmx" path="res://Objects/Cart/screen_mount.tscn" id="3_jrbsa"]
 
 [node name="DoubleDataDisplay" type="Node3D" node_paths=PackedStringArray("_screen")]
 script = ExtResource("1_u5d6u")
 _screen = NodePath("screen")
+_maximumValue = 3
 
 [node name="screen" parent="." instance=ExtResource("2_rivgo")]
 transform = Transform3D(0.359938, 0, 0, 0, 0.359938, 0, 0, 0, 0.359938, 0.161151, 0.0601349, 0.226247)

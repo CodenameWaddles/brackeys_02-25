@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0dmbbc74cj44"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/DataSingle.cs" id="1_ku1tp"]
-[ext_resource type="PackedScene" uid="uid://6qgfvwkbvidp" path="res://Objects/Cart/screen_mount.tscn" id="2_pst6j"]
+[ext_resource type="PackedScene" uid="uid://bmlyl6v024jmx" path="res://Objects/Cart/screen_mount.tscn" id="2_pst6j"]
 [ext_resource type="PackedScene" uid="uid://doooeoo82rpi8" path="res://Objects/Interactable/single_data_screen.tscn" id="3_ka7gk"]
 
 [node name="SingleDataDisplay" type="Node3D" node_paths=PackedStringArray("_screen")]

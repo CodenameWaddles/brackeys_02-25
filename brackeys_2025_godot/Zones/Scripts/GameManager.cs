@@ -105,6 +105,7 @@ public partial class GameManager : Node
                 LightManager.Instance.NextFrequency();
                 break;
             case 7:
+                AudioManager.Instance.NextBangingFrequency();
                 break;
             case 8:
                 break;
@@ -116,6 +117,7 @@ public partial class GameManager : Node
             case 11:
                 break;
             case 12:
+                AudioManager.Instance.NextBangingFrequency();
                 LightManager.Instance.NextFrequency();
                 break;
             case 13:

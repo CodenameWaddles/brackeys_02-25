@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://bjvjidsafjj8e"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_g5dbk"]
-[ext_resource type="PackedScene" uid="uid://c0qskpkbdiuuj" path="res://Objects/Tunnel/quai.tscn" id="2_g7rqd"]
-[ext_resource type="PackedScene" uid="uid://c6lrj7jan2kfl" path="res://Zones/RoomsModelsNodes/trash.tscn" id="3_we8jr"]
+[ext_resource type="PackedScene" path="res://Objects/Tunnel/quai.tscn" id="2_g7rqd"]
+[ext_resource type="PackedScene" path="res://Zones/RoomsModelsNodes/trash.tscn" id="3_we8jr"]
 [ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="4_vc08y"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="5_jwly0"]
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="6_e1d1n"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="9_iwf3t"]
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="10_ue3vg"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="11_cichf"]
-[ext_resource type="PackedScene" uid="uid://bugsgt76yne5r" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="12_pvq4p"]
+[ext_resource type="PackedScene" uid="uid://cskk8fr2tmd85" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="12_pvq4p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h78t7"]
 albedo_texture = ExtResource("4_vc08y")

@@ -15,6 +15,11 @@ public partial class DataSingle : DataDisplay {
     public override void _Process(double delta) {
         _screen.SetInstanceShaderParameter("data", Data[0]);
     }
+    
+    public void SetRandomData() {
+        RandomNumberGenerator rng = new RandomNumberGenerator();
+        Data[0] = rng.RandiRange(_minimumValue, _maximumValue);
+    }
 
     public void Reset()
     {

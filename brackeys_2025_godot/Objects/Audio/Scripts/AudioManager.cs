@@ -8,9 +8,33 @@ public partial class AudioManager : Node
 	[Export] private Array<AudioStreamPlayer3D> _soundscapes;
 	[Export] private Timer _timer;
 	[Export] private Vector2 _timerMaxAndMin;
+	
+	private Array<float> _bangingFrequencies = new Array<float> { 0.5f, 1f, 2f };
+	public float BangingFrequency { private set; get; }
+	private int _frequencyIndex = 0;
 
 	public bool IsEnabled { private set; get; }
 	private AudioStreamPlayer3D _playingSound;
+	
+	// singleton
+	private static AudioManager _instance;
+	public static AudioManager Instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				_instance = new AudioManager();
+			}
+			return _instance;
+		}
+	}
+	
+	public override void _Ready()
+	{
+		_instance = this;
+		BangingFrequency = _bangingFrequencies[0];
+	}
 	
 	public void PlayRandomSoundscape()
 	{
@@ -42,6 +66,12 @@ public partial class AudioManager : Node
 		PlayRandomSoundscape();
 		RandomNumberGenerator rng = new RandomNumberGenerator();
 		_timer.Start(rng.RandfRange(_timerMaxAndMin.X, _timerMaxAndMin.Y) + _playingSound.Stream.GetLength());
+	}
+	
+	public void NextBangingFrequency()
+	{
+		BangingFrequency = _bangingFrequencies[_frequencyIndex];
+		_frequencyIndex = (_frequencyIndex + 1) % _bangingFrequencies.Count;
 	}
 	
 }
