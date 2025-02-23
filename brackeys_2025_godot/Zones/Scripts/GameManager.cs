@@ -25,7 +25,7 @@ public partial class GameManager : Node
     
     private int _currentCycle = 0;
     public Zone _currentScene;
-    private int _currentSceneIndex = 0;
+    public int _currentSceneIndex = 0;
     private Array<String> _messages;
     
     // singleton

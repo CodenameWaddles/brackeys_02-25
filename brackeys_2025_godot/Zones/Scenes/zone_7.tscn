@@ -9,12 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="8_4l1dh"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="8_modnu"]
 
-[node name="zone_7" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataSingleInRoom")]
+[node name="zone_7" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom")]
 script = ExtResource("1_u7spn")
 roomname = "Central Sewer"
 ZoneHazards = [NodePath("LeakablePipe"), NodePath("sand"), NodePath("sand2"), NodePath("BlowtorchPoster")]
-ZoneTimer = NodePath("Timer")
 IsTimed = true
+TimerTime = 160
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
 

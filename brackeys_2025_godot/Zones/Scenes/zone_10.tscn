@@ -15,12 +15,12 @@ data = PackedVector3Array(2.4684, -0.1642, -2.2686, 2.0678, -0.0018, -2.2686, 2.
 [sub_resource type="BoxShape3D" id="BoxShape3D_jaq5q"]
 size = Vector3(2.80225, 1, 15.7668)
 
-[node name="zone_10" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
+[node name="zone_10" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_qgu54")
 roomname = "Containment"
 ZoneHazards = [NodePath("ScotchablePipe"), NodePath("ScotchablePipe2"), NodePath("ScotchablePipe3")]
-ZoneTimer = NodePath("Timer")
 IsTimed = true
+TimerTime = 140
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
 [node name="Timer" type="Timer" parent="."]

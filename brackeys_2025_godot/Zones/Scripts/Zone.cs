@@ -9,12 +9,15 @@ public partial class Zone : Node3D
 {
     [Export] private String roomname;
     [Export] public Array<Interactable> ZoneHazards { get; private set; }
-    [Export] public Timer ZoneTimer { get; private set; }
     [Export] public bool IsTimed { get; private set; }
+    [Export] public int TimerTime = 0;
     [Export] public DataSingle DisplayDataSingleInRoom { get; private set; }
     [Export] public DataDouble DisplayDataDoubleInRoom { get; private set; }
     [Export] public CartDataPanel.DataMode ZoneDataMode;
 
+    public Timer ZoneTimer { get; private set; }
+
+    
     private BurningPlace _burningPlace;
 
     private int _cartTrash;
@@ -36,9 +39,10 @@ public partial class Zone : Node3D
         
         if (IsTimed)
         {
+            ZoneTimer = new Timer();
+            AddChild(ZoneTimer);
             EndTimer = new Timer();
             AddChild(EndTimer);
-            ZoneTimer = (Timer) FindChild("Timer");
         }
         else
         {
@@ -207,8 +211,10 @@ public partial class Zone : Node3D
     private void StartTimer()
     {
         if (!IsTimed) return;
-        GD.Print("zone timer : " + ZoneTimer);
-        ZoneTimer.Start(ZoneTimer.WaitTime);
+        ZoneTimer = new Timer();
+        AddChild(ZoneTimer); //RIEN NE MARCHE A L4AIDE CLOVIE
+        ZoneTimer.Start(TimerTime);
+        ZoneTimer.Timeout += _on_zone_timer_timeout;
     }
    
 }

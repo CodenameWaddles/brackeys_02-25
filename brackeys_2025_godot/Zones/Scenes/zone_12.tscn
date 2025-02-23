@@ -10,12 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="8_y4not"]
 [ext_resource type="PackedScene" uid="uid://dn78ah4hsnwvh" path="res://Objects/Lights/water.tscn" id="9_v84t5"]
 
-[node name="zone_12" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer")]
+[node name="zone_12" type="Node3D" node_paths=PackedStringArray("ZoneHazards")]
 script = ExtResource("1_7j3es")
 roomname = "Central Sewer"
 ZoneHazards = [NodePath("sand"), NodePath("sand4"), NodePath("sand2"), NodePath("sand3"), NodePath("ScotchablePipe"), NodePath("BlowtorchPoster")]
-ZoneTimer = NodePath("Timer")
 IsTimed = true
+TimerTime = 120
 ZoneDataMode = 1
 
 [node name="Quai(3)" parent="." instance=ExtResource("2_kakf1")]

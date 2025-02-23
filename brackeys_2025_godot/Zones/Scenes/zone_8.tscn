@@ -23,12 +23,12 @@ albedo_texture = ExtResource("4_vc08y")
 [sub_resource type="BoxShape3D" id="BoxShape3D_pqq3x"]
 size = Vector3(0.929504, 1.01062, 2.27936)
 
-[node name="zone_8" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
+[node name="zone_8" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_g5dbk")
 roomname = "Trash Disposal Unit"
 ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("sand"), NodePath("sand2"), NodePath("sand3"), NodePath("sand4"), NodePath("trashbag"), NodePath("ShovelPoster")]
-ZoneTimer = NodePath("Timer")
 IsTimed = true
+TimerTime = 200
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
 [node name="LeakablePipe" parent="." instance=ExtResource("9_iwf3t")]
