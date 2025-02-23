@@ -10,7 +10,11 @@ public partial class ConsoleScreen : Interactable
 	[Export] private MeshInstance3D _greenLightMesh;
 	[Export] private OmniLight3D _greenLight;
 	
+	[Export] private AudioStreamPlayer3D _notificationSound;
+	
 	private Array<String> _messages = new Array<String>();
+	
+	private bool _isMakingNoise = false;
 	
 	public override void _Ready()
 	{
@@ -45,6 +49,9 @@ public partial class ConsoleScreen : Interactable
 		if(_messages.Count == 1) {
 			_screenText.NewMessage();
 		}
+		if (!_isMakingNoise) {
+			MakeNoise();
+		}
 	}
 	
 	protected override void MakeInteractableSpecific() {
@@ -55,5 +62,15 @@ public partial class ConsoleScreen : Interactable
 	protected override void MakeUninteractableSpecific() {
 		_greenLightMesh.SetInstanceShaderParameter("color", new Vector3(0.05f, 0.05f, 0.05f));
 		_greenLight.LightEnergy = 0;
+		_isMakingNoise = false;
+	}
+	
+	private async void MakeNoise() {
+		_isMakingNoise = true;
+		RandomNumberGenerator rng = new RandomNumberGenerator();
+		while(_isMakingNoise) {
+			_notificationSound.Play();
+			await ToSignal(GetTree().CreateTimer(2f), "timeout");
+		}
 	}
 }

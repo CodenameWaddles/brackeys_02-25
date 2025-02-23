@@ -3,6 +3,7 @@ using System;
 
 public partial class ScreenText : RichTextLabel
 {
+	[Export] private AudioStreamPlayer3D _typingSound;
 	
 	public override void _Ready() {
 		for(int i = 0; i < 11; i++) {
@@ -15,6 +16,7 @@ public partial class ScreenText : RichTextLabel
 		foreach (char c in text)
 		{
 			Text = Text.Insert(Text.Length - 2, c.ToString());
+			_typingSound.Play();
 			await ToSignal(GetTree().CreateTimer(speed), "timeout");
 		}
 		Text = Text.Remove(Text.Length - 1);
