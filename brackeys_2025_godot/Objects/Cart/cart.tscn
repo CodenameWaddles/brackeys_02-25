@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bsv0rixeuanqn"]
+[gd_scene load_steps=45 format=3 uid="uid://bsv0rixeuanqn"]
 
 [ext_resource type="AudioStream" uid="uid://clsvq7b4yylfu" path="res://Assets/Sounds/Boucle son train.wav" id="2_0k18e"]
 [ext_resource type="AudioStream" uid="uid://cvfy6q83tt4xl" path="res://Assets/Sounds/Door Opening 1.2.wav" id="2_hp8xq"]
@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://crh42b7siu7aj" path="res://Assets/Sounds/Chariot bell.wav" id="6_vhu3g"]
 [ext_resource type="AudioStream" uid="uid://brje0olkrcrsn" path="res://Assets/Sounds/Ringing.mp3" id="7_6pcuv"]
 [ext_resource type="PackedScene" uid="uid://c1giicc0dv73x" path="res://Objects/Interactable/press_button.tscn" id="7_qxems"]
-[ext_resource type="PackedScene" uid="uid://bw42c6qirdns0" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
+[ext_resource type="PackedScene" uid="uid://rlqsfhy48v8i" path="res://Objects/Cart/cart_color_3.tscn" id="8_jxvai"]
 [ext_resource type="PackedScene" uid="uid://dvkexn38lytls" path="res://Objects/Cart/CartDataPanel.tscn" id="9_3h43f"]
 [ext_resource type="PackedScene" uid="uid://dj7j8jfg6b4hn" path="res://Objects/Cart/wagonnet_lantern.tscn" id="9_8qt2n"]
 [ext_resource type="PackedScene" uid="uid://558ljv1b0lt7" path="res://Objects/Cart/wagonnet_door_rotate_color.tscn" id="9_333ab"]
@@ -19,10 +19,11 @@
 [ext_resource type="Script" path="res://Objects/Scripts/Light.cs" id="11_atlc5"]
 [ext_resource type="AudioStream" uid="uid://dsx4tmk55qdob" path="res://Assets/Sounds/light_flicker.wav" id="12_kfh6o"]
 [ext_resource type="PackedScene" uid="uid://4wlusl7qhhhp" path="res://Objects/Cart/shelf_door.tscn" id="19_nqy77"]
-[ext_resource type="PackedScene" path="res://Objects/Cart/stability_meter.tscn" id="20_d7ntm"]
-[ext_resource type="PackedScene" path="res://Objects/Cart/cart_timer.tscn" id="21_wnvkv"]
-[ext_resource type="PackedScene" uid="uid://dbnkf1dr8osoo" path="res://Objects/Interactable/Tools/trash_deposit_in_cart.tscn" id="22_x0php"]
-[ext_resource type="PackedScene" uid="uid://tfjhmsgwhlmh" path="res://Objects/Displays/cart_map.tscn" id="23_6leo0"]
+[ext_resource type="PackedScene" uid="uid://bt7wftvf8lgas" path="res://Objects/Cart/stability_meter.tscn" id="20_d7ntm"]
+[ext_resource type="PackedScene" uid="uid://ci3anj71tdqpk" path="res://Objects/Cart/cart_timer.tscn" id="21_wnvkv"]
+[ext_resource type="PackedScene" path="res://Objects/Interactable/Tools/trash_deposit_in_cart.tscn" id="22_x0php"]
+[ext_resource type="PackedScene" uid="uid://cf6x6hdx6s7yd" path="res://Objects/Displays/cart_map.tscn" id="23_6leo0"]
+[ext_resource type="PackedScene" uid="uid://cbsfqmeyhsf4e" path="res://Objects/Cart/speakerModel.tscn" id="24_u3cyw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dyco1"]
 size = Vector3(1.7416, 1, 3.26901)
@@ -251,18 +252,18 @@ stream = ExtResource("7_6pcuv")
 volume_db = 5.0
 
 [node name="Music1" type="AudioStreamPlayer3D" parent="AudioPlayers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.681145, 0.150039, 1.46396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223682, 0.358515, 1.78867)
 stream = ExtResource("5_twj6f")
-volume_db = 10.0
+volume_db = 30.0
 
 [node name="Music2" type="AudioStreamPlayer3D" parent="AudioPlayers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.681145, 0.150039, 1.46396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223682, 0.358515, 1.78867)
 stream = ExtResource("6_vd27b")
-volume_db = 10.0
+volume_db = 30.0
 
 [node name="Music3" type="AudioStreamPlayer3D" parent="AudioPlayers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.681145, 0.150039, 1.46396)
-volume_db = 10.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223682, 0.358515, 1.78867)
+volume_db = 30.0
 
 [node name="PlayerDetectionArea" type="Area3D" parent="."]
 
@@ -301,7 +302,7 @@ libraries = {
 }
 
 [node name="PressButton" parent="." instance=ExtResource("7_qxems")]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.232637, 0.291262, 1.61377)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.232637, 0.258392, 1.4911)
 
 [node name="ConsoleScreen" parent="." instance=ExtResource("6_q21cd")]
 transform = Transform3D(0.35, 0, 0, 0, 0.327462, 0.123568, 0, -0.123568, 0.327462, -0.466378, 0.326211, 1.49449)
@@ -354,7 +355,7 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.496851, 0.24173, -1.
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.496851, 0.817486, -1.39661)
 
 [node name="StabilityMeter" parent="." instance=ExtResource("20_d7ntm")]
-transform = Transform3D(-5.06664e-08, -1.3576e-08, 1.2, -0.310583, 1.15911, 0, -1.15911, -0.310583, -5.24537e-08, 0.459061, 0.187511, 1.25654)
+transform = Transform3D(-5.06664e-08, -1.3576e-08, 1.2, -0.310583, 1.15911, 0, -1.15911, -0.310583, -5.24537e-08, 0.459061, 0.171151, 1.19548)
 
 [node name="CartTimer" parent="." instance=ExtResource("21_wnvkv")]
 transform = Transform3D(-8.74228e-09, -0.2, 0, -8.74228e-09, 3.82137e-16, -0.2, 0.2, -8.74228e-09, -8.74228e-09, -1.08118, 0.964748, -1.66977)
@@ -364,6 +365,9 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.488295, 1.04857, -1.3
 
 [node name="TrashDepositInCart" parent="." instance=ExtResource("22_x0php")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00247693, -0.335878, -1.5113)
+
+[node name="speaker" parent="." instance=ExtResource("24_u3cyw")]
+transform = Transform3D(0.13, 0, 0, 0, 0.122917, 0.0423239, 0, -0.0423239, 0.122917, 0.233, 0.323, 1.806)
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_body_exited"]
