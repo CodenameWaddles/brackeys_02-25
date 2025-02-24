@@ -17,10 +17,12 @@ public partial class Zone : Node3D
     [Export] public Timer ZoneTimer { get; private set; }
     
     
-    private BurningPlace _burningPlace;
-
-    private int _cartTrash;
     
+    private BurningPlace _burningPlace;
+    private int _cartTrash;
+
+    private Array<int> _IntegrityFrequencies = new() { 20, 40, 40, 60, 60, 90, 95, 100 };
+    private Vector2 _currentIntegrityFrequency;
     private float IntegrityPercentage;
     private float InitialIntegrityPercentage;
     private float IntegrityPercentageToComplete;
@@ -76,9 +78,10 @@ public partial class Zone : Node3D
             _cartTrash = Cart.TrashDeposit.TrashCount;
             GD.Print(Cart.TrashDeposit.TrashCount);
         }
+        
         RandomNumberGenerator rng = new RandomNumberGenerator();
-        InitialIntegrityPercentage = rng.RandfRange(40, 70);
-        IntegrityPercentageToComplete = rng.RandfRange(0, 30);
+        InitialIntegrityPercentage = rng.RandfRange(_currentIntegrityFrequency.X, _currentIntegrityFrequency.Y);
+        IntegrityPercentageToComplete = rng.RandfRange(0, 20);
         
         IntegritySteps = (InitialIntegrityPercentage - IntegrityPercentageToComplete) / (ZoneHazards.Count + 1 + _cartTrash); // +1 pour les datas
         IntegrityPercentageToComplete += IntegritySteps / 2; //petit offset pour que ce soit plus lisible
@@ -122,6 +125,14 @@ public partial class Zone : Node3D
         Cart.StabilityMeter.SetStability(1 - (IntegrityPercentage / 100));
     }
 
+    public void NextStabilityFrequency()
+    {
+        if (_currentIntegrityFrequency == new Vector2(95, 100)) return;
+        _currentIntegrityFrequency = new Vector2(_IntegrityFrequencies[0], _IntegrityFrequencies[1]);
+        _IntegrityFrequencies.RemoveAt(0);
+        _IntegrityFrequencies.RemoveAt(1);
+    }
+    
     public bool MatchData()
     {
         switch(Cart.CartDataPanel._dataMode)

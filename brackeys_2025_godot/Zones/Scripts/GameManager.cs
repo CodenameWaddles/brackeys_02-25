@@ -101,13 +101,6 @@ public partial class GameManager : Node
         tempScene.Position = _scenePosition;
         _currentSceneIndex = sceneIndex;
         
-        _currentScene = GetNode<Zone>(tempScene.GetPath());
-        _currentScene.Cart = Cart;
-        _currentScene.SetupIntegrity();
-        Cart._state = Cart.State.Moving;
-        
-        Cart.CartDataPanel.SetDataMode(_currentScene.ZoneDataMode);
-        
         GD.Print("loaded scene : " + _currentScene.Name + ", index : " + _currentSceneIndex);
 
         if (_currentSceneIndex < 15) //cut après que porte ouverte découverte
@@ -119,6 +112,7 @@ public partial class GameManager : Node
         {
             case 0: 
                 SendMessage(_currentSceneIndex); //intro
+                _currentScene.NextStabilityFrequency(); //low
                 break;
             case 2: 
                 SendMessage(_currentSceneIndex); //trash
@@ -129,6 +123,7 @@ public partial class GameManager : Node
                 break;
             case 4:
                 SendMessage(_currentSceneIndex); //tools
+                _currentScene.NextStabilityFrequency(); //medium
                 Cart.OpenTools();
                 break;
             case 6:
@@ -140,6 +135,7 @@ public partial class GameManager : Node
             case 7:
                 break;
             case 8:
+                _currentScene.NextStabilityFrequency(); //high
                 break;
             case 9:
                 LightManager.Instance.NextFrequency();
@@ -155,11 +151,18 @@ public partial class GameManager : Node
                 LightManager.Instance.NextFrequency();
                 break;
             case 13:
+                _currentScene.NextStabilityFrequency(); //extreme
                 break;
             case 14:
                 break;
         }
         
+        _currentScene = GetNode<Zone>(tempScene.GetPath());
+        _currentScene.Cart = Cart;
+        _currentScene.SetupIntegrity();
+        Cart._state = Cart.State.Moving;
+        
+        Cart.CartDataPanel.SetDataMode(_currentScene.ZoneDataMode);
         Cart.CartMap.DeactivateMapLights();
         Cart.CartMap.ActivateMapLight(_currentSceneIndex%5);
     }

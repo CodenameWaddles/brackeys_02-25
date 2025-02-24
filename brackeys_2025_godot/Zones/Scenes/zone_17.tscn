@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo2uri3qctkix"]
+
+[ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_p07ea"]
+[ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_mpb8x"]
+[ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="3_18x4u"]
+[ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="4_fdorg"]
+[ext_resource type="PackedScene" uid="uid://dodxa5romgf8r" path="res://Zones/RoomsModelsNodes/water_final.tscn" id="5_56u8n"]
+[ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="7_y40bc"]
+[ext_resource type="PackedScene" uid="uid://dn78ah4hsnwvh" path="res://Objects/Lights/water.tscn" id="8_qlt81"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6cbq5"]
+size = Vector3(1, 6.67432, 7.81772)
+
+[node name="zone_17" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom")]
+script = ExtResource("1_p07ea")
+roomname = "Central Sewer"
+ZoneHazards = [NodePath("sand"), NodePath("sand5"), NodePath("sand6"), NodePath("sand4"), NodePath("sand7"), NodePath("sand2"), NodePath("sand3")]
+IsTimed = true
+DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
+ZoneDataMode = 1
+
+[node name="Quai(3)" parent="." instance=ExtResource("2_mpb8x")]
+
+[node name="sand" parent="." instance=ExtResource("3_18x4u")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -11.1586, 1.91977, 1.61967)
+
+[node name="sand5" parent="." instance=ExtResource("3_18x4u")]
+transform = Transform3D(-1.17051, 0, 1.6217, 0, 2, 0, -1.6217, 0, -1.17051, -7.54488, 2.56096, 5.41012)
+
+[node name="sand6" parent="." instance=ExtResource("3_18x4u")]
+transform = Transform3D(-0.808423, 0, -2.88902, 0, 3, 0, 2.88902, 0, -0.808423, -10.2999, 3.51801, 5.07746)
+
+[node name="sand4" parent="." instance=ExtResource("3_18x4u")]
+transform = Transform3D(-2.16282, 0, -2.079, 0, 3, 0, 2.079, 0, -2.16282, -11.1931, 2.86126, -13.6093)
+
+[node name="sand7" parent="." instance=ExtResource("3_18x4u")]
+transform = Transform3D(-1.18824, 0, 0.527327, 0, 1.3, 0, -0.527327, 0, -1.18824, -8.03909, 2.29113, -13.904)
+
+[node name="sand2" parent="." instance=ExtResource("3_18x4u")]
+transform = Transform3D(0.796192, 0, -0.605044, 0, 1, 0, 0.605044, 0, 0.796192, -37.0002, -2.20126, -11.1984)
+
+[node name="sand3" parent="." instance=ExtResource("3_18x4u")]
+transform = Transform3D(1.03197, 0, 0.612399, 0, 1.2, 0, -0.612399, 0, 1.03197, -38.0828, -2.20126, -9.62621)
+
+[node name="WallLight" parent="." instance=ExtResource("4_fdorg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.6247, 7.98079, -4.87166)
+
+[node name="WallLight2" parent="." instance=ExtResource("4_fdorg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.7184, 4.70637, -0.711743)
+
+[node name="WallLight3" parent="." instance=ExtResource("4_fdorg")]
+transform = Transform3D(0.0510984, 0.484069, 0.873536, 4.40143e-08, 0.874679, -0.484703, -0.998694, 0.0247675, 0.0446947, -11.0934, 1.49844, -8.88725)
+
+[node name="water_final" parent="." instance=ExtResource("5_56u8n")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.7002, 0.13406, -10.207)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+
+[node name="SingleDataDisplay" parent="." instance=ExtResource("7_y40bc")]
+transform = Transform3D(3.38832e-08, 0.775159, 1.28418, 1.5, -6.55671e-08, -2.00912e-15, 5.61335e-08, 1.28418, -0.775159, -44.9015, -4.40209, -16.4808)
+
+[node name="water" parent="." instance=ExtResource("8_qlt81")]
+transform = Transform3D(1.96315, 0.382132, 0, -0.382132, 1.96315, 0, 0, 0, 2, -27.3816, 0.309675, -11.0441)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3032, 4.52457, -4.76642)
+shape = SubResource("BoxShape3D_6cbq5")
+
+[connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
