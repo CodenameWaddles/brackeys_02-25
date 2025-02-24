@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Godot.Collections;
 
 public partial class Light : OmniLight3D
 {
@@ -9,20 +10,30 @@ public partial class Light : OmniLight3D
 	[Export] private Vector3 _onColor = new(1, 1, 0.2f);
 	[Export] private bool _flickering = true;
 	[Export] private bool _shadow = true;
+	[Export] private bool _isEscapeLight = false;
 
 	public bool _on = true;
 	
 	private Vector3 _offColor = new(0.05f, 0.05f, 0.05f);
 	private const int _maxFlickers = 5;
-	private MeshInstance3D _mesh;
+	private Array<MeshInstance3D> _mesh = new();
 	
 	public override void _Ready() {
-		_mesh = (MeshInstance3D) _bulbNode.FindChild("Industrial lantern A_1");
+		if (_isEscapeLight) {
+			_mesh.Add((MeshInstance3D)_bulbNode?.FindChild("arrowFront"));
+			_mesh.Add((MeshInstance3D)_bulbNode?.FindChild("arrowBack"));
+		}
+		else {
+			_mesh.Add((MeshInstance3D)_bulbNode?.FindChild("Industrial lantern A_1"));
+		}
+		
 		_audioPlayer.Stream = _flickerSound;
 		ShadowEnabled = _shadow;
 		if (!_on) {
 			LightEnergy = 0;
-			_mesh?.SetInstanceShaderParameter("color", _offColor);
+			foreach (MeshInstance3D mesh in _mesh) {
+				mesh.SetInstanceShaderParameter("color", _offColor);
+			}
 		}
 	}
 
@@ -36,20 +47,26 @@ public partial class Light : OmniLight3D
 		}
 		else if(!_on){
 			LightEnergy = 0;
-			_mesh?.SetInstanceShaderParameter("color", _offColor);
+			foreach (MeshInstance3D mesh in _mesh) {
+				mesh.SetInstanceShaderParameter("color", _offColor);
+			}
 		}
 	}
 
 	private void Activate() {
 		LightEnergy = 1;
 		_audioPlayer.Play();
-		_mesh?.SetInstanceShaderParameter("color", _onColor);
+		foreach (MeshInstance3D mesh in _mesh) {
+			mesh.SetInstanceShaderParameter("color", _onColor);
+		}
 	}
 	
 	private void Deactivate() {
 		LightEnergy = 0;
 		_audioPlayer.Play();
-		_mesh?.SetInstanceShaderParameter("color", _offColor);
+		foreach (MeshInstance3D mesh in _mesh) {
+			mesh.SetInstanceShaderParameter("color", _offColor);
+		}
 	}
 
 	public async void Flicker(bool turnOff) {
