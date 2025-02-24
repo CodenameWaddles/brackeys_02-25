@@ -1,6 +1,82 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkfhveww4s0fl"]
+[gd_scene load_steps=6 format=3 uid="uid://dkfhveww4s0fl"]
 
 [ext_resource type="Script" path="res://Zones/Scenes/FinalZone.cs" id="1_ve4xc"]
+[ext_resource type="PackedScene" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="2_bev4c"]
+[ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="3_8ta2n"]
+[ext_resource type="PackedScene" uid="uid://cqrfv3e4y6q0v" path="res://Zones/RoomsModelsNodes/rails.tscn" id="4_gmkro"]
+[ext_resource type="PackedScene" uid="uid://bac6epmvhs368" path="res://Objects/Tunnel/tunnel_secours.tscn" id="5_aixni"]
 
 [node name="FinalZone" type="Node3D"]
 script = ExtResource("1_ve4xc")
+
+[node name="Tunnel vierge4" parent="." instance=ExtResource("2_bev4c")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -137.139)
+
+[node name="Tunnel vierge6" parent="." instance=ExtResource("2_bev4c")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -16.5)
+
+[node name="Tunnel8" parent="." instance=ExtResource("3_8ta2n")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -64.5)
+
+[node name="Tunnel6" parent="." instance=ExtResource("3_8ta2n")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -161.455)
+
+[node name="Tunnel9" parent="." instance=ExtResource("3_8ta2n")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -40.5)
+
+[node name="Tunnel7" parent="." instance=ExtResource("3_8ta2n")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -88.5)
+
+[node name="Rails" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53, 0)
+
+[node name="Rail" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.189171, -5.33223)
+
+[node name="Rail2" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.189171, -16.0341)
+
+[node name="Rail3" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.189171, -26.7277)
+
+[node name="Rail4" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.189171, -37.4296)
+
+[node name="Rail5" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.189171, -48.1232)
+
+[node name="Rail6" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.189171, -58.825)
+
+[node name="Rail7" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.189171, -69.5187)
+
+[node name="Rail8" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.1196, 0.189171, -80.2205)
+
+[node name="Rail9" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.1196, 0.189171, -90.9107)
+
+[node name="Rail10" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.1196, 0.189171, -101.613)
+
+[node name="Rail11" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.1196, 0.189171, -112.306)
+
+[node name="Rail12" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.1196, 0.189171, -123.008)
+
+[node name="Rail13" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.1196, 0.189171, -133.697)
+
+[node name="Rail14" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.189171, -162.257)
+
+[node name="Rail15" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.189171, -151.557)
+
+[node name="Rail16" parent="Rails" instance=ExtResource("4_gmkro")]
+transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.189171, -140.857)
+
+[node name="TunnelSecours" parent="." instance=ExtResource("5_aixni")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.323554, 0, -104.333)
