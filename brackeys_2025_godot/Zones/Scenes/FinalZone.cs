@@ -15,6 +15,6 @@ public partial class FinalZone : Node3D {
 	}
 
 	public void _on_area_entered(Node3D area) {
-		_colliderBehind.CollisionLayer =
+		
 	}
 }
