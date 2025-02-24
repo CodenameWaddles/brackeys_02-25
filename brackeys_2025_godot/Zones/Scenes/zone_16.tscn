@@ -24,7 +24,6 @@ size = Vector3(0.797607, 0.176758, 2.01266)
 script = ExtResource("1_qv7fe")
 roomname = "Generator"
 ZoneHazards = [NodePath("sand"), NodePath("sand4"), NodePath("sand3"), NodePath("sand2"), NodePath("sand5")]
-IsTimed = true
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 ZoneTimer = NodePath("Timer")
 

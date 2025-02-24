@@ -15,7 +15,6 @@ size = Vector3(1.02347, 10.075, 8.73047)
 script = ExtResource("1_yxyym")
 roomname = "Containment"
 ZoneHazards = [null, null]
-IsTimed = true
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 ZoneTimer = NodePath("Timer")
 

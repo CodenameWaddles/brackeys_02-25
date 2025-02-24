@@ -100,9 +100,9 @@ public partial class GameManager : Node
         AddChild(tempScene);
         tempScene.Position = _scenePosition;
         _currentSceneIndex = sceneIndex;
+        _currentScene = GetNode<Zone>(tempScene.GetPath());
+        _currentScene.Cart = Cart;
         
-        GD.Print("loaded scene : " + _currentScene.Name + ", index : " + _currentSceneIndex);
-
         if (_currentSceneIndex < 15) //cut après que porte ouverte découverte
         {
             _currentScene._sendRoomMessage();
@@ -148,23 +148,23 @@ public partial class GameManager : Node
                 AudioManager.Instance.NextBangingFrequency();
                 break;
             case 12:
+                _currentScene.NextStabilityFrequency(); //extreme
                 LightManager.Instance.NextFrequency();
                 break;
             case 13:
-                _currentScene.NextStabilityFrequency(); //extreme
                 break;
             case 14:
                 break;
         }
         
-        _currentScene = GetNode<Zone>(tempScene.GetPath());
-        _currentScene.Cart = Cart;
         _currentScene.SetupIntegrity();
         Cart._state = Cart.State.Moving;
         
         Cart.CartDataPanel.SetDataMode(_currentScene.ZoneDataMode);
         Cart.CartMap.DeactivateMapLights();
         Cart.CartMap.ActivateMapLight(_currentSceneIndex%5);
+        
+        GD.Print("loaded scene : " + _currentScene.Name + ", index : " + _currentSceneIndex);
     }
     
     private void _cartArrived()

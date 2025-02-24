@@ -16,7 +16,6 @@
 script = ExtResource("1_5siu8")
 roomname = "Incinerator"
 ZoneHazards = []
-IsTimed = true
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay2")
 ZoneDataMode = 1
 ZoneTimer = NodePath("Timer")

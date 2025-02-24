@@ -1,8 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://cks1jjkyhc157"]
+[gd_scene load_steps=4 format=3 uid="uid://cks1jjkyhc157"]
 
 [ext_resource type="PackedScene" uid="uid://p1htppp2rykj" path="res://Assets/Models/Rail.fbx" id="1_emrmm"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hn4bm"]
+size = Vector3(1, 0.0275938, 0.21814)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w63x3"]
+size = Vector3(9.99786, 0.2052, 1.46002)
+
 [node name="Rail" instance=ExtResource("1_emrmm")]
 
-[node name="Cylindre" parent="." index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000272116, 0.00531006)
+shape = SubResource("BoxShape3D_hn4bm")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(0.1, 0, 0, 0, 0.0780987, -0.0624548, 0, 0.0624548, 0.0780987, -5.13569e-05, -0.0396993, 0.164618)
+shape = SubResource("BoxShape3D_w63x3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
+transform = Transform3D(-0.1, -5.45413e-09, -6.83227e-09, 0, 0.0781521, -0.062388, 8.74228e-09, -0.062388, -0.0781521, -5.136e-05, -0.0396027, -0.15483)
+shape = SubResource("BoxShape3D_w63x3")
+
+[node name="Cylindre" parent="." index="1"]
 transform = Transform3D(0, 1, 0, -0.6275, 0, 0, 0, 0, 0.714292, 0, 0, -0.093)
