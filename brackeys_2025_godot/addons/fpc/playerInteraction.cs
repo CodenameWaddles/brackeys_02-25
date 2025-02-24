@@ -88,7 +88,10 @@ public partial class playerInteraction : Node3D {
                     if (!pickupable.IsPickedUp) {
                         pickupable.Activate();
                         PickUpItem(pickupable);
-                        _pickUpSound.Play();
+                        if (pickupable.Type != Pickupable.PickupType.Trash)
+                        {
+                            _pickUpSound.Play();
+                        }
                     }
                     
                 }
@@ -133,8 +136,11 @@ public partial class playerInteraction : Node3D {
         Node3D newItem = (Node3D) item.Item.Duplicate();
         newItem.Position = _hand.Position;
         newItem.Visible = true;
+        if (held.Type == Pickupable.PickupType.Trash)
+        {
+            newItem.Scale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
         _hand.AddChild(newItem);
-        Node3D player = (Node3D)GetParent();
     }
     
     public void DropItem() {
