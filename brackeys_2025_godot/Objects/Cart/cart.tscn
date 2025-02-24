@@ -374,7 +374,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 transform = Transform3D(0.35, 0, 0, 0, 0.327462, 0.123568, 0, -0.123568, 0.327462, -0.466378, 0.326211, 1.49449)
 
 [node name="Lamp" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.246039, 2.19891, 0.716245)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.255476, 2.19896, 0.740992)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lamp" node_paths=PackedStringArray("_bulbNode", "_audioPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441697, 0)
