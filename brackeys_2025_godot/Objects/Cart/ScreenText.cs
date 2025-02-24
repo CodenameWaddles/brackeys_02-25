@@ -5,6 +5,10 @@ public partial class ScreenText : RichTextLabel
 {
 	[Export] private AudioStreamPlayer3D _typingSound;
 	
+	[Signal] public delegate void TypingFinishedEventHandler();
+	
+	public bool IsTyping { get; private set; } = false;
+	
 	public override void _Ready() {
 		for(int i = 0; i < 11; i++) {
 			Text += "\n";
@@ -12,6 +16,7 @@ public partial class ScreenText : RichTextLabel
 	}
 
 	public async void TypeText(string text, float speed) {
+		IsTyping = true;
 		Text += " l";
 		foreach (char c in text)
 		{
@@ -20,6 +25,8 @@ public partial class ScreenText : RichTextLabel
 			await ToSignal(GetTree().CreateTimer(speed), "timeout");
 		}
 		Text = Text.Remove(Text.Length - 1);
+		IsTyping = false;
+		EmitSignal(SignalName.TypingFinished);
 	}
 
 	public void NewMessage() {

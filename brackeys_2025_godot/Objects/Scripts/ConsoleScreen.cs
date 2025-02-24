@@ -43,7 +43,10 @@ public partial class ConsoleScreen : Interactable
 		MakeUninteractable();
 	}
 
-	public void AddMessage(string message) {
+	public async void AddMessage(string message) {
+		if(_screenText.IsTyping) {
+			await ToSignal(_screenText, "TypingFinished");
+		}
 		MakeInteractable();
 		_messages.Add(message);
 		if(_messages.Count == 1) {

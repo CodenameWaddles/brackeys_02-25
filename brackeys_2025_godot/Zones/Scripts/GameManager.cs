@@ -220,7 +220,7 @@ public partial class GameManager : Node
         _messages.Add(2, "Lot of trash today. There should be enough room for it under the cart's shelf.");
         _messages.Add(3, "Burn everything properly.");
         _messages.Add(4, "Issues detected. Use tools to maintain structural integrity.");
-        _messages.Add(6, "Real tests start now. Don't waste time.");
+        _messages.Add(6, "Tests are going fast. Cart will leave automatically at the end of the timer.");
         _messages.Add(9, "That door needs to be fixed. Use any means necessary.");
         _messages.Add(10, "Breach detected. Relief Team on their way.");// alarme
         _messages.Add(12, "Relief team nearly there. Bypassing protocol activated."); // salle poubelle
