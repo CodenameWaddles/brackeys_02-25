@@ -1,0 +1,626 @@
+[gd_scene load_steps=15 format=3 uid="uid://cecemswk07gw3"]
+
+[ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_qv7fe"]
+[ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_ko4me"]
+[ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="4_8vyyi"]
+[ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="5_2cord"]
+[ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="6_mhoo3"]
+[ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="7_fbt7f"]
+[ext_resource type="PackedScene" uid="uid://dmutabg17sf5n" path="res://Zones/RoomsModelsNodes/stairs.tscn" id="8_2sopo"]
+[ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="8_4d2mv"]
+[ext_resource type="PackedScene" uid="uid://beej6ryapcf2k" path="res://Objects/Interactable/Hazards/tape_poster.tscn" id="9_6gmo4"]
+[ext_resource type="PackedScene" uid="uid://4nv88uxswbec" path="res://Objects/Interactable/pipe_leak.tscn" id="9_o68v0"]
+[ext_resource type="PackedScene" uid="uid://c686bvxif41xg" path="res://Zones/RoomsModelsNodes/generator_damaged.tscn" id="11_06rgy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_atmdf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpxbo"]
+albedo_texture = ExtResource("6_mhoo3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ai15k"]
+size = Vector3(0.797607, 0.176758, 2.01266)
+
+[node name="Zone 16" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
+script = ExtResource("1_qv7fe")
+roomname = "Generator"
+ZoneHazards = [NodePath("sand"), NodePath("sand4"), NodePath("sand3"), NodePath("sand2"), NodePath("sand5")]
+IsTimed = true
+DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
+ZoneTimer = NodePath("Timer")
+
+[node name="Quai(3)" parent="." instance=ExtResource("2_ko4me")]
+
+[node name="DoubleDataDisplay" parent="." instance=ExtResource("4_8vyyi")]
+transform = Transform3D(-0.304866, 1.35913, 0.556618, -1.31559, -2.60095e-08, -0.720565, -0.652894, -0.634639, 1.19204, -29.1549, 13.0709, -3.73886)
+
+[node name="sand" parent="." instance=ExtResource("5_2cord")]
+transform = Transform3D(0.066657, 0, -0.997776, 0, 1, 0, 0.997776, 0, 0.066657, -23.0738, 1.7429, 1.27247)
+
+[node name="sand4" parent="." instance=ExtResource("5_2cord")]
+transform = Transform3D(0.0599913, 0, -0.897998, 0, 0.9, 0, 0.897998, 0, 0.0599913, -22.1486, 2.14867, 2.47942)
+
+[node name="sand3" parent="." instance=ExtResource("5_2cord")]
+transform = Transform3D(-2.85015, 0, 0.936308, 0, 3, 0, -0.936308, 0, -2.85015, -23.9858, 2.57449, 3.87185)
+
+[node name="sand2" parent="." instance=ExtResource("5_2cord")]
+transform = Transform3D(1.38722, 0, -0.188768, 0, 1.4, 0, 0.188768, 0, 1.38722, -20.7948, 2.57449, 3.63471)
+
+[node name="sand5" parent="." instance=ExtResource("5_2cord")]
+transform = Transform3D(0.286373, 0, -0.409866, 0, 0.5, 0, 0.409866, 0, 0.286373, -19.4093, 1.86296, -0.877866)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 45.0
+one_shot = true
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -28, 94.755, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, -30.079, 121.275, -2.66028)
+mesh = SubResource("BoxMesh_atmdf")
+surface_material_override/0 = SubResource("StandardMaterial3D_cpxbo")
+
+[node name="LightCirclePilar" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.708954, -0.333446, -0.51067)
+
+[node name="WallLight" parent="LightCirclePilar" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-0.467213, 0.598162, 0.651087, 0.17901, 0.785149, -0.592871, -0.865833, -0.160446, -0.473909, -28.156, 14.1348, -5.51851)
+
+[node name="WallLight2" parent="LightCirclePilar" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(0.550772, 0, 0.834656, 0, 1, 0, -0.834656, 0, 0.550772, -28.9593, 14.2195, 0.10187)
+
+[node name="WallLight3" parent="LightCirclePilar" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-0.787699, 0, 0.61606, -0.222411, 0.932557, -0.284377, -0.574511, -0.361022, -0.734574, -31.6585, 14.1792, -10.631)
+
+[node name="WallLight4" parent="LightCirclePilar" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-0.768514, -0.319786, -0.554188, 0.126639, 0.772986, -0.621656, 0.627176, -0.547932, -0.553553, -38.4729, 14.1792, -10.0251)
+
+[node name="WallLight5" parent="LightCirclePilar" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-0.0232726, -0.370914, -0.928376, -0.00929518, 0.928667, -0.370798, 0.999686, 0, -0.0250602, -42.0105, 14.1792, -4.19195)
+
+[node name="WallLight6" parent="LightCirclePilar" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(0.798187, -0.247092, -0.549402, 0.0124196, 0.918564, -0.395077, 0.602281, 0.308522, 0.736255, -39.8927, 14.1792, 1.8702)
+
+[node name="WallLight7" parent="LightCirclePilar" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(0.995917, 0, 0.0902676, 0.0739664, 0.573205, -0.816067, -0.0517418, 0.819412, 0.570864, -33.9714, 14.0781, 3.84666)
+
+[node name="stairs" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.573303, 1.2)
+
+[node name="Stairs2Stack" parent="stairs" instance=ExtResource("8_4d2mv")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -20.3942, 1.29284, -12.5076)
+
+[node name="stairs" parent="stairs/Stairs2Stack" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.244395, 0)
+
+[node name="stairs2" parent="stairs/Stairs2Stack" index="1"]
+transform = Transform3D(0.883815, -0.249251, -0.395911, -2.32882e-08, 0.846258, -0.532773, 0.467837, 0.470872, 0.747935, 0, -0.223357, 0.942056)
+
+[node name="Stairs2Stack4" parent="stairs" instance=ExtResource("8_4d2mv")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -29.0506, 5.32394, -12.5076)
+
+[node name="stairs4" parent="stairs/Stairs2Stack4" instance=ExtResource("8_2sopo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43051e-06, 1.1379, 1.73649)
+
+[node name="stairs5" parent="stairs/Stairs2Stack4" instance=ExtResource("8_2sopo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43051e-06, 1.7373, 2.63526)
+
+[node name="stairs3" parent="stairs/Stairs2Stack4" instance=ExtResource("8_2sopo")]
+transform = Transform3D(0.894592, -0.404044, -0.19093, 0.446885, 0.808831, 0.382212, -1.26193e-08, -0.427247, 0.904135, 0.454638, -0.867522, -0.501557)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stairs"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stairs/StaticBody3D"]
+transform = Transform3D(0.812033, 0.583612, 0, -0.583612, 0.812033, 0, 0, 0, 1, -34.0457, 10.6048, -11.8074)
+shape = SubResource("BoxShape3D_ai15k")
+
+[node name="LightColumn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.878015, 0.573303, 0.177891)
+
+[node name="LightSegment" type="Node3D" parent="LightColumn"]
+
+[node name="WallLight2" parent="LightColumn/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+visible = false
+
+[node name="WallLight3" parent="LightColumn/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+visible = false
+
+[node name="WallLight4" parent="LightColumn/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+
+[node name="WallLight5" parent="LightColumn/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+visible = false
+
+[node name="WallLight6" parent="LightColumn/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+visible = false
+
+[node name="WallLight7" parent="LightColumn/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+
+[node name="WallLight8" parent="LightColumn/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+visible = false
+
+[node name="WallLight9" parent="LightColumn/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+
+[node name="LightSegment2" type="Node3D" parent="LightColumn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
+
+[node name="WallLight2" parent="LightColumn/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+_shadow = false
+
+[node name="WallLight3" parent="LightColumn/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight4" parent="LightColumn/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight5" parent="LightColumn/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight6" parent="LightColumn/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+_shadow = false
+
+[node name="WallLight7" parent="LightColumn/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight8" parent="LightColumn/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight9" parent="LightColumn/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+_shadow = false
+
+[node name="LightSegment3" type="Node3D" parent="LightColumn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
+
+[node name="WallLight2" parent="LightColumn/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+_shadow = false
+
+[node name="WallLight3" parent="LightColumn/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight4" parent="LightColumn/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+_shadow = false
+
+[node name="WallLight5" parent="LightColumn/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight6" parent="LightColumn/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight7" parent="LightColumn/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight8" parent="LightColumn/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+_shadow = false
+
+[node name="WallLight9" parent="LightColumn/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight10" parent="LightColumn/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 50.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight11" parent="LightColumn/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 54.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="LightColumn2" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -31.2251, 0.573303, -38.965)
+
+[node name="LightSegment" type="Node3D" parent="LightColumn2"]
+
+[node name="WallLight2" parent="LightColumn2/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+
+[node name="WallLight3" parent="LightColumn2/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+visible = false
+
+[node name="WallLight4" parent="LightColumn2/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+visible = false
+
+[node name="WallLight5" parent="LightColumn2/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+
+[node name="WallLight6" parent="LightColumn2/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+
+[node name="WallLight7" parent="LightColumn2/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+
+[node name="WallLight8" parent="LightColumn2/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+visible = false
+
+[node name="WallLight9" parent="LightColumn2/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+
+[node name="LightSegment2" type="Node3D" parent="LightColumn2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
+
+[node name="WallLight2" parent="LightColumn2/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+_shadow = false
+
+[node name="WallLight3" parent="LightColumn2/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight4" parent="LightColumn2/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+_shadow = false
+
+[node name="WallLight5" parent="LightColumn2/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight6" parent="LightColumn2/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight7" parent="LightColumn2/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight8" parent="LightColumn2/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+_shadow = false
+
+[node name="WallLight9" parent="LightColumn2/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="LightSegment3" type="Node3D" parent="LightColumn2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
+
+[node name="WallLight2" parent="LightColumn2/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight3" parent="LightColumn2/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+_shadow = false
+
+[node name="WallLight4" parent="LightColumn2/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+_shadow = false
+
+[node name="WallLight5" parent="LightColumn2/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight6" parent="LightColumn2/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight7" parent="LightColumn2/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight8" parent="LightColumn2/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+_shadow = false
+
+[node name="WallLight9" parent="LightColumn2/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight10" parent="LightColumn2/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 50.2, -4.618)
+_shadow = false
+
+[node name="WallLight11" parent="LightColumn2/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 54.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="LightColumn3" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -39.578, 0.573303, 31.5059)
+
+[node name="LightSegment" type="Node3D" parent="LightColumn3"]
+
+[node name="WallLight2" parent="LightColumn3/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+
+[node name="WallLight3" parent="LightColumn3/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+visible = false
+
+[node name="WallLight4" parent="LightColumn3/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+visible = false
+
+[node name="WallLight5" parent="LightColumn3/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+
+[node name="WallLight6" parent="LightColumn3/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+visible = false
+
+[node name="WallLight7" parent="LightColumn3/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+
+[node name="WallLight8" parent="LightColumn3/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+visible = false
+
+[node name="WallLight9" parent="LightColumn3/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+
+[node name="LightSegment2" type="Node3D" parent="LightColumn3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
+
+[node name="WallLight2" parent="LightColumn3/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+_shadow = false
+
+[node name="WallLight3" parent="LightColumn3/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight4" parent="LightColumn3/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+_shadow = false
+
+[node name="WallLight5" parent="LightColumn3/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight6" parent="LightColumn3/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+_shadow = false
+
+[node name="WallLight7" parent="LightColumn3/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight8" parent="LightColumn3/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight9" parent="LightColumn3/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+_shadow = false
+
+[node name="LightSegment3" type="Node3D" parent="LightColumn3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
+
+[node name="WallLight2" parent="LightColumn3/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+_shadow = false
+
+[node name="WallLight3" parent="LightColumn3/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight4" parent="LightColumn3/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight5" parent="LightColumn3/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight6" parent="LightColumn3/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+_shadow = false
+
+[node name="WallLight7" parent="LightColumn3/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight8" parent="LightColumn3/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight9" parent="LightColumn3/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight10" parent="LightColumn3/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 50.2, -4.618)
+_shadow = false
+
+[node name="WallLight11" parent="LightColumn3/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 54.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="LightColumn4" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -70.678, 0.573303, -8.32211)
+
+[node name="LightSegment" type="Node3D" parent="LightColumn4"]
+
+[node name="WallLight2" parent="LightColumn4/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+
+[node name="WallLight3" parent="LightColumn4/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+visible = false
+
+[node name="WallLight4" parent="LightColumn4/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+visible = false
+
+[node name="WallLight5" parent="LightColumn4/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+visible = false
+
+[node name="WallLight6" parent="LightColumn4/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+
+[node name="WallLight7" parent="LightColumn4/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+
+[node name="WallLight8" parent="LightColumn4/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+visible = false
+
+[node name="WallLight9" parent="LightColumn4/LightSegment" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+visible = false
+
+[node name="LightSegment2" type="Node3D" parent="LightColumn4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
+
+[node name="WallLight2" parent="LightColumn4/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+_shadow = false
+
+[node name="WallLight3" parent="LightColumn4/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight4" parent="LightColumn4/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight5" parent="LightColumn4/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight6" parent="LightColumn4/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight7" parent="LightColumn4/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight8" parent="LightColumn4/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+_shadow = false
+
+[node name="WallLight9" parent="LightColumn4/LightSegment2" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="LightSegment3" type="Node3D" parent="LightColumn4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64, 0)
+
+[node name="WallLight2" parent="LightColumn4/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.2034, 18.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight3" parent="LightColumn4/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 22.2, -4.618)
+_shadow = false
+
+[node name="WallLight4" parent="LightColumn4/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 26.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight5" parent="LightColumn4/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 30.2, -4.618)
+_shadow = false
+
+[node name="WallLight6" parent="LightColumn4/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 34.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight7" parent="LightColumn4/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 38.2, -4.618)
+_shadow = false
+
+[node name="WallLight8" parent="LightColumn4/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 42.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight9" parent="LightColumn4/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 46.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight10" parent="LightColumn4/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 50.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="WallLight11" parent="LightColumn4/LightSegment3" instance=ExtResource("7_fbt7f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.203, 54.2, -4.618)
+visible = false
+_shadow = false
+
+[node name="TapePoster" parent="." instance=ExtResource("9_6gmo4")]
+transform = Transform3D(0.998536, 0, -0.0540962, -0.0540962, -4.37114e-08, -0.998536, -2.36462e-09, 1, -4.36474e-08, -7.99564, 3.65376, -15.563)
+_isHazard = false
+
+[node name="Tuyau cassé" parent="." instance=ExtResource("9_o68v0")]
+transform = Transform3D(-0.12909, 0, -0.991633, 0, 1, 0, 0.991633, 0, -0.12909, -42.2814, 13.7193, -6.84597)
+
+[node name="Generator Damaged" parent="." instance=ExtResource("11_06rgy")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.292815, 0.469111, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
+
+[editable path="stairs/Stairs2Stack"]
+[editable path="stairs/Stairs2Stack4"]
