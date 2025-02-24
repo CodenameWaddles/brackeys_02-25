@@ -111,7 +111,6 @@ public partial class GameManager : Node
         switch (_currentSceneIndex)
         {
             case 0: 
-                SendMessage(_currentSceneIndex); //intro
                 break;
             case 2: 
                 SendMessage(_currentSceneIndex); //trash
@@ -216,7 +215,7 @@ public partial class GameManager : Node
 
     private void SetupMessages()
     {
-        _messages.Add(0, "Big tests coming up, be wary.");
+        _messages.Add(-1, "Big tests coming up today. Make sure to input every data from the  screens in the cart's terminal.");
         _messages.Add(2, "Lot of trash today. There should be enough room for it under the cart's shelf.");
         _messages.Add(3, "Burn everything properly.");
         _messages.Add(4, "Issues detected. Use tools to maintain structural integrity.");

@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7e6esm8g3oxm"]
+
+[ext_resource type="Texture2D" uid="uid://hcaemx8qtkhu" path="res://textures/blackscreen.png" id="1_nmtnh"]
+[ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="2_i37ck"]
+[ext_resource type="AudioStream" uid="uid://dsx4tmk55qdob" path="res://Assets/Sounds/light_flicker.wav" id="3_0usd0"]
+
+[sub_resource type="Animation" id="Animation_8viu8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bgmwl"]
+resource_name = "flicker"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.39171, 1.71589, 2.14922, 2.38256, 2.68256, 2.78256, 3.11589, 3.48256, 3.54923, 3.61589, 3.74923, 3.84923, 3.91589, 3.94923, 4.04923, 4.07511, 4.10844, 4.16324, 4.32074, 4.37554, 5.04829, 5.33477, 6.97026),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlickerSound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.38256, 1.70674, 2.14007, 2.37341, 2.67341, 2.77341, 3.10674, 3.47341, 3.54008, 3.60674, 3.74008, 3.84008, 3.90674, 3.94008, 4.04008, 4.06596, 4.09929, 4.15409, 4.31159, 4.36639, 5.03914, 5.32562, 6.96111),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wfb52"]
+_data = {
+"RESET": SubResource("Animation_8viu8"),
+"flicker": SubResource("Animation_bgmwl")
+}
+
+[node name="IntroBlackScreen" type="CanvasLayer"]
+
+[node name="Blackscreen" type="Sprite2D" parent="."]
+position = Vector2(590, 316)
+scale = Vector2(6.85547, 6.69925)
+texture = ExtResource("1_nmtnh")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 321.0
+offset_top = 260.0
+offset_right = -6.0
+offset_bottom = -265.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_i37ck")
+theme_override_font_sizes/font_size = 150
+text = "pisspipe"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wfb52")
+}
+
+[node name="FlickerSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_0usd0")
+volume_db = 10.0
