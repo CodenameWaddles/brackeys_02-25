@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cskk8fr2tmd85"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/Trashbag.cs" id="1_khv5y"]
-[ext_resource type="PackedScene" path="res://Objects/Interactable/Hazards/projectsac_poubelle.tscn" id="2_r4jj2"]
+[ext_resource type="PackedScene" uid="uid://b37xjvvwxdwvd" path="res://Objects/Interactable/Hazards/projectsac_poubelle.tscn" id="2_r4jj2"]
 [ext_resource type="AudioStream" uid="uid://k322wp4xdlmd" path="res://Assets/Sounds/trash_bag_ground.wav" id="3_bluf6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_33eep"]
