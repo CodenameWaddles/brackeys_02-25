@@ -7,16 +7,30 @@ public partial class IntroZone : Node3D
 	[Export] Timer blackScreenTimer;
 	[Export] Timer introTimer;
 	[Export] private Timer timeBeforeFirstMessage;
+	[Export] private float gameVolume = -4;
 
 	public override void _Ready()
 	{
 		introScreen.Visible = true;
 		blackScreenTimer.Start();
+		AudioServer.SetBusVolumeDb(0, -35);
 	}
 
 	public override void _Process(double delta)
 	{
-		if(!blackScreenTimer.IsStopped()) return;
+		if (!blackScreenTimer.IsStopped())
+		{
+			//ajust volume until game volume reached
+			if (AudioServer.GetBusVolumeDb(0) < gameVolume)
+			{
+				AudioServer.SetBusVolumeDb(0, AudioServer.GetBusVolumeDb(0) + 0.1f);
+			}
+			return;
+		}
+		else
+		{
+			AudioServer.SetBusVolumeDb(0, gameVolume);
+		}
 		
 		if (!introTimer.IsStopped())
 		{

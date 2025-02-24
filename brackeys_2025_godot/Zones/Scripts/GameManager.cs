@@ -10,6 +10,7 @@ public partial class GameManager : Node
     
     [Export] private Array<PackedScene> _scenes = new Array<PackedScene>();
     [Export] private Vector3 _scenePosition = new Vector3(0, 0, 0); //remplacer tmtc
+    [Export] private PackedScene _introScenePrefab;
     [Export] private PackedScene _finalScene;
     [Export] public Cart Cart;
     [Export] private CharacterBody3D _player;
@@ -25,6 +26,7 @@ public partial class GameManager : Node
     [Export] private Node3D _resetPoint;
     [Export] private PackedScene _tunelPrefab;
 
+    private Node3D _introScene;
     public bool ByePassActivated;
     private int _currentCycle = 0;
     public Zone _currentScene;
@@ -56,7 +58,15 @@ public partial class GameManager : Node
         Cart.ArrivedSignal += _cartArrived;
         _player.Reparent(Cart);
         _audioManager.Disable();
-        _loadScene(startIndex);
+
+        if (startIndex > 0)
+        {
+            _loadScene(startIndex);
+        }
+        else
+        {
+            LoadIntroScene();
+        }
 
         ByePassActivated = false;
         
@@ -94,7 +104,6 @@ public partial class GameManager : Node
 
         Node3D tempTunnel = (Node3D)_tunelPrefab.Instantiate(); //on instancie un nouveau post tunel
         AddChild(tempTunnel);
-        GD.Print(_tunelPosition2);
         tempTunnel.Position = _tunelPosition2; //on le place au bon endroit
         _tunelPostZone = tempTunnel; //on dit que le post tunel = ce nouveau tunel
 
@@ -118,7 +127,11 @@ public partial class GameManager : Node
         }
         switch (_currentSceneIndex)
         {
-            case 0: 
+            case 0:
+                if (_introScene != null)
+                {
+                    _introScene.QueueFree();
+                }
                 break;
             case 2:
                 SendMessage(_currentSceneIndex); //trash
@@ -260,4 +273,24 @@ public partial class GameManager : Node
         Cart.DeactivateColliders();
     }
     
+    private void LoadIntroScene()
+    {
+        _tunelPreZone.QueueFree(); //on suprime le pre tunnel
+        Cart.Reparent(_tunelPostZone); //on attache le cart au post tunel
+        _tunelPostZone.Position = _tunelPosition1; //on tp le post tunel a la pre position
+        _tunelPreZone = _tunelPostZone; //on dit que le pre tunel = le post tunnel
+        Cart.Reparent(this); //on ratache le cart au main
+        
+        Node3D tempTunnel = (Node3D)_tunelPrefab.Instantiate(); //on instancie un nouveau post tunel
+        AddChild(tempTunnel);
+        tempTunnel.Position = _tunelPosition2; //on le place au bon endroit
+        _tunelPostZone = tempTunnel; //on dit que le post tunel = ce nouveau tunel
+        
+        Node3D introScene = (Node3D) _introScenePrefab.Instantiate();
+        AddChild(introScene);
+        _introScene = introScene;
+        Cart._state = Cart.State.Moving;
+
+        _currentSceneIndex = -1;
+    }
 }

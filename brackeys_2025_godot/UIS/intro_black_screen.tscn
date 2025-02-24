@@ -41,10 +41,10 @@ tracks/1/path = NodePath("FlickerSound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.38256, 1.70674, 2.14007, 2.37341, 2.67341, 2.77341, 3.10674, 3.47341, 3.54008, 3.60674, 3.74008, 3.84008, 3.90674, 3.94008, 4.04008, 4.06596, 4.09929, 4.15409, 4.31159, 4.36639, 5.03914, 5.32562, 6.96111),
+"times": PackedFloat32Array(1.3712, 1.70674, 2.14007, 2.37341, 2.67341, 2.77341, 3.10674, 3.47341, 3.54008, 3.60674, 3.74008, 3.84008, 3.90674, 3.94008, 4.04008, 4.06596, 4.09929, 4.15409, 4.31159, 4.36639, 5.03914, 5.32562, 6.96111),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, true]
+"values": [true, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wfb52"]
@@ -82,4 +82,5 @@ libraries = {
 
 [node name="FlickerSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_0usd0")
+attenuation_model = 3
 volume_db = 10.0

@@ -245,7 +245,7 @@ public partial class Zone : Node3D
     private void StartTimer()
     {
         GD.Print("start timer");
-        if (GameManager.Instance._currentSceneIndex >= 4)
+        if (GameManager.Instance._currentSceneIndex is >= 4 and <= 12)
         {
             if(ZoneHazards.Count > 0) Cart.ConsoleScreen.AddMessage("Issues detected : " + ZoneHazards.Count);
         }

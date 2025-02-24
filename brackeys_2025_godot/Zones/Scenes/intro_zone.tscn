@@ -4,11 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://c7e6esm8g3oxm" path="res://UIS/intro_black_screen.tscn" id="2_5kp5t"]
 [ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="2_u2gqd"]
 
-[node name="IntroZone" type="Node3D" node_paths=PackedStringArray("introScreen", "blackScreenTimer", "introTimer")]
+[node name="IntroZone" type="Node3D" node_paths=PackedStringArray("introScreen", "blackScreenTimer", "introTimer", "timeBeforeFirstMessage")]
 script = ExtResource("1_yf1m3")
 introScreen = NodePath("IntroBlackScreen")
 blackScreenTimer = NodePath("BlackScreenTimer")
 introTimer = NodePath("FadeTimer")
+timeBeforeFirstMessage = NodePath("TimeBeforeFirstMessageTimer")
 
 [node name="Tunnel(4)" parent="." instance=ExtResource("2_u2gqd")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.69757, 0, -9.045)
@@ -20,21 +21,19 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.69757, 0, 14.7722)
 transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 1.39887, 0, -24.8382)
 
 [node name="BlackScreenTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 one_shot = true
 
 [node name="FadeTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.5
 one_shot = true
 
 [node name="TimeBeforeFirstMessageTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="IntroBlackScreen" parent="." instance=ExtResource("2_5kp5t")]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-
 [connection signal="timeout" from="BlackScreenTimer" to="." method="OnBlackScreenTimerTimeout"]
 [connection signal="timeout" from="FadeTimer" to="." method="OnIntroTimerTimeout"]
-[connection signal="timeout" from="TimeBeforeFirstMessageTimer" to="." method="OnIntroTimerTimeout"]
+[connection signal="timeout" from="TimeBeforeFirstMessageTimer" to="." method="OnTimeBeforeFirstMessageTimeout"]
