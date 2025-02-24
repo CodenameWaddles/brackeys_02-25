@@ -10,6 +10,9 @@ public partial class playerInteraction : Node3D {
     
     [Export] private PackedScene _defaultReticle;
     [Export] private PackedScene _interactReticle;
+    
+    [Export] private AudioStreamPlayer3D _pickUpSound;
+    [Export] private AudioStreamPlayer3D _dropSound;
 
     public Pickupable held { get; private set; } = null;
     private Interactable _hovering;
@@ -85,6 +88,7 @@ public partial class playerInteraction : Node3D {
                     if (!pickupable.IsPickedUp) {
                         pickupable.Activate();
                         PickUpItem(pickupable);
+                        _pickUpSound.Play();
                     }
                     
                 }
@@ -92,6 +96,7 @@ public partial class playerInteraction : Node3D {
                     if(held == pickupable && pickupable.IsPickedUp) {
                         pickupable.Activate();
                         DropItem();
+                        _dropSound.Play();
                     }
                 }
             }
