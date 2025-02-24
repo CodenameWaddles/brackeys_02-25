@@ -15,7 +15,6 @@ public partial class GameManager : Node
     [Export] public AudioManager _audioManager;
     [Export] private Timer _resetRoomTimer;
     [Export] private CanvasLayer _roomFailedScreen;
-    [Export] private Node3D _rails;
     
     //tunnels
     [Export] private Vector3 _tunelPosition1;

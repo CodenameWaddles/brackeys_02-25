@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=32 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://brlq4ot8qypvv" path="res://Zones/Scenes/zone_9.tscn" id="2_2apei"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://n5yokdmfhjnb" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
 [ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="9_bni7l"]
 [ext_resource type="PackedScene" uid="uid://bjvjidsafjj8e" path="res://Zones/Scenes/zone_8.tscn" id="9_wnaab"]
-[ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
 [ext_resource type="PackedScene" uid="uid://dqopj1jwrwxhg" path="res://Zones/Scenes/zone_10.tscn" id="11_f4bw3"]
 [ext_resource type="PackedScene" uid="uid://b3e0tj0ry08qf" path="res://Zones/Scenes/zone_11.tscn" id="12_6lbj4"]
 [ext_resource type="PackedScene" uid="uid://cxuquqsfkx8sa" path="res://Objects/Audio/audio_manager.tscn" id="13_2yeii"]
@@ -27,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://dp3ata2fjdami" path="res://UIS/failed_room_screen.tscn" id="15_xa325"]
 [ext_resource type="PackedScene" uid="uid://rahcybl0kb40" path="res://Zones/Scenes/zone_15.tscn" id="16_jkqg7"]
 [ext_resource type="PackedScene" uid="uid://cecemswk07gw3" path="res://Zones/Scenes/zone_16.tscn" id="17_eclp2"]
-[ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="17_kd7hi"]
 [ext_resource type="PackedScene" uid="uid://bo2uri3qctkix" path="res://Zones/Scenes/zone_17.tscn" id="18_c43du"]
 [ext_resource type="PackedScene" uid="uid://dkfhveww4s0fl" path="res://Zones/Scenes/FinalZone.tscn" id="19_e0o7y"]
 
@@ -46,7 +44,7 @@ volumetric_fog_emission_energy = 2.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_rails", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
 script = ExtResource("1_yxd7y")
-startIndex = 3
+startIndex = 16
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("6_m1i8t"), ExtResource("7_a5t7k"), ExtResource("8_5vsux"), ExtResource("9_wnaab"), ExtResource("2_2apei"), ExtResource("11_f4bw3"), ExtResource("12_6lbj4"), ExtResource("13_xpvod"), ExtResource("14_acyje"), ExtResource("15_c6lld"), ExtResource("16_jkqg7"), ExtResource("17_eclp2"), ExtResource("18_c43du")]
 _finalScene = ExtResource("19_e0o7y")
 Cart = NodePath("cart")
@@ -54,7 +52,7 @@ _player = NodePath("Character")
 _audioManager = NodePath("AudioManager")
 _resetRoomTimer = NodePath("ResetRoomTimer")
 _roomFailedScreen = NodePath("FailedRoomScreen")
-_rails = NodePath("Rails")
+_rails = NodePath("")
 _tunelPosition1 = Vector3(1.685, 0, -41.09)
 _tunelPosition2 = Vector3(1.75, 0, 341.6)
 _tunelPreZone = NodePath("TunnelSidePre")
@@ -80,9 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.359502, 0.155308, -1.66697
 
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.685363, 1.02907, 289.8)
-
-[node name="Parking" parent="." instance=ExtResource("11_7wrjh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.747968, 1.28914, -3.82848)
 
 [node name="TunnelSidePre" parent="." instance=ExtResource("8_yx5qa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.685, 0, -41.09)
@@ -113,29 +108,5 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.676, 1.802, 68.3846)
 visible = false
 mesh = SubResource("BoxMesh_i06lb")
-
-[node name="Rails" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53, 0)
-
-[node name="Rail" parent="Rails" instance=ExtResource("17_kd7hi")]
-transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.63, 0.189, 19.5286)
-
-[node name="Rail2" parent="Rails" instance=ExtResource("17_kd7hi")]
-transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629999, 0.189, 8.83442)
-
-[node name="Rail3" parent="Rails" instance=ExtResource("17_kd7hi")]
-transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629999, 0.189, -1.85722)
-
-[node name="Rail4" parent="Rails" instance=ExtResource("17_kd7hi")]
-transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629998, 0.189, -12.5514)
-
-[node name="Rail5" parent="Rails" instance=ExtResource("17_kd7hi")]
-transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629998, 0.189, -23.2463)
-
-[node name="Rail6" parent="Rails" instance=ExtResource("17_kd7hi")]
-transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629998, 0.189, -33.9379)
-
-[node name="Rail7" parent="Rails" instance=ExtResource("17_kd7hi")]
-transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.629997, 0.189, -44.644)
 
 [connection signal="timeout" from="ResetRoomTimer" to="." method="_on_reset_timer_timeout"]
