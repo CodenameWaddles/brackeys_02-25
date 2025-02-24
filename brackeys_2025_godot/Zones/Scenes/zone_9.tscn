@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://brlq4ot8qypvv"]
+[gd_scene load_steps=12 format=3 uid="uid://brlq4ot8qypvv"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_uj3x0"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_uy4j6"]
@@ -10,13 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="8_q3r5f"]
 [ext_resource type="PackedScene" uid="uid://druiscw0l16g3" path="res://Objects/Lights/fire_particles.tscn" id="9_ds1oq"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="10_qq6mu"]
+[ext_resource type="PackedScene" uid="uid://dvs5qpxpk8o1f" path="res://Objects/Props/maxhina.tscn" id="11_2n5y0"]
 
 [node name="zone_9" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom", "ZoneTimer")]
 script = ExtResource("1_uj3x0")
 roomname = "Incinerator"
 ZoneHazards = [NodePath("break_pipe"), NodePath("BlowtorchPoster"), NodePath("BlowtorchPoster2"), NodePath("BlowtorchPoster3")]
 IsTimed = true
-DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
+DisplayDataSingleInRoom = NodePath("SingleDataDisplay2")
 ZoneDataMode = 1
 ZoneTimer = NodePath("Timer")
 
@@ -28,9 +29,6 @@ one_shot = true
 
 [node name="incinerateur" parent="." instance=ExtResource("3_dwx3v")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.325393, 1.24887, 0)
-
-[node name="SingleDataDisplay" parent="." instance=ExtResource("4_m6o68")]
-transform = Transform3D(-1, 1.50996e-07, 4.97381e-14, -7.57354e-08, -0.501573, 0.865116, 1.30629e-07, 0.865116, 0.501573, -23.4252, 3.25851, -0.23324)
 
 [node name="break_pipe" parent="." instance=ExtResource("5_8b43w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5751, 3.82442, -13.5648)
@@ -62,5 +60,14 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -15.88
 
 [node name="WallLight2" parent="." instance=ExtResource("10_qq6mu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8815, 4.11422, -11.5661)
+
+[node name="SingleDataDisplay2" parent="." instance=ExtResource("4_m6o68")]
+transform = Transform3D(2.86603e-15, -6.55671e-08, 1.5, -1.5, -6.55671e-08, 0, 6.55671e-08, -1.5, -6.55671e-08, -22.7062, 3.25851, 2.48199)
+
+[node name="Maxhina" parent="." instance=ExtResource("11_2n5y0")]
+transform = Transform3D(-2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, -21.9785, 2.65132, 3.33863)
+
+[node name="Maxhina2" parent="." instance=ExtResource("11_2n5y0")]
+transform = Transform3D(-2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, -23.6933, 2.65132, 3.26148)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
