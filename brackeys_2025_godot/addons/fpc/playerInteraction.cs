@@ -77,7 +77,8 @@ public partial class playerInteraction : Node3D {
         }
         // interact with pickupable
         else if (_hovering is Pickupable pickupable) {
-            if(_hovering.IsInteractable && !pickupable.IsPickedUp && held == null)
+            if((_hovering.IsInteractable && !pickupable.IsPickedUp && held == null) ||
+               (_hovering.IsInteractable && held.Type == pickupable.Type && pickupable.IsPickedUp))
                 ChangeReticle(_interactReticle);
             if (Input.IsActionJustPressed("interact")) {
                 if(held == null) {
