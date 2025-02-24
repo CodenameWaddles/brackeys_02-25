@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=31 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://brlq4ot8qypvv" path="res://Zones/Scenes/zone_9.tscn" id="2_2apei"]
@@ -23,7 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://cxuquqsfkx8sa" path="res://Objects/Audio/audio_manager.tscn" id="13_2yeii"]
 [ext_resource type="PackedScene" uid="uid://ljexx0l02j4u" path="res://Zones/Scenes/zone_12.tscn" id="13_xpvod"]
 [ext_resource type="PackedScene" uid="uid://cicrmk46j6qdg" path="res://Zones/Scenes/zone_13.tscn" id="14_acyje"]
+[ext_resource type="PackedScene" uid="uid://dwyjmfc75quxk" path="res://Zones/Scenes/zone_14.tscn" id="15_c6lld"]
 [ext_resource type="PackedScene" uid="uid://dp3ata2fjdami" path="res://UIS/failed_room_screen.tscn" id="15_xa325"]
+[ext_resource type="PackedScene" uid="uid://rahcybl0kb40" path="res://Zones/Scenes/zone_15.tscn" id="16_jkqg7"]
 [ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="17_kd7hi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j74ki"]
@@ -41,8 +43,8 @@ volumetric_fog_emission_energy = 2.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
 script = ExtResource("1_yxd7y")
-startIndex = 12
-_scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("6_m1i8t"), ExtResource("7_a5t7k"), ExtResource("8_5vsux"), ExtResource("9_wnaab"), ExtResource("2_2apei"), ExtResource("11_f4bw3"), ExtResource("12_6lbj4"), ExtResource("13_xpvod"), ExtResource("14_acyje")]
+startIndex = 14
+_scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("6_m1i8t"), ExtResource("7_a5t7k"), ExtResource("8_5vsux"), ExtResource("9_wnaab"), ExtResource("2_2apei"), ExtResource("11_f4bw3"), ExtResource("12_6lbj4"), ExtResource("13_xpvod"), ExtResource("14_acyje"), ExtResource("15_c6lld"), ExtResource("16_jkqg7")]
 Cart = NodePath("cart")
 _player = NodePath("Character")
 _audioManager = NodePath("AudioManager")

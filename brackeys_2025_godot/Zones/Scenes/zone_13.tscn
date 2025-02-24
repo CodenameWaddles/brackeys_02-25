@@ -45,7 +45,7 @@ transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -19.2647, 1.25907, -2.2
 [node name="Quai(3)" parent="." instance=ExtResource("4_a2m1y")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 160.0
+wait_time = 80.0
 one_shot = true
 
 [node name="Salle des dechets" parent="." instance=ExtResource("5_3iwx5")]
@@ -169,16 +169,16 @@ transform = Transform3D(0.993242, 0, -0.116064, -0.116064, -4.37114e-08, -0.9932
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2636, 0, 0)
 
 [node name="WallLight" parent="Lights" instance=ExtResource("11_2xrnu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.43146, 4.93239, -1.95279)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.43146, 4.93239, -1.52195)
 
 [node name="WallLight2" parent="Lights" instance=ExtResource("11_2xrnu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.43146, 4.93239, 2.91635)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.43146, 4.93239, 3.30577)
 
 [node name="WallLight5" parent="Lights" instance=ExtResource("11_2xrnu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.6208, 7.54533, 0.158026)
 
 [node name="WallLight6" parent="Lights" instance=ExtResource("11_2xrnu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4539, 7.54533, -10.4554)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4539, 7.54533, -10.4705)
 
 [node name="Tuyau origine ok" parent="." instance=ExtResource("10_60q06")]
 transform = Transform3D(1, 0, 0, 0, 0.0416756, -0.999783, 0, 1.99957, 0.0208378, -36.3621, 7.52204, 2.22145)

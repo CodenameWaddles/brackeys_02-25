@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwyjmfc75quxk"]
+
+[ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_5siu8"]
+[ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_uymfi"]
+[ext_resource type="PackedScene" uid="uid://cey6ht5rcp1yh" path="res://Zones/RoomsModelsNodes/incinerateur.tscn" id="3_ejctr"]
+[ext_resource type="PackedScene" uid="uid://sosyeegoqc0s" path="res://Objects/Interactable/Hazards/break_pipe.tscn" id="4_wtqii"]
+[ext_resource type="PackedScene" uid="uid://dqbu1evx6i23r" path="res://Objects/Interactable/Hazards/blowtorch_poster.tscn" id="5_whgkn"]
+[ext_resource type="PackedScene" uid="uid://b86wbn0qus7d" path="res://Objects/Interactable/Tools/burning_place.tscn" id="6_gjewb"]
+[ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="7_t4hmq"]
+[ext_resource type="PackedScene" uid="uid://druiscw0l16g3" path="res://Objects/Lights/fire_particles.tscn" id="8_u1ttq"]
+[ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="9_3808g"]
+[ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="10_3gt3i"]
+[ext_resource type="PackedScene" uid="uid://dvs5qpxpk8o1f" path="res://Objects/Props/maxhina.tscn" id="11_7udcm"]
+
+[node name="zone_14" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom", "ZoneTimer")]
+script = ExtResource("1_5siu8")
+roomname = "Incinerator"
+ZoneHazards = []
+IsTimed = true
+DisplayDataSingleInRoom = NodePath("SingleDataDisplay2")
+ZoneDataMode = 1
+ZoneTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="Quai(3)" parent="." instance=ExtResource("2_uymfi")]
+
+[node name="incinerateur" parent="." instance=ExtResource("3_ejctr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.325393, 1.24887, 0)
+
+[node name="break_pipe" parent="." instance=ExtResource("4_wtqii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5751, 3.82442, -13.5648)
+
+[node name="BlowtorchPoster" parent="." instance=ExtResource("5_whgkn")]
+transform = Transform3D(-0.99571, -8.74228e-08, -0.092527, 0.092527, -4.37114e-08, -0.99571, 8.30033e-08, -1, 5.16128e-08, -5.57578, 3.52323, 6.63905)
+
+[node name="BlowtorchPoster2" parent="." instance=ExtResource("5_whgkn")]
+transform = Transform3D(-0.999743, -0.00120366, 0.0226554, -0.0226873, 0.0530369, -0.998335, 8.83955e-08, -0.998592, -0.0530505, -6.65708, 3.04365, 6.63375)
+
+[node name="BlowtorchPoster3" parent="." instance=ExtResource("5_whgkn")]
+transform = Transform3D(0.995725, 1.8688e-10, 0.0923706, 0.0923706, -4.03765e-09, -0.995725, 1.8688e-10, 1, -4.03765e-09, -8.08529, 2.83802, -15.4824)
+
+[node name="burning_place" parent="." node_paths=PackedStringArray("_zone") instance=ExtResource("6_gjewb")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -22.2028, 3.7849, -3.72254)
+_zone = NodePath("..")
+
+[node name="Tuyau origine ok5" parent="." instance=ExtResource("7_t4hmq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5751, 10.7998, -13.5648)
+
+[node name="Node3D" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0536, 4.3439, -3.03978)
+
+[node name="Node3D2" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0536, 4.72312, -4.6314)
+
+[node name="Node3D3" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(1, 0, 0, 0, 0.945678, -0.325106, 0, 0.325106, 0.945678, -27.0536, 7.31395, -0.125859)
+
+[node name="Node3D11" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.472839, -0.162553, 0, 0.162553, 0.472839, -22.2049, 6.0753, 3.23966)
+
+[node name="Node3D12" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.472839, -0.162553, 0, 0.162553, 0.472839, -23.8367, 6.0753, 3.23966)
+
+[node name="Node3D7" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(1, 0, 0, 0, 0.965436, 0.260639, 0, -0.260639, 0.965436, -27.0536, 9.23415, -5.0088)
+
+[node name="Node3D8" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(1, 0, 0, 0, 0.943529, -0.331288, 0, 0.331288, 0.943529, -27.0536, 9.54935, -3.46735)
+
+[node name="Node3D9" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(1, 0, 0, 0, -0.958552, -0.284919, 0, 0.284919, -0.958552, -20.3851, 13.1915, -2.9272)
+
+[node name="Node3D10" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(1, 0, 0, 0, -0.963256, 0.268584, 0, -0.268584, -0.963256, -20.3851, 13.2334, -4.61555)
+
+[node name="Node3D5" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(3, 0, 0, 0, 2.83703, -0.975318, 0, 0.975318, 2.83703, -29.5328, 2.82912, -10.8644)
+
+[node name="Node3D6" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(3, 0, 0, 0, 2.37741, 1.82973, 0, -1.82973, 2.37741, -29.5328, 9.48965, 3.95361)
+
+[node name="Node3D4" parent="." instance=ExtResource("8_u1ttq")]
+transform = Transform3D(1, 0, 0, 0, 0.834098, 0.551617, 0, -0.551617, 0.834098, -27.0536, 8.35281, -6.18213)
+
+[node name="WallLight" parent="." instance=ExtResource("9_3808g")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -15.8815, 4.11422, 3.87079)
+
+[node name="WallLight2" parent="." instance=ExtResource("9_3808g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8815, 4.11422, -11.5661)
+
+[node name="SingleDataDisplay2" parent="." instance=ExtResource("10_3gt3i")]
+transform = Transform3D(-0.308851, 0.0231095, 1.46768, -1.41676, -0.396972, -0.291886, 0.383921, -1.44633, 0.103564, -22.7062, 3.31913, 2.27031)
+
+[node name="Maxhina" parent="." instance=ExtResource("11_7udcm")]
+transform = Transform3D(-2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, -21.9785, 2.65132, 3.33863)
+
+[node name="Maxhina2" parent="." instance=ExtResource("11_7udcm")]
+transform = Transform3D(-2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, -23.6933, 2.65132, 3.26148)
+
+[connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

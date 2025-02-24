@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://sosyeegoqc0s"]
 
 [ext_resource type="Script" path="res://Objects/Scripts/BreakPipe.cs" id="1_fncfh"]
-[ext_resource type="PackedScene" uid="uid://bqahpkpdnfcja" path="res://pipe_tape.tscn" id="3_3gc4f"]
+[ext_resource type="PackedScene" uid="uid://bqahpkpdnfcja" path="res://Objects/Interactable/pipe_tape.tscn" id="3_3gc4f"]
 [ext_resource type="PackedScene" uid="uid://4nv88uxswbec" path="res://Objects/Interactable/pipe_leak.tscn" id="3_7vh02"]
 [ext_resource type="AudioStream" uid="uid://r5sv02vldeb5" path="res://Assets/Sounds/Fer à souder breaking.wav" id="4_r4opi"]
 [ext_resource type="AudioStream" uid="uid://bqm8hvowugtmc" path="res://Assets/Sounds/pipe_leak.mp3" id="5_81eu6"]

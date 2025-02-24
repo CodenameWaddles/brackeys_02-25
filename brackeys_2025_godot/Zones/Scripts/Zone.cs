@@ -28,7 +28,7 @@ public partial class Zone : Node3D
     private bool dataMatched;
     private Timer EndTimer;
 
-    public bool IsComplete { get; private set; }
+    public bool IsComplete { get; set; }
     public Cart Cart { get; set; }
 
     public override void _Ready()
@@ -61,8 +61,6 @@ public partial class Zone : Node3D
         {
             Cart.UpdateCartTimer((float)ZoneTimer.TimeLeft);
         }
-
-        if (GameManager.Instance.ByePassActivated) IsComplete = true;
         
         if (!IsComplete) {
             IsComplete = (IntegrityPercentage <= IntegrityPercentageToComplete);
@@ -218,6 +216,7 @@ public partial class Zone : Node3D
 
     private void StartTimer()
     {
+        if (GameManager.Instance.ByePassActivated) IsComplete = true;
         if (!IsTimed) return;
         ZoneTimer.Start();
         //ZoneTimer.Timeout += _on_zone_timer_timeout;

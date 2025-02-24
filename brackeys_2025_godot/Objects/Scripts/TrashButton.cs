@@ -18,6 +18,7 @@ public partial class TrashButton : Interactable
 		{
 			GameManager.Instance.SendMessage(12);
 			GameManager.Instance.ByePassActivated = true;
+			GameManager.Instance._currentScene.IsComplete = true;
 			AnimationPlayer anim = (AnimationPlayer)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("HeadbobAnimation");
 			anim.Play("screen_shake");
 		}
