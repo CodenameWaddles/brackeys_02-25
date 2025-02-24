@@ -25,6 +25,7 @@ size = Vector3(0.929504, 1.01062, 2.27936)
 [node name="zone_8" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
 script = ExtResource("1_g5dbk")
 roomname = "Trash Disposal Unit"
+_instabilityLevel = 1
 ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("trashbag"), NodePath("ShovelPoster")]
 IsTimed = true
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay2")
@@ -63,7 +64,8 @@ transform = Transform3D(-0.310013, 0, 0.392291, 0, 0.5, 0, -0.392291, 0, -0.3100
 [node name="TrashSystem" parent="." instance=ExtResource("13_ohdt2")]
 
 [node name="TrashButton" parent="TrashSystem" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -26.3488, 6.6885, 3.37574)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -26.3488, 6.6885, 3.78514)
+trashAmount = 1
 
 [node name="TrashChute" parent="TrashSystem" index="1" node_paths=PackedStringArray("_trashbags")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5572, 14.1446, -2.26873)

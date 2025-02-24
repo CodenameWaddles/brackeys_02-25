@@ -102,6 +102,7 @@ public partial class GameManager : Node
         _currentSceneIndex = sceneIndex;
         _currentScene = GetNode<Zone>(tempScene.GetPath());
         _currentScene.Cart = Cart;
+        _currentScene.SetupIntegrity();
         
         if (_currentSceneIndex < 15) //cut après que porte ouverte découverte
         {
@@ -112,7 +113,6 @@ public partial class GameManager : Node
         {
             case 0: 
                 SendMessage(_currentSceneIndex); //intro
-                _currentScene.NextStabilityFrequency(); //low
                 break;
             case 2: 
                 SendMessage(_currentSceneIndex); //trash
@@ -123,7 +123,6 @@ public partial class GameManager : Node
                 break;
             case 4:
                 SendMessage(_currentSceneIndex); //tools
-                _currentScene.NextStabilityFrequency(); //medium
                 Cart.OpenTools();
                 break;
             case 6:
@@ -135,9 +134,9 @@ public partial class GameManager : Node
             case 7:
                 break;
             case 8:
-                _currentScene.NextStabilityFrequency(); //high
                 break;
             case 9:
+                SendMessage(_currentSceneIndex); //door
                 LightManager.Instance.NextFrequency();
                 break;
             case 10:
@@ -148,16 +147,15 @@ public partial class GameManager : Node
                 AudioManager.Instance.NextBangingFrequency();
                 break;
             case 12:
-                _currentScene.NextStabilityFrequency(); //extreme
                 LightManager.Instance.NextFrequency();
                 break;
             case 13:
                 break;
             case 14:
+                SendMessage(_currentSceneIndex);
                 break;
         }
         
-        _currentScene.SetupIntegrity();
         Cart._state = Cart.State.Moving;
         
         Cart.CartDataPanel.SetDataMode(_currentScene.ZoneDataMode);

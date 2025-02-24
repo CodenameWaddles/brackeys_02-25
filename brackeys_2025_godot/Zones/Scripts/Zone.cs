@@ -8,6 +8,7 @@ using Array = System.Array;
 public partial class Zone : Node3D
 {
     [Export] private String roomname;
+    [Export] public InstabilityLevel _instabilityLevel;
     [Export] public Array<Interactable> ZoneHazards { get; private set; }
     [Export] public bool IsTimed { get; private set; }
     [Export] public DataSingle DisplayDataSingleInRoom { get; private set; }
@@ -21,8 +22,13 @@ public partial class Zone : Node3D
     private BurningPlace _burningPlace;
     private int _cartTrash;
 
-    private Array<int> _IntegrityFrequencies = new() { 20, 40, 40, 60, 60, 90, 95, 100 };
-    private Vector2 _currentIntegrityFrequency;
+    public enum InstabilityLevel {
+        Low,
+        Medium,
+        High,
+        Extreme,
+    }
+
     private float IntegrityPercentage;
     private float InitialIntegrityPercentage;
     private float IntegrityPercentageToComplete;
@@ -76,11 +82,26 @@ public partial class Zone : Node3D
         {
             Cart.ParkedSignal += StartTimer;
             _cartTrash = Cart.TrashDeposit.TrashCount;
-            GD.Print(Cart.TrashDeposit.TrashCount);
+            //GD.Print(Cart.TrashDeposit.TrashCount);
+        }
+
+        Vector2 integrityFrequency = new Vector2();
+        switch (_instabilityLevel)
+        {
+            case InstabilityLevel.Low : integrityFrequency = new Vector2(20, 40);
+                break;
+            case InstabilityLevel.Medium : integrityFrequency = new Vector2(40, 60);
+                break;
+            case InstabilityLevel.High : integrityFrequency = new Vector2(60, 80);
+                break;
+            case InstabilityLevel.Extreme : integrityFrequency = new Vector2(95, 100);
+                break;
+            default: integrityFrequency = new Vector2(0, 100); 
+                break;
         }
         
         RandomNumberGenerator rng = new RandomNumberGenerator();
-        InitialIntegrityPercentage = rng.RandfRange(_currentIntegrityFrequency.X, _currentIntegrityFrequency.Y);
+        InitialIntegrityPercentage = rng.RandfRange(integrityFrequency.X, integrityFrequency.Y);
         IntegrityPercentageToComplete = rng.RandfRange(0, 20);
         
         IntegritySteps = (InitialIntegrityPercentage - IntegrityPercentageToComplete) / (ZoneHazards.Count + 1 + _cartTrash); // +1 pour les datas
@@ -123,14 +144,6 @@ public partial class Zone : Node3D
         
         IntegrityPercentage = InitialIntegrityPercentage - nbOfHazardSolved * IntegritySteps;
         Cart.StabilityMeter.SetStability(1 - (IntegrityPercentage / 100));
-    }
-
-    public void NextStabilityFrequency()
-    {
-        if (_currentIntegrityFrequency == new Vector2(95, 100)) return;
-        _currentIntegrityFrequency = new Vector2(_IntegrityFrequencies[0], _IntegrityFrequencies[1]);
-        _IntegrityFrequencies.RemoveAt(0);
-        _IntegrityFrequencies.RemoveAt(1);
     }
     
     public bool MatchData()
@@ -198,14 +211,18 @@ public partial class Zone : Node3D
     {
         Cart.ConsoleScreen.AddMessage("Location : " + roomname + "\nInstability : " + Mathf.RoundToInt(IntegrityPercentage) + "%");
         SamSpeaker.Instance.AddZoneSound(GameManager.Instance._currentSceneIndex%5);
-        if (IntegrityPercentage < 30) {
+        if (IntegrityPercentage < 40) {
             SamSpeaker.Instance.AddStabilitySound(0);
         }
         else if (IntegrityPercentage < 60) {
             SamSpeaker.Instance.AddStabilitySound(1);
         }
-        else {
+        else if (IntegrityPercentage < 80) {
             SamSpeaker.Instance.AddStabilitySound(2);
+        }
+        else
+        {
+            SamSpeaker.Instance.AddStabilitySound(2); // rajouter extreme
         }
     }
     
@@ -227,6 +244,11 @@ public partial class Zone : Node3D
 
     private void StartTimer()
     {
+        GD.Print("start timer");
+        if (GameManager.Instance._currentSceneIndex >= 4)
+        {
+            if(ZoneHazards.Count > 0) Cart.ConsoleScreen.AddMessage("Issues detected : " + ZoneHazards.Count);
+        }
         if (GameManager.Instance.ByePassActivated) IsComplete = true;
         if (!IsTimed) return;
         ZoneTimer.Start();

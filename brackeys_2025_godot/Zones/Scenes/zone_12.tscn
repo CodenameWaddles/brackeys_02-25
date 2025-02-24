@@ -13,6 +13,7 @@
 [node name="zone_12" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom")]
 script = ExtResource("1_7j3es")
 roomname = "Central Sewer"
+_instabilityLevel = 2
 ZoneHazards = [NodePath("sand"), NodePath("sand4"), NodePath("sand2"), NodePath("sand3"), NodePath("ScotchablePipe"), NodePath("BlowtorchPoster")]
 IsTimed = true
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")

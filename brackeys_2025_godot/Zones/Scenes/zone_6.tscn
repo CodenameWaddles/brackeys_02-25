@@ -22,7 +22,8 @@ size = Vector3(0.797607, 0.176758, 2.01266)
 [node name="Zone6" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_7sgdk")
 roomname = "Generator"
-ZoneHazards = [NodePath("sand"), NodePath("sand2")]
+_instabilityLevel = 1
+ZoneHazards = [NodePath("sand"), NodePath("sand2"), NodePath("TapePoster")]
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
 [node name="Quai(3)" parent="." instance=ExtResource("2_3dh2v")]
@@ -527,5 +528,8 @@ _shadow = false
 
 [node name="TapePoster" parent="." instance=ExtResource("10_anw2p")]
 transform = Transform3D(0.998536, 0, -0.0540962, -0.0540962, -4.37114e-08, -0.998536, -2.36462e-09, 1, -4.36474e-08, -7.99564, 3.08046, -15.563)
+
+[node name="WallLight" parent="." instance=ExtResource("7_kndnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96106, 4.87792, -15.3687)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

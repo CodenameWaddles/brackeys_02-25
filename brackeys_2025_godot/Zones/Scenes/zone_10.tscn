@@ -23,6 +23,7 @@ size = Vector2(2.615, 2.345)
 [node name="zone_10" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
 script = ExtResource("1_qgu54")
 roomname = "Containment"
+_instabilityLevel = 2
 ZoneHazards = [NodePath("ScotchablePipe"), NodePath("scotchable_door")]
 IsTimed = true
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay2")

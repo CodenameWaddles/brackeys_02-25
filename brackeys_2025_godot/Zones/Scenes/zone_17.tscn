@@ -14,6 +14,7 @@ size = Vector3(1, 6.67432, 7.81772)
 [node name="zone_17" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom", "ZoneTimer")]
 script = ExtResource("1_p07ea")
 roomname = "Central Sewer"
+_instabilityLevel = 3
 ZoneHazards = [NodePath("sand"), NodePath("sand5"), NodePath("sand6"), NodePath("sand4"), NodePath("sand7"), NodePath("sand2"), NodePath("sand3")]
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1

@@ -70,4 +70,10 @@ transform = Transform3D(-2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, -21.97
 [node name="Maxhina2" parent="." instance=ExtResource("10_af1mi")]
 transform = Transform3D(-2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, -23.6933, 2.65132, 3.26148)
 
+[node name="WallLight3" parent="." instance=ExtResource("7_uxgrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29632, 4.52505, -15.3729)
+
+[node name="WallLight4" parent="." instance=ExtResource("7_uxgrc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.29632, 4.52505, 6.4829)
+
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

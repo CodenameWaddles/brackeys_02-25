@@ -96,7 +96,7 @@ transform = Transform3D(-0.0312645, 0, -0.499022, 0, 0.5, 0, 0.499022, 0, -0.031
 [node name="TrashSystem" parent="." instance=ExtResource("11_2em08")]
 
 [node name="TrashButton" parent="TrashSystem" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -26.3488, 6.6885, 3.37574)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -26.3488, 6.6885, 3.38457)
 
 [node name="TrashChute" parent="TrashSystem" index="1" node_paths=PackedStringArray("_trashbags")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5572, 14.1446, -2.26873)

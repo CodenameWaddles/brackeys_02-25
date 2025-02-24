@@ -23,6 +23,7 @@ size = Vector3(0.797607, 0.176758, 2.01266)
 [node name="Zone 16" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
 script = ExtResource("1_qv7fe")
 roomname = "Generator"
+_instabilityLevel = 3
 ZoneHazards = [NodePath("sand"), NodePath("sand4"), NodePath("sand3"), NodePath("sand2"), NodePath("sand5")]
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 ZoneTimer = NodePath("Timer")
@@ -618,6 +619,9 @@ transform = Transform3D(-0.12909, 0, -0.991633, 0, 1, 0, 0.991633, 0, -0.12909, 
 
 [node name="Generator Damaged" parent="." instance=ExtResource("11_06rgy")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.292815, 0.469111, 0)
+
+[node name="WallLight" parent="." instance=ExtResource("7_fbt7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96106, 4.87792, -15.3687)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
 

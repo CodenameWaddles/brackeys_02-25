@@ -13,6 +13,7 @@
 [node name="zone_5" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_xjcoq")
 roomname = "Containment"
+_instabilityLevel = 1
 ZoneHazards = [NodePath("LeakablePipe")]
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay2")
 

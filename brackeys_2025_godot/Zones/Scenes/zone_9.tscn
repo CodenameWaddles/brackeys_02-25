@@ -15,6 +15,7 @@
 [node name="zone_9" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom", "ZoneTimer")]
 script = ExtResource("1_uj3x0")
 roomname = "Incinerator"
+_instabilityLevel = 1
 ZoneHazards = [NodePath("break_pipe"), NodePath("BlowtorchPoster"), NodePath("BlowtorchPoster2"), NodePath("BlowtorchPoster3")]
 IsTimed = true
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay2")
@@ -22,7 +23,7 @@ ZoneDataMode = 1
 ZoneTimer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 90.0
+wait_time = 110.0
 one_shot = true
 
 [node name="Quai(3)" parent="." instance=ExtResource("2_uy4j6")]
@@ -69,5 +70,11 @@ transform = Transform3D(-2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, -21.97
 
 [node name="Maxhina2" parent="." instance=ExtResource("11_2n5y0")]
 transform = Transform3D(-2.62268e-07, 0, -6, 0, 6, 0, 6, 0, -2.62268e-07, -23.6933, 2.65132, 3.26148)
+
+[node name="WallLight3" parent="." instance=ExtResource("10_qq6mu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29632, 4.52505, -15.3729)
+
+[node name="WallLight4" parent="." instance=ExtResource("10_qq6mu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.29632, 4.52505, 6.4829)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

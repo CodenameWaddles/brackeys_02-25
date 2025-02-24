@@ -9,6 +9,7 @@ public partial class BreakPipe : Hazard
 	[Export] private Node3D _pipeFixed;
 	[Export] private AudioStreamPlayer3D _tooBreakSound;
 	[Export] private AudioStreamPlayer3D _leakSound;
+	[Export] private AudioStreamPlayer3D _tapeSound;
 	[Export] private int _fixTime = 150;
     
 	private int _fixProgress;
@@ -54,6 +55,7 @@ public partial class BreakPipe : Hazard
 				}
 				break;
 			case 1:
+				_tapeSound.Play();
 				MakeUninteractable();
 				break;
 		}

@@ -14,6 +14,7 @@ size = Vector3(1.02347, 10.075, 8.73047)
 [node name="zone_15" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
 script = ExtResource("1_yxyym")
 roomname = "Containment"
+_instabilityLevel = 3
 ZoneHazards = [null, null]
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 ZoneTimer = NodePath("Timer")
