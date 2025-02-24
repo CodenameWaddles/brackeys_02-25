@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3e0tj0ry08qf"]
+[gd_scene load_steps=18 format=3 uid="uid://b3e0tj0ry08qf"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_rwayg"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_6shq2"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="8_dnyra"]
 [ext_resource type="PackedScene" uid="uid://dfjuf4o2dwn23" path="res://Objects/Interactable/Hazards/scotchable_pipe.tscn" id="10_eae11"]
 [ext_resource type="PackedScene" uid="uid://beej6ryapcf2k" path="res://Objects/Interactable/Hazards/tape_poster.tscn" id="10_j2cuc"]
+[ext_resource type="Texture2D" uid="uid://hcaemx8qtkhu" path="res://textures/blackscreen.png" id="11_fqcym"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_atmdf"]
 
@@ -19,14 +20,22 @@ albedo_texture = ExtResource("6_2hukg")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ai15k"]
 size = Vector3(0.797607, 0.176758, 2.01266)
 
-[node name="Zone 11" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxk27"]
+albedo_texture = ExtResource("11_fqcym")
+
+[sub_resource type="BoxMesh" id="BoxMesh_57hnn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mg38c"]
+albedo_texture = ExtResource("6_2hukg")
+
+[node name="Zone 11" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_rwayg")
 roomname = "Generator"
 _instabilityLevel = 2
 ZoneHazards = [NodePath("sand"), NodePath("sand2"), NodePath("TapePoster")]
 IsTimed = true
-DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 ZoneTimer = NodePath("Timer")
+DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
 [node name="Quai(3)" parent="." instance=ExtResource("2_6shq2")]
 
@@ -533,5 +542,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4501, 13.146, -6.27649)
 
 [node name="WallLight" parent="." instance=ExtResource("7_bd8ri")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96106, 4.87792, -15.3687)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -4.37114e-08, -50, 0, 1, -2.18557e-06, -30.079, 120.276, 14.1004)
+material_override = SubResource("StandardMaterial3D_lxk27")
+mesh = SubResource("BoxMesh_57hnn")
+surface_material_override/0 = SubResource("StandardMaterial3D_mg38c")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -4.37114e-08, -50, 0, 1, -2.18557e-06, -30.079, 120.276, -23.2164)
+material_override = SubResource("StandardMaterial3D_lxk27")
+mesh = SubResource("BoxMesh_57hnn")
+surface_material_override/0 = SubResource("StandardMaterial3D_mg38c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.18557e-06, 1, -2.18557e-06, 0, -4.37114e-08, -50, -50, -4.37114e-08, 9.55343e-14, -48.9357, 118.597, -10.485)
+material_override = SubResource("StandardMaterial3D_lxk27")
+mesh = SubResource("BoxMesh_57hnn")
+surface_material_override/0 = SubResource("StandardMaterial3D_mg38c")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
