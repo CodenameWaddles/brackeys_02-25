@@ -244,7 +244,6 @@ public partial class GameManager : Node
         if (_currentScene != null) {
             _currentScene.DisposeTimer();
             _currentScene.QueueFree();
-            _rails.QueueFree();
         }
         
         var finalScene = _finalScene.Instantiate();
