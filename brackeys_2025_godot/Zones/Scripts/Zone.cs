@@ -257,9 +257,9 @@ public partial class Zone : Node3D
     
     public void DisposeTimer()
     {
+        Cart.ParkedSignal -= StartTimer;
         if (!IsTimed) return;
         ZoneTimer.Stop();
-        Cart.ParkedSignal -= StartTimer;
     }
    
 }
