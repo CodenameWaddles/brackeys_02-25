@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://n5yokdmfhjnb"]
+[gd_scene load_steps=7 format=3 uid="uid://n5yokdmfhjnb"]
 
 [ext_resource type="PackedScene" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="1_xukhq"]
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="2_blapk"]
@@ -7,6 +7,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n5dc1"]
 size = Vector3(11, 9, 5)
+
+[sub_resource type="FogMaterial" id="FogMaterial_8li7j"]
+density = 0.1
+albedo = Color(0.325441, 0.325441, 0.325441, 1)
 
 [node name="TunnelSide" type="Node3D"]
 
@@ -154,3 +158,8 @@ transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-0
 
 [node name="Rail3" parent="." instance=ExtResource("3_mwvdh")]
 transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.11959, 0.719171, -140.857)
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92558, 6.46709, -152.529)
+size = Vector3(40.0792, 29.2169, 317.533)
+material = SubResource("FogMaterial_8li7j")

@@ -1,42 +1,56 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkfhveww4s0fl"]
+[gd_scene load_steps=12 format=3 uid="uid://dkfhveww4s0fl"]
 
 [ext_resource type="Script" path="res://Zones/Scenes/FinalZone.cs" id="1_ve4xc"]
 [ext_resource type="PackedScene" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="2_bev4c"]
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="3_8ta2n"]
 [ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="4_gmkro"]
 [ext_resource type="PackedScene" uid="uid://bac6epmvhs368" path="res://Objects/Tunnel/tunnel_secours.tscn" id="5_aixni"]
+[ext_resource type="AudioStream" uid="uid://br252vna450wc" path="res://Assets/Sounds/sussy.wav" id="6_watmm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21xab"]
+size = Vector3(11.3755, 7.41882, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oi0xo"]
-size = Vector3(4.21702, 1.46289, 5.17114)
+size = Vector3(4.21702, 2.63782, 5.17114)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nfnhw"]
 
-[node name="FinalZone" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bk3ja"]
+size = Vector3(13.5478, 3.85931, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_tbp7y"]
+density = 0.1
+albedo = Color(0.347817, 0.347817, 0.347817, 1)
+
+[node name="FinalZone" type="Node3D" node_paths=PackedStringArray("_colliderBehind", "_noiseBehind")]
 script = ExtResource("1_ve4xc")
+_colliderBehind = NodePath("BackCollider")
+_collisionLayerAfter = 1
+_noiseBehind = NodePath("NoiseBehindSound")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.681, 0, 200.222)
 
+[node name="Tunnel6" parent="Node3D" instance=ExtResource("3_8ta2n")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -161.373)
+
 [node name="Tunnel vierge4" parent="Node3D" instance=ExtResource("2_bev4c")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -137.132)
+
+[node name="Tunnel7" parent="Node3D" instance=ExtResource("3_8ta2n")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0054971, 0, -112.809)
+
+[node name="Tunnel8" parent="Node3D" instance=ExtResource("3_8ta2n")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -88.5)
 
 [node name="Tunnel vierge6" parent="Node3D" instance=ExtResource("2_bev4c")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -16.5)
 
-[node name="Tunnel8" parent="Node3D" instance=ExtResource("3_8ta2n")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -64.5)
-
-[node name="Tunnel6" parent="Node3D" instance=ExtResource("3_8ta2n")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -161.373)
-
 [node name="Tunnel9" parent="Node3D" instance=ExtResource("3_8ta2n")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -40.5)
 
-[node name="Tunnel7" parent="Node3D" instance=ExtResource("3_8ta2n")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -88.5)
-
 [node name="TunnelSecours" parent="Node3D" instance=ExtResource("5_aixni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00549713, 0, -112.809)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64.5)
 
 [node name="Rails" type="Node3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53, 0)
@@ -92,16 +106,48 @@ transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-0
 [node name="Rail17" parent="Node3D/Rails" instance=ExtResource("4_gmkro")]
 transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, -1.12, 0.189, -172.952)
 
-[node name="Node3D2" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.36701, 0, 128.055)
+[node name="BackCollider" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.0799)
 
-[node name="Area3D" type="Area3D" parent="." groups=["FinalParking"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349619, 1.02935, 26.3065)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33774, 2.18488, 0)
+shape = SubResource("BoxShape3D_21xab")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.413551, 0.231445, -0.0129637)
+[node name="CrashArea" type="Area3D" parent="." groups=["FinalParking"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349619, 1.02935, 59.2752)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrashArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.413551, 0.818908, -0.0129623)
 shape = SubResource("BoxShape3D_oi0xo")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(15, 0, 0, 0, 20, 0, 0, 0, 1, 0, 4.742, 198.575)
 mesh = SubResource("BoxMesh_nfnhw")
+
+[node name="NoiseBehindArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 86.3883)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NoiseBehindArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55482, 1.42966, 0)
+shape = SubResource("BoxShape3D_bk3ja")
+
+[node name="NoiseBehindSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 65.4645)
+stream = ExtResource("6_watmm")
+volume_db = 5.0
+
+[node name="HeadLightCutArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96.0075)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadLightCutArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55482, 1.42966, 0)
+shape = SubResource("BoxShape3D_bk3ja")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92558, 6.46709, 93.7319)
+size = Vector3(40.0792, 29.2169, 143.892)
+material = SubResource("FogMaterial_tbp7y")
+
+[connection signal="body_entered" from="CrashArea" to="." method="_on_area_3d_body_entered_change_collider"]
+[connection signal="body_entered" from="NoiseBehindArea" to="." method="_on_noise_behind_body_entered"]
+[connection signal="body_entered" from="HeadLightCutArea" to="." method="_on_head_light_cut_area_body_entered"]

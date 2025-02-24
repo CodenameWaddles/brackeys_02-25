@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://cecemswk07gw3" path="res://Zones/Scenes/zone_16.tscn" id="17_eclp2"]
 [ext_resource type="PackedScene" uid="uid://bo2uri3qctkix" path="res://Zones/Scenes/zone_17.tscn" id="18_c43du"]
 [ext_resource type="PackedScene" uid="uid://dkfhveww4s0fl" path="res://Zones/Scenes/FinalZone.tscn" id="19_e0o7y"]
-[ext_resource type="PackedScene" uid="uid://cfnxl8dawgqp7" path="res://Zones/Scenes/intro_zone.tscn" id="19_t57yd"]
+[ext_resource type="PackedScene" path="res://Zones/Scenes/intro_zone.tscn" id="19_t57yd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j74ki"]
 
@@ -37,7 +37,7 @@ fog_light_color = Color(0.154876, 0.154876, 0.154876, 1)
 fog_depth_end = 4000.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
-volumetric_fog_albedo = Color(0.0846899, 0.0846899, 0.0846899, 1)
+volumetric_fog_albedo = Color(0.295867, 0.295867, 0.295866, 1)
 volumetric_fog_emission = Color(0.0807833, 0.0807833, 0.0807833, 1)
 volumetric_fog_emission_energy = 2.0
 
