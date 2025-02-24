@@ -51,6 +51,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.71
 
 [node name="WallLight3" parent="." instance=ExtResource("4_fdorg")]
 transform = Transform3D(0.0510984, 0.484069, 0.873536, 4.40143e-08, 0.874679, -0.484703, -0.998694, 0.0247675, 0.0446947, -11.0934, 1.49844, -8.88725)
+_on = false
 
 [node name="water_final" parent="." instance=ExtResource("5_56u8n")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10.7002, 0.13406, -10.207)
