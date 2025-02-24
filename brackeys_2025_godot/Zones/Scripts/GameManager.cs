@@ -220,7 +220,7 @@ public partial class GameManager : Node
         _messages.Add(9, "That door needs to be fixed. Use any means necessary.");
         _messages.Add(10, "Breach detected. Relief Team on their way.");// alarme
         _messages.Add(12, "Relief team nearly there. Bypassing protocol activated."); // salle poubelle
-        _messages.Add(16,"Contact lost with the relief team. Get out."); //salle porte ouverte
+        _messages.Add(14,"Contact lost with the relief team. Get out."); //salle porte ouverte
         
     }
     
