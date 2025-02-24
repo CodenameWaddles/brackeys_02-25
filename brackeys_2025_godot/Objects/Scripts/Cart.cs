@@ -23,6 +23,7 @@ public partial class Cart : Node3D {
     [Export] public CartTimer CartTimer2;
     [Export] public TrashDeposit TrashDeposit;
     [Export] public CartMap CartMap;
+    [Export] public Light CartLight;
     [Export] private StaticBody3D _quaiCollider;
     
     //audio
