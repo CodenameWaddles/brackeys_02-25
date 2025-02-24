@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=32 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://brlq4ot8qypvv" path="res://Zones/Scenes/zone_9.tscn" id="2_2apei"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://n5yokdmfhjnb" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
 [ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="9_bni7l"]
 [ext_resource type="PackedScene" uid="uid://bjvjidsafjj8e" path="res://Zones/Scenes/zone_8.tscn" id="9_wnaab"]
-[ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
+[ext_resource type="PackedScene" path="res://Objects/Cart/parking.tscn" id="11_7wrjh"]
 [ext_resource type="PackedScene" uid="uid://dqopj1jwrwxhg" path="res://Zones/Scenes/zone_10.tscn" id="11_f4bw3"]
 [ext_resource type="PackedScene" uid="uid://b3e0tj0ry08qf" path="res://Zones/Scenes/zone_11.tscn" id="12_6lbj4"]
 [ext_resource type="PackedScene" uid="uid://cxuquqsfkx8sa" path="res://Objects/Audio/audio_manager.tscn" id="13_2yeii"]
@@ -26,7 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://dwyjmfc75quxk" path="res://Zones/Scenes/zone_14.tscn" id="15_c6lld"]
 [ext_resource type="PackedScene" uid="uid://dp3ata2fjdami" path="res://UIS/failed_room_screen.tscn" id="15_xa325"]
 [ext_resource type="PackedScene" uid="uid://rahcybl0kb40" path="res://Zones/Scenes/zone_15.tscn" id="16_jkqg7"]
-[ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="17_kd7hi"]
+[ext_resource type="PackedScene" uid="uid://dkfhveww4s0fl" path="res://Zones/Scenes/FinalZone.tscn" id="17_8v7xj"]
+[ext_resource type="PackedScene" uid="uid://cqrfv3e4y6q0v" path="res://Zones/RoomsModelsNodes/rails.tscn" id="17_kd7hi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j74ki"]
 
@@ -41,15 +42,17 @@ volumetric_fog_emission_energy = 2.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_i06lb"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_rails", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
 script = ExtResource("1_yxd7y")
 startIndex = 14
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("6_m1i8t"), ExtResource("7_a5t7k"), ExtResource("8_5vsux"), ExtResource("9_wnaab"), ExtResource("2_2apei"), ExtResource("11_f4bw3"), ExtResource("12_6lbj4"), ExtResource("13_xpvod"), ExtResource("14_acyje"), ExtResource("15_c6lld"), ExtResource("16_jkqg7")]
+_finalScene = ExtResource("17_8v7xj")
 Cart = NodePath("cart")
 _player = NodePath("Character")
 _audioManager = NodePath("AudioManager")
 _resetRoomTimer = NodePath("ResetRoomTimer")
 _roomFailedScreen = NodePath("FailedRoomScreen")
+_rails = NodePath("Rails")
 _tunelPosition1 = Vector3(1.685, 0, -41.09)
 _tunelPosition2 = Vector3(1.75, 0, 341.6)
 _tunelPreZone = NodePath("TunnelSidePre")

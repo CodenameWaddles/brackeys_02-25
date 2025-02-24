@@ -23,6 +23,7 @@ public partial class Cart : Node3D {
     [Export] public CartTimer CartTimer2;
     [Export] public TrashDeposit TrashDeposit;
     [Export] public CartMap CartMap;
+    [Export] private StaticBody3D _quaiCollider;
     
     //audio
     [Export] private AudioStreamPlayer3D _wheels;
@@ -233,5 +234,10 @@ public partial class Cart : Node3D {
         {
             _currentMusic = _music1;
         }
+    }
+
+    public void DeactivateColliders() {
+        _quaiCollider.CollisionLayer = 0;
+        _quaiCollider.CollisionMask = 0;
     }
 }

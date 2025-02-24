@@ -9,11 +9,13 @@ public partial class GameManager : Node
     
     [Export] private Array<PackedScene> _scenes = new Array<PackedScene>();
     [Export] private Vector3 _scenePosition = new Vector3(0, 0, 0); //remplacer tmtc
+    [Export] private PackedScene _finalScene;
     [Export] public Cart Cart;
     [Export] private CharacterBody3D _player;
     [Export] public AudioManager _audioManager;
     [Export] private Timer _resetRoomTimer;
     [Export] private CanvasLayer _roomFailedScreen;
+    [Export] private Node3D _rails;
     
     //tunnels
     [Export] private Vector3 _tunelPosition1;
@@ -164,10 +166,12 @@ public partial class GameManager : Node
     
     private void _cartArrived()
     {
-        if (_currentSceneIndex == _scenes.Count - 1)
+        if (_currentSceneIndex == _scenes.Count - 1) //final scene
         {
-            _loadScene(0);
-            _currentCycle++;
+            //_loadScene(0);
+            GD.Print("final scene");
+            CallDeferred("LoadFinalScene");
+            //_currentCycle++;
         }
         else
         {
@@ -229,5 +233,25 @@ public partial class GameManager : Node
         Cart.ConsoleScreen.AddMessage("If your blowtorch breaks, tape will do fine. I think.");
     }
     
+    private void LoadFinalScene()
+    {
+        _tunelPreZone.QueueFree(); //on suprime le pre tunnel
+        Cart.Reparent(_tunelPostZone); //on attache le cart au post tunel
+        _tunelPostZone.Position = _tunelPosition1; //on tp le post tunel a la pre position
+        _tunelPreZone = _tunelPostZone; //on dit que le pre tunel = le post tunnel
+        Cart.Reparent(this); //on ratache le cart au main
+        
+        if (_currentScene != null) {
+            _currentScene.DisposeTimer();
+            _currentScene.QueueFree();
+            _rails.QueueFree();
+        }
+        
+        var finalScene = _finalScene.Instantiate();
+        AddChild(finalScene);
+        Cart._state = Cart.State.Moving;
+        
+        Cart.DeactivateColliders();
+    }
     
 }

@@ -3,6 +3,7 @@ shader_type spatial;
 instance uniform float amplitude = 0.3;
 instance uniform float period = 10.0;
 instance uniform float speed = 3.0;
+instance uniform float noise = 1.0;
 const float spotX = 0.9;
 const float spotSize = 0.02;
 const float n = 6.0;
@@ -11,7 +12,7 @@ const float barSize = 0.003;
 
 float function(float x){
 	return (amplitude * sin(period*x + speed*TIME)) + 0.5
-	+ (0.02*sin(150.0*x)*sin(period*x + speed*TIME));
+	+ (noise * 0.02*sin(150.0*x)*sin(period*x + speed*TIME));
 }
 
 void fragment() {

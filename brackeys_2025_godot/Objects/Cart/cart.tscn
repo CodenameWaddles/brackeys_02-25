@@ -208,7 +208,7 @@ states/start_dangle/node = SubResource("AnimationNodeAnimation_bkjjp")
 states/start_dangle/position = Vector2(442, 63)
 transitions = ["Start", "idle_move", SubResource("AnimationNodeStateMachineTransition_dgkq3"), "start_dangle", "idle_move", SubResource("AnimationNodeStateMachineTransition_y02y4"), "idle_move", "dangle_idle", SubResource("AnimationNodeStateMachineTransition_8yebu"), "dangle_idle", "start_dangle", SubResource("AnimationNodeStateMachineTransition_nogxl")]
 
-[node name="Cart" type="Node3D" node_paths=PackedStringArray("_doorCollider", "_animationPlayer", "_lampAnimation", "ConsoleScreen", "StabilityMeter", "CartTimer1", "CartTimer2", "TrashDeposit", "CartMap", "_wheels", "_brakes", "_doorClosing", "_doorOpening", "_bell", "_alarm", "_music1", "_music2", "_toolSound", "_shelfDoor1", "_shelfDoor2", "CartDataPanel", "PressButton")]
+[node name="Cart" type="Node3D" node_paths=PackedStringArray("_doorCollider", "_animationPlayer", "_lampAnimation", "ConsoleScreen", "StabilityMeter", "CartTimer1", "CartTimer2", "TrashDeposit", "CartMap", "_quaiCollider", "_wheels", "_brakes", "_doorClosing", "_doorOpening", "_bell", "_alarm", "_music1", "_music2", "_toolSound", "_shelfDoor1", "_shelfDoor2", "CartDataPanel", "PressButton")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77104, 0)
 script = ExtResource("2_xofmn")
 _doorCollider = NodePath("DoorCollider/CollisionShape3D")
@@ -220,6 +220,7 @@ CartTimer1 = NodePath("CartTimer")
 CartTimer2 = NodePath("CartTimer2")
 TrashDeposit = NodePath("TrashDepositInCart")
 CartMap = NodePath("CartMap")
+_quaiCollider = NodePath("QuaiColliders")
 _wheels = NodePath("AudioPlayers/Wheels")
 _brakes = NodePath("AudioPlayers/Brakes")
 _doorClosing = NodePath("AudioPlayers/DoorClosing")
