@@ -21,7 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_bgmwl"]
 resource_name = "flicker"
-length = 4.9
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,10 +29,10 @@ tracks/0/path = NodePath("Label:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.450662, 0.774842, 1.20817, 1.44151, 1.90581, 1.97248, 2.03914, 2.17248, 2.27248, 2.33914, 2.37248, 2.47248, 2.49836, 2.53169, 2.58649, 2.74399, 2.79879, 3.20849, 3.49497, 4.7432),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.450662, 0.774842, 1.20817, 1.44151, 1.90581, 1.97248, 2.03914, 2.17248, 2.27248, 2.33914, 2.37248, 2.47248, 2.49836, 2.53169, 2.58649, 2.74399, 2.79879, 2.86654),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false, true, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+"values": [false, true, false, true, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -41,10 +41,10 @@ tracks/1/path = NodePath("FlickerSound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.430152, 0.765692, 1.19902, 1.43236, 1.89666, 1.96333, 2.02999, 2.16333, 2.26333, 2.32999, 2.36333, 2.46333, 2.48921, 2.52254, 2.57734, 2.73484, 2.82618, 3.19934, 3.48582, 4.73405),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.430152, 0.765692, 1.19902, 1.43236, 1.89666, 1.96333, 2.02999, 2.16333, 2.26333, 2.32999, 2.36333, 2.46333, 2.48921, 2.52254, 2.57734, 2.73484, 2.79154, 2.85739),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, true, false, true, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, true]
+"values": [true, true, false, true, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wfb52"]
