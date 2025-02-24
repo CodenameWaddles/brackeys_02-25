@@ -9,6 +9,8 @@ public partial class Light : OmniLight3D
 	[Export] private Vector3 _onColor = new(1, 1, 0.2f);
 	[Export] private bool _flickering = true;
 	[Export] private bool _shadow = true;
+
+	public bool _on = true;
 	
 	private Vector3 _offColor = new(0.05f, 0.05f, 0.05f);
 	private const int _maxFlickers = 5;
@@ -18,15 +20,23 @@ public partial class Light : OmniLight3D
 		_mesh = (MeshInstance3D) _bulbNode.FindChild("Industrial lantern A_1");
 		_audioPlayer.Stream = _flickerSound;
 		ShadowEnabled = _shadow;
+		if (!_on) {
+			LightEnergy = 0;
+			_mesh?.SetInstanceShaderParameter("color", _offColor);
+		}
 	}
 
 	public override void _Process(double delta) {
-		if(_flickering) {
+		if(_flickering && _on) {
 			RandomNumberGenerator rng = new RandomNumberGenerator();
 			if(rng.Randf() < LightManager.Instance.FlickeringFrequency) {
 				_audioPlayer.VolumeDb = LightManager.Instance.FlickeringVolume;
 				Flicker(false);
 			}
+		}
+		else if(!_on){
+			LightEnergy = 0;
+			_mesh?.SetInstanceShaderParameter("color", _offColor);
 		}
 	}
 
