@@ -16,6 +16,7 @@ public partial class Zone : Node3D
 
     [Export] public Timer ZoneTimer { get; private set; }
     
+    
     private BurningPlace _burningPlace;
 
     private int _cartTrash;
@@ -26,7 +27,7 @@ public partial class Zone : Node3D
     private float IntegritySteps;
     private bool dataMatched;
     private Timer EndTimer;
-    
+
     public bool IsComplete { get; private set; }
     public Cart Cart { get; set; }
 
@@ -60,6 +61,8 @@ public partial class Zone : Node3D
         {
             Cart.UpdateCartTimer((float)ZoneTimer.TimeLeft);
         }
+
+        if (GameManager.Instance.ByePassActivated) IsComplete = true;
         
         if (!IsComplete) {
             IsComplete = (IntegrityPercentage <= IntegrityPercentageToComplete);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cicrmk46j6qdg"]
+[gd_scene load_steps=17 format=3 uid="uid://cicrmk46j6qdg"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_ory0k"]
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="3_45wvu"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://cskk8fr2tmd85" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="12_sc8tr"]
 [ext_resource type="PackedScene" uid="uid://dw8rud7ihqw8h" path="res://Objects/Tunnel/trash_system.tscn" id="13_eqmao"]
 [ext_resource type="PackedScene" uid="uid://dkle3a28feg6j" path="res://Objects/Interactable/Hazards/shovel_poster.tscn" id="14_nks3k"]
-[ext_resource type="PackedScene" uid="uid://dfjuf4o2dwn23" path="res://Objects/Interactable/Hazards/scotchable_pipe.tscn" id="15_axxgc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xiwro"]
 albedo_texture = ExtResource("6_ah3l6")
@@ -23,12 +22,13 @@ albedo_texture = ExtResource("6_ah3l6")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jwuxi"]
 size = Vector3(0.929504, 1.01062, 2.27936)
 
-[node name="zone_13" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom")]
+[node name="zone_13" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
 script = ExtResource("1_ory0k")
 roomname = "Trash Disposal Unit"
-ZoneHazards = [NodePath("sand"), NodePath("sand2"), NodePath("sand4"), NodePath("sand3"), NodePath("ScotchablePipe"), NodePath("ScotchablePipe2"), NodePath("ShovelPoster"), NodePath("trashbag")]
+ZoneHazards = [NodePath("sand"), NodePath("sand2"), NodePath("sand4"), NodePath("sand3"), NodePath("ShovelPoster"), NodePath("bags/trashbag")]
 IsTimed = true
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
+ZoneTimer = NodePath("Timer")
 
 [node name="sand" parent="." instance=ExtResource("3_45wvu")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35.017, 1.25907, 1.39812)
@@ -63,17 +63,68 @@ size = Vector3(55.1528, 23.5415, 53.167)
 [node name="DoubleDataDisplay" parent="." instance=ExtResource("7_6pqxt")]
 transform = Transform3D(1.13247e-07, 1.5, 6.55671e-08, 0, -6.55671e-08, 1.5, 1.5, -1.13247e-07, -4.95018e-15, -46.0098, 2.90731, -4.5013)
 
-[node name="trashbag" parent="." instance=ExtResource("12_sc8tr")]
+[node name="bags" type="Node3D" parent="."]
+
+[node name="trashbag" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.584476, 0, 0.135603, 0, 0.6, 0, -0.135603, 0, -0.584476, -20.7769, 21.9468, -2.05697)
+
+[node name="trashbag2" parent="bags" instance=ExtResource("12_sc8tr")]
 transform = Transform3D(-0.310013, 0, 0.392291, 0, 0.5, 0, -0.392291, 0, -0.310013, -19.5184, 21.6921, -2.51667)
+
+[node name="trashbag3" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.048418, 0, 0.49765, 0, 0.5, 0, -0.49765, 0, 0.048418, -19.0647, 21.6921, -0.634005)
+
+[node name="trashbag17" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.353313, 0, 0.353794, 0, 0.5, 0, -0.353794, 0, -0.353313, -18.2639, 21.6921, -0.806948)
+
+[node name="trashbag7" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.048418, 0, 0.49765, 0, 0.5, 0, -0.49765, 0, 0.048418, -20.6176, 21.6921, -1.02126)
+
+[node name="trashbag10" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.43987, 0, 0.237728, 0, 0.5, 0, -0.237728, 0, -0.43987, -20.2974, 21.4745, -0.480048)
+
+[node name="trashbag4" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.0408388, 0, -0.49833, 0, 0.5, 0, 0.49833, 0, -0.0408388, -18.5485, 20.842, -2.44262)
+
+[node name="trashbag6" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.37592, 0, 0.329673, 0, 0.5, 0, -0.329673, 0, -0.37592, -19.8306, 20.842, -1.66833)
+
+[node name="trashbag9" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.643033, 0, -0.276601, 0, 0.7, 0, 0.276601, 0, -0.643033, -19.5592, 20.842, -0.905114)
+
+[node name="trashbag11" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.0408388, 0, -0.49833, 0, 0.5, 0, 0.49833, 0, -0.0408388, -20.8346, 20.842, -3.05275)
+
+[node name="trashbag12" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.37592, 0, 0.329673, 0, 0.5, 0, -0.329673, 0, -0.37592, -22.1167, 20.842, -2.27846)
+
+[node name="trashbag13" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.643033, 0, -0.276601, 0, 0.7, 0, 0.276601, 0, -0.643033, -21.8452, 20.842, -1.51524)
+
+[node name="trashbag14" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.498334, 0, -0.0407866, 0, 0.5, 0, 0.0407866, 0, 0.498334, -21.6243, 21.1443, -0.79614)
+
+[node name="trashbag15" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.329634, 0, -0.375955, 0, 0.5, 0, 0.375955, 0, -0.329634, -20.8498, 21.1443, 0.485889)
+
+[node name="trashbag16" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.276669, 0, -0.643004, 0, 0.7, 0, 0.643004, 0, 0.276669, -20.0866, 21.1443, 0.21437)
+
+[node name="trashbag5" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.493231, 0, 0.0819987, 0, 0.5, 0, -0.0819987, 0, -0.493231, -18.1042, 21.6921, -1.83062)
+
+[node name="trashbag8" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.493231, 0, 0.0819987, 0, 0.5, 0, -0.0819987, 0, -0.493231, -19.1662, 21.6921, -1.72813)
 
 [node name="TrashSystem" parent="." instance=ExtResource("13_eqmao")]
 
 [node name="TrashButton" parent="TrashSystem" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -26.3488, 6.6885, 3.37574)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -26.3488, 6.6885, 3.77278)
+trashAmount = 17
 
 [node name="TrashChute" parent="TrashSystem" index="1" node_paths=PackedStringArray("_trashbags")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5572, 14.1446, -2.26873)
-_trashbags = [null]
+_trashbags = [NodePath("../../bags/trashbag"), NodePath("../../bags/trashbag2"), NodePath("../../bags/trashbag3"), NodePath("../../bags/trashbag17"), NodePath("../../bags/trashbag7"), NodePath("../../bags/trashbag10"), NodePath("../../bags/trashbag4"), NodePath("../../bags/trashbag6"), NodePath("../../bags/trashbag9"), NodePath("../../bags/trashbag11"), NodePath("../../bags/trashbag12"), NodePath("../../bags/trashbag13"), NodePath("../../bags/trashbag14"), NodePath("../../bags/trashbag15"), NodePath("../../bags/trashbag16"), NodePath("../../bags/trashbag5"), NodePath("../../bags/trashbag8")]
 
 [node name="ShovelPoster" parent="." instance=ExtResource("14_nks3k")]
 transform = Transform3D(0.993242, 0, -0.116064, -0.116064, -4.37114e-08, -0.993242, -5.07332e-09, 1, -4.3416e-08, -14.9291, 2.88569, -10.6675)
@@ -102,12 +153,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3621, 4.04083, -1.88681)
 [node name="DoubleDataDisplay2" parent="." instance=ExtResource("7_6pqxt")]
 transform = Transform3D(9.05975e-08, 1.2, 5.24537e-08, 0, -5.24537e-08, 1.2, 1.2, -9.05975e-08, -3.96014e-15, -35.3247, 2.90731, -4.80678)
 
-[node name="ScotchablePipe" parent="." instance=ExtResource("15_axxgc")]
-transform = Transform3D(-0.207212, 0, 0.978296, 0, 1, 0, -0.978296, 0, -0.207212, -36.3509, 4.11796, 2.22145)
-
-[node name="ScotchablePipe2" parent="." instance=ExtResource("15_axxgc")]
-transform = Transform3D(-0.0944559, 0, 0.995529, 0, 1, 0, -0.995529, 0, -0.0944559, -36.3509, 3.99076, 0.225257)
-
 [node name="Stairs2Stack" parent="." instance=ExtResource("8_kyi4r")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -33.8657, 1.25042, 2.8)
 
@@ -120,5 +165,11 @@ transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stairs2Stack/StaticBody3D"]
 transform = Transform3D(0.701257, -0.712906, -0.00196709, 0.712909, 0.701256, 0.00103679, 0.000640285, -0.00212942, 0.999997, 0.239807, 0.18486, 0.405373)
 shape = SubResource("BoxShape3D_jwuxi")
+
+[node name="Tuyau origine ok3" parent="." instance=ExtResource("10_60q06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3621, 4.01495, 0.225257)
+
+[node name="Tuyau origine ok2" parent="." instance=ExtResource("10_60q06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3621, 4.11796, 2.22145)
 
 [editable path="TrashSystem"]

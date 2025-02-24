@@ -17,7 +17,9 @@ public partial class TrashButton : Interactable
 		if (GameManager.Instance._currentSceneIndex == 12)
 		{
 			GameManager.Instance.SendMessage(12);
-			return;
+			GameManager.Instance.ByePassActivated = true;
+			AnimationPlayer anim = (AnimationPlayer)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("HeadbobAnimation");
+			anim.Play("screen_shake");
 		}
 		
 		EmitSignal(SignalName.TrashButtonPressed, trashAmount);

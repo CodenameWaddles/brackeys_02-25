@@ -22,7 +22,8 @@ public partial class GameManager : Node
     [Export] private Node3D _tunelPostZone;
     [Export] private Node3D _resetPoint;
     [Export] private PackedScene _tunelPrefab;
-    
+
+    public bool ByePassActivated;
     private int _currentCycle = 0;
     public Zone _currentScene;
     public int _currentSceneIndex = 0;
@@ -53,6 +54,8 @@ public partial class GameManager : Node
         _player.Reparent(Cart);
         _audioManager.Disable();
         _loadScene(startIndex);
+
+        ByePassActivated = false;
         
         if (startIndex >= 6) //testing purposes. startIndex should be 0
         {
@@ -214,10 +217,9 @@ public partial class GameManager : Node
         _messages.Add(4, "Issues detected. Use tools to maintain structural integrity.");
         _messages.Add(6, "Real tests start now. Don't waste time.");
         _messages.Add(9, "That door needs to be fixed. Use any means necessary.");
-        _messages.Add(10, "Breach detected. Emergency protocol activated.");
-        _messages.Add(12, "Message après déchets");
-        //_messages[5] = "Breach Detected, emergency status activated.";
-        //_messages[6] = "Are you sure you want to bypass issue solving ? There is no coming back.";
+        _messages.Add(10, "Breach detected. Relief Team on their way.");// alarme
+        _messages.Add(12, "Relief team nearly there. Bypassing protocol activated."); // salle poubelle
+        _messages.Add(16,"Contact lost with the relief team. Get out."); //salle porte ouverte
         
     }
     
