@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bqs7bylirp4lx" path="res://Objects/Cart/big_button.tscn" id="3_qwyuw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_r856q"]
-height = 0.139922
-radius = 0.122136
+height = 0.131787
+radius = 0.11429
 
 [sub_resource type="Animation" id="Animation_iypai"]
 length = 0.001

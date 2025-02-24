@@ -2,9 +2,14 @@ using Godot;
 using System;
 
 public partial class playerInteraction : Node3D {
-
+    
     [Export] public Node3D _hand; //LAISSER PUBLIC
     [Export] public HeadLight _headLight;
+
+    [Export] private Control _UI;
+    
+    [Export] private PackedScene _defaultReticle;
+    [Export] private PackedScene _interactReticle;
 
     public Pickupable held { get; private set; } = null;
     private Interactable _hovering;
@@ -29,6 +34,7 @@ public partial class playerInteraction : Node3D {
     }
 
     public override void _PhysicsProcess(double delta) {
+        _hovering = null;
         if (_rayCast.IsColliding()) {
             var target = (Node)_rayCast.GetCollider();
             if(target == null) return;
@@ -45,6 +51,8 @@ public partial class playerInteraction : Node3D {
     public override void _Process(double delta) {
         // interact with input button
         if(_hovering is InputButton button && held == null) {
+            if(_hovering.IsInteractable)
+                ChangeReticle(_interactReticle);
             if (Input.IsActionPressed("interact")) {
                 _main._currentScene.UpdateIntegrityPercentage();
                 if (!_justInteracted) {
@@ -69,6 +77,8 @@ public partial class playerInteraction : Node3D {
         }
         // interact with pickupable
         else if (_hovering is Pickupable pickupable) {
+            if(_hovering.IsInteractable && !pickupable.IsPickedUp && held == null)
+                ChangeReticle(_interactReticle);
             if (Input.IsActionJustPressed("interact")) {
                 if(held == null) {
                     if (!pickupable.IsPickedUp) {
@@ -87,22 +97,26 @@ public partial class playerInteraction : Node3D {
         }
         // interact with interactable need object
         else if (_hovering is InteractableNeedObject interactableNeedObject) {
+            if(_hovering.IsInteractable && interactableNeedObject.Type == held?.Type)
+                ChangeReticle(_interactReticle);
             if (Input.IsActionPressed("interact"))
             {
-                if (held == null) return;
-                if (interactableNeedObject.Type == held.Type) {
+                if (interactableNeedObject.Type == held?.Type) {
                     interactableNeedObject.Activate();
                 }
             }
         }
         // hovering interactable
         else if (_hovering is Interactable interactable) {
+            if(_hovering.IsInteractable)
+                ChangeReticle(_interactReticle);
             if (Input.IsActionJustPressed("interact")) {
                 _hovering.Activate();
             }
         }
         // reset ticks
         else {
+            ChangeReticle(_defaultReticle);
             _interactStep = 0;
             _interactTime = 0;
         }
@@ -120,5 +134,11 @@ public partial class playerInteraction : Node3D {
     public void DropItem() {
         held = null;
         _hand.GetChild(0).QueueFree();
+    }
+    
+    private void ChangeReticle(PackedScene reticle) {
+        _UI.GetChild(0).QueueFree();
+        Control newReticle = (Control)reticle.Instantiate();
+        _UI.AddChild(newReticle);
     }
 }

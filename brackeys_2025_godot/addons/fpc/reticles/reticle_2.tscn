@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c5ggskpj2mgw8"]
+
+[node name="Reticle" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="top" type="Line2D" parent="."]
+points = PackedVector2Array(0, -5, 0, -15)
+width = 2.0
+
+[node name="left" type="Line2D" parent="."]
+position = Vector2(-1, 1)
+rotation = -0.523599
+points = PackedVector2Array(-5, 0, -15, 0)
+width = 2.0
+
+[node name="right" type="Line2D" parent="."]
+position = Vector2(1, 1)
+rotation = 0.523599
+points = PackedVector2Array(5, 0, 15, 0)
+width = 2.0

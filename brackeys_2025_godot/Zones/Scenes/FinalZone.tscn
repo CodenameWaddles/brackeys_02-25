@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkfhveww4s0fl"]
+
+[ext_resource type="Script" path="res://Zones/Scenes/FinalZone.cs" id="1_ve4xc"]
+
+[node name="FinalZone" type="Node3D"]
+script = ExtResource("1_ve4xc")

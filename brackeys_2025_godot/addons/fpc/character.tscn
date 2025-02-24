@@ -1,11 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=29 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://addons/fpc/playerInteraction.cs" id="2_32abm"]
+[ext_resource type="PackedScene" uid="uid://coqpusufa8a6k" path="res://addons/fpc/reticles/reticle_0.tscn" id="3_hwxu1"]
 [ext_resource type="Script" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Shader" path="res://Player/Shaders/PostProcessing.gdshader" id="3_wv20w"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 [ext_resource type="Texture2D" uid="uid://ds2oe6421ex40" path="res://Assets/bayer/bayer16.png" id="4_2lssl"]
+[ext_resource type="PackedScene" uid="uid://c5ggskpj2mgw8" path="res://addons/fpc/reticles/reticle_2.tscn" id="4_3a7ps"]
 [ext_resource type="Script" path="res://addons/fpc/HeadLight.cs" id="5_5uauw"]
 [ext_resource type="AudioStream" uid="uid://fjswljrkup2e" path="res://Assets/Sounds/Step noise.wav" id="7_rllty"]
 
@@ -404,10 +406,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="Hand" type="Node3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215063, -0.1037, -0.304281)
 
-[node name="Camera" type="Camera3D" parent="Head" node_paths=PackedStringArray("_hand", "_headLight", "_rayCast")]
+[node name="Camera" type="Camera3D" parent="Head" node_paths=PackedStringArray("_hand", "_headLight", "_UI", "_rayCast")]
 script = ExtResource("2_32abm")
 _hand = NodePath("../Hand")
 _headLight = NodePath("SpotLight3D")
+_UI = NodePath("../../UserInterface")
+_defaultReticle = ExtResource("3_hwxu1")
+_interactReticle = ExtResource("4_3a7ps")
 _rayCast = NodePath("../RayCast3D")
 
 [node name="ColorRect" type="ColorRect" parent="Head/Camera"]
