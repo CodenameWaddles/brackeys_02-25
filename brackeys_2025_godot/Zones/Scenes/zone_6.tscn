@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjyky644ylaof"]
+[gd_scene load_steps=18 format=3 uid="uid://cjyky644ylaof"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_7sgdk"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_3dh2v"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="8_xxinq"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="9_tllxc"]
 [ext_resource type="PackedScene" uid="uid://beej6ryapcf2k" path="res://Objects/Interactable/Hazards/tape_poster.tscn" id="10_anw2p"]
+[ext_resource type="Texture2D" uid="uid://hcaemx8qtkhu" path="res://textures/blackscreen.png" id="11_nbud5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_atmdf"]
 
@@ -18,6 +19,14 @@ albedo_texture = ExtResource("6_xarlb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ai15k"]
 size = Vector3(0.797607, 0.176758, 2.01266)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hpuu"]
+albedo_texture = ExtResource("11_nbud5")
+
+[sub_resource type="BoxMesh" id="BoxMesh_4jx82"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tadh8"]
+albedo_texture = ExtResource("6_xarlb")
 
 [node name="Zone6" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_7sgdk")
@@ -531,5 +540,23 @@ transform = Transform3D(0.998536, 0, -0.0540962, -0.0540962, -4.37114e-08, -0.99
 
 [node name="WallLight" parent="." instance=ExtResource("7_kndnu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.96106, 4.87792, -15.3687)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -4.37114e-08, -50, 0, 1, -2.18557e-06, -30.079, 120.276, 14.1004)
+material_override = SubResource("StandardMaterial3D_1hpuu")
+mesh = SubResource("BoxMesh_4jx82")
+surface_material_override/0 = SubResource("StandardMaterial3D_tadh8")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -4.37114e-08, -50, 0, 1, -2.18557e-06, -30.079, 120.276, -23.2164)
+material_override = SubResource("StandardMaterial3D_1hpuu")
+mesh = SubResource("BoxMesh_4jx82")
+surface_material_override/0 = SubResource("StandardMaterial3D_tadh8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.18557e-06, 1, -2.18557e-06, 0, -4.37114e-08, -50, -50, -4.37114e-08, 9.55343e-14, -48.9357, 118.597, -10.485)
+material_override = SubResource("StandardMaterial3D_1hpuu")
+mesh = SubResource("BoxMesh_4jx82")
+surface_material_override/0 = SubResource("StandardMaterial3D_tadh8")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

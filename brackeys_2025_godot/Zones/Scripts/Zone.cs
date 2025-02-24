@@ -11,14 +11,13 @@ public partial class Zone : Node3D
     [Export] public InstabilityLevel _instabilityLevel;
     [Export] public Array<Interactable> ZoneHazards { get; private set; }
     [Export] public bool IsTimed { get; private set; }
+    [Export] public Timer ZoneTimer { get; private set; }
+    [Export] private Area3D DataArea;
     [Export] public DataSingle DisplayDataSingleInRoom { get; private set; }
     [Export] public DataDouble DisplayDataDoubleInRoom { get; private set; }
     [Export] public CartDataPanel.DataMode ZoneDataMode;
 
-    [Export] public Timer ZoneTimer { get; private set; }
-    
-    
-    
+    private bool _wentToGetData;
     private BurningPlace _burningPlace;
     private int _cartTrash;
 
@@ -42,7 +41,9 @@ public partial class Zone : Node3D
     public override void _Ready()
     {
         IsComplete = false;
-        
+        _wentToGetData = false;
+
+        DataArea.BodyEntered += _onDataAreaBodyEntered;
         
         if (IsTimed)
         {
@@ -55,7 +56,6 @@ public partial class Zone : Node3D
         }
         
         SetRandomData();
-
     }
     
     public override void _Process(double delta)
@@ -82,7 +82,6 @@ public partial class Zone : Node3D
         {
             Cart.ParkedSignal += StartTimer;
             _cartTrash = Cart.TrashDeposit.TrashCount;
-            //GD.Print(Cart.TrashDeposit.TrashCount);
         }
 
         Vector2 integrityFrequency = new Vector2();
@@ -130,9 +129,7 @@ public partial class Zone : Node3D
                 if (trashbag.IsSolved) nbOfHazardSolved++;
             }
         }
-
-        GD.Print("nb of hazard solved (excluding data) : " + nbOfHazardSolved + "/" + ZoneHazards.Count() + " + " + _cartTrash + " trash");
-    
+        
         if (MatchData())
         {
             Cart.CartDataPanel.TurnOnGreenLight();
@@ -148,6 +145,7 @@ public partial class Zone : Node3D
     
     public bool MatchData()
     {
+        if (!_wentToGetData) return false;
         switch(Cart.CartDataPanel._dataMode)
         {
             case CartDataPanel.DataMode.Dual:
@@ -168,7 +166,6 @@ public partial class Zone : Node3D
         {
             Cart._alarm.Play();
         }
-        GD.Print("playing alarm");
     }
 
     private void _cart_leave_without_player()
@@ -179,13 +176,11 @@ public partial class Zone : Node3D
             if (Cart._state.Equals(Cart.State.Stopped)) {
                 Cart._movePlayerWithCart = true;
                 Cart.Start();
-                GD.Print("player in cart, continuing");
             }
             
         }
         else
         {
-            GD.Print("player not in cart, restarting scene in 5 sec");
             Cart._movePlayerWithCart = false;
             Cart.Start();
             
@@ -244,7 +239,6 @@ public partial class Zone : Node3D
 
     private void StartTimer()
     {
-        GD.Print("start timer");
         if (GameManager.Instance._currentSceneIndex is >= 4 and <= 12)
         {
             if(ZoneHazards.Count > 0) Cart.ConsoleScreen.AddMessage("Issues detected : " + ZoneHazards.Count);
@@ -258,8 +252,20 @@ public partial class Zone : Node3D
     public void DisposeTimer()
     {
         Cart.ParkedSignal -= StartTimer;
+        DataArea.BodyEntered -= _onDataAreaBodyEntered;
         if (!IsTimed) return;
         ZoneTimer.Stop();
+    }
+
+    public void _onDataAreaBodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Player"))
+        {
+            if (!_wentToGetData)
+            {
+                _wentToGetData = true;
+            } 
+        }
     }
    
 }

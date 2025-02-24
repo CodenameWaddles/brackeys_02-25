@@ -31,9 +31,6 @@ public partial class DataDouble : DataDisplay {
             Data[0] = rng.RandiRange(_minimumValue, _maximumValue);
         }
         Data[1] = rng.RandiRange(_minimumValue, _maximumValue); //que pour data 0
-        GD.Print("Excluding value : " + exclude);
-        GD.Print("Data[0] : " + Data[0]);
-        GD.Print( "Data[1] : " + Data[1]);
     }
     
     public void Reset()
