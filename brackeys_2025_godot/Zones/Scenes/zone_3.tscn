@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="1_b8lij"]
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_xwwdd"]
-[ext_resource type="PackedScene" path="res://Zones/RoomsModelsNodes/trash.tscn" id="3_vhm6w"]
+[ext_resource type="PackedScene" uid="uid://c6lrj7jan2kfl" path="res://Zones/RoomsModelsNodes/trash.tscn" id="3_vhm6w"]
 [ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="4_lpswr"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="5_vec5x"]
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="6_v8p7c"]

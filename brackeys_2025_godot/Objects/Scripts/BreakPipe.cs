@@ -32,9 +32,15 @@ public partial class BreakPipe : Hazard
 		}
 	}
 	
-	protected override void ActivateSpecific() {
-		playerInteraction player = (playerInteraction)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("Camera");
-		Blowtorch blowtorch = (Blowtorch)player.held;
+	protected override void ActivateSpecific()
+	{
+		Blowtorch blowtorch = null;
+		if (Type == Pickupable.PickupType.Blowtorch)
+		{
+			playerInteraction player = (playerInteraction)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("Camera");
+			blowtorch = (Blowtorch) player.held;
+		}
+		
 		switch (_fixAttempt) {
 			case 0:
 				if(_fixProgress < _fixTime) {
@@ -42,6 +48,7 @@ public partial class BreakPipe : Hazard
 					blowtorch.isBeingUsed = true;
 				} else {
 					_fixAttempt++;
+					Type = Pickupable.PickupType.Tape;
 					blowtorch.isBeingUsed = false;
 					BreakBlowtorch();
 				}

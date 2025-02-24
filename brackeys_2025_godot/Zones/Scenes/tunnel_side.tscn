@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://n5yokdmfhjnb"]
 
-[ext_resource type="PackedScene" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="1_xukhq"]
-[ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="2_blapk"]
-[ext_resource type="PackedScene" uid="uid://cqrfv3e4y6q0v" path="res://Zones/RoomsModelsNodes/rails.tscn" id="3_mwvdh"]
+[ext_resource type="PackedScene" uid="uid://dd23o2xljhtck" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="1_xukhq"]
+[ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="2_blapk"]
+[ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="3_mwvdh"]
 [ext_resource type="PackedScene" uid="uid://bac6epmvhs368" path="res://Objects/Tunnel/tunnel_secours.tscn" id="4_8c1ur"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n5dc1"]

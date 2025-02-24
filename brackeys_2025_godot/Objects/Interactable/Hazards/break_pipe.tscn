@@ -43,5 +43,6 @@ stream = ExtResource("4_r4opi")
 
 [node name="leaksound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_81eu6")
+volume_db = -20.0
 autoplay = true
 parameters/looping = false

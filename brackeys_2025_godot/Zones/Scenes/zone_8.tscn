@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjvjidsafjj8e"]
+[gd_scene load_steps=17 format=3 uid="uid://bjvjidsafjj8e"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_g5dbk"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_g7rqd"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dmutabg17sf5n" path="res://Zones/RoomsModelsNodes/stairs.tscn" id="7_rip8d"]
 [ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="8_kfbea"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="9_iwf3t"]
-[ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="10_ue3vg"]
 [ext_resource type="PackedScene" uid="uid://dyxq07typd21r" path="res://Objects/Lights/WallLight.tscn" id="11_cichf"]
 [ext_resource type="PackedScene" uid="uid://cskk8fr2tmd85" path="res://Objects/Interactable/Hazards/trashbag.tscn" id="12_pvq4p"]
 [ext_resource type="PackedScene" uid="uid://dw8rud7ihqw8h" path="res://Objects/Tunnel/trash_system.tscn" id="13_ohdt2"]
@@ -26,7 +25,7 @@ size = Vector3(0.929504, 1.01062, 2.27936)
 [node name="zone_8" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
 script = ExtResource("1_g5dbk")
 roomname = "Trash Disposal Unit"
-ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("sand"), NodePath("sand2"), NodePath("sand3"), NodePath("sand4"), NodePath("trashbag"), NodePath("ShovelPoster")]
+ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("trashbag"), NodePath("ShovelPoster")]
 IsTimed = true
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay2")
 ZoneTimer = NodePath("Timer")
@@ -36,18 +35,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.35
 
 [node name="LeakablePipe2" parent="." instance=ExtResource("9_iwf3t")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.3509, 4.11796, 2.22145)
-
-[node name="sand" parent="." instance=ExtResource("10_ue3vg")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35.017, 1.25907, 1.39812)
-
-[node name="sand2" parent="." instance=ExtResource("10_ue3vg")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20.8584, 1.25907, -6.33295)
-
-[node name="sand4" parent="." instance=ExtResource("10_ue3vg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2241, 1.25907, -6.32416)
-
-[node name="sand3" parent="." instance=ExtResource("10_ue3vg")]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -19.2647, 1.25907, -2.29854)
 
 [node name="Quai(3)" parent="." instance=ExtResource("2_g7rqd")]
 
@@ -107,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 0.0416756, -0.999783, 0, 1.99957, 0.0208378,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3621, 4.04083, -1.88681)
 
 [node name="DoubleDataDisplay2" parent="." instance=ExtResource("5_jwly0")]
-transform = Transform3D(9.05975e-08, 1.2, 5.24537e-08, 0, -5.24537e-08, 1.2, 1.2, -9.05975e-08, -3.96014e-15, -35.3247, 2.90731, -4.80678)
+transform = Transform3D(9.05975e-08, 1.2, 5.24537e-08, 0, -5.24537e-08, 1.2, 1.2, -9.05975e-08, -3.96014e-15, -35.3247, 2.90731, -4.45266)
 
 [node name="Stairs2Stack" parent="." instance=ExtResource("6_e1d1n")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -33.8657, 1.25042, 2.8)
