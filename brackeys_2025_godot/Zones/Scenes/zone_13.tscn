@@ -116,6 +116,42 @@ transform = Transform3D(-0.493231, 0, 0.0819987, 0, 0.5, 0, -0.0819987, 0, -0.49
 [node name="trashbag8" parent="bags" instance=ExtResource("12_sc8tr")]
 transform = Transform3D(-0.493231, 0, 0.0819987, 0, 0.5, 0, -0.0819987, 0, -0.493231, -19.1662, 21.6921, -1.72813)
 
+[node name="trashbag18" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.696394, 0, -0.0709581, 0, 0.7, 0, 0.0709581, 0, 0.696394, -18.3506, 25.1965, -1.74253)
+
+[node name="trashbag19" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.415628, 0, 0.277945, 0, 0.5, 0, -0.277945, 0, -0.415628, -18.1941, 22.2868, -2.47836)
+
+[node name="trashbag20" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.470844, 0, 0.168244, 0, 0.5, 0, -0.168244, 0, 0.470844, -18.2475, 22.2868, -3.97519)
+
+[node name="trashbag21" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.0708852, 0, 0.696402, 0, 0.7, 0, -0.696402, 0, 0.0708852, -19.0464, 22.2868, -4.10901)
+
+[node name="trashbag22" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.391131, 0, -0.311476, 0, 0.5, 0, 0.311476, 0, 0.391131, -21.7731, 22.8347, -3.28597)
+
+[node name="trashbag23" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.391131, 0, -0.311476, 0, 0.5, 0, 0.311476, 0, 0.391131, -20.7952, 22.8347, -2.85912)
+
+[node name="trashbag24" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.696394, 0, -0.0709581, 0, 0.7, 0, 0.0709581, 0, 0.696394, -18.5342, 23.4878, -0.370587)
+
+[node name="trashbag25" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(-0.415628, 0, 0.277945, 0, 0.5, 0, -0.277945, 0, -0.415628, -18.3777, 23.7901, -1.10642)
+
+[node name="trashbag26" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.470844, 0, 0.168244, 0, 0.5, 0, -0.168244, 0, 0.470844, -18.431, 23.7901, -2.60324)
+
+[node name="trashbag27" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.0708852, 0, 0.696402, 0, 0.7, 0, -0.696402, 0, 0.0708852, -19.2299, 27.6792, -2.73707)
+
+[node name="trashbag28" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.391131, 0, -0.311476, 0, 0.5, 0, 0.311476, 0, 0.391131, -21.9566, 24.3379, -1.91403)
+
+[node name="trashbag29" parent="bags" instance=ExtResource("12_sc8tr")]
+transform = Transform3D(0.391131, 0, -0.311476, 0, 0.5, 0, 0.311476, 0, 0.391131, -20.9787, 24.3379, -1.48718)
+
 [node name="TrashSystem" parent="." instance=ExtResource("13_eqmao")]
 
 [node name="TrashButton" parent="TrashSystem" index="0"]
@@ -124,7 +160,7 @@ trashAmount = 17
 
 [node name="TrashChute" parent="TrashSystem" index="1" node_paths=PackedStringArray("_trashbags")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5572, 14.1446, -2.26873)
-_trashbags = [NodePath("../../bags/trashbag"), NodePath("../../bags/trashbag2"), NodePath("../../bags/trashbag3"), NodePath("../../bags/trashbag17"), NodePath("../../bags/trashbag7"), NodePath("../../bags/trashbag10"), NodePath("../../bags/trashbag4"), NodePath("../../bags/trashbag6"), NodePath("../../bags/trashbag9"), NodePath("../../bags/trashbag11"), NodePath("../../bags/trashbag12"), NodePath("../../bags/trashbag13"), NodePath("../../bags/trashbag14"), NodePath("../../bags/trashbag15"), NodePath("../../bags/trashbag16"), NodePath("../../bags/trashbag5"), NodePath("../../bags/trashbag8")]
+_trashbags = [NodePath("../../bags/trashbag"), NodePath("../../bags/trashbag2"), NodePath("../../bags/trashbag3"), NodePath("../../bags/trashbag17"), NodePath("../../bags/trashbag7"), NodePath("../../bags/trashbag10"), NodePath("../../bags/trashbag4"), NodePath("../../bags/trashbag6"), NodePath("../../bags/trashbag9"), NodePath("../../bags/trashbag11"), NodePath("../../bags/trashbag12"), NodePath("../../bags/trashbag13"), NodePath("../../bags/trashbag14"), NodePath("../../bags/trashbag15"), NodePath("../../bags/trashbag16"), NodePath("../../bags/trashbag5"), NodePath("../../bags/trashbag8"), NodePath("../../bags/trashbag18"), NodePath("../../bags/trashbag19"), NodePath("../../bags/trashbag20"), NodePath("../../bags/trashbag21"), NodePath("../../bags/trashbag22"), NodePath("../../bags/trashbag23"), NodePath("../../bags/trashbag24"), NodePath("../../bags/trashbag25"), NodePath("../../bags/trashbag26"), NodePath("../../bags/trashbag27"), NodePath("../../bags/trashbag28"), NodePath("../../bags/trashbag29")]
 
 [node name="ShovelPoster" parent="." instance=ExtResource("14_nks3k")]
 transform = Transform3D(0.993242, 0, -0.116064, -0.116064, -4.37114e-08, -0.993242, -5.07332e-09, 1, -4.3416e-08, -14.9291, 2.88569, -10.6675)
