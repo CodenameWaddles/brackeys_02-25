@@ -13,7 +13,7 @@ public partial class GameManager : Node
     [Export] private PackedScene _introScenePrefab;
     [Export] private PackedScene _finalScene;
     [Export] public Cart Cart;
-    [Export] private CharacterBody3D _player;
+    [Export] public CharacterBody3D _player { get; private set; }
     [Export] public AudioManager _audioManager;
     [Export] private Timer _resetRoomTimer;
     [Export] private CanvasLayer _roomFailedScreen;
