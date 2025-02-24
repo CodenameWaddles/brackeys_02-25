@@ -7,6 +7,7 @@ public partial class AudioManager : Node
 {
 	[Export] private Array<AudioStreamPlayer3D> _soundscapes;
 	[Export] public AudioStreamPlayer3D _alarm;
+	[Export] private AudioStreamPlayer3D _ambiance;
 	[Export] private Timer _timer;
 	[Export] private Vector2 _timerMaxAndMin;
 	
@@ -35,6 +36,7 @@ public partial class AudioManager : Node
 	{
 		_instance = this;
 		BangingFrequency = _bangingFrequencies[0];
+		PlayAmbiance();
 	}
 	
 	public void PlayRandomSoundscape()
@@ -72,6 +74,13 @@ public partial class AudioManager : Node
 	{
 		_frequencyIndex = (_frequencyIndex + 1) % _bangingFrequencies.Count;
 		BangingFrequency = _bangingFrequencies[_frequencyIndex];
+	}
+
+	private async void PlayAmbiance() {
+		while (true) {
+			_ambiance.Play();
+			await ToSignal(GetTree().CreateTimer(_ambiance.Stream.GetLength()), "timeout");
+		}
 	}
 	
 }
