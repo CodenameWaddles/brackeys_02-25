@@ -399,6 +399,6 @@ func _unhandled_input(event : InputEvent):
 func _on_step_timer_timeout() -> void:
 	var input_dir = Vector2.ZERO
 	input_dir = Input.get_vector(LEFT, RIGHT, FORWARD, BACKWARD)
-	if(input_dir && is_on_floor()):
+	if(input_dir && is_on_floor() && current_speed > 0.1):
 		#STEPS_AUDIO.pitch_scale = randf_range(0.8, 1.2)
 		STEPS_AUDIO.play()
