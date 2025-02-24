@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Linq;
 using Godot.Collections;
 
 public partial class GameManager : Node
@@ -49,6 +50,7 @@ public partial class GameManager : Node
         _instance = this;
         _messages = new Dictionary<int, string>();
         SetupMessages();
+        _currentSceneIndex = startIndex;
         
         _roomFailedScreen.Visible = false;
         Cart.ArrivedSignal += _cartArrived;
@@ -71,21 +73,28 @@ public partial class GameManager : Node
 
     public override void _Process(double delta)
     {
-        Cart.allowedToMove = _currentScene.IsComplete;
+        if(_currentScene != null)
+            Cart.allowedToMove = _currentScene.IsComplete;
     }
 
     private void _loadScene(int sceneIndex)
     {
-        
+        if (_currentSceneIndex == _scenes.Count - 1) { //final scene
+            GD.Print("final scene");
+            _tunelPrefab = _finalScene;
+            _tunelPosition2 = new Vector3(0, 0, 0);
+            
+        }
         //swap tunels and tp cart&player
         _tunelPreZone.QueueFree(); //on suprime le pre tunnel
         Cart.Reparent(_tunelPostZone); //on attache le cart au post tunel
         _tunelPostZone.Position = _tunelPosition1; //on tp le post tunel a la pre position
         _tunelPreZone = _tunelPostZone; //on dit que le pre tunel = le post tunnel
         Cart.Reparent(this); //on ratache le cart au main
-        
+
         Node3D tempTunnel = (Node3D)_tunelPrefab.Instantiate(); //on instancie un nouveau post tunel
-        this.AddChild(tempTunnel);
+        AddChild(tempTunnel);
+        GD.Print(_tunelPosition2);
         tempTunnel.Position = _tunelPosition2; //on le place au bon endroit
         _tunelPostZone = tempTunnel; //on dit que le post tunel = ce nouveau tunel
 
@@ -94,25 +103,24 @@ public partial class GameManager : Node
             _currentScene.DisposeTimer();
             _currentScene.QueueFree();
         }
-        
-        Node3D tempScene = (Node3D) _scenes[sceneIndex].Instantiate();
+
+        Node3D tempScene = (Node3D)_scenes[sceneIndex].Instantiate();
         AddChild(tempScene);
         tempScene.Position = _scenePosition;
         _currentSceneIndex = sceneIndex;
         _currentScene = GetNode<Zone>(tempScene.GetPath());
         _currentScene.Cart = Cart;
         _currentScene.SetupIntegrity();
-        
+
         if (_currentSceneIndex < 15) //cut après que porte ouverte découverte
         {
             _currentScene._sendRoomMessage();
         }
-        
         switch (_currentSceneIndex)
         {
             case 0: 
                 break;
-            case 2: 
+            case 2:
                 SendMessage(_currentSceneIndex); //trash
                 LightManager.Instance.NextFrequency();
                 break;
@@ -153,13 +161,13 @@ public partial class GameManager : Node
                 SendMessage(_currentSceneIndex);
                 break;
         }
-        
+
         Cart._state = Cart.State.Moving;
-        
+
         Cart.CartDataPanel.SetDataMode(_currentScene.ZoneDataMode);
         Cart.CartMap.DeactivateMapLights();
-        Cart.CartMap.ActivateMapLight(_currentSceneIndex%5);
-        
+        Cart.CartMap.ActivateMapLight(_currentSceneIndex % 5);
+
         GD.Print("loaded scene : " + _currentScene.Name + ", index : " + _currentSceneIndex);
     }
     
@@ -168,8 +176,8 @@ public partial class GameManager : Node
         if (_currentSceneIndex == _scenes.Count - 1) //final scene
         {
             //_loadScene(0);
-            GD.Print("final scene");
-            CallDeferred("LoadFinalScene");
+            //GD.Print("final scene");
+            //CallDeferred("LoadFinalScene");
             //_currentCycle++;
         }
         else

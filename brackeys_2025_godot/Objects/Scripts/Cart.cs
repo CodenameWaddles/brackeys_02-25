@@ -192,6 +192,16 @@ public partial class Cart : Node3D {
             area.QueueFree();
             EmitSignal(SignalName.ArrivedSignal);
         }
+        else if (area.IsInGroup("FinalParking")) {
+            GD.Print("final parking");
+            DeactivateColliders();
+            Crash();
+            allowedToMove = false;
+        }
+    }
+
+    private void Crash() {
+        Stop();
     }
 
     public void _on_player_detection_body_entered(Node3D body)

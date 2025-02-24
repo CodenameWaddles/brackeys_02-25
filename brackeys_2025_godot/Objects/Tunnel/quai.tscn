@@ -73,7 +73,7 @@ shape = SubResource("ConcavePolygonShape3D_v06r6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29438, -0.257947, -1.90269)
 
 [node name="Rails" type="Node3D" parent="." index="8"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.177, 0)
+transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 0, 0.177, 0)
 
 [node name="Rail" parent="Rails" index="0" instance=ExtResource("3_qyn06")]
 transform = Transform3D(-4.67712e-07, 0, 10.7, 0, 10.7, 0, -10.7, 0, -4.67712e-07, 0.63, 0.189, 19.5286)
