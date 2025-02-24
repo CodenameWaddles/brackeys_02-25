@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwyjmfc75quxk"]
+[gd_scene load_steps=13 format=3 uid="uid://dwyjmfc75quxk"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_5siu8"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_uymfi"]
@@ -12,14 +12,18 @@
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="10_3gt3i"]
 [ext_resource type="PackedScene" uid="uid://dvs5qpxpk8o1f" path="res://Objects/Props/maxhina.tscn" id="11_7udcm"]
 
-[node name="zone_14" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom", "ZoneTimer")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_68taa"]
+size = Vector3(1, 5.97656, 26.5723)
+
+[node name="zone_14" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DataArea", "DisplayDataSingleInRoom")]
 script = ExtResource("1_5siu8")
 roomname = "Incinerator"
 _instabilityLevel = 3
 ZoneHazards = []
+ZoneTimer = NodePath("Timer")
+DataArea = NodePath("Area3D")
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay2")
 ZoneDataMode = 1
-ZoneTimer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 60.0
@@ -105,5 +109,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.29632, 4.52505, -15.3729)
 
 [node name="WallLight4" parent="." instance=ExtResource("9_3808g")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.29632, 4.52505, 6.4829)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7121, 2.48828, -5.29102)
+shape = SubResource("BoxShape3D_68taa")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

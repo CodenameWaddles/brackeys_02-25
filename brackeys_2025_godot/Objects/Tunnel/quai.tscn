@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cpp6o5ot1hulo"]
 
 [ext_resource type="PackedScene" uid="uid://d1ao3g0ock17k" path="res://Assets/Tunnels/Quai(3).fbx" id="1_wahm7"]
-[ext_resource type="PackedScene" path="res://Objects/Cart/parking.tscn" id="2_ityu0"]
+[ext_resource type="PackedScene" uid="uid://cdek0ivhkxs84" path="res://Objects/Cart/parking.tscn" id="2_ityu0"]
 [ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="3_qyn06"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0u7pf"]

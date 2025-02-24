@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://sjjavwf3a570"]
+[gd_scene load_steps=10 format=3 uid="uid://sjjavwf3a570"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_u7spn"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="4_udx1t"]
@@ -9,15 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="8_4l1dh"]
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="8_modnu"]
 
-[node name="zone_7" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom", "ZoneTimer")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3pwlo"]
+size = Vector3(1, 7.30786, 8)
+
+[node name="zone_7" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DataArea", "DisplayDataSingleInRoom")]
 script = ExtResource("1_u7spn")
 roomname = "Central Sewer"
 _instabilityLevel = 1
 ZoneHazards = [NodePath("LeakablePipe"), NodePath("sand"), NodePath("sand2"), NodePath("BlowtorchPoster")]
 IsTimed = true
+ZoneTimer = NodePath("Timer")
+DataArea = NodePath("Area3D")
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
-ZoneTimer = NodePath("Timer")
 
 [node name="Quai(3)" parent="." instance=ExtResource("4_udx1t")]
 
@@ -51,5 +55,11 @@ transform = Transform3D(-0.875533, 0.442315, 0.194419, -0.222475, -0.011873, -0.
 
 [node name="SingleDataDisplay" parent="." instance=ExtResource("8_4l1dh")]
 transform = Transform3D(3.38832e-08, 0.775159, 1.28418, 1.5, -6.55671e-08, -2.00912e-15, 5.61335e-08, 1.28418, -0.775159, -44.9015, -4.40209, -16.4808)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 4.20422, -4.7737)
+shape = SubResource("BoxShape3D_3pwlo")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

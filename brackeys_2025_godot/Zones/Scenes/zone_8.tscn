@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjvjidsafjj8e"]
+[gd_scene load_steps=18 format=3 uid="uid://bjvjidsafjj8e"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_g5dbk"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_g7rqd"]
@@ -22,14 +22,18 @@ albedo_texture = ExtResource("4_vc08y")
 [sub_resource type="BoxShape3D" id="BoxShape3D_dvsds"]
 size = Vector3(0.929504, 1.01062, 2.27936)
 
-[node name="zone_8" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ea80"]
+size = Vector3(1, 5.20856, 26.0796)
+
+[node name="zone_8" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DataArea", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_g5dbk")
 roomname = "Trash Disposal Unit"
 _instabilityLevel = 1
 ZoneHazards = [NodePath("LeakablePipe"), NodePath("LeakablePipe2"), NodePath("trashbag"), NodePath("ShovelPoster")]
 IsTimed = true
-DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay2")
 ZoneTimer = NodePath("Timer")
+DataArea = NodePath("Area3D")
+DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay2")
 
 [node name="LeakablePipe" parent="." instance=ExtResource("9_iwf3t")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.3509, 3.99076, 0.225257)
@@ -110,6 +114,12 @@ transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stairs2Stack/StaticBody3D"]
 transform = Transform3D(0.701257, -0.712906, -0.00196709, 0.712909, 0.701256, 0.00103679, 0.000640285, -0.00212942, 0.999997, 0.239807, 0.18486, 0.405373)
 shape = SubResource("BoxShape3D_dvsds")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1829, 3.24522, -5.79379)
+shape = SubResource("BoxShape3D_1ea80")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
 

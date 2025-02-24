@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqopj1jwrwxhg"]
+[gd_scene load_steps=14 format=3 uid="uid://dqopj1jwrwxhg"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_qgu54"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_bfssy"]
@@ -20,13 +20,17 @@ albedo_color = Color(0, 0, 0, 0.862745)
 [sub_resource type="QuadMesh" id="QuadMesh_tw2e1"]
 size = Vector2(2.615, 2.345)
 
-[node name="zone_10" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DisplayDataDoubleInRoom")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ayu26"]
+size = Vector3(1, 12.3989, 18.9615)
+
+[node name="zone_10" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DataArea", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_qgu54")
 roomname = "Containment"
 _instabilityLevel = 2
 ZoneHazards = [NodePath("ScotchablePipe"), NodePath("scotchable_door")]
 IsTimed = true
 ZoneTimer = NodePath("Timer")
+DataArea = NodePath("Area3D")
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay2")
 
 [node name="Timer" type="Timer" parent="."]
@@ -68,5 +72,11 @@ transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, -28.71
 
 [node name="WallLight2" parent="." instance=ExtResource("5_nk6jb")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -28.9406, 5.4338, -4.57656)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9698, -1.09195, -5.09555)
+shape = SubResource("BoxShape3D_ayu26")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

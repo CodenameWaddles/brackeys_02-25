@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo2uri3qctkix"]
+[gd_scene load_steps=10 format=3 uid="uid://bo2uri3qctkix"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_p07ea"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_mpb8x"]
@@ -11,14 +11,18 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_6cbq5"]
 size = Vector3(1, 6.67432, 7.81772)
 
-[node name="zone_17" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom", "ZoneTimer")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_vntiv"]
+size = Vector3(1, 7.30786, 8)
+
+[node name="zone_17" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DataArea", "DisplayDataSingleInRoom")]
 script = ExtResource("1_p07ea")
 roomname = "Central Sewer"
 _instabilityLevel = 3
 ZoneHazards = [NodePath("sand"), NodePath("sand5"), NodePath("sand6"), NodePath("sand4"), NodePath("sand7"), NodePath("sand2"), NodePath("sand3")]
+ZoneTimer = NodePath("Timer")
+DataArea = NodePath("Area3D")
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
-ZoneTimer = NodePath("Timer")
 
 [node name="Quai(3)" parent="." instance=ExtResource("2_mpb8x")]
 
@@ -71,5 +75,11 @@ transform = Transform3D(1.96315, 0.382132, 0, -0.382132, 1.96315, 0, 0, 0, 2, -2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3032, 4.52457, -4.76642)
 shape = SubResource("BoxShape3D_6cbq5")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 4.20422, -4.7737)
+shape = SubResource("BoxShape3D_vntiv")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

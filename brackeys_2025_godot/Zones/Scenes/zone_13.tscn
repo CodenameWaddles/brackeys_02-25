@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cicrmk46j6qdg"]
+[gd_scene load_steps=18 format=3 uid="uid://cicrmk46j6qdg"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_ory0k"]
 [ext_resource type="PackedScene" uid="uid://bxnx24fvfoewo" path="res://Objects/Interactable/Hazards/sand.tscn" id="3_45wvu"]
@@ -22,14 +22,18 @@ albedo_texture = ExtResource("6_ah3l6")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jwuxi"]
 size = Vector3(0.929504, 1.01062, 2.27936)
 
-[node name="zone_13" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vjci"]
+size = Vector3(1, 5.20856, 26.0796)
+
+[node name="zone_13" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DataArea", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_ory0k")
 roomname = "Trash Disposal Unit"
 _instabilityLevel = 3
 ZoneHazards = [NodePath("sand"), NodePath("sand2"), NodePath("sand4"), NodePath("sand3"), NodePath("ShovelPoster"), NodePath("bags/trashbag")]
 IsTimed = true
-DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 ZoneTimer = NodePath("Timer")
+DataArea = NodePath("Area3D")
+DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
 [node name="sand" parent="." instance=ExtResource("3_45wvu")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35.017, 1.25907, 1.39812)
@@ -188,7 +192,7 @@ transform = Transform3D(1, 0, 0, 0, 0.0416756, -0.999783, 0, 1.99957, 0.0208378,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3621, 4.04083, -1.88681)
 
 [node name="DoubleDataDisplay2" parent="." instance=ExtResource("7_6pqxt")]
-transform = Transform3D(9.05975e-08, 1.2, 5.24537e-08, 0, -5.24537e-08, 1.2, 1.2, -9.05975e-08, -3.96014e-15, -35.3247, 2.90731, -4.80678)
+transform = Transform3D(9.05975e-08, 1.2, 5.24537e-08, 0, -5.24537e-08, 1.2, 1.2, -9.05975e-08, -3.96014e-15, -35.3247, 2.90731, -4.44106)
 
 [node name="Stairs2Stack" parent="." instance=ExtResource("8_kyi4r")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -33.8657, 1.25042, 2.8)
@@ -208,5 +212,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3621, 4.01495, 0.225257)
 
 [node name="Tuyau origine ok2" parent="." instance=ExtResource("10_60q06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3621, 4.11796, 2.22145)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1829, 3.24522, -5.79379)
+shape = SubResource("BoxShape3D_5vjci")
 
 [editable path="TrashSystem"]

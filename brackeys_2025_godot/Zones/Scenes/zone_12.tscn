@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ljexx0l02j4u"]
+[gd_scene load_steps=11 format=3 uid="uid://ljexx0l02j4u"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_7j3es"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_kakf1"]
@@ -10,12 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="8_y4not"]
 [ext_resource type="PackedScene" uid="uid://dn78ah4hsnwvh" path="res://Objects/Lights/water.tscn" id="9_v84t5"]
 
-[node name="zone_12" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataSingleInRoom")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ydlw"]
+size = Vector3(1, 7.30786, 8)
+
+[node name="zone_12" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DataArea", "DisplayDataSingleInRoom")]
 script = ExtResource("1_7j3es")
 roomname = "Central Sewer"
 _instabilityLevel = 2
 ZoneHazards = [NodePath("sand"), NodePath("sand4"), NodePath("sand2"), NodePath("sand3"), NodePath("ScotchablePipe"), NodePath("BlowtorchPoster")]
 IsTimed = true
+ZoneTimer = NodePath("Timer")
+DataArea = NodePath("Area3D")
 DisplayDataSingleInRoom = NodePath("SingleDataDisplay")
 ZoneDataMode = 1
 
@@ -60,5 +65,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.2446, -6.13236, -11.0441)
 
 [node name="BlowtorchPoster" parent="." instance=ExtResource("7_aeyty")]
 transform = Transform3D(-0.875533, 0.442315, 0.194419, -0.222475, -0.011873, -0.974866, -0.42889, -0.896781, 0.108799, -34.2018, 0.121491, -6.27627)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 4.20422, -4.7737)
+shape = SubResource("BoxShape3D_3ydlw")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

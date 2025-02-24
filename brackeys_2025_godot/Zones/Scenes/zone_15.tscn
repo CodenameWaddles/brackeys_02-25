@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://rahcybl0kb40"]
+[gd_scene load_steps=10 format=3 uid="uid://rahcybl0kb40"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_yxyym"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_kex8l"]
@@ -11,13 +11,17 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_jsqa3"]
 size = Vector3(1.02347, 10.075, 8.73047)
 
-[node name="zone_15" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DisplayDataDoubleInRoom", "ZoneTimer")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_0d66m"]
+size = Vector3(1, 12.3989, 18.9615)
+
+[node name="zone_15" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "ZoneTimer", "DataArea", "DisplayDataDoubleInRoom")]
 script = ExtResource("1_yxyym")
 roomname = "Containment"
 _instabilityLevel = 3
 ZoneHazards = [null, null]
-DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 ZoneTimer = NodePath("Timer")
+DataArea = NodePath("Area3D")
+DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 120.0
@@ -52,5 +56,11 @@ size = Vector3(41.1923, 19.5189, 11.9326)
 
 [node name="WallLight2" parent="." instance=ExtResource("5_uci0x")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -28.9406, 5.4338, -4.57656)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9698, -1.09195, -5.09555)
+shape = SubResource("BoxShape3D_0d66m")
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

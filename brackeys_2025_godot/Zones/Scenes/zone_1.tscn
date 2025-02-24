@@ -39,7 +39,7 @@ DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6259, 3.39029, 3.3139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6259, 12.5222, 3.3139)
 shape = SubResource("BoxShape3D_lts3g")
 
 [node name="Quai(3)" parent="." instance=ExtResource("7_6qwm5")]
@@ -48,7 +48,7 @@ shape = SubResource("BoxShape3D_lts3g")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.22348, 0.501797, -0.108552)
 
 [node name="DoubleDataDisplay" parent="." instance=ExtResource("7_pvbji")]
-transform = Transform3D(-6.55671e-08, 1.5, 6.55671e-08, 0, -6.55671e-08, 1.5, 1.5, 6.55671e-08, 2.86603e-15, -28.5638, 11.9737, -4.0288)
+transform = Transform3D(-6.55671e-08, 1.5, 6.55671e-08, 0, -6.55671e-08, 1.5, 1.5, 6.55671e-08, 2.86603e-15, -28.6576, 11.9737, -4.13701)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
