@@ -198,6 +198,8 @@ public partial class Cart : Node3D {
             DeactivateColliders();
             Crash();
             allowedToMove = false;
+            GameManager.Instance.ByePassActivated = false;
+            GameManager.Instance._currentScene.IsComplete = false;
         }
     }
 

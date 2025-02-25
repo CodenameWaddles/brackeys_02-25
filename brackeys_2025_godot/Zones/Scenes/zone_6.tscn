@@ -35,7 +35,7 @@ albedo_texture = ExtResource("6_xarlb")
 script = ExtResource("1_7sgdk")
 roomname = "Generator"
 _instabilityLevel = 1
-ZoneHazards = [NodePath("sand"), NodePath("sand2"), NodePath("TapePoster")]
+ZoneHazards = [NodePath("sand"), NodePath("sand2"), NodePath("TapePoster"), NodePath("LeakablePipe")]
 DataArea = NodePath("Area3D")
 DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
 

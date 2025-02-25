@@ -112,7 +112,8 @@ public partial class GameManager : Node
 
     private void _loadScene(int sceneIndex)
     {
-        if (_currentSceneIndex == _scenes.Count - 1) { //final scene
+        GD.Print("scene index : " + sceneIndex + " current scene index : " + _currentSceneIndex);
+        if (sceneIndex == _scenes.Count - 1) { //final scene
             GD.Print("final scene");
             _tunelPrefab = _finalScene;
             _tunelPosition2 = new Vector3(0, 0, 0);
@@ -211,16 +212,8 @@ public partial class GameManager : Node
     
     private void _cartArrived()
     {
-        if (_currentSceneIndex == _scenes.Count - 1) //final scene
+        if (_currentSceneIndex != _scenes.Count - 1) //pas load si c la dernière scene
         {
-            //_loadScene(0);
-            //GD.Print("final scene");
-            //CallDeferred("LoadFinalScene");
-            //_currentCycle++;
-        }
-        else
-        {
-            //_loadScene(_currentSceneIndex + 1);
             CallDeferred("_loadScene", _currentSceneIndex + 1);
         }
     }

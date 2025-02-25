@@ -46,7 +46,7 @@ volumetric_fog_emission_energy = 2.0
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_endScreen", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
 script = ExtResource("1_yxd7y")
-startIndex = 5
+startIndex = 16
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("6_m1i8t"), ExtResource("7_a5t7k"), ExtResource("8_5vsux"), ExtResource("9_wnaab"), ExtResource("2_2apei"), ExtResource("11_f4bw3"), ExtResource("12_6lbj4"), ExtResource("13_xpvod"), ExtResource("14_acyje"), ExtResource("15_c6lld"), ExtResource("16_jkqg7"), ExtResource("17_eclp2"), ExtResource("18_c43du")]
 _introScenePrefab = ExtResource("19_t57yd")
 _finalScene = ExtResource("19_e0o7y")
@@ -56,7 +56,7 @@ _audioManager = NodePath("AudioManager")
 _resetRoomTimer = NodePath("ResetRoomTimer")
 _roomFailedScreen = NodePath("FailedRoomScreen")
 _endScreen = NodePath("EndScreen")
-_tunelPosition1 = Vector3(1.685, 0, -41.09)
+_tunelPosition1 = Vector3(1.75, 0, -41.09)
 _tunelPosition2 = Vector3(1.75, 0, 341.6)
 _tunelPreZone = NodePath("TunnelSidePre")
 _tunelPostZone = NodePath("TunnelSidePost")

@@ -60,10 +60,12 @@ public partial class Zone : Node3D
     
     public override void _Process(double delta)
     {
+        
         if (Input.IsActionJustPressed("test"))
         {
             IsComplete = true; //pr test
         }
+        
 
         if (IsTimed && Cart._state.Equals(Cart.State.Stopped))
         {
