@@ -29,8 +29,9 @@ public partial class AlarmLight : Node3D
 		_spotLight.LightColor = new Color(_onColor.X, _onColor.Y, _onColor.Z);
 		_spotLight2.LightColor = new Color(_onColor.X, _onColor.Y, _onColor.Z);
 		if (!_on) {
-			_spotLight.LightEnergy = 0;
-			_spotLight2.LightEnergy = 0;
+			_spotLight.LightColor = new Color(0.05f, 1f, 0.05f);
+			_spotLight2.LightColor = new Color(0.05f, 1f, 0.05f);
+			_mesh?.SetInstanceShaderParameter("color", new Vector3(0.05f, 1f, 0.05f));
 		}
 	}
 
@@ -38,6 +39,7 @@ public partial class AlarmLight : Node3D
 	public override void _Process(double delta)
 	{
 		// rotate the light
-		_spotLightNode.RotateZ(Mathf.Pi * (float)delta);
+		if(_on)
+			_spotLightNode.RotateZ(Mathf.Pi * (float)delta);
 	}
 }

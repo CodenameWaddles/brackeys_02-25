@@ -62,12 +62,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9698, -1.09195, -5.09555)
 shape = SubResource("BoxShape3D_0d66m")
 
 [node name="AlarmLight" parent="." instance=ExtResource("8_nx0a3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.0741, 5.30257, -4.20162)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.0741, 5.30257, -0.0855103)
 
 [node name="AlarmLight2" parent="." instance=ExtResource("8_nx0a3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.2087, 6.0449, 3.4577)
 
 [node name="AlarmLight3" parent="." instance=ExtResource("8_nx0a3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2087, 6.0449, -11.5743)
+
+[node name="WallLight2" parent="." instance=ExtResource("5_uci0x")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -28.9406, 5.4338, -4.57656)
+
+[node name="AlarmLight4" parent="." instance=ExtResource("8_nx0a3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.0741, 5.30257, -8.5367)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

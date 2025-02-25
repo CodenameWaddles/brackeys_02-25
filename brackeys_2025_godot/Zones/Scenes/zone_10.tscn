@@ -88,4 +88,12 @@ _on = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2087, 6.0449, -11.5743)
 _on = false
 
+[node name="AlarmLight" parent="." instance=ExtResource("10_kgo1q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.0741, 5.30257, -0.0855103)
+_on = false
+
+[node name="AlarmLight4" parent="." instance=ExtResource("10_kgo1q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.0741, 5.30257, -8.5367)
+_on = false
+
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
