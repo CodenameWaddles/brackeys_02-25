@@ -40,17 +40,17 @@ public partial class TrashDeposit : InteractableNeedObject
 					temp.IsSolved = true;
 					temp.MakeUninteractable();
 					_playerInteraction.DropItem();
+					
 					//on instancie une poubelle dans le wagon
 					Node3D item = (Node3D) _trashPrefab.Instantiate();
 					AddChild(item);
 					item.Position = _trashSlotsArray[i].Position;
-					Trashbag trashbag = (Trashbag)item;
+					Trashbag trashbag = (Trashbag)item; //on cast en trashbag pour set les propriétés qui vont avec
 					trashbag.IsInCart = true;
 					trashbag.IsSolved = true;
-					GameManager gm = (GameManager)GetTree().Root.GetChild(0);
-					trashbag.Reparent(gm.Cart);
 					trashbagsHeld[i] = trashbag;
-					gm._currentScene.UpdateIntegrityPercentage();
+					GameManager gm = (GameManager)GetTree().Root.GetChild(0);
+					trashbag.Reparent(gm.Cart); //on l'atache au wagon
 					TrashCount++;
 					return; //vide
 				}
@@ -66,7 +66,6 @@ public partial class TrashDeposit : InteractableNeedObject
 			{
 				trashbagsHeld[i] = null;
 				TrashCount--;
-				GD.Print(TrashCount);
 				return;
 			}
 		}
@@ -93,8 +92,8 @@ public partial class TrashDeposit : InteractableNeedObject
 				trashbagsHeld[i].QueueFree();
 				trashbagsHeld[i] = null;
 			}
-			
 		}
+		TrashCount = 0;
 	}
 	
 }

@@ -1,4 +1,6 @@
 using Godot;
+using Godot.Collections;
+
 public partial class BurningPlace : InteractableNeedObject
 {
 
@@ -35,5 +37,6 @@ public partial class BurningPlace : InteractableNeedObject
         TrashCount++;
         gm._currentScene.UpdateIntegrityPercentage();
         burnSound.Play();
+        held.QueueFree();
     }
 }
