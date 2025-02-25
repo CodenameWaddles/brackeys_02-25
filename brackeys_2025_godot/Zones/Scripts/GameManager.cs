@@ -86,6 +86,7 @@ public partial class GameManager : Node
             LightManager.Instance.NextFrequency();
             LightManager.Instance.NextFrequency();
             AudioManager.Instance.NextBangingFrequency();
+            AudioManager.Instance._alarm.Play();
             //AudioManager.Instance._alarm.Play();
         }
     }

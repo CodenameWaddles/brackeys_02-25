@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqopj1jwrwxhg"]
+[gd_scene load_steps=15 format=3 uid="uid://dqopj1jwrwxhg"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_qgu54"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_bfssy"]
@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dfjuf4o2dwn23" path="res://Objects/Interactable/Hazards/scotchable_pipe.tscn" id="6_4jojw"]
 [ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="7_3wx50"]
 [ext_resource type="PackedScene" uid="uid://0nbpiiwabqf5" path="res://Objects/Audio/BangingNoise.tscn" id="8_ynxtw"]
-[ext_resource type="PackedScene" uid="uid://s5s5j51th0id" path="res://Objects/Interactable/Hazards/scotchable_door.tscn" id="9_1khqx"]
+[ext_resource type="PackedScene" path="res://Objects/Interactable/Hazards/scotchable_door.tscn" id="9_1khqx"]
+[ext_resource type="PackedScene" uid="uid://yc3xeqnkib84" path="res://Objects/Lights/alarm_light.tscn" id="10_kgo1q"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_p12fu"]
 size = Vector2(10.82, 13.98)
@@ -78,5 +79,13 @@ transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -28.94
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9698, -1.09195, -5.09555)
 shape = SubResource("BoxShape3D_ayu26")
+
+[node name="AlarmLight2" parent="." instance=ExtResource("10_kgo1q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.2087, 6.0449, 3.4577)
+_on = false
+
+[node name="AlarmLight3" parent="." instance=ExtResource("10_kgo1q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2087, 6.0449, -11.5743)
+_on = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

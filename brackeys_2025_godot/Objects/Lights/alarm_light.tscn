@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://yc3xeqnkib84"]
+
+[ext_resource type="Script" path="res://Objects/Lights/AlarmLight.cs" id="1_dl2gs"]
+[ext_resource type="PackedScene" uid="uid://dj7j8jfg6b4hn" path="res://Objects/Cart/wagonnet_lantern.tscn" id="2_5yxlt"]
+[ext_resource type="PackedScene" uid="uid://3idb3tp67d0y" path="res://Objects/Cart/ampoule_lanterne.tscn" id="3_8xo2u"]
+
+[node name="AlarmLight" type="Node3D" node_paths=PackedStringArray("_bulbNode", "_spotLight", "_spotLight2", "_spotLightNode")]
+script = ExtResource("1_dl2gs")
+_bulbNode = NodePath("Ampoule lanterne")
+_spotLight = NodePath("Node3D/SpotLight3D")
+_spotLight2 = NodePath("Node3D/SpotLight3D2")
+_spotLightNode = NodePath("Node3D")
+
+[node name="Wagonnet Lantern" parent="." instance=ExtResource("2_5yxlt")]
+transform = Transform3D(2, 0, 0, 0, -4.37114e-08, 2, 0, -1, -8.74228e-08, 0, 0, 0)
+
+[node name="Ampoule lanterne" parent="." instance=ExtResource("3_8xo2u")]
+transform = Transform3D(2, 0, 0, 0, -4.37114e-08, 2, 0, -1, -8.74228e-08, 0, 0, 0)
+
+[node name="Industrial lantern A_1" parent="Ampoule lanterne" index="0"]
+instance_shader_parameters/color = Vector3(1, 0.05, 0.05)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+light_energy = 2.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+light_energy = 2.0
+
+[editable path="Ampoule lanterne"]

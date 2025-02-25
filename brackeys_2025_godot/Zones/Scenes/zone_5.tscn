@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dduv5oiom5jd8"]
+[gd_scene load_steps=12 format=3 uid="uid://dduv5oiom5jd8"]
 
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="1_5t5kt"]
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_xjcoq"]
@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bcnpveyms0055" path="res://Objects/Interactable/Hazards/leakable_pipe.tscn" id="6_as2a5"]
 [ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="7_wests"]
 [ext_resource type="PackedScene" uid="uid://0nbpiiwabqf5" path="res://Objects/Audio/BangingNoise.tscn" id="8_4jm4l"]
-[ext_resource type="PackedScene" uid="uid://460sl4uqct0" path="res://Zones/RoomsModelsNodes/porte_base.tscn" id="9_t3fbq"]
+[ext_resource type="PackedScene" path="res://Zones/RoomsModelsNodes/porte_base.tscn" id="9_t3fbq"]
+[ext_resource type="PackedScene" uid="uid://yc3xeqnkib84" path="res://Objects/Lights/alarm_light.tscn" id="10_rt6du"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ee6f3"]
 size = Vector3(1, 12.3989, 18.9615)
@@ -55,5 +56,13 @@ transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -28.94
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9698, -1.09195, -5.09555)
 shape = SubResource("BoxShape3D_ee6f3")
+
+[node name="AlarmLight2" parent="." instance=ExtResource("10_rt6du")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.2087, 6.0449, 3.4577)
+_on = false
+
+[node name="AlarmLight3" parent="." instance=ExtResource("10_rt6du")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2087, 6.0449, -11.5743)
+_on = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]

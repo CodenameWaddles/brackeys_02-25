@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cecemswk07gw3"]
+[gd_scene load_steps=21 format=3 uid="uid://cecemswk07gw3"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_qv7fe"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_ko4me"]
@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="8_4d2mv"]
 [ext_resource type="PackedScene" uid="uid://beej6ryapcf2k" path="res://Objects/Interactable/Hazards/tape_poster.tscn" id="9_6gmo4"]
 [ext_resource type="PackedScene" uid="uid://4nv88uxswbec" path="res://Objects/Interactable/pipe_leak.tscn" id="9_o68v0"]
-[ext_resource type="PackedScene" uid="uid://c686bvxif41xg" path="res://Zones/RoomsModelsNodes/generator_damaged.tscn" id="11_06rgy"]
+[ext_resource type="PackedScene" path="res://Zones/RoomsModelsNodes/generator_damaged.tscn" id="11_06rgy"]
 [ext_resource type="Texture2D" uid="uid://hcaemx8qtkhu" path="res://textures/blackscreen.png" id="12_4y5f2"]
+[ext_resource type="PackedScene" uid="uid://yc3xeqnkib84" path="res://Objects/Lights/alarm_light.tscn" id="13_1w2d7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ato5w"]
 size = Vector3(1, 4.5473, 4.18036)
@@ -659,6 +660,18 @@ transform = Transform3D(-2.18557e-06, 1, -2.18557e-06, 0, -4.37114e-08, -50, -50
 material_override = SubResource("StandardMaterial3D_wtefv")
 mesh = SubResource("BoxMesh_wmvwm")
 surface_material_override/0 = SubResource("StandardMaterial3D_cysv5")
+
+[node name="AlarmLight" parent="." instance=ExtResource("13_1w2d7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.7746, 6.17044, -3.93246)
+
+[node name="AlarmLight2" parent="." instance=ExtResource("13_1w2d7")]
+transform = Transform3D(-0.972243, -0.0880333, -0.216778, 0, 0.926516, -0.376257, 0.233971, -0.365813, -0.900799, -36.2145, 5.7307, -11.1194)
+
+[node name="AlarmLight3" parent="." instance=ExtResource("13_1w2d7")]
+transform = Transform3D(0.380683, -0.314872, -0.869446, 0, 0.940241, -0.340511, 0.924706, 0.129627, 0.357934, -42.719, 5.45271, -3.49087)
+
+[node name="AlarmLight4" parent="." instance=ExtResource("13_1w2d7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6276, 6.07437, 3.23925)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
 

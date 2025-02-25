@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://rahcybl0kb40"]
+[gd_scene load_steps=11 format=3 uid="uid://rahcybl0kb40"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_yxyym"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_kex8l"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dfjuf4o2dwn23" path="res://Objects/Interactable/Hazards/scotchable_pipe.tscn" id="6_f6y2v"]
 [ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="7_iwhg6"]
 [ext_resource type="PackedScene" uid="uid://ca37ry2jo45hn" path="res://Zones/RoomsModelsNodes/door_destroyed.tscn" id="7_phywq"]
+[ext_resource type="PackedScene" uid="uid://yc3xeqnkib84" path="res://Objects/Lights/alarm_light.tscn" id="8_nx0a3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jsqa3"]
 size = Vector3(1.02347, 10.075, 8.73047)
@@ -54,13 +55,19 @@ shape = SubResource("BoxShape3D_jsqa3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.9861, 3.95165, -4.96631)
 size = Vector3(41.1923, 19.5189, 11.9326)
 
-[node name="WallLight2" parent="." instance=ExtResource("5_uci0x")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -28.9406, 5.4338, -4.57656)
-
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9698, -1.09195, -5.09555)
 shape = SubResource("BoxShape3D_0d66m")
+
+[node name="AlarmLight" parent="." instance=ExtResource("8_nx0a3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.0741, 5.30257, -4.20162)
+
+[node name="AlarmLight2" parent="." instance=ExtResource("8_nx0a3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17.2087, 6.0449, 3.4577)
+
+[node name="AlarmLight3" parent="." instance=ExtResource("8_nx0a3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2087, 6.0449, -11.5743)
 
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
