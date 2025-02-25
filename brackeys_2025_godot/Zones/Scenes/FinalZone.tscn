@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://dkfhveww4s0fl"]
 
 [ext_resource type="Script" path="res://Zones/Scenes/FinalZone.cs" id="1_ve4xc"]
-[ext_resource type="PackedScene" uid="uid://dd23o2xljhtck" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="2_bev4c"]
+[ext_resource type="PackedScene" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="2_bev4c"]
 [ext_resource type="PackedScene" uid="uid://chbk61ocrl8ax" path="res://UIS/black_screen_fade_end.tscn" id="2_l1ok3"]
-[ext_resource type="PackedScene" uid="uid://bwffw5qm70xc5" path="res://Objects/Tunnel/Tunnel.tscn" id="3_8ta2n"]
+[ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="3_8ta2n"]
 [ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="4_gmkro"]
 [ext_resource type="PackedScene" uid="uid://bac6epmvhs368" path="res://Objects/Tunnel/tunnel_secours.tscn" id="5_aixni"]
 [ext_resource type="AudioStream" uid="uid://br252vna450wc" path="res://Assets/Sounds/sussy.wav" id="6_watmm"]
@@ -23,7 +23,7 @@ size = Vector3(13.5478, 3.85931, 1)
 
 [sub_resource type="FogMaterial" id="FogMaterial_tbp7y"]
 density = 0.1
-albedo = Color(0.347817, 0.347817, 0.347817, 1)
+albedo = Color(0.262745, 0.262745, 0.262745, 1)
 
 [node name="FinalZone" type="Node3D" node_paths=PackedStringArray("_colliderBehind", "_noiseBehind", "_growlSound", "_fog", "_escapeLight")]
 script = ExtResource("1_ve4xc")
