@@ -44,7 +44,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.35
 [node name="Quai(3)" parent="." instance=ExtResource("2_g7rqd")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 160.0
+wait_time = 140.0
 one_shot = true
 
 [node name="Salle des dechets" parent="." instance=ExtResource("3_we8jr")]

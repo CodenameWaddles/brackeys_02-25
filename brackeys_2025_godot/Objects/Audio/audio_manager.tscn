@@ -78,7 +78,7 @@ volume_db = -20.0
 [node name="Alarm" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.84305, 60.6596, 0)
 stream = ExtResource("11_5i1lw")
-volume_db = -15.0
+volume_db = -5.0
 parameters/looping = true
 
 [node name="Timer" type="Timer" parent="."]
