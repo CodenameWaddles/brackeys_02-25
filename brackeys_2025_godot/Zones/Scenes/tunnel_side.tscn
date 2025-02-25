@@ -10,7 +10,7 @@ size = Vector3(11, 9, 5)
 
 [sub_resource type="FogMaterial" id="FogMaterial_8li7j"]
 density = 0.1
-albedo = Color(0.325441, 0.325441, 0.325441, 1)
+albedo = Color(0.262745, 0.262745, 0.262745, 1)
 
 [node name="TunnelSide" type="Node3D"]
 

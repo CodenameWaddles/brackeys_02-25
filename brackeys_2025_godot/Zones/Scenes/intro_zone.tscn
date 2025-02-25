@@ -6,7 +6,7 @@
 
 [sub_resource type="FogMaterial" id="FogMaterial_b8owy"]
 density = 0.1
-albedo = Color(0.325441, 0.325441, 0.325441, 1)
+albedo = Color(0.262745, 0.262745, 0.262745, 1)
 
 [node name="IntroZone" type="Node3D" node_paths=PackedStringArray("introScreen", "blackScreenTimer", "introTimer", "timeBeforeFirstMessage")]
 script = ExtResource("1_yf1m3")
