@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cb7s04dpv0wii"]
+[gd_scene load_steps=14 format=4 uid="uid://cb7s04dpv0wii"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_6dujy"]
 [ext_resource type="PackedScene" uid="uid://d0dmbbc74cj44" path="res://Objects/Displays/single_data_display.tscn" id="7_edngt"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://b2s3n7e66scy" path="res://Assets/Textures/metal4x4.png" id="7_wyuq5"]
 [ext_resource type="PackedScene" uid="uid://dqbu1evx6i23r" path="res://Objects/Interactable/Hazards/blowtorch_poster.tscn" id="8_f3ike"]
 [ext_resource type="PackedScene" uid="uid://db36oj7ddj7qc" path="res://Objects/Interactable/pipe.tscn" id="8_l5pmu"]
-[ext_resource type="PackedScene" uid="uid://dbh5jua0uy680" path="res://Objects/Audio/reverb_zone.tscn" id="9_d57qu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7557"]
 size = Vector3(1, 7.30786, 8)
@@ -50,9 +49,6 @@ shadow_mesh = SubResource("ArrayMesh_bibkc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl8g0"]
 albedo_texture = ExtResource("7_wyuq5")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bre6j"]
-size = Vector3(48.5929, 19.9844, 21.2104)
 
 [node name="Zone2" type="Node3D" node_paths=PackedStringArray("ZoneHazards", "DataArea", "DisplayDataSingleInRoom")]
 script = ExtResource("1_6dujy")
@@ -102,19 +98,4 @@ transform = Transform3D(3.38832e-08, 0.775159, 1.28418, 1.5, -6.55671e-08, -2.00
 transform = Transform3D(-0.875533, 0.442315, 0.194419, -0.222475, -0.011873, -0.974866, -0.42889, -0.896781, 0.108799, -34.2018, 0.121491, -6.27627)
 _isHazard = false
 
-[node name="Reverb" type="Node3D" parent="."]
-
-[node name="ReverbZone" parent="Reverb" node_paths=PackedStringArray("_area") instance=ExtResource("9_d57qu")]
-transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, -0.407349, 0.550159, -1.88957)
-roomSize = 0.1
-_area = NodePath("../Area3D")
-
-[node name="Area3D" type="Area3D" parent="Reverb"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Reverb/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.795, -2.07686, -10.5492)
-shape = SubResource("BoxShape3D_bre6j")
-
 [connection signal="timeout" from="Timer" to="." method="_on_zone_timer_timeout"]
-
-[editable path="Reverb/ReverbZone"]
