@@ -38,5 +38,6 @@ public partial class Poster : Hazard
 	protected override void ActivateSpecific() {
 		_tapeSound.Play();
 		MakeUninteractable();
+		GameManager.Instance._currentScene.UpdateIntegrityPercentage();
 	}
 }
