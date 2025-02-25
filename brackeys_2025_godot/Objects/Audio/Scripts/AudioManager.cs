@@ -95,6 +95,13 @@ public partial class AudioManager : Node
 		IsEnabled = false;
 	}
 	
+	public async void DoorBreak()
+	{
+		_alarm.Play();
+		await ToSignal(GetTree().CreateTimer(1f), "timeout");
+		GameManager.Instance.SendMessage(10); //breach detected
+	}
+	
 	private void _on_timer_timeout()
 	{
 		if (IsEnabled) {

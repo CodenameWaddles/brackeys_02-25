@@ -90,4 +90,6 @@ stream = ExtResource("12_hvc4a")
 attenuation_model = 3
 volume_db = -15.0
 
+[node name="TimerBeforeAlarm" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

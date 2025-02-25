@@ -86,7 +86,7 @@ public partial class GameManager : Node
             LightManager.Instance.NextFrequency();
             LightManager.Instance.NextFrequency();
             AudioManager.Instance.NextBangingFrequency();
-            AudioManager.Instance._alarm.Play();
+            //AudioManager.Instance._alarm.Play();
             //AudioManager.Instance._alarm.Play();
         }
     }
@@ -186,8 +186,7 @@ public partial class GameManager : Node
             case 10:
                 //AnimationPlayer anim = (AnimationPlayer)GetTree().Root.GetChild(0).FindChild("Character", true).FindChild("Head").FindChild("HeadbobAnimation");
                 //anim.Play("screen_shake");
-                _audioManager._alarm.Play();
-                SendMessage(_currentSceneIndex); //breach detected
+                _audioManager.DoorBreak();
                 break;
             case 11:
                 AudioManager.Instance.NextBangingFrequency();
