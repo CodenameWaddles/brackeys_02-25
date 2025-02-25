@@ -14,9 +14,10 @@ public partial class AudioManager : Node
 	private Array<float> _bangingFrequencies = new Array<float> { 0.002f, 0.005f };
 	public float BangingFrequency { private set; get; }
 	private int _frequencyIndex = 0;
-
+	
 	public bool IsEnabled { private set; get; }
 	private AudioStreamPlayer3D _playingSound;
+	private AudioEffectReverb _defaultReverb;
 	
 	// singleton
 	private static AudioManager _instance;
@@ -35,6 +36,7 @@ public partial class AudioManager : Node
 	public override void _Ready()
 	{
 		_instance = this;
+		_defaultReverb = (AudioEffectReverb) AudioServer.GetBusEffect(0, 0);
 		BangingFrequency = _bangingFrequencies[0];
 		PlayAmbiance();
 	}
@@ -81,6 +83,20 @@ public partial class AudioManager : Node
 			_ambiance.Play();
 			await ToSignal(GetTree().CreateTimer(_ambiance.Stream.GetLength()), "timeout");
 		}
+	}
+
+	public void setBusReverb(AudioEffectReverb reverb)
+	{
+		AudioServer.RemoveBusEffect(0, 0);
+		AudioServer.AddBusEffect(0, reverb, 0);
+		GD.Print("updated reverb ! (new reverb room size = " + reverb.RoomSize + ")");
+	}
+
+	public void resetBusReverb()
+	{
+		AudioServer.RemoveBusEffect(0, 0);
+		AudioServer.AddBusEffect(0, _defaultReverb);
+		GD.Print("reset reverb");
 	}
 	
 }
