@@ -34,8 +34,8 @@ public partial class IntroZone : Node3D
 		
 		if (!introTimer.IsStopped())
 		{
-			Sprite2D sprite = (Sprite2D) introScreen.GetChild(0);
-			sprite.SetModulate(new Color(1, 1, 1, (float)(introTimer.TimeLeft/introTimer.WaitTime)));
+			ColorRect bg = (ColorRect) introScreen.GetChild(0);
+			bg.SetModulate(new Color(1, 1, 1, (float)(introTimer.TimeLeft/introTimer.WaitTime)));
 		}
 		else if(introScreen.Visible)
 		{

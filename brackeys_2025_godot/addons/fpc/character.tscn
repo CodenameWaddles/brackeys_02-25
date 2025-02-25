@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=33 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" path="res://addons/fpc/playerInteraction.cs" id="2_32abm"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c5ggskpj2mgw8" path="res://addons/fpc/reticles/reticle_2.tscn" id="4_3a7ps"]
 [ext_resource type="Script" path="res://addons/fpc/HeadLight.cs" id="5_5uauw"]
 [ext_resource type="AudioStream" uid="uid://fjswljrkup2e" path="res://Assets/Sounds/Step noise.wav" id="7_rllty"]
+[ext_resource type="AudioStream" uid="uid://dsx4tmk55qdob" path="res://Assets/Sounds/light_flicker.wav" id="8_6llff"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -439,7 +440,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215063, -0.1037, -0.304281)
 [node name="Camera" type="Camera3D" parent="Head" node_paths=PackedStringArray("_hand", "_headLight", "_UI", "_pickUpSound", "_dropSound", "_rayCast")]
 script = ExtResource("2_32abm")
 _hand = NodePath("../Hand")
-_headLight = NodePath("SpotLight3D")
+_headLight = NodePath("HeadLight")
 _UI = NodePath("../../UserInterface")
 _defaultReticle = ExtResource("3_hwxu1")
 _interactReticle = ExtResource("4_3a7ps")
@@ -455,12 +456,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera"]
+[node name="HeadLight" type="SpotLight3D" parent="Head/Camera" node_paths=PackedStringArray("_flickerSound")]
 light_color = Color(0.972549, 0.913725, 0.709804, 1)
 shadow_enabled = true
 spot_range = 10.0
 spot_angle = 30.0
 script = ExtResource("5_5uauw")
+_flickerSound = NodePath("FlickerSound")
+
+[node name="FlickerSound" type="AudioStreamPlayer3D" parent="Head/Camera/HeadLight"]
+stream = ExtResource("8_6llff")
+volume_db = -20.0
 
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {

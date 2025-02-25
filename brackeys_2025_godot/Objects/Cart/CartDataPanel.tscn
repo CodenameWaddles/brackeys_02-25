@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvkexn38lytls"]
+[gd_scene load_steps=12 format=3 uid="uid://dvkexn38lytls"]
 
 [ext_resource type="PackedScene" uid="uid://b4jj5gmlr6a0l" path="res://Objects/Interactable/double_data_input_display.tscn" id="1_cwtyk"]
 [ext_resource type="Script" path="res://Objects/Cart/CartDataPanel.cs" id="1_n5ad5"]
@@ -10,6 +10,9 @@ size = Vector3(1.9, 0.085, 1.05)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpr0b"]
 albedo_color = Color(0.705882, 0.627451, 0.533333, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4657"]
+size = Vector3(1.86145, 0.0785522, 1.01514)
 
 [sub_resource type="Animation" id="Animation_l7gna"]
 length = 0.001
@@ -88,6 +91,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.464838, 0.00844496, 0.01793
 mesh = SubResource("BoxMesh_bmuqt")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_rpr0b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RotatablePanel/Panel"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RotatablePanel/Panel/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0209351, 0.00650025, 0.00756836)
+shape = SubResource("BoxShape3D_l4657")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RotatablePanel"]
 libraries = {

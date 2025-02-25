@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://db074l5af5mv8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/IntroZone.cs" id="1_yf1m3"]
-[ext_resource type="PackedScene" path="res://UIS/intro_black_screen.tscn" id="2_5kp5t"]
+[ext_resource type="PackedScene" uid="uid://ctrbeuajjl6xc" path="res://UIS/intro_black_screen.tscn" id="2_5kp5t"]
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="2_u2gqd"]
 
 [sub_resource type="FogMaterial" id="FogMaterial_b8owy"]

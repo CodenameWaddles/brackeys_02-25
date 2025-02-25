@@ -9,7 +9,7 @@ public partial class AudioManager : Node
 	[Export] public AudioStreamPlayer3D _alarm;
 	[Export] private AudioStreamPlayer3D _ambiance;
 	[Export] private Timer _timer;
-	[Export] private Vector2 _timerMaxAndMin;
+	[Export] public Vector2 _timerMaxAndMin;
 	
 	private Array<float> _bangingFrequencies = new Array<float> { 0.002f, 0.005f };
 	public float BangingFrequency { private set; get; }
@@ -19,6 +19,7 @@ public partial class AudioManager : Node
 	private AudioStreamPlayer3D _playingSound;
 	private float _defaultRoomSize;
 	private float _targetRoomSize;
+	private bool _ambiancePlaying = true;
 	
 	// singleton
 	private static AudioManager _instance;
@@ -96,9 +97,11 @@ public partial class AudioManager : Node
 	
 	private void _on_timer_timeout()
 	{
-		PlayRandomSoundscape();
-		RandomNumberGenerator rng = new RandomNumberGenerator();
-		_timer.Start(rng.RandfRange(_timerMaxAndMin.X, _timerMaxAndMin.Y) + _playingSound.Stream.GetLength());
+		if (IsEnabled) {
+			PlayRandomSoundscape();
+			RandomNumberGenerator rng = new RandomNumberGenerator();
+			_timer.Start(rng.RandfRange(_timerMaxAndMin.X, _timerMaxAndMin.Y) + _playingSound.Stream.GetLength());
+		}
 	}
 	
 	public void NextBangingFrequency()
@@ -108,10 +111,17 @@ public partial class AudioManager : Node
 	}
 
 	private async void PlayAmbiance() {
-		while (true) {
+		while (_ambiancePlaying) {
 			_ambiance.Play();
 			await ToSignal(GetTree().CreateTimer(_ambiance.Stream.GetLength()), "timeout");
 		}
+	}
+
+	public void EndSounds() {
+		_ambiance.Stop();
+		_alarm.Stop();
+		_ambiancePlaying = false;
+		IsEnabled = false;
 	}
 
 	public void setBusReverb(float roomSize)

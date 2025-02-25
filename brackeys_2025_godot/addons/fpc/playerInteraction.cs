@@ -57,7 +57,7 @@ public partial class playerInteraction : Node3D {
             if(_hovering.IsInteractable)
                 ChangeReticle(_interactReticle);
             if (Input.IsActionPressed("interact")) {
-                _main._currentScene.UpdateIntegrityPercentage();
+                _main?._currentScene?.UpdateIntegrityPercentage();
                 if (!_justInteracted) {
                     button.Activate();
                     _justInteracted = true;

@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkfhveww4s0fl"]
+[gd_scene load_steps=15 format=3 uid="uid://dkfhveww4s0fl"]
 
 [ext_resource type="Script" path="res://Zones/Scenes/FinalZone.cs" id="1_ve4xc"]
 [ext_resource type="PackedScene" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="2_bev4c"]
+[ext_resource type="PackedScene" uid="uid://chbk61ocrl8ax" path="res://UIS/black_screen_fade_end.tscn" id="2_l1ok3"]
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="3_8ta2n"]
 [ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="4_gmkro"]
 [ext_resource type="PackedScene" uid="uid://bac6epmvhs368" path="res://Objects/Tunnel/tunnel_secours.tscn" id="5_aixni"]
 [ext_resource type="AudioStream" uid="uid://br252vna450wc" path="res://Assets/Sounds/sussy.wav" id="6_watmm"]
+[ext_resource type="AudioStream" uid="uid://dc34lh8t2mdu4" path="res://Assets/Sounds/growl.wav" id="8_njs22"]
+[ext_resource type="AudioStream" uid="uid://chxesg04xb3s4" path="res://Assets/Sounds/Soundscape 9.wav" id="9_hj4t1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21xab"]
 size = Vector3(11.3755, 7.41882, 1)
@@ -22,11 +25,15 @@ size = Vector3(13.5478, 3.85931, 1)
 density = 0.1
 albedo = Color(0.347817, 0.347817, 0.347817, 1)
 
-[node name="FinalZone" type="Node3D" node_paths=PackedStringArray("_colliderBehind", "_noiseBehind")]
+[node name="FinalZone" type="Node3D" node_paths=PackedStringArray("_colliderBehind", "_noiseBehind", "_growlSound", "_fog", "_escapeLight")]
 script = ExtResource("1_ve4xc")
 _colliderBehind = NodePath("BackCollider")
 _collisionLayerAfter = 1
 _noiseBehind = NodePath("NoiseBehindSound")
+_growlSound = NodePath("growl")
+_fog = NodePath("FogVolume")
+_escapeLight = NodePath("Node3D/TunnelSecours/Tunnel avec porte de secours/OmniLight3D")
+_blackScreen = ExtResource("2_l1ok3")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.681, 0, 200.222)
@@ -50,7 +57,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -16.5)
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -40.5)
 
 [node name="TunnelSecours" parent="Node3D" instance=ExtResource("5_aixni")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015049, 9.53674e-07, -64.901)
 
 [node name="Rails" type="Node3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53, 0)
@@ -137,17 +144,36 @@ stream = ExtResource("6_watmm")
 volume_db = 5.0
 
 [node name="HeadLightCutArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96.0075)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 97.5509)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadLightCutArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55482, 1.42966, 0)
 shape = SubResource("BoxShape3D_bk3ja")
 
 [node name="FogVolume" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92558, 6.46709, 93.7319)
-size = Vector3(40.0792, 29.2169, 143.892)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31901, 4.51647, 93.7319)
+size = Vector3(95.808, 72.7374, 143.892)
 material = SubResource("FogMaterial_tbp7y")
+
+[node name="EscapeLightCutArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 109.139)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EscapeLightCutArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55482, 1.42966, 0)
+shape = SubResource("BoxShape3D_bk3ja")
+
+[node name="growl" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.50237, 128.035)
+stream = ExtResource("8_njs22")
+attenuation_model = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_hj4t1")
 
 [connection signal="body_entered" from="CrashArea" to="." method="_on_area_3d_body_entered_change_collider"]
 [connection signal="body_entered" from="NoiseBehindArea" to="." method="_on_noise_behind_body_entered"]
 [connection signal="body_entered" from="HeadLightCutArea" to="." method="_on_head_light_cut_area_body_entered"]
+[connection signal="body_entered" from="EscapeLightCutArea" to="." method="_on_escape_light_cut_area_body_entered"]
+
+[editable path="Node3D/TunnelSecours"]
+[editable path="Node3D/TunnelSecours/Tunnel avec porte de secours"]

@@ -6,6 +6,13 @@ using Godot.Collections;
 
 public partial class GameManager : Node
 {
+    private enum GameState
+    {
+        Intro,
+        Game,
+        End
+    }
+    
     [Export] private int startIndex = 0;
     
     [Export] private Array<PackedScene> _scenes = new Array<PackedScene>();
@@ -17,6 +24,7 @@ public partial class GameManager : Node
     [Export] public AudioManager _audioManager;
     [Export] private Timer _resetRoomTimer;
     [Export] private CanvasLayer _roomFailedScreen;
+    [Export] private EndScreen _endScreen;
     
     //tunnels
     [Export] private Vector3 _tunelPosition1;
@@ -32,6 +40,7 @@ public partial class GameManager : Node
     public Zone _currentScene;
     public int _currentSceneIndex = 0;
     private Dictionary<int, String> _messages;
+    private GameState _gameState = GameState.Game;
     
     // singleton
     private static GameManager _instance;
@@ -47,14 +56,14 @@ public partial class GameManager : Node
         }
     }
 
-    public override void _Ready()
-    {
+    public override void _Ready() {
         _instance = this;
         _messages = new Dictionary<int, string>();
         SetupMessages();
         _currentSceneIndex = startIndex;
         
         _roomFailedScreen.Visible = false;
+        _endScreen.Visible = false;
         Cart.ArrivedSignal += _cartArrived;
         _player.Reparent(Cart);
         _audioManager.Disable();
@@ -83,8 +92,22 @@ public partial class GameManager : Node
 
     public override void _Process(double delta)
     {
-        if(_currentScene != null)
-            Cart.allowedToMove = _currentScene.IsComplete;
+        switch (_gameState) {
+            case GameState.Intro:
+                break;
+            case GameState.Game:
+                if(_currentScene != null)
+                    Cart.allowedToMove = _currentScene.IsComplete;
+                break;
+            case GameState.End:
+                break;
+        }
+
+        if (Input.IsActionJustPressed("exit")) {
+            GD.Print("exit");
+            GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
+            GetTree().Quit();
+        }
     }
 
     private void _loadScene(int sceneIndex)
@@ -236,7 +259,7 @@ public partial class GameManager : Node
 
     private void SetupMessages()
     {
-        _messages.Add(-1, "Big tests coming up today. Make sure to input every data from the facility's screens in the cart's terminal.");
+        _messages.Add(-1, "Big tests coming up today. Make sure to input every data sample from the facility's screens in the cart's terminal.");
         _messages.Add(2, "Lot of trash today. There should be enough room for it under the cart's shelf.");
         _messages.Add(3, "Burn everything properly.");
         _messages.Add(4, "Issues detected. Use tools to maintain structural integrity.");
@@ -292,5 +315,18 @@ public partial class GameManager : Node
         Cart._state = Cart.State.Moving;
 
         _currentSceneIndex = -1;
+    }
+
+    public void EndGame() {
+        _endScreen.Visible = true;
+        _gameState = GameState.End;
+        _endScreen.StartCredits();
+    }
+
+    public void DisablePlayer() {
+        _player.AxisLockLinearX = true;
+        _player.AxisLockLinearY = true;
+        _player.AxisLockLinearZ = true;
+        _player.DisableMode = CollisionObject3D.DisableModeEnum.MakeStatic;
     }
 }

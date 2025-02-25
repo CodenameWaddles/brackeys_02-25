@@ -14,7 +14,7 @@ public partial class Light : OmniLight3D
 
 	public bool _on = true;
 	
-	private Vector3 _offColor = new(0.05f, 0.05f, 0.05f);
+	[Export] private Vector3 _offColor = new(0.05f, 0.05f, 0.05f);
 	private const int _maxFlickers = 5;
 	private Array<MeshInstance3D> _mesh = new();
 	
@@ -59,6 +59,12 @@ public partial class Light : OmniLight3D
 		foreach (MeshInstance3D mesh in _mesh) {
 			mesh.SetInstanceShaderParameter("color", _onColor);
 		}
+
+		if (_isEscapeLight) {
+			foreach (MeshInstance3D mesh in _mesh) {
+				mesh.Visible = true;
+			}
+		}
 	}
 	
 	private void Deactivate() {
@@ -66,6 +72,11 @@ public partial class Light : OmniLight3D
 		_audioPlayer.Play();
 		foreach (MeshInstance3D mesh in _mesh) {
 			mesh.SetInstanceShaderParameter("color", _offColor);
+		}
+		if (_isEscapeLight) {
+			foreach (MeshInstance3D mesh in _mesh) {
+				mesh.Visible = false;
+			}
 		}
 	}
 
@@ -77,6 +88,9 @@ public partial class Light : OmniLight3D
 			await ToSignal(GetTree().CreateTimer(rng.RandfRange(0.05f, 0.3f)), "timeout");
 			Activate();
 			await ToSignal(GetTree().CreateTimer(rng.RandfRange(0.05f, 0.3f)), "timeout");
+		}
+		if(_isEscapeLight) {
+			await ToSignal(GetTree().CreateTimer(0.4f), "timeout");
 		}
 		if(turnOff) {
 			Deactivate();
