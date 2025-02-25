@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://hxs0ge4skkij"]
+
+[sub_resource type="Curve" id="Curve_uh8q7"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.0322581, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pqcpt"]
+curve = SubResource("Curve_uh8q7")
+
+[sub_resource type="Gradient" id="Gradient_2ltkk"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0mokk"]
+gradient = SubResource("Gradient_2ltkk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j1nin"]
+lifetime_randomness = 0.1
+angle_min = -235.8
+angle_max = 268.6
+angle_curve = SubResource("CurveTexture_pqcpt")
+direction = Vector3(0, 1, 0)
+spread = 0.4
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+gravity = Vector3(0, -4.905, 0)
+linear_accel_min = -7.75
+linear_accel_max = 2.81
+scale_min = 0.1
+scale_max = 2.0
+scale_over_velocity_min = 225.0
+scale_over_velocity_max = 258.33
+color_initial_ramp = SubResource("GradientTexture1D_0mokk")
+turbulence_enabled = true
+turbulence_noise_strength = 0.58
+turbulence_noise_scale = 1.778
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlivv"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.956863, 0.815686, 0.172549, 0.823529)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l8rtf"]
+material = SubResource("StandardMaterial3D_rlivv")
+size = Vector3(0.01, 0.1, 0.01)
+
+[node name="sparks_particles" type="GPUParticles3D"]
+transform = Transform3D(0.442242, -0.896896, 0, 0.896896, 0.442242, 0, 0, 0, 1, -0.0154746, 0, 0)
+amount = 200
+interp_to_end = 0.05
+speed_scale = 1.5
+explosiveness = 0.03
+process_material = SubResource("ParticleProcessMaterial_j1nin")
+draw_pass_1 = SubResource("BoxMesh_l8rtf")
