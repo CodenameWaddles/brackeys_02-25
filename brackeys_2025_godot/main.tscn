@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=31 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://brlq4ot8qypvv" path="res://Zones/Scenes/zone_9.tscn" id="2_2apei"]
@@ -9,13 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="4_l5hq1"]
 [ext_resource type="PackedScene" uid="uid://dlmx0mcf2pncd" path="res://Zones/Scenes/zone_4.tscn" id="5_ueelr"]
 [ext_resource type="PackedScene" uid="uid://dduv5oiom5jd8" path="res://Zones/Scenes/zone_5.tscn" id="6_m1i8t"]
-[ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="6_rr8l2"]
 [ext_resource type="PackedScene" uid="uid://cjyky644ylaof" path="res://Zones/Scenes/zone_6.tscn" id="7_a5t7k"]
-[ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/tape.tscn" id="7_l66rf"]
 [ext_resource type="PackedScene" uid="uid://sjjavwf3a570" path="res://Zones/Scenes/zone_7.tscn" id="8_5vsux"]
 [ext_resource type="Script" path="res://Zones/Scripts/LightManager.cs" id="8_rio7b"]
 [ext_resource type="PackedScene" uid="uid://n5yokdmfhjnb" path="res://Zones/Scenes/tunnel_side.tscn" id="8_yx5qa"]
-[ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="9_bni7l"]
 [ext_resource type="PackedScene" uid="uid://bjvjidsafjj8e" path="res://Zones/Scenes/zone_8.tscn" id="9_wnaab"]
 [ext_resource type="PackedScene" uid="uid://dqopj1jwrwxhg" path="res://Zones/Scenes/zone_10.tscn" id="11_f4bw3"]
 [ext_resource type="PackedScene" uid="uid://b3e0tj0ry08qf" path="res://Zones/Scenes/zone_11.tscn" id="12_6lbj4"]
@@ -70,15 +67,6 @@ script = ExtResource("8_rio7b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.676, 1.802, 290)
 _player = NodePath("../Character")
 
-[node name="Blowtorch" parent="cart" instance=ExtResource("6_rr8l2")]
-transform = Transform3D(0.973154, 0, 0.230241, 0, 1, 0, -0.230241, 0, 0.973154, -0.754852, 0.311506, -1.67819)
-
-[node name="Shovel" parent="cart" instance=ExtResource("9_bni7l")]
-transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -0.507917, 1.05105, -1.62469)
-
-[node name="Tape" parent="cart" instance=ExtResource("7_l66rf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.359502, 0.155308, -1.66697)
-
 [node name="Character" parent="." instance=ExtResource("4_l5hq1")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.685363, 1.02907, 289.8)
 
@@ -99,8 +87,7 @@ mesh = SubResource("BoxMesh_j74ki")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5v3ka")
 
-[node name="AudioManager" parent="." node_paths=PackedStringArray("_doorBreaking") instance=ExtResource("13_2yeii")]
-_doorBreaking = NodePath("")
+[node name="AudioManager" parent="." instance=ExtResource("13_2yeii")]
 
 [node name="FailedRoomScreen" parent="." instance=ExtResource("15_xa325")]
 

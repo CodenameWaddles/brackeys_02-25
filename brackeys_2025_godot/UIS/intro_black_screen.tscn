@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctrbeuajjl6xc"]
+[gd_scene load_steps=8 format=3 uid="uid://ctrbeuajjl6xc"]
 
+[ext_resource type="Script" path="res://UIS/IntroBlackScreen.cs" id="1_ud25y"]
 [ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="2_i37ck"]
 [ext_resource type="AudioStream" uid="uid://dsx4tmk55qdob" path="res://Assets/Sounds/light_flicker.wav" id="3_0usd0"]
+[ext_resource type="AudioStream" uid="uid://ceb610kqnerst" path="res://Assets/Sounds/decrement.wav" id="4_6f8ck"]
 
 [sub_resource type="Animation" id="Animation_8viu8"]
 length = 0.001
@@ -52,7 +54,10 @@ _data = {
 "flicker": SubResource("Animation_bgmwl")
 }
 
-[node name="IntroBlackScreen" type="CanvasLayer"]
+[node name="IntroBlackScreen" type="CanvasLayer" node_paths=PackedStringArray("_label", "_typingSound")]
+script = ExtResource("1_ud25y")
+_label = NodePath("Label")
+_typingSound = NodePath("typingSound")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -75,9 +80,9 @@ offset_right = 300.0
 offset_bottom = 61.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.74902, 0, 1)
 theme_override_fonts/font = ExtResource("2_i37ck")
 theme_override_font_sizes/font_size = 150
-text = "Forgotten depths"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -90,3 +95,7 @@ libraries = {
 stream = ExtResource("3_0usd0")
 attenuation_model = 3
 volume_db = 10.0
+
+[node name="typingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6f8ck")
+volume_db = -15.0

@@ -9,17 +9,17 @@ public partial class EndScreen : CanvasLayer {
 	[Export] private AudioStreamPlayer _typingSound;
 	[Export] private AudioStreamPlayer _music;
 	
-	private Array<String> _credits = new Array<String> {
-		"> Forgotten Depths",
+	private Array<String> _credits = new() {
+		"> Wretched abyss",
 		"\n \n> Made for Brackeys Game Jam 2025.1",
 		"\n \n> Game Design",
-		"\n \n> Justin Lepine",
+		"\n \n> Justin Lépine",
 		"\n \n> Programming",
-		"\n \n> Rémi Decoutrieux and Clovie Thouvenot Oudart",
+		"\n \n> Rémi Ducourtieux and Clovie Thouvenot Oudart",
 		"\n \n> Art",
-		"\n \n> Gwenn ???",
+		"\n \n> Gwenn Tran Son Tay",
 		"\n \n> Music and sound",
-		"\n \n> Térence ???",
+		"\n \n> Térence Mathias",
 		"\n \n> Thank you for playing",
 	};
 	

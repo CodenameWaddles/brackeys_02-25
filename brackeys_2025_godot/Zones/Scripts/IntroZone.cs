@@ -3,7 +3,7 @@ using System;
 
 public partial class IntroZone : Node3D
 {
-	[Export] CanvasLayer introScreen;
+	[Export] IntroBlackScreen introScreen;
 	[Export] Timer blackScreenTimer;
 	[Export] Timer introTimer;
 	[Export] private Timer timeBeforeFirstMessage;
@@ -42,7 +42,7 @@ public partial class IntroZone : Node3D
 			AnimationPlayer anim = introScreen.GetNode<AnimationPlayer>("AnimationPlayer");
 			if(!anim.IsPlaying())
 			{
-				introScreen.Visible = false;
+				//introScreen.Visible = false;
 				if (timeBeforeFirstMessage.IsStopped())
 				{
 					timeBeforeFirstMessage.Start();
@@ -60,9 +60,15 @@ public partial class IntroZone : Node3D
 	public void OnIntroTimerTimeout()
 	{
 		introTimer.Stop();
-		AnimationPlayer anim = introScreen.GetNode<AnimationPlayer>("AnimationPlayer");
-		anim.Play("flicker");
-		GD.Print("anim playing : " + anim.CurrentAnimation);
+		StartDeleteText();
+		// AnimationPlayer anim = introScreen.GetNode<AnimationPlayer>("AnimationPlayer");
+		// anim.Play("flicker");
+		// GD.Print("anim playing : " + anim.CurrentAnimation);
+	}
+
+	private async void StartDeleteText() {
+		await introScreen.DeleteText(0.12f);
+		introScreen.Visible = false;
 	}
 	
 	public void OnTimeBeforeFirstMessageTimeout()

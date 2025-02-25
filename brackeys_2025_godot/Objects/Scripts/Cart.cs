@@ -15,6 +15,7 @@ public partial class Cart : Node3D {
     
     [Export] private CollisionShape3D _doorCollider;
     [Export] private AnimationPlayer _animationPlayer;
+    [Export] private AnimationTree _bounceAnimation;
     [Export] private CharacterBody3D _player;
     [Export] private AnimationTree _lampAnimation;
     [Export] public ConsoleScreen ConsoleScreen;
@@ -95,6 +96,8 @@ public partial class Cart : Node3D {
                 _speed = Mathf.Lerp(_speed, InitialSpeed, LerpWeight);
                 _lampAnimation.Set("parameters/conditions/stopCart", false);
                 _lampAnimation.Set("parameters/conditions/startCart", true);
+                _bounceAnimation.Set("parameters/conditions/start_bounce", true);
+                _bounceAnimation.Set("parameters/conditions/stop_bounce", false);
             }
             if (_speed > InitialSpeed - 0.1)
             {
@@ -161,6 +164,8 @@ public partial class Cart : Node3D {
         _state = State.Stopping;
         _lampAnimation.Set("parameters/conditions/stopCart", true);
         _lampAnimation.Set("parameters/conditions/startCart", false);
+        _bounceAnimation.Set("parameters/conditions/start_bounce", false);
+        _bounceAnimation.Set("parameters/conditions/stop_bounce", true);
     }
     
     public void Start() {

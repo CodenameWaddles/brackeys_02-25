@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bsv0rixeuanqn"]
+[gd_scene load_steps=72 format=3 uid="uid://bsv0rixeuanqn"]
 
 [ext_resource type="AudioStream" uid="uid://clsvq7b4yylfu" path="res://Assets/Sounds/Boucle son train.wav" id="2_0k18e"]
 [ext_resource type="AudioStream" uid="uid://cvfy6q83tt4xl" path="res://Assets/Sounds/Door Opening 1.2.wav" id="2_hp8xq"]
@@ -34,6 +34,9 @@
 [ext_resource type="PackedScene" uid="uid://uvcd56ttrfp4" path="res://Objects/Interactable/Tools/trash_deposit_in_cart.tscn" id="22_x0php"]
 [ext_resource type="PackedScene" uid="uid://tfjhmsgwhlmh" path="res://Objects/Displays/cart_map.tscn" id="23_6leo0"]
 [ext_resource type="PackedScene" uid="uid://cbsfqmeyhsf4e" path="res://Objects/Cart/speakerModel.tscn" id="24_u3cyw"]
+[ext_resource type="PackedScene" uid="uid://bbkr04vo7uhhe" path="res://Objects/Interactable/Tools/blowtorch.tscn" id="35_e2xoj"]
+[ext_resource type="PackedScene" uid="uid://dxomfx6j7lo8m" path="res://Objects/Interactable/Tools/shovel.tscn" id="36_ja1ia"]
+[ext_resource type="PackedScene" uid="uid://boarjyoukplhw" path="res://Objects/Interactable/Tools/tape.tscn" id="37_rnbau"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dyco1"]
 size = Vector3(1.7416, 1, 3.26901)
@@ -52,7 +55,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Wagonnet_Door_rotate_color:rotation")
+tracks/0/path = NodePath("Node3D/Wagonnet_Door_rotate_color:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,7 +70,7 @@ resource_name = "close_door"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Wagonnet_Door_rotate_color:rotation")
+tracks/0/path = NodePath("Node3D/Wagonnet_Door_rotate_color:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,7 +85,7 @@ resource_name = "open_door"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Wagonnet_Door_rotate_color:rotation")
+tracks/0/path = NodePath("Node3D/Wagonnet_Door_rotate_color:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -208,179 +211,293 @@ states/start_dangle/node = SubResource("AnimationNodeAnimation_bkjjp")
 states/start_dangle/position = Vector2(442, 63)
 transitions = ["Start", "idle_move", SubResource("AnimationNodeStateMachineTransition_dgkq3"), "start_dangle", "idle_move", SubResource("AnimationNodeStateMachineTransition_y02y4"), "idle_move", "dangle_idle", SubResource("AnimationNodeStateMachineTransition_8yebu"), "dangle_idle", "start_dangle", SubResource("AnimationNodeStateMachineTransition_nogxl")]
 
-[node name="Cart" type="Node3D" node_paths=PackedStringArray("_doorCollider", "_animationPlayer", "_lampAnimation", "ConsoleScreen", "StabilityMeter", "CartTimer1", "CartTimer2", "TrashDeposit", "CartMap", "CartLight", "_quaiCollider", "_wheels", "_brakes", "_doorClosing", "_doorOpening", "_bell", "_alarm", "_music1", "_music2", "_toolSound", "_shelfDoor1", "_shelfDoor2", "CartDataPanel", "PressButton") groups=["cart"]]
+[sub_resource type="Animation" id="Animation_6a2kk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4nlf8"]
+resource_name = "bounce"
+length = 0.72
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72),
+"transitions": PackedFloat32Array(0.9, 1.1, 0.9, 1.1, 0.9, 1.1, 0.9),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.025, 0), Vector3(0, 0, 0), Vector3(0, 0.04, 0), Vector3(0, 0, 0), Vector3(0, 0.03, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_exfxq"]
+resource_name = "start_bounce"
+length = 1.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.55, 0.8, 1, 1.15, 1.3),
+"transitions": PackedFloat32Array(0.9, 1.1, 0.9, 1.1, 0.9, 1.1, 0.9),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.025, 0), Vector3(0, 0, 0), Vector3(0, 0.025, 0), Vector3(0, 0, 0), Vector3(0, 0.025, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f6c6d"]
+resource_name = "stop_bounce"
+length = 1.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.55, 0.8, 1, 1.15, 1.3),
+"transitions": PackedFloat32Array(0.9, 1.1, 0.9, 1.1, 0.9, 1.1, 0.9),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.025, 0), Vector3(0, 0, 0), Vector3(0, 0.025, 0), Vector3(0, 0, 0), Vector3(0, 0.025, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hun8s"]
+_data = {
+"RESET": SubResource("Animation_6a2kk"),
+"bounce": SubResource("Animation_4nlf8"),
+"start_bounce": SubResource("Animation_exfxq"),
+"stop_bounce": SubResource("Animation_f6c6d")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_exu4d"]
+animation = &"bounce"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8sext"]
+animation = &"start_bounce"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvc6e"]
+animation = &"stop_bounce"
+play_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kvnwh"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_isu87"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6nu5b"]
+advance_mode = 2
+advance_condition = &"stop_bounce"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rm8r5"]
+advance_mode = 2
+advance_condition = &"start_bounce"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1mvni"]
+states/Start/position = Vector2(192, 156)
+states/bounce/node = SubResource("AnimationNodeAnimation_exu4d")
+states/bounce/position = Vector2(438, 195)
+states/start_bounce/node = SubResource("AnimationNodeAnimation_8sext")
+states/start_bounce/position = Vector2(358, 84)
+states/stop_bounce/node = SubResource("AnimationNodeAnimation_uvc6e")
+states/stop_bounce/position = Vector2(560, 95)
+transitions = ["Start", "bounce", SubResource("AnimationNodeStateMachineTransition_kvnwh"), "start_bounce", "bounce", SubResource("AnimationNodeStateMachineTransition_isu87"), "bounce", "stop_bounce", SubResource("AnimationNodeStateMachineTransition_6nu5b"), "stop_bounce", "start_bounce", SubResource("AnimationNodeStateMachineTransition_rm8r5")]
+
+[node name="Cart" type="Node3D" node_paths=PackedStringArray("_doorCollider", "_animationPlayer", "_bounceAnimation", "_lampAnimation", "ConsoleScreen", "StabilityMeter", "CartTimer1", "CartTimer2", "TrashDeposit", "CartMap", "CartLight", "_quaiCollider", "_wheels", "_brakes", "_doorClosing", "_doorOpening", "_bell", "_alarm", "_music1", "_music2", "_toolSound", "_shelfDoor1", "_shelfDoor2", "CartDataPanel", "PressButton") groups=["cart"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.77104, 0)
 script = ExtResource("2_xofmn")
-_doorCollider = NodePath("DoorCollider/CollisionShape3D")
-_animationPlayer = NodePath("AnimationPlayer")
-_lampAnimation = NodePath("Lamp/AnimationTree")
-ConsoleScreen = NodePath("ConsoleScreen")
-StabilityMeter = NodePath("StabilityMeter")
-CartTimer1 = NodePath("CartTimer")
-CartTimer2 = NodePath("CartTimer2")
-TrashDeposit = NodePath("TrashDepositInCart")
-CartMap = NodePath("CartMap")
-CartLight = NodePath("Lamp/OmniLight3D")
-_quaiCollider = NodePath("QuaiColliders")
-_wheels = NodePath("AudioPlayers/Wheels")
-_brakes = NodePath("AudioPlayers/Brakes")
-_doorClosing = NodePath("AudioPlayers/DoorClosing")
-_doorOpening = NodePath("AudioPlayers/DoorOpenning")
-_bell = NodePath("AudioPlayers/Bell")
-_alarm = NodePath("AudioPlayers/Alarm")
-_music1 = NodePath("AudioPlayers/Music1")
-_music2 = NodePath("AudioPlayers/Music2")
-_toolSound = NodePath("AudioPlayers/Tools")
-_shelfDoor1 = NodePath("ShelfDoor")
-_shelfDoor2 = NodePath("ShelfDoor2")
-CartDataPanel = NodePath("CartDataPanel")
-PressButton = NodePath("PressButton")
+_doorCollider = NodePath("Node3D/DoorCollider/CollisionShape3D")
+_animationPlayer = NodePath("Node3D/AnimationPlayer")
+_bounceAnimation = NodePath("Node3D/bounceAnimationTree")
+_lampAnimation = NodePath("Node3D/Lamp/AnimationTree")
+ConsoleScreen = NodePath("Node3D/ConsoleScreen")
+StabilityMeter = NodePath("Node3D/StabilityMeter")
+CartTimer1 = NodePath("Node3D/CartTimer")
+CartTimer2 = NodePath("Node3D/CartTimer2")
+TrashDeposit = NodePath("Node3D/TrashDepositInCart")
+CartMap = NodePath("Node3D/CartMap")
+CartLight = NodePath("Node3D/Lamp/OmniLight3D")
+_quaiCollider = NodePath("Node3D/QuaiColliders")
+_wheels = NodePath("Node3D/AudioPlayers/Wheels")
+_brakes = NodePath("Node3D/AudioPlayers/Brakes")
+_doorClosing = NodePath("Node3D/AudioPlayers/DoorClosing")
+_doorOpening = NodePath("Node3D/AudioPlayers/DoorOpenning")
+_bell = NodePath("Node3D/AudioPlayers/Bell")
+_alarm = NodePath("Node3D/AudioPlayers/Alarm")
+_music1 = NodePath("Node3D/AudioPlayers/Music1")
+_music2 = NodePath("Node3D/AudioPlayers/Music2")
+_toolSound = NodePath("Node3D/AudioPlayers/Tools")
+_shelfDoor1 = NodePath("Node3D/ShelfDoor")
+_shelfDoor2 = NodePath("Node3D/ShelfDoor2")
+CartDataPanel = NodePath("Node3D/CartDataPanel")
+PressButton = NodePath("Node3D/PressButton")
 InitialSpeed = 12.0
 StartStopTime = 6.0
 
-[node name="AudioPlayers" type="Node3D" parent="."]
+[node name="Node3D" type="Node3D" parent="."]
 
-[node name="Brakes" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+[node name="AudioPlayers" type="Node3D" parent="Node3D"]
+
+[node name="Brakes" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.774085, -1.84116)
 stream = ExtResource("2_rpcvo")
 volume_db = -30.0
 
-[node name="Wheels" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+[node name="Wheels" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0573846, -0.628287, -0.0965266)
 stream = ExtResource("2_0k18e")
 volume_db = -30.0
 
-[node name="DoorOpenning" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+[node name="DoorOpenning" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 stream = ExtResource("2_hp8xq")
 volume_db = -20.0
 
-[node name="DoorClosing" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+[node name="DoorClosing" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 stream = ExtResource("3_judbj")
 volume_db = -20.0
 
-[node name="Bell" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+[node name="Bell" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.509088, 0, 1.3878)
 stream = ExtResource("6_vhu3g")
 volume_db = -25.0
 
-[node name="Alarm" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+[node name="Alarm" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.743439, 0.373537, 1.50343)
 stream = ExtResource("7_6pcuv")
 volume_db = 5.0
 
-[node name="Music1" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+[node name="Music1" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223682, 0.358515, 1.78867)
 stream = ExtResource("5_twj6f")
 volume_db = 40.0
 
-[node name="Music2" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+[node name="Music2" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223682, 0.358515, 1.78867)
 stream = ExtResource("6_vd27b")
 volume_db = -20.0
 
-[node name="Tools" type="AudioStreamPlayer3D" parent="AudioPlayers"]
+[node name="Tools" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.506189, 0.771365, -1.67223)
 stream = ExtResource("10_27343")
 volume_db = -20.0
 
-[node name="SamSpeaker" type="Node3D" parent="AudioPlayers" node_paths=PackedStringArray("_audioPlayers", "_stabilityAudios")]
+[node name="SamSpeaker" type="Node3D" parent="Node3D/AudioPlayers" node_paths=PackedStringArray("_audioPlayers", "_stabilityAudios")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223682, 0.358515, 1.78867)
 script = ExtResource("11_p3e0r")
 _audioPlayers = [NodePath("generator"), NodePath("water"), NodePath("trash"), NodePath("burn"), NodePath("contain")]
 _stabilityAudios = [NodePath("stabLow"), NodePath("stabMed"), NodePath("StabHigh")]
 
-[node name="generator" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+[node name="generator" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers/SamSpeaker"]
 stream = ExtResource("11_3sa2y")
 volume_db = -25.0
 
-[node name="water" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+[node name="water" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers/SamSpeaker"]
 stream = ExtResource("12_2bqui")
 volume_db = -25.0
 
-[node name="trash" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+[node name="trash" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers/SamSpeaker"]
 stream = ExtResource("13_p2mrl")
 volume_db = -25.0
 
-[node name="burn" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+[node name="burn" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers/SamSpeaker"]
 stream = ExtResource("14_ajfiw")
 volume_db = -25.0
 
-[node name="contain" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+[node name="contain" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers/SamSpeaker"]
 stream = ExtResource("15_gf0pb")
 volume_db = -25.0
 
-[node name="stabLow" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+[node name="stabLow" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers/SamSpeaker"]
 stream = ExtResource("17_ge1uc")
 volume_db = -25.0
 
-[node name="stabMed" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+[node name="stabMed" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers/SamSpeaker"]
 stream = ExtResource("18_jsani")
 volume_db = -25.0
 
-[node name="StabHigh" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+[node name="StabHigh" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers/SamSpeaker"]
 stream = ExtResource("19_k1kur")
 volume_db = -25.0
 
-[node name="StabExtreme" type="AudioStreamPlayer3D" parent="AudioPlayers/SamSpeaker"]
+[node name="StabExtreme" type="AudioStreamPlayer3D" parent="Node3D/AudioPlayers/SamSpeaker"]
 
-[node name="PlayerDetectionArea" type="Area3D" parent="."]
+[node name="PlayerDetectionArea" type="Area3D" parent="Node3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/PlayerDetectionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128713, 0, 0.218948)
 shape = SubResource("BoxShape3D_dyco1")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="Node3D"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
 transform = Transform3D(0, -0.001, 0, 0.001, 0, 0, 0, 0, 0.001, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_6nl04")
 
-[node name="QuaiColliders" type="StaticBody3D" parent="."]
+[node name="QuaiColliders" type="StaticBody3D" parent="Node3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="QuaiColliders"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/QuaiColliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.732896, 0.347229, -7.39922)
 shape = SubResource("BoxShape3D_8lc1x")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="QuaiColliders"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/QuaiColliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.747627, 0.347229, 7.51796)
 shape = SubResource("BoxShape3D_8lc1x")
 
-[node name="CartCollider" type="StaticBody3D" parent="." groups=["cart"]]
+[node name="CartCollider" type="StaticBody3D" parent="Node3D" groups=["cart"]]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CartCollider"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/CartCollider"]
 transform = Transform3D(0, -0.001, 0, 0.001, 0, 0, 0, 0, 0.001, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_6nl04")
 
-[node name="DoorCollider" type="StaticBody3D" parent="."]
+[node name="DoorCollider" type="StaticBody3D" parent="Node3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorCollider"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/DoorCollider"]
 transform = Transform3D(-0.0012, 0, -1.81195e-10, 0, 0.0012, 0, 1.81195e-10, 0, -0.0012, -1.02, -0.6, 0)
 shape = SubResource("ConcavePolygonShape3D_txxvo")
 
-[node name="Wagonnet_Door_rotate_color" parent="." instance=ExtResource("9_333ab")]
+[node name="Wagonnet_Door_rotate_color" parent="Node3D" instance=ExtResource("9_333ab")]
 transform = Transform3D(-1.19708, -0.083708, 3.04222e-06, -0.083708, 1.19708, 0, -3.03482e-06, -2.12215e-07, -1.2, -1.03369, 0.13, -0.651)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_y8myk")
 }
 
-[node name="PressButton" parent="." instance=ExtResource("7_qxems")]
+[node name="PressButton" parent="Node3D" instance=ExtResource("7_qxems")]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.189592, 0.258392, 1.4911)
 
-[node name="ConsoleScreen" parent="." instance=ExtResource("6_q21cd")]
+[node name="ConsoleScreen" parent="Node3D" instance=ExtResource("6_q21cd")]
 transform = Transform3D(0.35, 0, 0, 0, 0.327462, 0.123568, 0, -0.123568, 0.327462, -0.466378, 0.326211, 1.49449)
 
-[node name="Lamp" type="Node3D" parent="."]
+[node name="Lamp" type="Node3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.255476, 2.19896, 0.740992)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lamp" node_paths=PackedStringArray("_bulbNode", "_audioPlayer")]
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D/Lamp" node_paths=PackedStringArray("_bulbNode", "_audioPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441697, 0)
 light_color = Color(0.972497, 0.912668, 0.710021, 1)
 shadow_enabled = true
@@ -393,56 +510,78 @@ _audioPlayer = NodePath("../AudioStreamPlayer3D")
 _flickerSound = ExtResource("12_kfh6o")
 _flickering = false
 
-[node name="Wagonnet Lantern2" parent="Lamp" instance=ExtResource("9_8qt2n")]
+[node name="Wagonnet Lantern2" parent="Node3D/Lamp" instance=ExtResource("9_8qt2n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441697, 0)
 
-[node name="Ampoule lanterne" parent="Lamp" instance=ExtResource("10_v02ti")]
+[node name="Ampoule lanterne" parent="Node3D/Lamp" instance=ExtResource("10_v02ti")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441697, 0)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lamp"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Node3D/Lamp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.441697, -5.96046e-08)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Lamp"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D/Lamp"]
 libraries = {
 "": SubResource("AnimationLibrary_txhbq")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="Lamp"]
+[node name="AnimationTree" type="AnimationTree" parent="Node3D/Lamp"]
 tree_root = SubResource("AnimationNodeStateMachine_s702p")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/startCart = true
 parameters/conditions/stopCart = false
 
-[node name="cart_color3" parent="." instance=ExtResource("8_jxvai")]
+[node name="cart_color3" parent="Node3D" instance=ExtResource("8_jxvai")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 
-[node name="CartDataPanel" parent="." instance=ExtResource("9_3h43f")]
+[node name="CartDataPanel" parent="Node3D" instance=ExtResource("9_3h43f")]
 transform = Transform3D(-0.5, -7.43509e-08, 1.31101e-08, 0, 0.086824, 0.492404, -7.54979e-08, 0.492404, -0.086824, 0.728021, 0.443198, -1.41978)
 
-[node name="ShelfDoor" parent="." instance=ExtResource("19_nqy77")]
+[node name="ShelfDoor" parent="Node3D" instance=ExtResource("19_nqy77")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.496851, 0.24173, -1.39661)
 
-[node name="ShelfDoor2" parent="." instance=ExtResource("19_nqy77")]
+[node name="ShelfDoor2" parent="Node3D" instance=ExtResource("19_nqy77")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.496851, 0.817486, -1.39661)
 
-[node name="StabilityMeter" parent="." instance=ExtResource("20_d7ntm")]
+[node name="StabilityMeter" parent="Node3D" instance=ExtResource("20_d7ntm")]
 transform = Transform3D(-5.06664e-08, -1.3576e-08, 1.2, -0.310583, 1.15911, 0, -1.15911, -0.310583, -5.24537e-08, 0.459061, 0.171151, 1.19548)
 
-[node name="CartTimer" parent="." instance=ExtResource("21_wnvkv")]
+[node name="CartTimer" parent="Node3D" instance=ExtResource("21_wnvkv")]
 transform = Transform3D(-8.74228e-09, -0.2, 0, -8.74228e-09, 3.82137e-16, -0.2, 0.2, -8.74228e-09, -8.74228e-09, -1.08118, 0.964748, -1.66977)
 
-[node name="CartTimer2" parent="." instance=ExtResource("21_wnvkv")]
+[node name="CartTimer2" parent="Node3D" instance=ExtResource("21_wnvkv")]
 transform = Transform3D(-0.2, 5.98007e-09, 1.64301e-08, 0, 0.187939, -0.068404, -1.74846e-08, -0.068404, -0.187939, 0.668517, 0.327956, 1.58912)
 
-[node name="CartMap" parent="." instance=ExtResource("23_6leo0")]
+[node name="CartMap" parent="Node3D" instance=ExtResource("23_6leo0")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.488295, 1.04857, -1.37649)
 
-[node name="speaker" parent="." instance=ExtResource("24_u3cyw")]
+[node name="speaker" parent="Node3D" instance=ExtResource("24_u3cyw")]
 transform = Transform3D(0.13, 0, 0, 0, 0.122917, 0.0423239, 0, -0.0423239, 0.122917, 0.19, 0.323, 1.806)
 
-[node name="TrashDepositInCart" parent="." instance=ExtResource("22_x0php")]
+[node name="TrashDepositInCart" parent="Node3D" instance=ExtResource("22_x0php")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0940199, -1.21548)
 
-[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_body_entered"]
-[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_body_exited"]
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]
+[node name="bounceAnimation" type="AnimationPlayer" parent="Node3D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_hun8s")
+}
+
+[node name="bounceAnimationTree" type="AnimationTree" parent="Node3D"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_1mvni")
+anim_player = NodePath("../bounceAnimation")
+parameters/conditions/start_bounce = false
+parameters/conditions/stop_bounce = false
+
+[node name="Blowtorch" parent="Node3D" instance=ExtResource("35_e2xoj")]
+transform = Transform3D(0.973154, 0, 0.230241, 0, 1, 0, -0.230241, 0, 0.973154, -0.754852, 0.289231, -1.67819)
+
+[node name="Shovel" parent="Node3D" instance=ExtResource("36_ja1ia")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -0.528996, 1.07393, -1.62469)
+
+[node name="Tape" parent="Node3D" instance=ExtResource("37_rnbau")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.359502, 0.162675, -1.66697)
+
+[connection signal="body_entered" from="Node3D/PlayerDetectionArea" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="Node3D/PlayerDetectionArea" to="." method="_on_player_detection_body_exited"]
+[connection signal="area_entered" from="Node3D/Area3D" to="." method="_on_area_entered"]
