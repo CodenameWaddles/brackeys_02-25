@@ -10,7 +10,7 @@ public partial class EndScreen : CanvasLayer {
 	[Export] private AudioStreamPlayer _music;
 	
 	private Array<String> _credits = new() {
-		"> Wretched abyss",
+		"> Forgotten abyss",
 		"\n \n> Made for Brackeys Game Jam 2025.1",
 		"\n \n> Game Design",
 		"\n \n> Justin Lépine",

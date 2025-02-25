@@ -15,7 +15,7 @@ public partial class IntroBlackScreen : CanvasLayer
 
 	public async void TypeIntroText() {
 		await ToSignal(GetTree().CreateTimer(1f), "timeout");
-		TypeText("Wretched abyss", 0.12f);
+		TypeText("Forgotten Abyss", 0.12f);
 	}
 	
 	public async void TypeText(string text, float speed) {
