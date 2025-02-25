@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Zones/Scripts/Zone.cs" id="1_g5dbk"]
 [ext_resource type="PackedScene" uid="uid://cpp6o5ot1hulo" path="res://Objects/Tunnel/quai.tscn" id="2_g7rqd"]
-[ext_resource type="PackedScene" uid="uid://c6lrj7jan2kfl" path="res://Zones/RoomsModelsNodes/trash.tscn" id="3_we8jr"]
+[ext_resource type="PackedScene" path="res://Zones/RoomsModelsNodes/trash.tscn" id="3_we8jr"]
 [ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="4_vc08y"]
 [ext_resource type="PackedScene" uid="uid://gx5bpsg13ion" path="res://Objects/Displays/double_data_display.tscn" id="5_jwly0"]
 [ext_resource type="PackedScene" uid="uid://d2omwmy1xhp05" path="res://Zones/RoomsModelsNodes/stairs_2_stack.tscn" id="6_e1d1n"]
@@ -79,7 +79,7 @@ transform = Transform3D(0.993242, 0, -0.116064, -0.116064, -4.37114e-08, -0.9932
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2636, 0, 0)
 
 [node name="WallLight" parent="Lights" instance=ExtResource("11_cichf")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.43146, 4.93239, -1.95279)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.43146, 4.93239, -1.44407)
 
 [node name="WallLight2" parent="Lights" instance=ExtResource("11_cichf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.43146, 4.93239, 2.91635)
