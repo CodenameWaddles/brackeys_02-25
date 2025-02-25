@@ -1,5 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbksuduvqki2"]
+[gd_scene load_steps=3 format=3 uid="uid://bbksuduvqki2"]
 
 [ext_resource type="PackedScene" uid="uid://bth42i1fi3dlp" path="res://Assets/Models/Chalumeau(1).fbx" id="1_nai2f"]
+[ext_resource type="PackedScene" uid="uid://uaqw7ltoaceo" path="res://Objects/Lights/blowtorch_particles.tscn" id="2_vjtss"]
 
 [node name="Chalumeau(1)" instance=ExtResource("1_nai2f")]
+
+[node name="blowtorch_particles" parent="." index="3" instance=ExtResource("2_vjtss")]
+transform = Transform3D(0.00518343, 0.333293, 0, -0.333293, 0.00518343, 0, 0, 0, 0.333333, 0.0685407, 0.19032, 0.000446041)
+emitting = false

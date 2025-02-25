@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://uaqw7ltoaceo"]
+
+[sub_resource type="Gradient" id="Gradient_2ltkk"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0mokk"]
+gradient = SubResource("Gradient_2ltkk")
+
+[sub_resource type="Curve" id="Curve_j7bxc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.552419, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8qmgi"]
+curve = SubResource("Curve_j7bxc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pdouh"]
+lifetime_randomness = 0.1
+angle_min = -7.79999
+angle_max = 4.60001
+direction = Vector3(0, 0.2, 0)
+spread = 2.609
+initial_velocity_min = 1.0
+initial_velocity_max = 6.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_8qmgi")
+color_initial_ramp = SubResource("GradientTexture1D_0mokk")
+turbulence_noise_scale = 1.778
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8um6h"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.243137, 0.317647, 0.741176, 0.643137)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lty0e"]
+material = SubResource("StandardMaterial3D_8um6h")
+radius = 0.02
+height = 0.1
+
+[node name="blowtorch_particles" type="GPUParticles3D"]
+amount = 150
+lifetime = 0.08
+process_material = SubResource("ParticleProcessMaterial_pdouh")
+draw_pass_1 = SubResource("SphereMesh_lty0e")

@@ -247,6 +247,7 @@ public partial class Cart : Node3D {
         {
             _currentMusic = _music1;
         }
+        _musicTime = 0;
     }
 
     public void DeactivateColliders() {

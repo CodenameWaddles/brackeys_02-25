@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Brackeys_2025_Godot.Objects.Scripts;
 
 public partial class playerInteraction : Node3D {
     
@@ -93,7 +94,6 @@ public partial class playerInteraction : Node3D {
                             _pickUpSound.Play();
                         }
                     }
-                    
                 }
                 else {
                     if(held == pickupable && pickupable.IsPickedUp) {
@@ -105,13 +105,42 @@ public partial class playerInteraction : Node3D {
             }
         }
         // interact with interactable need object
-        else if (_hovering is InteractableNeedObject interactableNeedObject) {
-            if(_hovering.IsInteractable && interactableNeedObject.Type == held?.Type)
+        else if (_hovering is InteractableNeedObject interactableNeedObject)
+        {
+            if (_hovering.IsInteractable && interactableNeedObject.Type == held?.Type)
                 ChangeReticle(_interactReticle);
             if (Input.IsActionPressed("interact"))
             {
-                if (interactableNeedObject.Type == held?.Type) {
+                if (interactableNeedObject.Type == held?.Type)
+                {
                     interactableNeedObject.Activate();
+                }
+
+                if (interactableNeedObject.Type == Pickupable.PickupType.Blowtorch &&
+                    held.Type == Pickupable.PickupType.Blowtorch)
+                {
+                    if (interactableNeedObject is LeakablePipe or BreakPipe)
+                    {
+                        Blowtorch blowtorch = (Blowtorch)held;
+                        Hazard hazard = (Hazard)interactableNeedObject;
+                        if (!hazard.IsSolved)
+                        {
+                            blowtorch.isBeingUsed = true;
+                        }
+                        else
+                        {
+                            blowtorch.isBeingUsed = false;
+                        }
+                    }
+                   
+                }
+            }
+            else
+            {
+                if(interactableNeedObject.Type == held?.Type && held.Type == Pickupable.PickupType.Blowtorch)
+                {
+                    Blowtorch blowtorch = (Blowtorch)held;
+                    blowtorch.isBeingUsed = false;
                 }
             }
         }
@@ -128,6 +157,13 @@ public partial class playerInteraction : Node3D {
             ChangeReticle(_defaultReticle);
             _interactStep = 0;
             _interactTime = 0;
+            
+            if(held != null && held.Type == Pickupable.PickupType.Blowtorch)
+            {
+                Blowtorch blowtorch = (Blowtorch)held;
+                blowtorch.isBeingUsed = false;
+            }
+            
         }
     }
     
@@ -136,9 +172,22 @@ public partial class playerInteraction : Node3D {
         Node3D newItem = (Node3D) item.Item.Duplicate();
         newItem.Position = _hand.Position;
         newItem.Visible = true;
+        switch (held.Type)
+        {
+            case Pickupable.PickupType.Trash:
+                newItem.Scale = new Vector3(0.5f, 0.5f, 0.5f);
+                break;
+            case Pickupable.PickupType.Blowtorch:
+                newItem.Scale = new Vector3(1.5f, 1.5f, 1.5f);
+                newItem.RotationDegrees = new Vector3(0, 90, 0);
+                newItem.TranslateObjectLocal(new Vector3(-0.2f, 0, -0.1f));
+                break;
+        }
+
+        
         if (held.Type == Pickupable.PickupType.Trash)
         {
-            newItem.Scale = new Vector3(0.5f, 0.5f, 0.5f);
+            
         }
         _hand.AddChild(newItem);
     }
