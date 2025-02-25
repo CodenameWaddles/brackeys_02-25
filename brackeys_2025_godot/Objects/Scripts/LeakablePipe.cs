@@ -45,10 +45,8 @@ public partial class LeakablePipe : Hazard {
                 Blowtorch blowtorch = (Blowtorch)player.held;
                 if(_fixProgress < _fixTime) {
                     _fixProgress++;
-                    blowtorch.isBeingUsed = true;
                 } else
                 {
-                    blowtorch.isBeingUsed = false;
                     MakeUninteractable();
                 }
                 break;
