@@ -33,7 +33,10 @@ ZoneHazards = [NodePath("sand"), NodePath("sand2"), NodePath("sand4"), NodePath(
 IsTimed = true
 ZoneTimer = NodePath("Timer")
 DataArea = NodePath("Area3D")
-DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay")
+DisplayDataDoubleInRoom = NodePath("DoubleDataDisplay2")
+
+[node name="DoubleDataDisplay2" parent="." instance=ExtResource("7_6pqxt")]
+transform = Transform3D(9.05975e-08, 1.2, 5.24537e-08, 0, -5.24537e-08, 1.2, 1.2, -9.05975e-08, -3.96014e-15, -35.3247, 2.90731, -4.44106)
 
 [node name="sand" parent="." instance=ExtResource("3_45wvu")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35.017, 1.25907, 1.39812)
@@ -64,9 +67,6 @@ mesh = SubResource("BoxMesh_rj60n")
 [node name="FogVolume" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1714, 53.6134, -2.27588)
 size = Vector3(55.1528, 23.5415, 53.167)
-
-[node name="DoubleDataDisplay" parent="." instance=ExtResource("7_6pqxt")]
-transform = Transform3D(1.13247e-07, 1.5, 6.55671e-08, 0, -6.55671e-08, 1.5, 1.5, -1.13247e-07, -4.95018e-15, -46.0098, 2.90731, -4.5013)
 
 [node name="bags" type="Node3D" parent="."]
 
@@ -182,17 +182,17 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.431
 [node name="WallLight5" parent="Lights" instance=ExtResource("11_2xrnu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.6208, 7.54533, 0.158026)
 
+[node name="WallLight7" parent="Lights" instance=ExtResource("11_2xrnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.361998, 5.38971, -10.4705)
+
 [node name="WallLight6" parent="Lights" instance=ExtResource("11_2xrnu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4539, 7.54533, -10.4705)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.8318, 7.54533, -4.24299)
 
 [node name="Tuyau origine ok" parent="." instance=ExtResource("10_60q06")]
 transform = Transform3D(1, 0, 0, 0, 0.0416756, -0.999783, 0, 1.99957, 0.0208378, -36.3621, 7.52204, 2.22145)
 
 [node name="Tuyau origine ok4" parent="." instance=ExtResource("10_60q06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3621, 4.04083, -1.88681)
-
-[node name="DoubleDataDisplay2" parent="." instance=ExtResource("7_6pqxt")]
-transform = Transform3D(9.05975e-08, 1.2, 5.24537e-08, 0, -5.24537e-08, 1.2, 1.2, -9.05975e-08, -3.96014e-15, -35.3247, 2.90731, -4.44106)
 
 [node name="Stairs2Stack" parent="." instance=ExtResource("8_kyi4r")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -33.8657, 1.25042, 2.8)

@@ -59,9 +59,6 @@ mesh = SubResource("BoxMesh_ppa64")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1714, 53.6134, -2.27588)
 size = Vector3(55.1528, 23.5415, 53.167)
 
-[node name="DoubleDataDisplay" parent="." instance=ExtResource("5_jwly0")]
-transform = Transform3D(1.13247e-07, 1.5, 6.55671e-08, 0, -6.55671e-08, 1.5, 1.5, -1.13247e-07, -4.95018e-15, -46.0098, 2.90731, -4.5013)
-
 [node name="trashbag" parent="." instance=ExtResource("12_pvq4p")]
 transform = Transform3D(-0.310013, 0, 0.392291, 0, 0.5, 0, -0.392291, 0, -0.310013, -19.5184, 21.6921, -2.51667)
 
@@ -90,8 +87,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.431
 [node name="WallLight5" parent="Lights" instance=ExtResource("11_cichf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.6208, 7.54533, 0.158026)
 
+[node name="WallLight7" parent="Lights" instance=ExtResource("11_cichf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.361998, 5.38971, -10.4705)
+
 [node name="WallLight6" parent="Lights" instance=ExtResource("11_cichf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4539, 7.54533, -10.4554)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.8318, 7.54533, -4.24299)
 
 [node name="Tuyau origine ok" parent="." instance=ExtResource("8_kfbea")]
 transform = Transform3D(1, 0, 0, 0, 0.0416756, -0.999783, 0, 1.99957, 0.0208378, -36.3621, 7.52204, 2.22145)
