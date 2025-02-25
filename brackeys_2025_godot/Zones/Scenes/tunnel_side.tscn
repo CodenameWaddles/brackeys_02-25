@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://n5yokdmfhjnb"]
 
-[ext_resource type="PackedScene" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="1_xukhq"]
+[ext_resource type="PackedScene" uid="uid://dl4xenroygom" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="1_xukhq"]
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="2_blapk"]
 [ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="3_mwvdh"]
 [ext_resource type="PackedScene" uid="uid://bac6epmvhs368" path="res://Objects/Tunnel/tunnel_secours.tscn" id="4_8c1ur"]

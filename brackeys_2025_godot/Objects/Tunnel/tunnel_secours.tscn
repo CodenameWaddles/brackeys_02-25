@@ -1,8 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://bac6epmvhs368"]
+[gd_scene load_steps=6 format=3 uid="uid://bac6epmvhs368"]
 
 [ext_resource type="PackedScene" uid="uid://dnu204sm8hkaa" path="res://Zones/RoomsModelsNodes/tunnel_avec_porte_de_secours.tscn" id="1_wgock"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_iorgh"]
+size = Vector2(10.175, 1.73)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dnlo"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wbhol"]
+size = Vector2(9.69, 3.72)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjjgv"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="TunnelSecours" type="Node3D"]
 
 [node name="Tunnel avec porte de secours" parent="." instance=ExtResource("1_wgock")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -0.524283, 0.851544, 0, 0.851544, 0.524283, -1, 2.29171e-08, -3.72222e-08, -1.85778, -0.0930234, 1.2998)
+mesh = SubResource("QuadMesh_iorgh")
+surface_material_override/0 = SubResource("StandardMaterial3D_4dnlo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0.368125, -0.929776, 0, 0.929776, 0.368125, 1, 1.60912e-08, -4.06418e-08, 1.99868, 0.00632005, 1.2998)
+mesh = SubResource("QuadMesh_iorgh")
+surface_material_override/0 = SubResource("StandardMaterial3D_4dnlo")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91068e-15, -0.00739158, -0.203285, 1.2998)
+mesh = SubResource("QuadMesh_wbhol")
+surface_material_override/0 = SubResource("StandardMaterial3D_xjjgv")

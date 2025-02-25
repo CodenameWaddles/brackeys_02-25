@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dkfhveww4s0fl"]
 
 [ext_resource type="Script" path="res://Zones/Scenes/FinalZone.cs" id="1_ve4xc"]
-[ext_resource type="PackedScene" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="2_bev4c"]
+[ext_resource type="PackedScene" uid="uid://dl4xenroygom" path="res://Objects/Tunnel/tunnel_vierge.tscn" id="2_bev4c"]
 [ext_resource type="PackedScene" uid="uid://chbk61ocrl8ax" path="res://UIS/black_screen_fade_end.tscn" id="2_l1ok3"]
 [ext_resource type="PackedScene" uid="uid://c47ujhsyq1f6t" path="res://Objects/Tunnel/Tunnel.tscn" id="3_8ta2n"]
 [ext_resource type="PackedScene" uid="uid://cks1jjkyhc157" path="res://Zones/RoomsModelsNodes/rails.tscn" id="4_gmkro"]
@@ -51,10 +51,10 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0054971, 0, -112.809)
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -88.5)
 
 [node name="Tunnel vierge6" parent="Node3D" instance=ExtResource("2_bev4c")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -16.5)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -17.2035)
 
 [node name="Tunnel9" parent="Node3D" instance=ExtResource("3_8ta2n")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -40.5)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, -41.2035)
 
 [node name="TunnelSecours" parent="Node3D" instance=ExtResource("5_aixni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015049, 9.53674e-07, -64.901)
