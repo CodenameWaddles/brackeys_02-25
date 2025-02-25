@@ -1,15 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbh5jua0uy680"]
+[gd_scene load_steps=2 format=3 uid="uid://dbh5jua0uy680"]
 
 [ext_resource type="Script" path="res://Objects/Audio/Scripts/ReverbZone.cs" id="1_oidsm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hqyu3"]
-size = Vector3(10.977, 7.71179, 25.2435)
-
-[node name="ReverbZone" type="Node3D" node_paths=PackedStringArray("_area")]
+[node name="ReverbZone" type="Node3D"]
 script = ExtResource("1_oidsm")
-_area = NodePath("Area3D")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_hqyu3")

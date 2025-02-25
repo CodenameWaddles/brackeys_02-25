@@ -17,7 +17,8 @@ public partial class AudioManager : Node
 	
 	public bool IsEnabled { private set; get; }
 	private AudioStreamPlayer3D _playingSound;
-	private AudioEffectReverb _defaultReverb;
+	private float _defaultRoomSize;
+	private float _targetRoomSize;
 	
 	// singleton
 	private static AudioManager _instance;
@@ -36,11 +37,39 @@ public partial class AudioManager : Node
 	public override void _Ready()
 	{
 		_instance = this;
-		_defaultReverb = (AudioEffectReverb) AudioServer.GetBusEffect(0, 0);
+		AudioEffectReverb reverb = (AudioEffectReverb) AudioServer.GetBusEffect(0, 0);
+		_defaultRoomSize = reverb.RoomSize;
+		_targetRoomSize = _defaultRoomSize;
 		BangingFrequency = _bangingFrequencies[0];
 		PlayAmbiance();
 	}
-	
+
+	public override void _Process(double delta)
+	{
+		AudioEffectReverb reverb = (AudioEffectReverb) AudioServer.GetBusEffect(0, 0);
+		float currentRoomSize = (float) reverb.RoomSize;
+
+		if (Mathf.Abs(currentRoomSize - _targetRoomSize) < 0.05f)
+		{
+			return;
+		}
+		else if (currentRoomSize - _targetRoomSize < 0.05f)
+		{
+			GD.Print("room size: " + currentRoomSize + " target room size: " + _targetRoomSize + ". increasing");
+			reverb = new AudioEffectReverb();
+			reverb.RoomSize = currentRoomSize + 0.1f * (float) delta;
+			AudioServer.RemoveBusEffect(0,0);
+			AudioServer.AddBusEffect(0, reverb);
+		}else if (currentRoomSize - _targetRoomSize > 0.05f)
+		{
+			GD.Print("room size: " + currentRoomSize + " target room size: " + _targetRoomSize + ". deacreasing");
+			reverb = new AudioEffectReverb();
+			reverb.RoomSize = currentRoomSize - 0.1f * (float) delta;
+			AudioServer.RemoveBusEffect(0,0);
+			AudioServer.AddBusEffect(0, reverb);
+		}
+	}
+
 	public void PlayRandomSoundscape()
 	{
 		Array<AudioStreamPlayer3D> soundPool = _soundscapes.Duplicate();
@@ -85,18 +114,14 @@ public partial class AudioManager : Node
 		}
 	}
 
-	public void setBusReverb(AudioEffectReverb reverb)
+	public void setBusReverb(float roomSize)
 	{
-		AudioServer.RemoveBusEffect(0, 0);
-		AudioServer.AddBusEffect(0, reverb, 0);
-		GD.Print("updated reverb ! (new reverb room size = " + reverb.RoomSize + ")");
+		_targetRoomSize = roomSize;
 	}
 
 	public void resetBusReverb()
 	{
-		AudioServer.RemoveBusEffect(0, 0);
-		AudioServer.AddBusEffect(0, _defaultReverb);
-		GD.Print("reset reverb");
+		_targetRoomSize = _defaultRoomSize;
 	}
 	
 }

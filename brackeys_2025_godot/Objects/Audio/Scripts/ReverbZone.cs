@@ -4,7 +4,7 @@ using System;
 public partial class ReverbZone : Node3D
 {
 	[Export] private bool useDefaultReverb;
-	[Export] private AudioEffectReverb _reverb = new AudioEffectReverb();
+	[Export] private float roomSize = 0.2f;
 	[Export] private Area3D _area;
 
 	public override void _Ready()
@@ -14,8 +14,9 @@ public partial class ReverbZone : Node3D
 
 	private void _on_area_entered(Node3D body)
 	{
-
 		if (!body.IsInGroup("Player")) return;
+		
+		GD.Print("Room size : " + roomSize);
 		
 		if (useDefaultReverb)
 		{
@@ -23,7 +24,7 @@ public partial class ReverbZone : Node3D
 		}
 		else
 		{
-			AudioManager.Instance.setBusReverb(_reverb);
+			AudioManager.Instance.setBusReverb(roomSize);
 		}
 	}
 	
