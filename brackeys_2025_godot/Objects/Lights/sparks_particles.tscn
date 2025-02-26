@@ -42,7 +42,7 @@ transparency = 1
 blend_mode = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.956863, 0.815686, 0.172549, 0.823529)
+albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l8rtf"]
 material = SubResource("StandardMaterial3D_rlivv")
