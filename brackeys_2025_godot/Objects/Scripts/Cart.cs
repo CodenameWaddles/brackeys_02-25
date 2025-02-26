@@ -10,7 +10,8 @@ public partial class Cart : Node3D {
         Moving,
         Stopped,
         Starting,
-        Stopping
+        Stopping,
+        Crashing
     }
     
     [Export] private CollisionShape3D _doorCollider;
@@ -26,6 +27,7 @@ public partial class Cart : Node3D {
     [Export] public CartMap CartMap;
     [Export] public Light CartLight;
     [Export] private StaticBody3D _quaiCollider;
+    [Export] private AnimationPlayer _crashAnimation;
     
     //audio
     [Export] private AudioStreamPlayer3D _wheels;
@@ -136,6 +138,10 @@ public partial class Cart : Node3D {
         if (_state == State.Moving)
         {
             PressButton.MakeUninteractable();   
+            if(_musicTime >= _currentMusic.Stream.GetLength())
+            {
+                _musicTime = 0;
+            }
             if (!_currentMusic.IsPlaying())
             {
                 _currentMusic.Play(_musicTime);
@@ -148,12 +154,17 @@ public partial class Cart : Node3D {
             Position = new Vector3(Position.X, Position.Y, Position.Z + (float) (_speed * delta));
         }
 
-        if (_state != State.Stopped && _state != State.Stopping)
+        if (_state != State.Stopped && _state != State.Stopping && _state != State.Crashing)
         {
             if (!_wheels.IsPlaying())
             {
                 _wheels.Play();
             }
+        }
+        
+        if(_state == State.Crashing)
+        {
+            Position = new Vector3(Position.X, Position.Y, Position.Z + (float) (_speed * delta));
         }
         
     }
@@ -209,7 +220,28 @@ public partial class Cart : Node3D {
     }
 
     private void Crash() {
-        Stop();
+        _bounceAnimation.Set("parameters/conditions/crash", true);
+        _crashAnimation.Play("crash");
+        _state = State.Crashing;
+        _lampAnimation.Set("parameters/conditions/crash", true);
+        _currentMusic.Stop();
+        CallDeferred("DeactivateDoorCollider");
+        CrashSpeed();
+    }
+    
+    private void DeactivateDoorCollider() {
+        _doorCollider.Disabled = true;
+    }
+
+    private async void CrashSpeed() {
+        float t = 0;
+        while (t < 1)
+        {
+            _speed = Mathf.Lerp(_speed, 0, t);
+            t += 0.005f;
+            await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
+        }
+        _wheels.Stop();
     }
 
     public void _on_player_detection_body_entered(Node3D body)

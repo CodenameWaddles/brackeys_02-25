@@ -23,7 +23,7 @@ public partial class GameManager : Node
     [Export] public CharacterBody3D _player { get; private set; }
     [Export] public AudioManager _audioManager;
     [Export] private Timer _resetRoomTimer;
-    [Export] private CanvasLayer _roomFailedScreen;
+    [Export] private FailedRoomScreen _roomFailedScreen;
     [Export] private EndScreen _endScreen;
     
     //tunnels
@@ -41,6 +41,8 @@ public partial class GameManager : Node
     public int _currentSceneIndex = 0;
     private Dictionary<int, String> _messages;
     private GameState _gameState = GameState.Game;
+    
+    public bool _brokenBlowtorch = false;
     
     // singleton
     private static GameManager _instance;
@@ -222,6 +224,7 @@ public partial class GameManager : Node
     {
         _resetRoomTimer.Start();
         _roomFailedScreen.Visible = true;
+        _roomFailedScreen.TypeText();
     }
 
     public void _on_reset_timer_timeout()
@@ -254,7 +257,7 @@ public partial class GameManager : Node
 
     private void SetupMessages()
     {
-        _messages.Add(-1, "Big tests coming up today. Make sure to input every data sample from the facility's screens in the cart's terminal.");
+        _messages.Add(-1, "Big tests coming up today. Make sure to collect every data sample from the facility's screens in the terminal behind you.");
         _messages.Add(2, "Lot of trash today. There should be enough room for it under the cart's shelf.");
         _messages.Add(3, "Burn everything properly.");
         _messages.Add(4, "Issues detected. Use tools to maintain structural integrity.");

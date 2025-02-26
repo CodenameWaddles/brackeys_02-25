@@ -94,6 +94,9 @@ public partial class Light : OmniLight3D
 		}
 		if(turnOff) {
 			Deactivate();
+			foreach (MeshInstance3D mesh in _mesh) {
+				mesh.Visible = false;
+			}
 		}
 	}
 }

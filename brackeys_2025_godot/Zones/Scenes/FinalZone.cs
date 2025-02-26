@@ -98,7 +98,7 @@ public partial class FinalZone : Node3D {
 	private async void BlackScreenFade(Node3D black) {
 		while (true) {
 			black.Scale -= new Vector3(0.3f, 0.3f, 0.3f);
-			if (black.Scale.X <= 0.2f) {
+			if (black.Scale.X <= 0.5f) {
 				break;
 			}
 			await ToSignal(GetTree().CreateTimer(0.01f), "timeout");

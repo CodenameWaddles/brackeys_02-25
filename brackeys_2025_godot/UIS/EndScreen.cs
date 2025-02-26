@@ -11,19 +11,20 @@ public partial class EndScreen : CanvasLayer {
 	
 	private Array<String> _credits = new() {
 		"> Forgotten abyss",
-		"\n \n> Made for Brackeys Game Jam 2025.1",
-		"\n \n> Game Design",
-		"\n \n> Clovie Thouvenot Oudart",
-		"\n \n> Justin Lépine",
-		"\n \n> Rémi Ducourtieux",
-		"\n \n> Programming",
-		"\n \n> Clovie Thouvenot Oudart",
-		"\n \n> Rémi Ducourtieux",
-		"\n \n> Art",
-		"\n \n> Gwenn Tran Son Tay",
-		"\n \n> Music and sound",
-		"\n \n> Térence Mathias",
-		"\n \n> Thank you for playing",
+		"\n \n > Made for Brackeys Game Jam 2025.1",
+		"\n \n > Game Design",
+		"\n \n > Clovie Thouvenot Oudart",
+		"\n \n > Justin Lépine",
+		"\n \n > Rémi Ducourtieux",
+		"\n \n > Programming",
+		"\n \n > Clovie Thouvenot Oudart",
+		"\n \n > Rémi Ducourtieux",
+		"\n \n > Art",
+		"\n \n > Gwenn Tran Son Tay",
+		"\n \n > Music and sound",
+		"\n \n > Térence Mathias",
+		"\n \n > Thank you for playing :)",
+		"\n \n > Press Escape to exit"
 	};
 	
 	public async void StartCredits() {

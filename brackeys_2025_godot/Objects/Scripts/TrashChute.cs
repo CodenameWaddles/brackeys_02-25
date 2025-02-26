@@ -7,7 +7,7 @@ public partial class TrashChute : Node3D
 	[Export] private TrashButton _trashButton;
 	[Export] private Array<Trashbag> _trashbags;
 	[Export] private Node3D _trashEndPoint;
-	[Export] private float _trashSpeed = 0.1f;
+	[Export] private float _trashSpeed = 15f;
 	[Export] private AudioStreamPlayer3D _trashOpenSound;
 	[Export] private TrashDoors _trashDoors;
 	
@@ -29,7 +29,7 @@ public partial class TrashChute : Node3D
 			_trashIsSpawning = false;
 			foreach (Trashbag bag in _trashbags) {
 				if(bag.GlobalPosition.Y > _trashEndPoint.GlobalPosition.Y) {
-					bag.Position = new Vector3(bag.Position.X, bag.Position.Y - _trashSpeed, bag.Position.Z);
+					bag.Position = new Vector3(bag.Position.X, bag.Position.Y - (float)delta*_trashSpeed, bag.Position.Z);
 					_trashIsSpawning = true; //keep stuff falling
 				}else if(!_trashbagSounds[bag]){
 					bag.PlayGroundSound();

@@ -17,7 +17,14 @@ public partial class BreakPipe : Hazard
 	private int _fixAttempt = 0;
     
 	public override void _Ready() {
-		Type = Pickupable.PickupType.Blowtorch;
+		if (GameManager.Instance._brokenBlowtorch) {
+			_fixAttempt = 1;
+			Type = Pickupable.PickupType.Tape;
+		}
+		else {
+			Type = Pickupable.PickupType.Blowtorch;
+		}
+			
 		_main = (GameManager) GetTree().Root.GetChild(0);
 		MakeInteractable();
 	}
@@ -49,6 +56,7 @@ public partial class BreakPipe : Hazard
 					blowtorch.isBeingUsed = true;
 				} else {
 					_fixAttempt++;
+					GameManager.Instance._brokenBlowtorch = true;
 					Type = Pickupable.PickupType.Tape;
 					blowtorch.isBeingUsed = false;
 					BreakBlowtorch();

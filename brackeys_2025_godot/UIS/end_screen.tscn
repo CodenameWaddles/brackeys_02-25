@@ -1,36 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg1iymhvicbog"]
+[gd_scene load_steps=7 format=3 uid="uid://cg1iymhvicbog"]
 
 [ext_resource type="Script" path="res://UIS/EndScreen.cs" id="1_ewh6l"]
 [ext_resource type="FontFile" uid="uid://l2yfcrlqucnl" path="res://Assets/Fonts/consoleFont.woff2" id="1_uag6d"]
 [ext_resource type="AudioStream" uid="uid://ceb610kqnerst" path="res://Assets/Sounds/decrement.wav" id="3_s3bd1"]
 [ext_resource type="AudioStream" uid="uid://dk35fx1pr6i3e" path="res://Assets/Sounds/Premier voyage 3.0.wav" id="4_5fi8b"]
+[ext_resource type="Shader" path="res://Objects/Shaders/crt_shader_canvas.gdshader" id="4_mtdvq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ha8ny"]
+shader = ExtResource("4_mtdvq")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 3.0
+shader_parameter/roll_size = 3.359
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.4
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [node name="EndScreen" type="CanvasLayer" node_paths=PackedStringArray("_creditsLabel", "_typingSound", "_music")]
 script = ExtResource("1_ewh6l")
-_creditsLabel = NodePath("RichTextLabel")
+_creditsLabel = NodePath("SubViewportContainer/SubViewport/RichTextLabel")
 _typingSound = NodePath("typingSound")
 _music = NodePath("music")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0.74902, 0, 1)
-theme_override_fonts/normal_font = ExtResource("1_uag6d")
-theme_override_font_sizes/normal_font_size = 60
-scroll_active = false
-scroll_following = true
-shortcut_keys_enabled = false
 
 [node name="typingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_s3bd1")
@@ -38,3 +42,34 @@ volume_db = -20.0
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_5fi8b")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_ha8ny")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0.74902, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_uag6d")
+theme_override_font_sizes/normal_font_size = 90
+scroll_active = false
+scroll_following = true
+shortcut_keys_enabled = false

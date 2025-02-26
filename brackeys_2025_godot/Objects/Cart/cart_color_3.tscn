@@ -1,101 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://rlqsfhy48v8i"]
+[gd_scene load_steps=2 format=3 uid="uid://rlqsfhy48v8i"]
 
 [ext_resource type="PackedScene" uid="uid://cw5jgdyk1twdw" path="res://Assets/Cart/cart_color3.glb" id="1_hadbf"]
-
-[sub_resource type="Animation" id="Animation_uey23"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("cart:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("shelf:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.00347725, 0.644446, -1.12282)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("hook:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.870228, 0.304334, 1.67622)]
-}
-
-[sub_resource type="Animation" id="Animation_c32a3"]
-resource_name = "crash"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("cart:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("shelf:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.00347725, 0.644446, -1.12282)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("hook:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.870228, 0.304334, 1.67622)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhs2h"]
-_data = {
-"RESET": SubResource("Animation_uey23"),
-"crash": SubResource("Animation_c32a3")
-}
 
 [node name="cart_color3" instance=ExtResource("1_hadbf")]
 
 [node name="hook" parent="." index="5"]
-transform = Transform3D(-1.19209e-10, -0.001, 0, 0.001, -1.19209e-10, 0, 0, 0, 0.001, -0.870228, 0.304334, 1.67622)
+transform = Transform3D(-1.19209e-10, -0.001, 0, 0.001, -1.19209e-10, 0, 0, 0, 0.001, 0, 0, 0)
 
 [node name="shelf" parent="." index="6"]
-transform = Transform3D(-1.19209e-10, -0.001, 0, 0.001, -1.19209e-10, 0, 0, 0, 0.001, -0.00347725, 0.644446, -1.12282)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
-libraries = {
-"": SubResource("AnimationLibrary_yhs2h")
-}
+transform = Transform3D(-1.19209e-10, -0.001, 0, 0.001, -1.19209e-10, 0, 0, 0, 0.001, 0, 0, 0)

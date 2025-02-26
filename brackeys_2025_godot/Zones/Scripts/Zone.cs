@@ -60,12 +60,12 @@ public partial class Zone : Node3D
     
     public override void _Process(double delta)
     {
-        /*
+        
         if (Input.IsActionJustPressed("test"))
         {
             IsComplete = true; //pr test
         }
-        */
+        
 
         if (IsTimed && Cart._state.Equals(Cart.State.Stopped))
         {
@@ -95,7 +95,7 @@ public partial class Zone : Node3D
                 break;
             case InstabilityLevel.High : integrityFrequency = new Vector2(60, 80);
                 break;
-            case InstabilityLevel.Extreme : integrityFrequency = new Vector2(95, 100);
+            case InstabilityLevel.Extreme : integrityFrequency = new Vector2(95, 99);
                 break;
             default: integrityFrequency = new Vector2(0, 100); 
                 break;
@@ -163,7 +163,7 @@ public partial class Zone : Node3D
     {
         ZoneTimer.Stop();
         EndTimer.Timeout += _cart_leave_without_player;
-        EndTimer.Start(10);
+        EndTimer.Start(5);
         if(Cart._state.Equals(Cart.State.Stopped))
         {
             Cart._alarm.Play();
@@ -206,7 +206,12 @@ public partial class Zone : Node3D
 
     public void _sendRoomMessage()
     {
-        Cart.ConsoleScreen.AddMessage("Location : " + roomname + "\nInstability : " + Mathf.RoundToInt(IntegrityPercentage) + "%");
+        String message = "Location : " + roomname + "\nInstability : " + Mathf.RoundToInt(IntegrityPercentage) + "%";
+        if (GameManager.Instance._currentSceneIndex is >= 4 and <= 12)
+        {
+            message += "\nIssues detected : " + ZoneHazards.Count;
+        }
+        Cart.ConsoleScreen.AddMessage(message);
         SamSpeaker.Instance.AddZoneSound(GameManager.Instance._currentSceneIndex%5);
         if (IntegrityPercentage < 40) {
             SamSpeaker.Instance.AddStabilitySound(0);
@@ -221,6 +226,7 @@ public partial class Zone : Node3D
         {
             SamSpeaker.Instance.AddStabilitySound(2); // rajouter extreme
         }
+        
     }
     
     public void setBurningPlace(BurningPlace burningPlace)
@@ -241,10 +247,6 @@ public partial class Zone : Node3D
 
     private void StartTimer()
     {
-        if (GameManager.Instance._currentSceneIndex is >= 4 and <= 12)
-        {
-            if(ZoneHazards.Count > 0) Cart.ConsoleScreen.AddMessage("Issues detected : " + ZoneHazards.Count);
-        }
         if (GameManager.Instance.ByePassActivated) IsComplete = true;
         if (!IsTimed) return;
         ZoneTimer.Start();
