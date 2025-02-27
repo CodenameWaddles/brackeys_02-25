@@ -4,6 +4,9 @@ using Godot.Collections;
 
 public partial class ConsoleScreen : Interactable
 {
+	[Signal] public delegate void MessageReadEventHandler();
+	[Signal] public delegate void MessageRecievedEventHandler();
+	
 	[Export] private Viewport _textViewport;
 	[Export] private MeshInstance3D _screenQuad;
 	[Export] private ScreenText _screenText;
@@ -41,6 +44,7 @@ public partial class ConsoleScreen : Interactable
 		_screenText.TypeText(message, 0.075f);
 		SamSpeaker.Instance.PlaySounds();
 		MakeUninteractable();
+		EmitSignal(SignalName.MessageRead);
 	}
 
 	public async void AddMessage(string message) {
@@ -55,6 +59,7 @@ public partial class ConsoleScreen : Interactable
 		if (!_isMakingNoise) {
 			MakeNoise();
 		}
+		EmitSignal(SignalName.MessageRecieved);
 	}
 	
 	protected override void MakeInteractableSpecific() {

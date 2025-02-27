@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b2cpr1lgw7bm8"]
+[gd_scene load_steps=32 format=3 uid="uid://b2cpr1lgw7bm8"]
 
 [ext_resource type="Script" path="res://Zones/Scripts/GameManager.cs" id="1_yxd7y"]
 [ext_resource type="PackedScene" uid="uid://brlq4ot8qypvv" path="res://Zones/Scenes/zone_9.tscn" id="2_2apei"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dkfhveww4s0fl" path="res://Zones/Scenes/FinalZone.tscn" id="19_e0o7y"]
 [ext_resource type="PackedScene" uid="uid://db074l5af5mv8" path="res://Zones/Scenes/intro_zone.tscn" id="19_t57yd"]
 [ext_resource type="PackedScene" uid="uid://cg1iymhvicbog" path="res://UIS/end_screen.tscn" id="21_0e3rt"]
+[ext_resource type="PackedScene" uid="uid://dufgqg6a5c8eg" path="res://UIS/leave_screen.tscn" id="28_tu07m"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j74ki"]
 
@@ -41,7 +42,7 @@ volumetric_fog_emission_energy = 2.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_i06lb"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_endScreen", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("Cart", "_player", "_audioManager", "_resetRoomTimer", "_roomFailedScreen", "_endScreen", "_leaveScreen", "_tunelPreZone", "_tunelPostZone", "_resetPoint")]
 script = ExtResource("1_yxd7y")
 _scenes = [ExtResource("2_3h40t"), ExtResource("3_pn6f8"), ExtResource("4_4rtxn"), ExtResource("5_ueelr"), ExtResource("6_m1i8t"), ExtResource("7_a5t7k"), ExtResource("8_5vsux"), ExtResource("9_wnaab"), ExtResource("2_2apei"), ExtResource("11_f4bw3"), ExtResource("12_6lbj4"), ExtResource("13_xpvod"), ExtResource("14_acyje"), ExtResource("15_c6lld"), ExtResource("16_jkqg7"), ExtResource("17_eclp2"), ExtResource("18_c43du")]
 _introScenePrefab = ExtResource("19_t57yd")
@@ -52,6 +53,7 @@ _audioManager = NodePath("AudioManager")
 _resetRoomTimer = NodePath("ResetRoomTimer")
 _roomFailedScreen = NodePath("FailedRoomScreen")
 _endScreen = NodePath("EndScreen")
+_leaveScreen = NodePath("LeaveScreen")
 _tunelPosition1 = Vector3(1.75, 0, -41.09)
 _tunelPosition2 = Vector3(1.75, 0, 341.6)
 _tunelPreZone = NodePath("TunnelSidePre")
@@ -100,5 +102,8 @@ visible = false
 mesh = SubResource("BoxMesh_i06lb")
 
 [node name="EndScreen" parent="." instance=ExtResource("21_0e3rt")]
+
+[node name="LeaveScreen" parent="." instance=ExtResource("28_tu07m")]
+visible = false
 
 [connection signal="timeout" from="ResetRoomTimer" to="." method="_on_reset_timer_timeout"]

@@ -25,6 +25,7 @@ public partial class GameManager : Node
     [Export] private Timer _resetRoomTimer;
     [Export] private FailedRoomScreen _roomFailedScreen;
     [Export] private EndScreen _endScreen;
+    [Export] private CanvasLayer _leaveScreen;
     
     //tunnels
     [Export] private Vector3 _tunelPosition1;
@@ -65,6 +66,7 @@ public partial class GameManager : Node
         _currentSceneIndex = startIndex;
         
         _roomFailedScreen.Visible = false;
+        _leaveScreen.Visible = false;
         _endScreen.Visible = false;
         Cart.ArrivedSignal += _cartArrived;
         _player.Reparent(Cart);
@@ -107,10 +109,24 @@ public partial class GameManager : Node
         }
 
         if (Input.IsActionJustPressed("exit")) {
-            GD.Print("exit");
-            GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
-            GetTree().Quit();
+            if (_leaveScreen.Visible) {
+                _leaveScreen.Visible = false;
+                EnablePlayer();
+            }
+            else {
+                _leaveScreen.Visible = true;
+                DisablePlayer();
+            }
         }
+
+        if (_leaveScreen.Visible) {
+            if (Input.IsActionJustPressed("ui_accept")) {
+                GD.Print("exit");
+                GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
+                GetTree().Quit();
+            }
+        }
+        
     }
 
     private void _loadScene(int sceneIndex)
@@ -326,5 +342,12 @@ public partial class GameManager : Node
         _player.AxisLockLinearY = true;
         _player.AxisLockLinearZ = true;
         _player.DisableMode = CollisionObject3D.DisableModeEnum.MakeStatic;
+    }
+    
+    public void EnablePlayer() {
+        _player.AxisLockLinearX = false;
+        _player.AxisLockLinearY = false;
+        _player.AxisLockLinearZ = false;
+        _player.DisableMode = CollisionObject3D.DisableModeEnum.Remove;
     }
 }

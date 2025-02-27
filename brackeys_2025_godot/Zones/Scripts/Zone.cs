@@ -63,7 +63,7 @@ public partial class Zone : Node3D
         
         if (Input.IsActionJustPressed("test"))
         {
-            IsComplete = true; //pr test
+            //IsComplete = true; //pr test
         }
         
 

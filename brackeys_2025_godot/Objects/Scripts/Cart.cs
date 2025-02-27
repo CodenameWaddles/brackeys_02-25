@@ -66,12 +66,16 @@ public partial class Cart : Node3D {
     
     private AudioStreamPlayer3D _currentMusic;
     
+    private bool _doorCanOpen = false;
+    
     public override void _Ready()
     {
         InputDataDoubleOnWagon = CartDataPanel.DataDouble;
         InputDataSingleOnWagon = CartDataPanel.DataSingle;
         _speed = InitialSpeed;
         PressButton.ButtonPressed += Start;
+        ConsoleScreen.MessageRead += _on_message_read;
+        ConsoleScreen.MessageRecieved += _on_message_recieved;
         _currentMusic = _music1;
     }
 
@@ -125,10 +129,13 @@ public partial class Cart : Node3D {
                 _musicTime = _currentMusic.GetPlaybackPosition();
                 _currentMusic.Stop();
                 _wheels.Stop();
-                _animationPlayer.Play("open_door");
+                if (_doorCanOpen) {
+                    _animationPlayer.Play("open_door");
+                    _doorOpening.Play();
+                    _doorCanOpen = false;
+                }
                 EmitSignal(SignalName.ParkedSignal);
                 _bell.Play();
-                _doorOpening.Play();
                 GameManager main = (GameManager)GetTree().Root.GetChild(0);
                 main._audioManager.Enable();
             }
@@ -161,6 +168,14 @@ public partial class Cart : Node3D {
                 _wheels.Play();
             }
         }
+
+        if (_state == State.Stopped) {
+            if (_doorCanOpen) {
+                _animationPlayer.Play("open_door");
+                _doorOpening.Play();
+                _doorCanOpen = false;
+            }
+        }
         
         if(_state == State.Crashing)
         {
@@ -181,6 +196,7 @@ public partial class Cart : Node3D {
     
     public void Start() {
         if(_state != State.Stopped) return;
+        _doorCanOpen = false;
         _alarm.Stop();
         _state = State.Starting;
         CartDataPanel.TurnOffGreenLight();
@@ -290,5 +306,14 @@ public partial class Cart : Node3D {
     public void DeactivateColliders() {
         _quaiCollider.CollisionLayer = 0;
         _quaiCollider.CollisionMask = 0;
+    }
+    
+    private void _on_message_read()
+    {
+        _doorCanOpen = true;
+    }
+    private void _on_message_recieved()
+    {
+        _doorCanOpen = false;
     }
 }
