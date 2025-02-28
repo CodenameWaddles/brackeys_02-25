@@ -120,7 +120,7 @@ public partial class Cart : Node3D {
             {
                 _speed = 0;
                 _state = State.Stopped;
-                _doorCollider.Disabled = true;
+                
                 if (_movePlayerWithCart)
                 {
                     _player.Reparent(GetTree().Root.GetNode("Main"));
@@ -133,6 +133,7 @@ public partial class Cart : Node3D {
                     _animationPlayer.Play("open_door");
                     _doorOpening.Play();
                     _doorCanOpen = false;
+                    _doorCollider.Disabled = true;
                 }
                 EmitSignal(SignalName.ParkedSignal);
                 _bell.Play();
@@ -174,6 +175,7 @@ public partial class Cart : Node3D {
                 _animationPlayer.Play("open_door");
                 _doorOpening.Play();
                 _doorCanOpen = false;
+                _doorCollider.Disabled = true;
             }
         }
         

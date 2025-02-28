@@ -17,11 +17,11 @@ float function(float x){
 
 void fragment() {
 	vec3 color = vec3(0, 0, 0);
-	
+
 	float value = function(UV.x);
 	vec2 point = vec2(spotX, function(spotX));
 	float dist = distance(UV.xy, point);
-	
+
 	for(int i = 1; i <= int(n); i++){
 		if((UV.x + 1.0/(2.0 * n) > float(i)/n - barSize && UV.x + 1.0/(2.0 * n) < float(i)/n + barSize)){
 			color = vec3(0, 0.1, 0);
